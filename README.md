@@ -1,1 +1,1 @@
-# Streptomycin_rpsL
+# Streptomycin
