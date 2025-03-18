@@ -1,0 +1,30 @@
+---
+title: "Supplemental file S4 - RpoB structure"
+format:
+  html:
+    self-contained: true
+---
+
+#### Bolourchi *et al.*, Evolution and evolvability of rifampicin resistance across the bacterial tree of life.
+
+
+::: {html}
+<style>
+  .iframe-container {
+    display: flex;
+    justify-content: center; /* Center the iframe */
+  }
+  iframe {
+    width: 800px;
+    height: 800px;
+    border: none;
+  }
+</style>
+<div class="iframe-container">
+  <iframe src="rpoB_structure.html"></iframe>
+</div>
+:::
+
+![](distance_legend.png){width="30%" fig-align="right"}
+
+The figure above shows the structure of the RpoB chain of the RNA polymerase in *Escherichia coli*. Colours from red to blue indicate the amino acid position (from 1 through 1343). Labels with amino acids and position numbers indicate the 19 positions of RIF resistance mutations in our panel of reported mutations. The background colour of these labels indicate the average Grantham distance between the *E. coli* amino acid at this position to the amino acids across all our screened species (ranging from white to blue, see legend above). To navigate the structure, use left *click+drag* for rotations, *right click+drag* for shifting, and *scroll* for zooming in and out.

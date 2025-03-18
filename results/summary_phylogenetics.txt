@@ -1,0 +1,22 @@
+Summary of the phylogenetic analyses 
+Date: 2024-08-13 07:42:44.210649
+--------------------------------------------------------------------
+
+Phylogenetic tree:
+    Number of species: 15521
+    Number of species predicted to be resistant in tree: 1228
+Number of species sampled from tree when calculating phylogenetic signals: 5000
+Phylogenetic signal in predicted resistance:
+    Test: permutation test of mean phylogenetic distance of resistant species
+    Number of permutations: 1000
+    p-value: 0
+Phylogenetic signal in evolvability I (number of evolvable AA mutations):
+    Pagel's lambda: 0.954
+    p(lambda): 0
+    Blomberg's K: 0.204
+    p(K): 0.001
+Phylogenetic signal in evolvability II (number of nt mutations producing AA resistance mutations):
+    Pagel's lambda: 0.74
+    p(lambda): 0
+    Blomberg's K: 0.102
+    p(K): 0.001

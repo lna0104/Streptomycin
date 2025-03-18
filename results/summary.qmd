@@ -1,0 +1,202 @@
+---
+title: Evolution and evolvability of rifampicin resistance across the bacterial tree of life
+subtitle: Summaries of analyses
+date: today
+format: pdf
+editor: visual
+---
+
+## Summary of reported mutations 
+
+
+
+* Number of studies: 116
+* Number of species: 75
+* Total number of mutations: 1426
+* Amino acid positions with mutations: 146
+* Number of unique amino acid mutations: 369
+
+## Summary of screened target rpoB sequences 
+
+
+
+* Target sequence statistics before filtering:
+    + Number of genomes in search results: 18636
+    + Number of genomes with extracted rpoB sequence(s): 18469
+    + Number of genomes where no rpoB sequence could be extracted: 167
+    + Number of species with downloaded genomes: 18450
+    + Total number of rpoB sequences: 18682
+    + Number of genomes with more than one rpoB sequence: 208
+    + Maximum number of rpoB sequences per genome: 3
+* Filtering statistics:
+    + Minimum sequence length: 312
+    + Median sequence length: 3813.00
+    + Mean sequence length: 3865.628
+    + Maximum sequence length: 8703
+    + Minimum aligning score: -8559.608
+    + Maximum aligning score: 5779.872
+    + Minimum distance from reference rpoB core: 0
+    + Maximum distance from reference rpoB core: 171
+* Filters applied: 
+    + Minimum sequence length: 3000
+    + Minimum alignment score to E. coli rpoB: -8559.6083984375
+    + Maximum core distance to E. coli rpoB: 35
+* Target sequence statistics after filtering:
+    + Number of genomes with extracted rpoB sequence(s): 18146
+    + Number of species with downloaded genomes: 18127
+    + Total number of rpoB sequences: 18238
+    + Number of genomes with more than one rpoB sequence: 91
+    + Maximum number of rpoB sequences per genome: 3
+
+## Summary of the mutation screen 
+
+
+
+* Screened mutations:
+    + Number of distinct mutations screened: 60
+    + Number of amino acid sites: 19
+* Predicted intrinsic resistance:
+    + Total number of resistance mutations present across species: 1567
+    + Number of unique mutations present across species: 37
+    + Number of resistant species: 1453
+    + Percentage of resistant species: 8.02%
+    + Number of species with multiple resistance mutations: 104
+    + Number of species where one rpoB copy confers resistance and one does not: 68
+* Evolvability I (number of AA mutations that a species can mutate to):
+    + Range: 27...49
+    + 95% inter-quantile range: 35...47
+    + Median: 42
+    + Theoretical range: 2...53
+* Evolvability II (number of mutations that can produce a resistance mutation):
+    + Range: 33...123
+    + 95% inter-quantile range: 40...53
+    + Median: 46
+    + Theoretical range: 3...86
+* Associations between evolvabilities (phylogenetically uncontrolled):
+    + Evolvability I vs. evolvability II: r=0.69
+    + Intrinsic resistance vs. evolvability I: p=7.25e-80 (Welch Two Sample t-test, t=-20.1)
+    + Intrinsic resistance vs. evolvability II: p=0.0163 (Welch Two Sample t-test, t=2.41)
+
+## Summary of the phylogenetic analyses 
+
+
+
+* Phylogenetic tree:
+    + Number of species: 15521
+    + Number of species predicted to be resistant in tree: 1228
+* Number of species sampled from tree when calculating phylogenetic signals: 5000
+* Phylogenetic signal in predicted resistance:
+    + Test: permutation test of mean phylogenetic distance of resistant species
+    + Number of permutations: 1000
+    + p-value: 0
+* Phylogenetic signal in evolvability I (number of evolvable AA mutations):
+    + Pagel's lambda: 0.954
+    + p(lambda): 0
+    + Blomberg's K: 0.204
+    + p(K): 0.001
+* Phylogenetic signal in evolvability II (number of nt mutations producing AA resistance mutations):
+    + Pagel's lambda: 0.74
+    + p(lambda): 0
+    + Blomberg's K: 0.102
+    + p(K): 0.001
+
+## Summary of the mutation screen (additional mutations from Yang et al. (2023))
+
+
+
+* Screened mutations:
+    + Number of distinct mutations screened: 85
+    + Number of amino acid sites: 22
+* Predicted intrinsic resistance:
+    + Total number of resistance mutations present across species: 171
+    + Number of unique mutations present across species: 11
+    + Number of resistant species: 169
+    + Percentage of resistant species: 0.93%
+    + Number of species with multiple resistance mutations: 2
+    + Number of species where one rpoB copy confers resistance and one does not: 8
+* Evolvability I (number of AA mutations that a species can mutate to):
+    + Range: 4...17
+    + 95% inter-quantile range: 5...11
+    + Median: 7
+    + Theoretical range: 0...53
+* Evolvability II (number of mutations that can produce a resistance mutation):
+    + Range: 4...35
+    + 95% inter-quantile range: 5...13
+    + Median: 8
+    + Theoretical range: 0...89
+* Associations between evolvabilities (phylogenetically uncontrolled):
+    + Evolvability I vs. evolvability II: r=0.913
+    + Intrinsic resistance vs. evolvability I: p=2.85e-22 (Welch Two Sample t-test, t=11.2)
+    + Intrinsic resistance vs. evolvability II: p=8.72e-42 (Welch Two Sample t-test, t=18.2)
+
+## Summary of the mutation screen (reported mutations and mutations from Yang et al. (2023) pooled)
+
+
+
+* Screened mutations:
+    + Number of distinct mutations screened: 145
+    + Number of amino acid sites: 29
+* Predicted intrinsic resistance:
+    + Total number of resistance mutations present across species: 1738
+    + Number of unique mutations present across species: 48
+    + Number of resistant species: 1578
+    + Percentage of resistant species: 8.71%
+    + Number of species with multiple resistance mutations: 132
+    + Number of species where one rpoB copy confers resistance and one does not: 68
+* Evolvability I (number of AA mutations that a species can mutate to):
+    + Range: 38...62
+    + 95% inter-quantile range: 43...54
+    + Median: 49
+    + Theoretical range: 21...77
+* Evolvability II (number of mutations that can produce a resistance mutation):
+    + Range: 43...158
+    + 95% inter-quantile range: 49...60
+    + Median: 54
+    + Theoretical range: 21...134
+* Associations between evolvabilities (phylogenetically uncontrolled):
+    + Evolvability I vs. evolvability II: r=0.638
+    + Intrinsic resistance vs. evolvability I: p=0.00165 (Welch Two Sample t-test, t=3.15)
+    + Intrinsic resistance vs. evolvability II: p=1.45e-39 (Welch Two Sample t-test, t=13.5)
+
+## Summary of the amino acid conservation analyses 
+
+
+
+* Mean Hamming distance to E. coli across all sequences:
+    + Number of sequences: 21279
+    + Mean across AA positions: 0.493739194326286
+    + Max across AA positions: 0.97546876518022
+    + Min across AA positions: 0.0194284036409905
+* Mean Hamming distance across randomly sampled pairs of rpoB sequences:
+    + Number of sequence pairs: 21279
+    + Mean across AA positions: 0.462397896181912
+    + Max across AA positions: 0.912330719885959
+    + Min across AA positions: 0.00304442373407891
+* Mean Grantham distance to E. coli across all sequences:
+    + Number of sequences: 21279
+    + Mean across AA positions: 27.4423744703864
+    + Max across AA positions: 184.156306777515
+    + Min across AA positions: 0.110545253252145
+* Mean Grantham distance across randomly sampled pairs of rpoB sequences:
+    + Number of sequence pairs: 21279
+    + Mean across AA positions: 33.6155363560395
+    + Max across AA positions: 95.664841045011
+    + Min across AA positions: 0.239809057220024
+
+## Session Info
+
+**R version 4.4.1 (2024-06-14)**
+
+**Platform:** x86_64-apple-darwin20 
+
+**locale:**
+en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8
+
+**attached base packages:** 
+_stats4_, _parallel_, _stats_, _graphics_, _grDevices_, _utils_, _datasets_, _methods_ and _base_
+
+**other attached packages:** 
+_bio3d(v.2.4-5)_, _quarto(v.1.4.4)_, _pander(v.0.6.5)_, _ggh4x(v.0.3.0)_, _GGally(v.2.2.1)_, _RColorBrewer(v.1.1-3)_, _plotrix(v.3.8-4)_, _ggpubr(v.0.6.0)_, _patchwork(v.1.3.0)_, _scales(v.1.3.0)_, _colorspace(v.2.1-1)_, _ggnewscale(v.0.5.1)_, _treeio(v.1.28.0)_, _tidytree(v.0.4.6)_, _ggtree(v.3.12.0)_, _phangorn(v.2.12.1)_, _phytools(v.2.4-4)_, _maps(v.3.4.2.1)_, _ape(v.5.8-1)_, _castor(v.1.8.3)_, _Rcpp(v.1.0.14)_, _pwalign(v.1.0.0)_, _Biostrings(v.2.72.1)_, _GenomeInfoDb(v.1.40.1)_, _XVector(v.0.44.0)_, _IRanges(v.2.38.1)_, _S4Vectors(v.0.42.1)_, _BiocGenerics(v.0.50.0)_, _varhandle(v.2.0.6)_, _future.apply(v.1.11.3)_, _future(v.1.34.0)_, _openssl(v.2.3.2)_, _lubridate(v.1.9.4)_, _forcats(v.1.0.0)_, _stringr(v.1.5.1)_, _dplyr(v.1.1.4)_, _purrr(v.1.0.4)_, _readr(v.2.1.5)_, _tidyr(v.1.3.1)_, _tibble(v.3.2.1)_, _ggplot2(v.3.5.1)_, _tidyverse(v.2.0.0)_, _ALJEbinf(v.0.1.0)_ and _NGLVieweR(v.1.4.0)_
+
+**loaded via a namespace (and not attached):** 
+_rstudioapi(v.0.17.1)_, _jsonlite(v.1.9.0)_, _magrittr(v.2.0.3)_, _farver(v.2.1.2)_, _rmarkdown(v.2.29)_, _fs(v.1.6.5)_, _zlibbioc(v.1.50.0)_, _vctrs(v.0.6.5)_, _askpass(v.1.2.1)_, _rstatix(v.0.7.2)_, _htmltools(v.0.5.8.1)_, _DEoptim(v.2.2-8)_, _broom(v.1.0.7)_, _Formula(v.1.2-5)_, _gridGraphics(v.0.5-1)_, _parallelly(v.1.42.0)_, _htmlwidgets(v.1.6.4)_, _naturalsort(v.0.1.3)_, _plyr(v.1.8.9)_, _igraph(v.2.1.4)_, _mime(v.0.12)_, _lifecycle(v.1.0.4)_, _iterators(v.1.0.14)_, _pkgconfig(v.2.0.3)_, _Matrix(v.1.7-2)_, _R6(v.2.6.1)_, _fastmap(v.1.2.0)_, _GenomeInfoDbData(v.1.2.12)_, _shiny(v.1.10.0)_, _digest(v.0.6.37)_, _numDeriv(v.2016.8-1.1)_, _aplot(v.0.2.4)_, _ps(v.1.9.0)_, _RSpectra(v.0.16-2)_, _clusterGeneration(v.1.3.8)_, _timechange(v.0.3.0)_, _httr(v.1.4.7)_, _abind(v.1.4-8)_, _compiler(v.4.4.1)_, _bit64(v.4.6.0-1)_, _withr(v.3.0.2)_, _doParallel(v.1.0.17)_, _backports(v.1.5.0)_, _optimParallel(v.1.0-2)_, _carData(v.3.0-5)_, _ggstats(v.0.8.0)_, _ggsignif(v.0.6.4)_, _MASS(v.7.3-64)_, _scatterplot3d(v.0.3-44)_, _tools(v.4.4.1)_, _httpuv(v.1.6.15)_, _glue(v.1.8.0)_, _quadprog(v.1.5-8)_, _nlme(v.3.1-167)_, _promises(v.1.3.2)_, _grid(v.4.4.1)_, _generics(v.0.1.3)_, _gtable(v.0.3.6)_, _tzdb(v.0.4.0)_, _hms(v.1.1.3)_, _utf8(v.1.2.4)_, _car(v.3.1-3)_, _foreach(v.1.5.2)_, _pillar(v.1.10.1)_, _vroom(v.1.6.5)_, _yulab.utils(v.0.2.0)_, _later(v.1.4.1)_, _lattice(v.0.22-6)_, _bit(v.4.5.0.1)_, _tidyselect(v.1.2.1)_, _knitr(v.1.49)_, _xfun(v.0.51)_, _expm(v.1.0-0)_, _stringi(v.1.8.4)_, _UCSC.utils(v.1.0.0)_, _yaml(v.2.3.10)_, _lazyeval(v.0.2.2)_, _ggfun(v.0.1.8)_, _evaluate(v.1.0.3)_, _codetools(v.0.2-20)_, _BiocManager(v.1.30.25)_, _ggplotify(v.0.1.2)_, _cli(v.3.6.4)_, _xtable(v.1.8-4)_, _munsell(v.0.5.1)_, _processx(v.3.8.6)_, _globals(v.0.16.3)_, _coda(v.0.19-4.1)_, _listenv(v.0.9.1)_, _crayon(v.1.5.3)_, _combinat(v.0.0-8)_, _rlang(v.1.1.5)_, _fastmatch(v.1.1-6)_ and _mnormt(v.2.1.1)_

@@ -1,0 +1,7 @@
+---
+title: Evolution and evolvability of rifampicin resistance across the bacterial tree of life
+subtitle: Summaries of analyses
+date: today
+format: pdf
+editor: visual
+---

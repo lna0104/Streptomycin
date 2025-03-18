@@ -1,0 +1,31 @@
+Summary of screened target rpoB sequences 
+Date: 2024-08-12 09:39:02.887373
+--------------------------------------------------------------------
+
+Target sequence statistics before filtering:
+    Number of genomes in search results: 18636
+    Number of genomes with extracted rpoB sequence(s): 18469
+    Number of genomes where no rpoB sequence could be extracted: 167
+    Number of species with downloaded genomes: 18450
+    Total number of rpoB sequences: 18682
+    Number of genomes with more than one rpoB sequence: 208
+    Maximum number of rpoB sequences per genome: 3
+Filtering statistics:
+    Minimum sequence length: 312
+    Median sequence length: 3813.00
+    Mean sequence length: 3865.628
+    Maximum sequence length: 8703
+    Minimum aligning score: -8559.608
+    Maximum aligning score: 5779.872
+    Minimum distance from reference rpoB core: 0
+    Maximum distance from reference rpoB core: 171
+Filters applied: 
+    Minimum sequence length: 3000
+    Minimum alignment score to E. coli rpoB: -8559.6083984375
+    Maximum core distance to E. coli rpoB: 35
+Target sequence statistics after filtering:
+    Number of genomes with extracted rpoB sequence(s): 18146
+    Number of species with downloaded genomes: 18127
+    Total number of rpoB sequences: 18238
+    Number of genomes with more than one rpoB sequence: 91
+    Maximum number of rpoB sequences per genome: 3
