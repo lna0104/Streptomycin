@@ -37,6 +37,14 @@ get_summaries <- function(db, term, retmax = 500, max_tries = 10) {
   return(summaries)
 }
 
+# extracts the file path to a genome from a summary:
+get_genome_file_path <- function(summary, suffix, dir) {
+  name <- gsub(".*/([^/]+)/?", "\\1", summary$ftppath_refseq)
+  file_name <- paste0(name, suffix)
+  file_path <- file.path(dir, file_name)
+  return(file_path)
+}
+
 
 #Takes an Entrez summary, and downloads and unzips the fasta file from refseq.
 #Each summary object must have an `ftppath_refseq` entry.
@@ -75,9 +83,10 @@ download_file <- function(summary, suffix = "_cds_from_genomic.fna.gz", dir = "o
     dir.create(dir, recursive = TRUE)
   }
   
-  name <- gsub(".*/([^/]+)/?", "\\1", summary$ftppath_refseq)
-  file_name <- paste0(name, suffix)
-  file_path <- file.path(dir, file_name)
+  # name <- gsub(".*/([^/]+)/?", "\\1", summary$ftppath_refseq)
+  # file_name <- paste0(name, suffix)
+  # file_path <- file.path(dir, file_name)
+  file_path <- get_genome_file_path(summary, suffix = suffix, dir = dir)
 
   if ((!overwrite) && (file.exists(sub(".gz", "", file_path)))) {
     cat("  --> File already exists, skipped.\n")
