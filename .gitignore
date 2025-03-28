@@ -1,4 +1,10 @@
 .Rproj.user
 .Rhistory
-.RData
+*.RData
+*.Rds
 .Ruserdata
+.DS_Store
+*.fna
+*.csv
+*.tsv
+output/*
