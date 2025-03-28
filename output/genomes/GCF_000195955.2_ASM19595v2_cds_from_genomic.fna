@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2</title>
+ </head>
+ <body>
+<h1>Index of /genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2</h1>
+<pre>Name                                               Last modified      Size  <hr><a href="/genomes/all/GCF/000/195/955/">Parent Directory</a>                                                        -   
+<a href="GCF_000195955.2_ASM19595v2_ani_contam_ranges.tsv">GCF_000195955.2_ASM19595v2_ani_contam_ranges.tsv</a>   2024-07-20 03:44  1.5K  
+<a href="GCF_000195955.2_ASM19595v2_ani_report.txt">GCF_000195955.2_ASM19595v2_ani_report.txt</a>          2024-07-20 03:44  5.8K  
+<a href="GCF_000195955.2_ASM19595v2_assembly_report.txt">GCF_000195955.2_ASM19595v2_assembly_report.txt</a>     2022-08-29 17:04  1.2K  
+<a href="GCF_000195955.2_ASM19595v2_assembly_stats.txt">GCF_000195955.2_ASM19595v2_assembly_stats.txt</a>      2022-08-29 17:04  5.4K  
+<a href="GCF_000195955.2_ASM19595v2_cds_from_genomic.fna.gz">GCF_000195955.2_ASM19595v2_cds_from_genomic.fna.gz</a> 2017-12-22 13:02  1.3M  
+<a href="GCF_000195955.2_ASM19595v2_fcs_report.txt">GCF_000195955.2_ASM19595v2_fcs_report.txt</a>          2024-11-22 10:57  476   
+<a href="GCF_000195955.2_ASM19595v2_feature_count.txt.gz">GCF_000195955.2_ASM19595v2_feature_count.txt.gz</a>    2017-12-22 13:02  249   
+<a href="GCF_000195955.2_ASM19595v2_feature_table.txt.gz">GCF_000195955.2_ASM19595v2_feature_table.txt.gz</a>    2017-12-22 13:02  171K  
+<a href="GCF_000195955.2_ASM19595v2_genomic.fna.gz">GCF_000195955.2_ASM19595v2_genomic.fna.gz</a>          2016-05-20 22:28  1.2M  
+<a href="GCF_000195955.2_ASM19595v2_genomic.gbff.gz">GCF_000195955.2_ASM19595v2_genomic.gbff.gz</a>         2023-06-18 08:38  3.0M  
+<a href="GCF_000195955.2_ASM19595v2_genomic.gff.gz">GCF_000195955.2_ASM19595v2_genomic.gff.gz</a>          2023-06-18 08:38  310K  
+<a href="GCF_000195955.2_ASM19595v2_genomic.gtf.gz">GCF_000195955.2_ASM19595v2_genomic.gtf.gz</a>          2021-09-10 08:36  353K  
+<a href="GCF_000195955.2_ASM19595v2_protein.faa.gz">GCF_000195955.2_ASM19595v2_protein.faa.gz</a>          2017-12-22 13:02  813K  
+<a href="GCF_000195955.2_ASM19595v2_protein.gpff.gz">GCF_000195955.2_ASM19595v2_protein.gpff.gz</a>         2023-06-18 08:38  2.3M  
+<a href="GCF_000195955.2_ASM19595v2_rna_from_genomic.fna.gz">GCF_000195955.2_ASM19595v2_rna_from_genomic.fna.gz</a> 2023-06-18 08:38  6.6K  
+<a href="GCF_000195955.2_ASM19595v2_translated_cds.faa.gz">GCF_000195955.2_ASM19595v2_translated_cds.faa.gz</a>   2017-12-22 13:02  943K  
+<a href="README.txt">README.txt</a>                                         2024-08-27 13:56   55K  
+<a href="annotation_hashes.txt">annotation_hashes.txt</a>                              2023-06-18 08:38  410   
+<a href="assembly_status.txt">assembly_status.txt</a>                                2025-03-27 01:18   14   
+<a href="md5checksums.txt">md5checksums.txt</a>                                   2024-03-31 05:42  1.1K  
+<a href="uncompressed_checksums.txt">uncompressed_checksums.txt</a>                         2025-03-07 14:24  1.1K  
+<hr></pre>
+<a href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html">HHS Vulnerability Disclosure</a>

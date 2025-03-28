@@ -83,8 +83,8 @@ download_file <- function(summary, suffix = "_cds_from_genomic.fna.gz", dir = "o
     dir.create(dir, recursive = TRUE)
   }
   
-  # name <- gsub(".*/([^/]+)/?", "\\1", summary$ftppath_refseq)
-  # file_name <- paste0(name, suffix)
+  name <- gsub(".*/([^/]+)/?", "\\1", summary$ftppath_refseq)
+  file_name <- paste0(name, suffix)
   # file_path <- file.path(dir, file_name)
   file_path <- get_genome_file_path(summary, suffix = suffix, dir = dir)
 

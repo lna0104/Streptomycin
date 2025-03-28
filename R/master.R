@@ -121,13 +121,17 @@ rm.all.but("globsets")
 
 # define the desired database
 db <- "assembly" 
-# define search term for representative genomes: Bacterial genomes at all assembly levels with annotation 
-term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+# define search term for representative genomes: Bacterial genomes at all assembly levels with annotation
+term_rep <- '("Escherichia coli"[Organism] OR "Mycobacterium tuberculosis"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+
+# term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 #search the entire database using the defined term
 summaries_rep <- get_summaries(db, term_rep)
 
 # define search term for reference genomes: Bacterial genomes at all assembly levels with annotation 
-term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+term_ref <- '("Escherichia coli"[Organism] OR "Mycobacterium tuberculosis"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+
+# term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 # search the entire database using the defined term
 summaries_ref <- get_summaries(db, term_ref)
 
