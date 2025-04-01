@@ -3,12 +3,14 @@
 # This file should not be included in the final version of the paper.
 
 library(googlesheets4)
+library(tidyverse)
+
 gs4_deauth() #function to inactive Google authorization
-muts <- read_sheet("https://docs.google.com/spreadsheets/d/1-OihBy1WlfU46_npueE-ZJhmo1eH4eJf7BslsAVh6jc/edit?usp=sharing",
+muts <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78SksPYUtUOOsT_e6XkRxPg6hA8/edit?gid=1074478647#gid=1074478647",
                    sheet = "Data",
                    col_types = "c") |>
   filter(substr(Ref_code, 1, 4) != "ALJE") |>
-  filter(Gene == "rpoB") |>
+  filter(Gene == "rpsL") |>
   filter(Origin %in% c("Isolate", "Lab mutant", "Construct")) |>
   mutate(Origin = ifelse(Origin %in% c("Lab mutant", "Construct"), "Lab-generated", Origin)) |>
   select(-Entry_by) |>
@@ -16,7 +18,7 @@ muts <- read_sheet("https://docs.google.com/spreadsheets/d/1-OihBy1WlfU46_npueE-
 write_csv(muts, "./data/reported_mutations.csv")
 
 
-refs <- read_sheet("https://docs.google.com/spreadsheets/d/1-OihBy1WlfU46_npueE-ZJhmo1eH4eJf7BslsAVh6jc/edit?usp=sharing",
+refs <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78SksPYUtUOOsT_e6XkRxPg6hA8/edit?gid=1074478647#gid=1074478647",
                    sheet = "References",
                    col_types = "c") |>
   select(-Comments) |>
@@ -24,8 +26,11 @@ refs <- read_sheet("https://docs.google.com/spreadsheets/d/1-OihBy1WlfU46_npueE-
   select(-Link) |>
   arrange(Ref_code)
 
-if (length(refs$Ref_code) != (length(unique(refs$Ref_code)))) {
+filtered_refs <- refs |> filter(Ref_code %in% muts$Ref_code)
+
+if (length(filtered_refs$Ref_code) != (length(unique(filtered_refs$Ref_code)))) {
   warning("Duplicated Ref_code entries detected!")
 }
+
 
 write_csv(refs, "./data/reports_references.csv")
