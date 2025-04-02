@@ -4,11 +4,12 @@
 #' Produces figure giving the frequency of reported position, mutation and species based on Google sheet
 #' @param muts a data frame table providing info on all reported mutations in the literature
 #' @param file_name the path that the plot should be save in
+#' @param n_frequency number of reported mutations, positions and species
 #' @return Three plots as ggplot objects in one single pdf file
 #' @export
 #'
 #' @examples plot_reported_mutations(muts, "./plot/myFilename.pdf")
-plot_reported_mutations <- function(muts, file_name) {
+plot_reported_mutations <- function(muts, file_name, n_frequency) {
 
   #1. the frequency of reported mutations across sites (currently not included in figure)
   frequency_position <-  muts %>% 
@@ -52,7 +53,7 @@ plot_reported_mutations <- function(muts, file_name) {
     arrange(desc(mutation_name)) |>
     mutate(mutation_name = factor(mutation_name, levels = sort(unique(mutation_name)))) |>
     group_by(mutation_name) |>
-    filter(n() >= 4L)
+    filter(n() >= n_frequency)
   
   plot2 <- ggplot(frequency_mutation) +
     geom_bar(aes(x = mutation_name, fill = Origin))  +
@@ -83,7 +84,7 @@ plot_reported_mutations <- function(muts, file_name) {
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop") |>
     group_by(Species) |> 
-    filter(n() > 5) 
+    filter(n() > n_frequency) 
   
   plot3 <- frequency_per_species %>%
     ggplot() +
