@@ -60,27 +60,28 @@ mutant_codons <- function(codon){
 #' Title: check out mutation
 #'
 #' @param mutations_list a data frame providing all amino acid substitutions reported in Google sheet based on coordinations
-#' @param rpoB_target_sequences a list of multiple DNAString objects (rpoB sequences retrieved from different bacterial species) 
-#' @param rpoB_reference_Ecoli a DNAString object (rpoB sequence of Escherichia coli MG1655)
-#'
-#' @return A data frame of all amino acid substitutions within all RpoB sequences and check if there is a amino acid substantiation and whether amino acid substantiation is new or has been reported before or there is a different amino acid in the original position 
+#' @param target_sequences a list of multiple DNAString objects (gene sequences retrieved from different bacterial species) 
+#' @param reference_Ecoli a DNAString object (gene sequence of Escherichia coli MG1655)
+#' @param target_gene a name of target gene
+#' @return A data frame of all amino acid substitutions within all target sequences and check if there is a amino acid substantiation and whether amino acid substantiation is new or has been reported before or there is a different amino acid in the original position 
 #' @export
 #'
-#' @examples check_out_mutation(mutations_list, rpoB_target_sequence, rpoB_reference_Ecoli)
+#' @examples check_out_mutation(mutations_list, target_sequence, reference_Ecoli, target_gene)
 check_out_mutation <- function(mutations_list, 
-                               rpoB_target_sequence, 
-                               rpoB_reference_Ecoli,
+                               target_sequence, 
+                               reference_Ecoli,
+                               target_gene,
                                alig_file = NULL) {
-  if (is.null(rpoB_target_sequence) || length(rpoB_target_sequence) == 0) {
-    stop("Empty rpoB sequence.")
+  if (is.null(target_sequence) || length(target_sequence) == 0) {
+    stop(sprintf('Empty "%s" sequence.', target_gene))
   }
-  coords_alig <- ALJEbinf::getCoordinates(rpoB_target_sequence, rpoB_reference_Ecoli, aligOutput = TRUE)
+  coords_alig <- ALJEbinf::getCoordinates(target_sequence, reference_Ecoli, aligOutput = TRUE)
   if (!is.null(alig_file)) {
     save(coords_alig, file = alig_file)
   }
   coords <- coords_alig$coordinates
-  protein_target <- Biostrings::translate(rpoB_target_sequence)
-  protein_Ecoli <- Biostrings::translate(rpoB_reference_Ecoli)
+  protein_target <- Biostrings::translate(target_sequence)
+  protein_Ecoli <- Biostrings::translate(reference_Ecoli)
   
   result <- mutations_list
   result$AA_target <- NA # what is the amino acid at that position in focal species
@@ -96,19 +97,27 @@ check_out_mutation <- function(mutations_list,
     if (!is.na(AA_pos)) {  # only proceed if corresponding AA presents in target sequence!
       result$AA_target[i] <- as.character(protein_target[AA_pos])
       nt_pos <- AA_pos * 3 - 2
-      result$Codon_target[i] <- as.character(rpoB_target_sequence[nt_pos:(nt_pos + 2)])
+      result$Codon_target[i] <- as.character(target_sequence[nt_pos:(nt_pos + 2)])
       result$n_possible[i] <- n_mutations_in_codon(AA_pos, 
                                                    mutations_list$AA_mutation[i], 
-                                                   rpoB_target_sequence)
+                                                   target_sequence)
     }
   }
-  result$alig_score <- pwalign::score(coords_alig$alignment) # alignment score for each rpoB target sequence
+  result$alig_score <- pwalign::score(coords_alig$alignment) # alignment score for each target sequence
   
-  # calculate Levenshtein distance between E. coli and target rpoB core region (AA pos 501...600):
-  core_Ecoli <- protein_Ecoli[501:600]
-  from_target <- ALJEbinf::translateCoordinate(501, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-  to_target <- ALJEbinf::translateCoordinate(600, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-  core_target <- protein_target[from_target:to_target]
+  # calculate Levenshtein distance between E. coli and target gene core region:
+  # determine whether to use the core region or the original sequence
+  if (length(protein_target) > 300) {
+    # Use core region if gene length > 300
+    from_target <- ALJEbinf::translateCoordinate(501, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+    to_target <- ALJEbinf::translateCoordinate(600, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+    core_target <- protein_target[from_target:to_target]
+    core_Ecoli <- protein_Ecoli[501:600]
+  } else {
+    # Use full original sequence if gene length ≤ 300
+    core_target <- protein_target
+    core_Ecoli <- protein_Ecoli
+  }
   result$core_dist <- pwalign::stringDist(c(Biostrings::AAStringSet(core_target),Biostrings::AAStringSet(core_Ecoli)),
                                              method = "levenshtein")
   return(result)
@@ -116,21 +125,26 @@ check_out_mutation <- function(mutations_list,
 
 #' Screen a set of target sequences for existence and evolvability over list of mutations
 #'
-#' @param rpoB_target_sequences A DNAStringSet object containing all target rpoB sequences
+#' @param target_sequences A DNAStringSet object containing all target gene sequences
 #' @param mutation_list A data frame containing all the mutations to be screened for
 #'
 #' @return A list of either data frames (if screen for a sequence was successful) or error messages (if not).
 #'
 #'
-screen_target_sequences <- function(rpoB_target_sequences, rpoB_reference_Ecoli, mutation_list) {
-  plan(multisession, workers = 12) # to parallelise the function
-  final_output <- future_lapply(1:length(rpoB_target_sequences), function(i) {
-    cat(paste0("Working on species #", i, "/", length(rpoB_target_sequences), "...\n")) #notify when the analysis of each sequence starts
+screen_target_sequences <- function(target_sequences, reference_Ecoli, mutation_list, target_gene, n_workers) {
+  # Ensure required directories exist
+  if (!dir.exists("./output/alignments")) dir.create("./output/alignments", recursive = TRUE)
+  if (!dir.exists("./output/progress")) dir.create("./output/progress", recursive = TRUE)
+  
+  plan(multisession, workers = n_workers) # to parallelise the function
+  final_output <- future_lapply(1:length(target_sequences), function(i) {
+    cat(paste0("Working on species #", i, "/", length(target_sequences), "...\n")) #notify when the analysis of each sequence starts
     output <- tryCatch(
-      check_out_mutation(mutation_list,              # compare rpoB target sequences with ropB reference sequence to identify the amino acid at each position
-                         rpoB_target_sequences[[i]], 
-                         rpoB_reference_Ecoli,
-                         alig_file = paste0("./output/alignments/", names(rpoB_target_sequences)[[i]], ".RData")),
+      check_out_mutation(mutation_list,              # compare target sequences with reference sequence to identify the amino acid at each position
+                         target_sequences[[i]], 
+                         reference_Ecoli,
+                         target_gene,
+                         alig_file = paste0("./output/alignments/", names(target_sequences)[[i]], ".RData")),
       error = function(cond) {
         message("  It seems there is a problem with this sequence. Here's the original error message:") # gives error but keeps the analysis moves on
         message(conditionMessage(cond)) #show what is the error
@@ -138,17 +152,17 @@ screen_target_sequences <- function(rpoB_target_sequences, rpoB_reference_Ecoli,
       }
     )
     if(!is.null(output)) {
-      output$accession_numbers <- extract_accession_number(names(rpoB_target_sequences)[i]) #insert a column for each rpoB assembly accession number
-      output$species <- extract_species_name(names(rpoB_target_sequences)[i])  #insert a column for each species name
-      output$target_name <- names(rpoB_target_sequences)[i]
-      output$rpoB_copy <- extract_rpoB_copy_number(names(rpoB_target_sequences)[i]) #insert a column for each rpoB copy number
-      output$target_length <- length(rpoB_target_sequences[[i]])
+      output$accession_numbers <- extract_accession_number(names(target_sequences)[i], target_gene) #insert a column for each target gene assembly accession number
+      output$species <- extract_species_name(names(target_sequences)[i], target_gene)  #insert a column for each species name
+      output$target_name <- names(target_sequences)[i]
+      output$gene_copy <- extract_gene_copy_number(names(target_sequences)[i], target_gene) #insert a column for each target gene copy number
+      output$target_length <- length(target_sequences[[i]])
       if (is.data.frame(output)) {
         output <- select(output, accession_numbers:target_length, alig_score, core_dist, everything())
       }
     }
     
-    saveRDS(i, file = paste0("./output/progress/sequence_", i, "_out_of_", length(rpoB_target_sequences), "_complete.rds"))
+    saveRDS(i, file = paste0("./output/progress/sequence_", i, "_out_of_", length(rpsL_target_sequences), "_complete.rds"))
     return(output)
   })
   return(final_output)

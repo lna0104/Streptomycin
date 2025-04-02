@@ -179,8 +179,9 @@ mutation_list <- rbind(mutation_list_reports, mutation_list_Yang) |>
   distinct() |>
   arrange(AA_pos_Ecoli, AA_mutation)
 
-# 3.screen all rpoB sequences for existing and possible mutations:
-raw_output <- screen_target_sequences(rpoB_target_sequences, rpoB_reference_Ecoli, mutation_list)
+# 3.screen all rpsL sequences for existing and possible mutations:
+raw_output <- screen_target_sequences(rpsL_target_sequences, rpsL_reference_Ecoli, 
+                                      mutation_list, target_gene="rpsL", n_workers=6)
 
 #save error messages:
 saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/raw_output_errors.rds")
