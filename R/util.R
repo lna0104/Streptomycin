@@ -1,20 +1,20 @@
-# function to extract the species name from the rpoB target sequence name 
+# function to extract the species name from the target sequence name 
 # (e.g., "rpoB_1_Escherichia_coli_GCF_000005845.2" --> "Escherichia coli")
-extract_species_name <- function(target_name) {
+extract_species_name <- function(target_name, target_gene) {
   #return(gsub("rpoB_([A-z0-9_()\\.\\'-]+)_GCF_.+", "\\1", target_name))
-  return(gsub("rpoB_[0-9]+_([A-z0-9_ ()\\.\\'-]+)_GCF_.+", "\\1", target_name))
+  return(gsub(paste0(target_gene, "_[0-9]+_([A-z0-9_ ()\\.\\'-]+)_GCF_.+"), "\\1", target_name))
 }
 
-# function to extract the accession number from the rpoB target sequence name 
+# function to extract the accession number from the target sequence name 
 # (e.g., "rpoB_1_Escherichia_coli_GCF_000005845.2" --> "GCF_000005845.2")
-extract_accession_number <- function(target_name) {
-  return(gsub("rpoB_[0-9]+_[A-z0-9_ ()\\.\\'-]+_(GCF_.+)", "\\1", target_name))
+extract_accession_number <- function(target_name, target_gene) {
+  return(gsub(paste0(target_gene, "_[0-9]+_[A-z0-9_ ()\\.\\'-]+_(GCF_.+)"), "\\1", target_name))
 }
 
-# function to extract the accession number from the rpoB target sequence name 
+# function to extract the accession number from the target sequence name 
 # (e.g., "rpoB_1_Escherichia_coli_GCF_000005845.2" --> 1)
-extract_rpoB_copy_number <- function(target_name) {
-  return(gsub("rpoB_([0-9]+)[A-z0-9_ ()\\.\\'-]+_GCF_.+", "\\1", target_name))
+extract_gene_copy_number <- function(target_name, target_gene) {
+  return(gsub(paste0(target_gene, "_([0-9]+)[A-z0-9_ ()\\.\\'-]+_GCF_.+"), "\\1", target_name))
 }
 
 
