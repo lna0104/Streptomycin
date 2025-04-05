@@ -103,33 +103,33 @@ muts <- mutation_list_reports |>
 write_csv(muts, "./output/muts.csv")
 
 #3 summary and plot of reported mutations
-plot_reported_mutations(muts, file_name = "./plots/reported_mutations.pdf") # returns frequent reported mutations, positions and species (frequency of > 5)
+plot_reported_mutations(muts, file_name = "./plots/reported_mutations.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
 summarise_reported_mutations(muts, file_name = "./results/summary_reported_mutations.txt") # returns a text message summarizing previous reports
 
 #empty working environment to keep everything clean
 rm.all.but("globsets")
 
 ##############################################################################
-### Step 2: Retrieving rpoB sequences from all bacterial reference genomes ###
+### Step 2: Retrieving target sequences from all bacterial reference genomes ###
 ##############################################################################
 
 # input for this step: none, apart from search term and database specified below
 # output for this step: summaries of downloaded genomes ("./output/summaries.rds"), 
 #                       genomic files ("./output/genomes/*.fna")
-#                       extracted rpoB target sequences ("./output/rpoB_target_sequences.fa")
+#                       extracted target sequences (example rpsL) ("./output/rpsL_target_sequences.fa")
 #                       taxonomy database for all downloaded genera ("./output/NCBI_taxonomy.csv")
 
 # define the desired database
 db <- "assembly" 
 # define search term for representative genomes: Bacterial genomes at all assembly levels with annotation
-term_rep <- '("Escherichia coli"[Organism] OR "Mycobacterium tuberculosis"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+term_rep <- '("Escherichia coli"[Organism] OR "Mycobacterium"[Organism] OR "Erwinia amylovora"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 
 # term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 #search the entire database using the defined term
 summaries_rep <- get_summaries(db, term_rep)
 
 # define search term for reference genomes: Bacterial genomes at all assembly levels with annotation 
-term_ref <- '("Escherichia coli"[Organism] OR "Mycobacterium tuberculosis"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+term_ref <- '("Escherichia"[Organism] OR "Mycobacterium"[Organism] OR "Erwinia amylovora"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 
 # term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 # search the entire database using the defined term
@@ -142,40 +142,40 @@ saveRDS(summaries, file = "./output/summaries.rds")
 # download genomes
 download_files(summaries, dir = "output/genomes")
 
-# extract rpoB sequences and save them as rds and fasta
-rpoB_target_sequences <- get_rpoB_target_sequences(summaries, dir = "output/genomes")
-writeXStringSet(DNAStringSet(rpoB_target_sequences), filepath = "output/rpoB_target_sequences.fa")
+# extract target sequences and save them as rds and fasta
+rpsL_target_sequences <- get_target_sequences(summaries, 
+                                              dir = "output/genomes", 
+                                              target_gene = 'rpsL', 
+                                              target_protein = "30S ribosomal subunit protein S12|30S ribosomal protein S12")
+writeXStringSet(DNAStringSet(rpsL_target_sequences), filepath = "output/rpsL_target_sequences.fa")
 
 # download and extract taxonomy information for downloaded genomes
-download_taxonomy(summaries, output_file = "./output/NCBI_taxonomy.csv")
+download_taxonomy(summaries, output_file = "./data/NCBI_taxonomy.csv")
 
 #empty working environment to keep everything clean
 rm.all.but("globsets")
 
 #########################################################################
-### Step 3: Checking all target rpoB sequences for reported mutations ###
+### Step 3: Checking all target sequences for reported mutations      ###
 #########################################################################
 
 # input for this step:  processed table of reported mutations ("./output/muts.csv")
-#                       reported frequencies of rpoB mutations under RIF, 
-#                           from Yang et al. (2023) ("./data/Yang2023_Fig3a_data_RIF_log2FC.csv")
-#                       E. coli rpoB reference sequence (from "./data/rpoB_references.fasta")
-#                       extracted rpoB target sequences ("./output/rpoB_target_sequences.fa")
+#                       reported frequencies of rpsL mutations under STR 
+#                       E. coli rspL reference sequence (from "./data/rspL_references.fasta")
+#                       extracted rspL target sequences ("./output/rspL_target_sequences.fa")
 # output for this step: Table of screening results, including existing and evolvable mutations 
 #                           for all target sequences ("./output/raw_output.csv")
 
 # 1.load required data:
 muts <- read.csv("./output/muts.csv")
-rpoB_target_sequences <- readDNAStringSet("./output/rpoB_target_sequences.fa")
-rpoB_reference_Ecoli <- readDNAStringSet("./data/rpoB_references.fasta")[["rpoB_Escherichia_coli_MG1655"]]
-mutation_list_Yang <- import_Yang_muts(file_name_RIF_log2FC = "./data/Yang2023_Fig3a_data_RIF_log2FC.csv",
-                                       min_log2_fc = globsets$Yang_min_log2_fc)
+rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
+rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 
-# 2.make a list of reliable mutations to be screened (including reported and ones from Yang et al.):
+# 2.make a list of reliable mutations to be screened:
 mutation_list_reports <- filter_mutations(muts,
                                           min_n_species = globsets$min_n_species, 
                                           min_n_studies = globsets$min_n_studies)
-mutation_list <- rbind(mutation_list_reports, mutation_list_Yang) |>
+mutation_list <- mutation_list_reports |>
   distinct() |>
   arrange(AA_pos_Ecoli, AA_mutation)
 
@@ -198,7 +198,7 @@ rm.all.but("globsets")
 ########################################################################
 
 # input for this step:  table of reported mutations ("./output/muts.csv")
-#                       screened results for all rpoB sequences ("./output/raw_output.csv")
+#                       screened results for all gene sequences ("./output/raw_output.csv")
 #                       information of downloaded genomes from NCBI ("./output/summaries.rds)
 # output for this step: filtered results for reliable sequences("./output/filtered_output.csv")
 #                       summary of target sequences ("./results/summary_target_sequences.txt")
@@ -217,7 +217,7 @@ mutation_list_reports <- filter_mutations(muts,
 # 2. processing and filtering raw output:
 filtered_output <- raw_output |>
   process_output() |>
-  # retain only data for reliable rpoB sequences:
+  # retain only data for reliable gene sequences:
   filter_output(min_seq_length = globsets$min_seq_length,
                 min_alig_score = globsets$min_alig_score,
                 max_core_dist = globsets$max_core_dist) |>
@@ -226,17 +226,17 @@ filtered_output <- raw_output |>
 
 write_csv(filtered_output,"./output/filtered_output.csv")
 
-# 3. analysis of extracted rpoB sequences and filtering:
+# 3. analysis of extracted gene sequences and filtering:
 summarise_target_sequences(genome_summaries, 
                            raw_output, 
                            filtered_output, 
                            min_seq_length = globsets$min_seq_length,
                            min_alig_score = globsets$min_alig_score,
                            max_core_dist = globsets$max_core_dist,
+                           target_gene = 'rpsL',
                            file_name = "./results/summary_target_sequences.txt")
 plot_target_sequences_stats(raw_output, 
                             filtered_output,
-                            rpoB_target_sequences, 
                             min_seq_length = globsets$min_seq_length,
                             min_alig_score = globsets$min_alig_score,
                             max_core_dist = globsets$max_core_dist,
@@ -249,8 +249,8 @@ rm.all.but("globsets")
 ### Step 5: Analysis of results  ###
 ########################################################################
 
-# input for this step:  extracted rpoB target sequences (./"output/rpoB_target_sequences.fa")
-#                       E. coli rpoB reference sequence ("./data/rpoB_references.fasta")
+# input for this step:  extracted target gene sequences (./"output/rpsL_target_sequences.fa")
+#                       E. coli gene reference sequence ("./data/rpsL_references.fasta")
 #                       filtered output of mutation screen ("./output/filtered_output.csv")
 #                       bacterial taxonomic information ("./output/bacterial_taxonomy.csv")
 #                       
@@ -258,25 +258,27 @@ rm.all.but("globsets")
 #                       summary of screening result ("./output/summary_screen_mutations.txt")
 #                       plot of predictions for each mutation across species ("./plots/mutation_screening.pdf")
 #                       plot of predictions for different classes and genera ("./plots/classes_genera.pdf")
-#                       table of statistics for species with multiple rpoB copies ("./output/multiseq_stats.csv")
-#                       plot showing the statistics for species with multiple rpoB copies ("./plots/multicopy_stats.pdf")
+#                       table of statistics for species with multiple gene copies ("./output/multiseq_stats.csv")
+#                       plot showing the statistics for species with multiple gene copies ("./plots/multicopy_stats.pdf")
 
 # 1. load required data:
-rpoB_target_sequences <- readDNAStringSet("./output/rpoB_target_sequences.fa")
-rpoB_reference_Ecoli <- readDNAStringSet("./data/rpoB_references.fasta")[["rpoB_Escherichia_coli_MG1655"]]
+rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
+rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 
 #2. analysis of mutant screen:
+source("R/plotting.R")
+source("R/analyses.R")
 plot_mutation_screen(filtered_output, file_name = "./plots/mutation_screen.pdf")
 plot_classes_genera(filtered_output, bacterial_taxonomy, file_name= "./plots/classes_genera.pdf")
 plot_evolvability_by_class(filtered_output, bacterial_taxonomy, file_name = "./plots/evolvability_by_class.pdf")
-summarise_mutation_screen(filtered_output, file_name = "./results/summary_mutation_screen.txt")
+summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_mutation_screen.txt")
 get_resistance_taxonomy(filtered_output, bacterial_taxonomy, file_path = "./output/")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/predicted_resistance.csv")
 
-#3. analyse species with multiple rpoB copies:
-multiseq_stats <- compare_rpoB_copies(filtered_output, rpoB_target_sequences, rpoB_reference_Ecoli)
+#3. analyse species with multiple gene copies:
+multiseq_stats <- compare_gene_copies(filtered_output, rpsL_target_sequences, rpsL_reference_Ecoli)
 write_csv(multiseq_stats, "./output/multiseq_stats.csv")
 #multiseq_stats <- read_csv("./output/multiseq_stats.csv", show_col_types = FALSE)
 plot_multiseq_stats(multiseq_stats, "./plots/multiseq.pdf")
