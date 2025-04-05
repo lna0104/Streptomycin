@@ -8,7 +8,8 @@ source("R/bioinformatics.R")
 source("R/util.R")
 
 # Read the mutations data from a CSV file
-muts<-read.csv("./data/reported_mutations.csv")
+muts<-read.csv("./data/reported_mutations.csv") |>
+  filter(Gene=="rpsL")
 
 # Select unique species from the mutations data and create a gene reference data frame
 selected_muts <- muts |>

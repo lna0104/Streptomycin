@@ -10,7 +10,7 @@ muts <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78Sk
                    sheet = "Data",
                    col_types = "c") |>
   filter(substr(Ref_code, 1, 4) != "ALJE") |>
-  filter(Gene == "rpsL") |>
+  filter(Gene == "rpsL" | Gene == "rrs") |>
   filter(Origin %in% c("Isolate", "Lab mutant", "Construct")) |>
   mutate(Origin = ifelse(Origin %in% c("Lab mutant", "Construct"), "Lab-generated", Origin)) |>
   select(-Entry_by) |>
