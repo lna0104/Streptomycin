@@ -1,6 +1,6 @@
 #' Summarise reported mutations
 #'
-#' @param muts a data frame providing info on rpoB mutations reported in the literature
+#' @param muts a data frame providing info on mutations reported in the literature
 #' @param min_n_species a numeric vector showing the minimum number of species which a mutation has been reported in
 #' @param file_name a path that the summary should be saved in
 #'
@@ -55,17 +55,18 @@ summarise_reported_mutations <- function(muts, file_name, subtitle = "") {
 }
 
 
-#' Summarise rpoB target sequences screened
+#' Summarise target sequences screened
 #' 
 #' @param genome_summary summaries of downloaded genomes
 #' @param final_output raw output from mutation screen
 #' @param filtered_output filtered output from mutation screen
 #' @param min_seq_length minimum sequence length
-#' @param min_alig_score minimum alignment score of rpoB sequences
-#' @param max_core_dist maximum Levenshtein distince of rpoB sequences to E. coli
+#' @param min_alig_score minimum alignment score of gene sequences
+#' @param max_core_dist maximum Levenshtein distince of gene sequences to E. coli
 #' @param file_name a path that the summary should be saved in
+#' @param target_gene name of target gene
 #' @param subtitle Additional information to add to the title
-#'
+#' 
 #' @return null
 #' @export
 #'
@@ -77,6 +78,7 @@ summarise_target_sequences <- function(genome_summary,
                                        min_alig_score,
                                        max_core_dist,
                                        file_name, 
+                                       target_gene,
                                        subtitle = "") {
   # stats before filtering:
   
@@ -84,25 +86,25 @@ summarise_target_sequences <- function(genome_summary,
   n_genomes_summary <- genome_summary %>% length()
   
   final_output_seqs <- final_output |>
-    select(accession_numbers, species, rpoB_copy, target_length, alig_score, core_dist) |>
+    select(accession_numbers, species, gene_copy, target_length, alig_score, core_dist) |>
     distinct()
-  #number of genomes with extracted rpoB sequences:
+  #number of genomes with extracted gene sequences:
   n_analysed_genomes <- final_output_seqs$accession_numbers %>% unique %>% length()
-  # number of genomes where no rpoB sequence could be extracted:
+  # number of genomes where no gene sequence could be extracted:
   n_unsuccessful_genomes <- n_genomes_summary - n_analysed_genomes
   # number of species among downloaded genomes:
   n_species <- final_output_seqs$species |> unique() |> length()
-  # number of rpoB sequences:
-  n_rpoB_sequences <- nrow(final_output_seqs)
-  # number of species with >1 rpoB copy:
+  # number of gene sequences:
+  n_gene_sequences <- nrow(final_output_seqs)
+  # number of species with >1 gene copy:
   copies_per_sequence <- final_output_seqs |>
     group_by(accession_numbers, species) |>
     summarise(n = n(), .groups = "drop")
   n_multicopy_species <-  copies_per_sequence |>
     filter(n > 1L) |> 
     nrow()
-  # maximum number of rpoB sequences per species:
-  n_max_rpoB_copy <- max(copies_per_sequence$n)
+  # maximum number of gene sequences per species:
+  n_max_gene_copy <- max(copies_per_sequence$n)
   
   # lengths:
   min_length <- min(final_output_seqs$target_length)
@@ -119,36 +121,35 @@ summarise_target_sequences <- function(genome_summary,
   # stats after filtering:
   
   filtered_output_seqs <- filtered_output |>
-    select(accession_numbers, species, rpoB_copy, target_length, alig_score, core_dist) |>
+    select(accession_numbers, species, gene_copy, target_length, alig_score, core_dist) |>
     distinct()
-  #number of genomes with extracted rpoB sequences:
+  #number of genomes with extracted gene sequences:
   n_analysed_genomes_F <- filtered_output_seqs$accession_numbers %>% unique %>% length()
   # number of species among downloaded genomes:
   n_species_F <- filtered_output_seqs$species |> unique() |> length()
-  # number of rpoB sequences:
-  n_rpoB_sequences_F <- nrow(filtered_output_seqs)
-  # number of species with >1 rpoB copy:
+  # number of gene sequences:
+  n_gene_sequences_F <- nrow(filtered_output_seqs)
+  # number of species with >1 gene copy:
   copies_per_sequence_F <- filtered_output_seqs |>
     group_by(accession_numbers, species) |>
     summarise(n = n(), .groups = "drop")
   n_multicopy_species_F <-  copies_per_sequence_F |>
     filter(n > 1L) |> 
     nrow()
-  # maximum number of rpoB sequences per species:
-  n_max_rpoB_copy_F <- max(copies_per_sequence_F$n)
+  # maximum number of gene sequences per species:
+  n_max_gene_copy_F <- max(copies_per_sequence_F$n)
   
   report <- paste0(
-    "Summary of screened target rpoB sequences ", subtitle, "\n",
+    "Summary of screened target ", target_gene, " sequences ", subtitle, "\n",
     "Date: ", Sys.time(), "\n",
     "--------------------------------------------------------------------\n\n",
     "Target sequence statistics before filtering:\n",
     "    Number of genomes in search results: ", n_genomes_summary, "\n",
-    "    Number of genomes with extracted rpoB sequence(s): ", n_analysed_genomes, "\n",
-    "    Number of genomes where no rpoB sequence could be extracted: ", n_unsuccessful_genomes, "\n",
+    "    Number of genomes with extracted ", target_gene, " sequence(s): ", n_analysed_genomes, "\n",    "    Number of genomes where no rpoB sequence could be extracted: ", n_unsuccessful_genomes, "\n",
     "    Number of species with downloaded genomes: ", n_species, "\n",
-    "    Total number of rpoB sequences: ", n_rpoB_sequences, "\n",
-    "    Number of genomes with more than one rpoB sequence: ", n_multicopy_species, "\n",
-    "    Maximum number of rpoB sequences per genome: ", n_max_rpoB_copy, "\n",
+    "    Total number of ", target_gene, " sequences: ", n_gene_sequences, "\n",
+    "    Number of genomes with more than one ", target_gene, " sequence: ", n_multicopy_species, "\n",
+    "    Maximum number of ", target_gene, " sequences per genome: ", n_max_gene_copy, "\n",
     "Filtering statistics:\n",
     "    Minimum sequence length: ", min_length, "\n",
     "    Median sequence length: ", format(median_length, nsmall = 2), "\n",
@@ -156,18 +157,18 @@ summarise_target_sequences <- function(genome_summary,
     "    Maximum sequence length: ", max_length, "\n",
     "    Minimum aligning score: ", format(min_alig_score, nsmall = 2), "\n",
     "    Maximum aligning score: ", format(max_alig_score, nsmall = 2), "\n",
-    "    Minimum distance from reference rpoB core: ", min_dist_from_ref, "\n",
-    "    Maximum distance from reference rpoB core: ", max_dist_from_ref, "\n",
+    "    Minimum distance from reference ", target_gene, " core: ", min_dist_from_ref, "\n",
+    "    Maximum distance from reference ", target_gene, " core: ", max_dist_from_ref, "\n",
     "Filters applied: ", "\n",
     "    Minimum sequence length: ", min_seq_length, "\n",
-    "    Minimum alignment score to E. coli rpoB: ", min_alig_score, "\n",
-    "    Maximum core distance to E. coli rpoB: ", max_core_dist, "\n",
+    "    Minimum alignment score to E. coli ", target_gene, ": ", min_alig_score, "\n",
+    "    Maximum core distance to E. coli ", target_gene, ": ", max_core_dist, "\n",
     "Target sequence statistics after filtering:\n",
-    "    Number of genomes with extracted rpoB sequence(s): ", n_analysed_genomes_F, "\n",
+    "    Number of genomes with extracted ", target_gene, " sequence(s): ", n_analysed_genomes_F, "\n",
     "    Number of species with downloaded genomes: ", n_species_F, "\n",
-    "    Total number of rpoB sequences: ", n_rpoB_sequences_F, "\n",
-    "    Number of genomes with more than one rpoB sequence: ", n_multicopy_species_F, "\n",
-    "    Maximum number of rpoB sequences per genome: ", n_max_rpoB_copy_F, "\n"
+    "    Total number of ", target_gene, " sequences: ", n_gene_sequences_F, "\n",
+    "    Number of genomes with more than one ", target_gene, " sequence: ", n_multicopy_species_F, "\n",
+    "    Maximum number of ", target_gene, " sequences per genome: ", n_max_gene_copy_F, "\n"
   )
   write_file(report, file_name)
   cat(report)
@@ -180,12 +181,13 @@ summarise_target_sequences <- function(genome_summary,
 #' @param filtered_output filtered output from mutation screen
 #' @param file_name a path that the summary should be saved in
 #' @param subtitle Additional information to add to the title
+#' @param target_gene name of target gene
 #' #'
 #' @return null
 #' @export
 #'
 #' @examples summarise_mutation_screen(final_output, filtered_output, "./output/myfilename.txt")
-summarise_mutation_screen <- function(filtered_output, file_name, subtitle = ""){
+summarise_mutation_screen <- function(filtered_output, target_gene, file_name, subtitle = ""){
    
   # species-level summary of filtered output:
   species_output <- get_species_output(filtered_output)
@@ -233,7 +235,7 @@ summarise_mutation_screen <- function(filtered_output, file_name, subtitle = "")
   
   # determine multicopy species:
   filtered_output_seqs <- filtered_output |>
-    select(accession_numbers, species, rpoB_copy, target_length, alig_score, core_dist) |>
+    select(accession_numbers, species, gene_copy, target_length, alig_score, core_dist) |>
     distinct()
   multicopy_species <- filtered_output_seqs |>
     group_by(accession_numbers) |>
@@ -241,10 +243,10 @@ summarise_mutation_screen <- function(filtered_output, file_name, subtitle = "")
     filter(n > 1L) |>
     pull(accession_numbers)
   
-  # number of species where one rpoB copy confers resistance and one doesn't:
+  # number of species where one gene copy confers resistance and one doesn't:
   n_hetero_resistance <- filtered_output |>
     filter(accession_numbers %in% multicopy_species) |>
-    group_by(species, accession_numbers, rpoB_copy) |>
+    group_by(species, accession_numbers, gene_copy) |>
     summarise(resistant_copy = any(mutation_category == "present"), .groups = "drop") |>
     group_by(species, accession_numbers) |>
     summarise(one_but_not_all_resistant = (any(resistant_copy) & (!all(resistant_copy))), .groups = "drop") |>
@@ -283,7 +285,7 @@ summarise_mutation_screen <- function(filtered_output, file_name, subtitle = "")
     "    Number of resistant species: ", n_resistant_species, "\n",
     "    Percentage of resistant species: ", format(round(100 * f_resistant_species, 2), nsmall = 2), "%\n",
     "    Number of species with multiple resistance mutations: ", n_multiresistant_species, "\n",
-    "    Number of species where one rpoB copy confers resistance and one does not: ", n_hetero_resistance, "\n",
+    "    Number of species where one ", target_gene, " copy confers resistance and one does not: ", n_hetero_resistance, "\n",
     "Evolvability I (number of AA mutations that a species can mutate to):\n",
     "    Range: ", quant_evolvabilityI[1], "...", quant_evolvabilityI[5], "\n",
     "    95% inter-quantile range: ", quant_evolvabilityI[2], "...", quant_evolvabilityI[4], "\n",
@@ -353,7 +355,7 @@ summarise_phylogenetics <- function(subtree, species_output, sample_n = NULL, fi
 }
 
 
-summarise_conservation <- function(cons, file_name, subtitle = "") {
+summarise_conservation <- function(cons, target_gene, file_name, subtitle = "") {
   
   report <- paste0(
     "Summary of the amino acid conservation analyses ", subtitle, "\n",
@@ -364,7 +366,7 @@ summarise_conservation <- function(cons, file_name, subtitle = "") {
     "    Mean across AA positions: ", mean(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
     "    Max across AA positions: ", max(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
     "    Min across AA positions: ", min(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
-    "Mean Hamming distance across randomly sampled pairs of rpoB sequences:\n",
+    "Mean Hamming distance across randomly sampled pairs of", target_gene, " sequences:\n",
     "    Number of sequence pairs: ", nrow(cons$hamming_rnd), "\n",
     "    Mean across AA positions: ", mean(cons$means$hamming_rnd, na.rm = TRUE),  "\n",
     "    Max across AA positions: ", max(cons$means$hamming_rnd, na.rm = TRUE),  "\n",
@@ -374,7 +376,7 @@ summarise_conservation <- function(cons, file_name, subtitle = "") {
     "    Mean across AA positions: ", mean(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
     "    Max across AA positions: ", max(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
     "    Min across AA positions: ", min(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
-    "Mean Grantham distance across randomly sampled pairs of rpoB sequences:\n",
+    "Mean Grantham distance across randomly sampled pairs of", target_gene, " sequences:\n",
     "    Number of sequence pairs: ", nrow(cons$grantham_rnd), "\n",
     "    Mean across AA positions: ", mean(cons$means$grantham_rnd, na.rm = TRUE),  "\n",
     "    Max across AA positions: ", max(cons$means$grantham_rnd, na.rm = TRUE),  "\n",
