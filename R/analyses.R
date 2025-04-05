@@ -265,19 +265,31 @@ filter_output <- function(output, min_seq_length, min_alig_score, max_core_dist)
 
 
 
-compare_rpoB_copies <- function(filtered_output, rpoB_target_sequences, rpoB_reference_Ecoli) {
+compare_gene_copies <- function(filtered_output, target_sequences, reference_Ecoli) {
 
-  # species with more than one rpoB copy:
+  # species with more than one gene copy:
   multicopy_species <- filtered_output |>
-    select(accession_numbers, rpoB_copy) |>
+    select(accession_numbers, gene_copy) |>
     distinct() |>
     group_by(accession_numbers) |>
     summarise(n = n(), .groups = "drop") |>
     filter(n > 1L) |>
     pull(accession_numbers)
   
-  protein_Ecoli <- Biostrings::translate(rpoB_reference_Ecoli)
-  core_Ecoli <- protein_Ecoli[501:600]
+  # If there are no species with multiple copies, proceed to the next step
+  if (length(multicopy_species) == 0) {
+    message("No species with multiple gene copies found.")
+    return(invisible(NULL))  
+  }
+  
+  protein_Ecoli <- Biostrings::translate(reference_Ecoli)
+  # If the gene is rpoB
+  if (length(protein_Ecoli) > 300) {
+    core_Ecoli <- protein_Ecoli[501:600]
+  }else{
+  # If the gene is rpsL
+    core_Ecoli <- protein_Ecoli
+  }
   
   plan(multisession) # to parallelise the function
   multiseq_stats <- future_lapply(1:length(multicopy_species), function(i) {
@@ -294,32 +306,39 @@ compare_rpoB_copies <- function(filtered_output, rpoB_target_sequences, rpoB_ref
       filter(accession_numbers == multicopy_species[i]) |>
       pull(genus) |>
       unique()
-    # determine resistance status (how many of the two rpoB copies confer resistance)
+    # determine resistance status (how many of the two gene copies confer resistance)
     resistance_status <- filtered_output |>
       filter(accession_numbers == multicopy_species[i]) |>
-      group_by(rpoB_copy) |>
+      group_by(gene_copy) |>
       summarise(resistant_copy = any(mutation_category == "present"), .groups = "drop") |>
       pull(resistant_copy) |>
       sum()  
     
     if (length(seq_names) > 2L) {
-      warning("More than two rpoB copies in genome ", multicopy_species[i], ", ignored.")
+      warning("More than two gene copies in genome ", multicopy_species[i], ", ignored.")
       output <- NULL
     } else {
-      coords1 <- ALJEbinf::getCoordinates(rpoB_target_sequences[[seq_names[1]]], 
-                                          rpoB_reference_Ecoli)
-      coords2 <- ALJEbinf::getCoordinates(rpoB_target_sequences[[seq_names[2]]], 
-                                          rpoB_reference_Ecoli)
-      protein_target1 <- Biostrings::translate(rpoB_target_sequences[[seq_names[1]]])
-      protein_target2 <- Biostrings::translate(rpoB_target_sequences[[seq_names[2]]])
+      coords1 <- ALJEbinf::getCoordinates(target_sequences[[seq_names[1]]], 
+                                          reference_Ecoli)
+      coords2 <- ALJEbinf::getCoordinates(target_sequences[[seq_names[2]]], 
+                                          reference_Ecoli)
+      protein_target1 <- Biostrings::translate(target_sequences[[seq_names[1]]])
+      protein_target2 <- Biostrings::translate(target_sequences[[seq_names[2]]])
       
-      # calculate Levenshtein distance between E. coli and target rpoB core region (AA pos 501...600):
-      from_target1 <- ALJEbinf::translateCoordinate(501, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-      to_target1 <- ALJEbinf::translateCoordinate(600, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-      core_target1 <- protein_target1[from_target1:to_target1]
-      from_target2 <- ALJEbinf::translateCoordinate(501, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-      to_target2 <- ALJEbinf::translateCoordinate(600, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-      core_target2 <- protein_target2[from_target2:to_target2]
+      if (length(protein_target1) > 300 & length(protein_target2) > 300) {
+        # calculate Levenshtein distance between E. coli and target rpoB core region (AA pos 501...600):
+        from_target1 <- ALJEbinf::translateCoordinate(501, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+        to_target1 <- ALJEbinf::translateCoordinate(600, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+        core_target1 <- protein_target1[from_target1:to_target1]
+        from_target2 <- ALJEbinf::translateCoordinate(501, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+        to_target2 <- ALJEbinf::translateCoordinate(600, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
+        core_target2 <- protein_target2[from_target2:to_target2]
+      }else{
+        # calculate Levenshtein distance between E. coli and target rpsL
+        core_target1 <- protein_target1
+        core_target2 <- protein_target2
+      }
+      
       
       output <- list(accession_number = multicopy_species[i],
                      species_name = species_name,
@@ -347,7 +366,7 @@ compare_rpoB_copies <- function(filtered_output, rpoB_target_sequences, rpoB_ref
 #'
 get_species_output <- function(output) {
   species_output <-  output |>
-    # step 1: merge multiple rpoB copies into one:
+    # step 1: merge multiple gene copies into one:
     group_by(species, genus, accession_numbers, mutation_name) |>
     summarise(mutation_category = ifelse(any(mutation_category == "present"),
                                          "present",
