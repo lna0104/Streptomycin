@@ -196,8 +196,8 @@ get_target_genes <- function(fna_file, target_gene, target_protein) {
 get_target_sequences <- function(summaries,
                                       suffix = "_cds_from_genomic.fna", 
                                       dir = "output/genomes",
-                                      target_gene = 'rpoB',
-                                      target_protein = "DNA-directed RNA polymerase subunit beta($|[^'])|DNA-directed RNA polymerase subunit beta chain|RNA polymerase, beta subunit|DNA-directed RNA polymerase subunit beta/beta'") {
+                                      target_gene,
+                                      target_protein) {
   # file_paths <- sort(unlist(file_paths))
   # file_paths <- file_paths[order(order(unlist(lapply(summaries, `[[`, "assemblyaccession"))))]
   target_sequences <- list()
@@ -206,7 +206,7 @@ get_target_sequences <- function(summaries,
     file_path <- get_genome_file_path(summaries[[i]], suffix = suffix, dir = dir)
     targets <- get_target_genes(file_path, 
                                 target_gene = target_gene, 
-                                target_protein = target_protein) #extract the rpoB genes
+                                target_protein = target_protein) #extract the target genes
     if (length(targets) == 0L) {
       targets <- list(DNAString())  
     }
