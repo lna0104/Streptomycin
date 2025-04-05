@@ -63,35 +63,35 @@ set.seed(globsets$random_seed)
 
 
 ########################################################################
-### Step 1: Processing table of known RIF resistance mutations       ###
+### Step 1: Processing table of known STR resistance mutations       ###
 ########################################################################
 
-# input for this step: table of rpoB reference sequences ("./data/rpoB_reference_sequence.csv")
-#                      fasta file with rpoB reference sequences (""./data/rpoB_references.fasta"")
-#                      table of reported RIFR mutations ("./data/reported_mutations.csv")
+# input for this step: table of rpsL reference sequences ("./data/rpsL_references.csv")
+#                      fasta file with rpsL reference sequences (""./data/rpsL_references.fasta"")
+#                      table of reported STR mutations ("./data/reported_mutations.csv")
 # output for this step: coordinates ("./output/coordinates.RData"), 
 #                       table of reported mutations ("./output/muts.csv")
 #                       a plot showing distributions of reported mutations ("./plots/reported_mutations.pdf)
 #                       a summary of the reported mutations ("./results/summary_reported_mutations.txt")
 
-# 1 get rpoB ref sequences coordination of all reference sequences against the one in Escherichia coli
+# 1 get rpsL ref sequences coordination of all reference sequences against the one in Escherichia coli
 
 #load reference sequences and their information 
-refs <- read_csv("./data/rpoB_reference_sequences.csv", show_col_types = FALSE)
-seqs <- readDNAStringSet("./data/rpoB_references.fasta")
+refs <- read_csv("./data/rpsL_references.csv", show_col_types = FALSE)
+seqs <- readDNAStringSet("./data/rpsL_references.fasta")
 mutation_list_reports <- read_csv("./data/reported_mutations.csv", show_col_types = FALSE)
 
 # Check whether the above files have been changed and hence the coordinates need to be updated 
-if(file.exists("./data/fastahash.Rds") && as.character(openssl::sha1(file("./data/rpoB_references.fasta"))) == readRDS("./data/fastahash.Rds")){
+if(file.exists("./data/fastahash.Rds") && as.character(openssl::sha1(file("./data/rpsL_references.fasta"))) == readRDS("./data/fastahash.Rds")){
   print("Sequences file has not changed, loading original coordinates")
   load(file = "./output/coordinates.RData")
 } else {
-  old_fastahash <- as.character(openssl::sha1(file("./data/rpoB_references.fasta")))
+  old_fastahash <- as.character(openssl::sha1(file("./data/rpsL_references.fasta")))
   saveRDS(old_fastahash, 
        file = "./data/fastahash.Rds")
   print("Sequences file has changed, regenerating coordinates")
   #get coordinates
-  coordinates <- ALJEbinf::getAllCoordinates(seqs, "rpoB_Escherichia_coli_MG1655")
+  coordinates <- ALJEbinf::getAllCoordinates(seqs, "rpsL_Escherichia_coli_MG1655")
   save(coordinates, file = "./output/coordinates.RData")
 }
 
@@ -122,16 +122,16 @@ rm.all.but("globsets")
 # define the desired database
 db <- "assembly" 
 # define search term for representative genomes: Bacterial genomes at all assembly levels with annotation
-term_rep <- '("Escherichia coli"[Organism] OR "Mycobacterium"[Organism] OR "Erwinia amylovora"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+# term_rep <- '("Escherichia coli"[Organism] OR "Mycobacterium"[Organism] OR "Mycoplasmatota"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 
-# term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 #search the entire database using the defined term
 summaries_rep <- get_summaries(db, term_rep)
 
 # define search term for reference genomes: Bacterial genomes at all assembly levels with annotation 
-term_ref <- '("Escherichia"[Organism] OR "Mycobacterium"[Organism] OR "Erwinia amylovora"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+# term_ref <- '("Escherichia coli"[Organism] OR "Mycobacterium"[Organism] OR "Mycoplasmatota"[Organism] AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 
-# term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 # search the entire database using the defined term
 summaries_ref <- get_summaries(db, term_ref)
 
@@ -268,8 +268,6 @@ filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FAL
 bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 
 #2. analysis of mutant screen:
-source("R/plotting.R")
-source("R/analyses.R")
 plot_mutation_screen(filtered_output, file_name = "./plots/mutation_screen.pdf")
 plot_classes_genera(filtered_output, bacterial_taxonomy, file_name= "./plots/classes_genera.pdf")
 plot_evolvability_by_class(filtered_output, bacterial_taxonomy, file_name = "./plots/evolvability_by_class.pdf")
