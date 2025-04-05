@@ -51,9 +51,9 @@ source("R/structure.R")
 globsets <- list(
   min_n_studies = 3, # minimum number of studies that a mutation needs to be reported in for inclusion
   min_n_species = 3, # minimum number of species that a mutation needs to be reported in for inclusion
-  min_seq_length = 3000, # minimum length of included rpoB target sequences
-  min_alig_score = -Inf, # minimum alignment score (with E. coli) of included rpoB target sequences
-  max_core_dist = 35, # maximum Levenshtein distance between E. coli core rpoB region (pos 501...600) to corresponding target region
+  min_seq_length = 300, # minimum length of included gene target sequences
+  min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
+  max_core_dist = 35, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
   Yang_min_log2_fc = 0, # minimum log2(foldchange) in frequencies to include a mutation as "selected for"
   random_seed = 22)
