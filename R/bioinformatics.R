@@ -145,7 +145,7 @@ download_files <- function(summaries, suffix = "_cds_from_genomic.fna.gz", dir =
 
 
 
-#' Find the rpoB sequence inside the annotated genomic file based on the presence of the gene or protein name 
+#' Find the target sequence inside the annotated genomic file based on the presence of the gene or protein name 
 #'
 #' @param fna_file a genomic(cds) fna file
 #' @param target_gene a character string object giving the name of a gene("rpoB") to be retrieved
@@ -177,7 +177,7 @@ get_target_genes <- function(fna_file, target_gene, target_protein) {
 }
 
 
-#' Extract the rpoB sequences from a set of downloaded genomes
+#' Extract the target sequences from a set of downloaded genomes
 #'
 #' @param summaries A list of multiple esummaries from an entrez database containing information about genomes
 #' @param file_paths A list of paths to downloaded fasta files, corresponding to the list of summaries (not necessarily in the same order)
@@ -191,16 +191,16 @@ get_target_genes <- function(fna_file, target_gene, target_protein) {
 #' withr::with_tempfile("td", {
 #'   summaries <- get_summaries('assembly', 'GCA_000006945.2[Assembly Accession] OR GCA_016028495.1[Assembly Accession] AND (latest[filter] AND all[filter] NOT anomalous[filter])')
 #'   files <- download_files(summaries, dir = td)
-#'   rpoB_target_sequences <- get_rpoB_target_sequences(summaries, files)
+#'   target_sequences <- get_target_sequences(summaries, files)
 #' })
-get_rpoB_target_sequences <- function(summaries,
+get_target_sequences <- function(summaries,
                                       suffix = "_cds_from_genomic.fna", 
                                       dir = "output/genomes",
                                       target_gene = 'rpoB',
                                       target_protein = "DNA-directed RNA polymerase subunit beta($|[^'])|DNA-directed RNA polymerase subunit beta chain|RNA polymerase, beta subunit|DNA-directed RNA polymerase subunit beta/beta'") {
   # file_paths <- sort(unlist(file_paths))
   # file_paths <- file_paths[order(order(unlist(lapply(summaries, `[[`, "assemblyaccession"))))]
-  rpoB_target_sequences <- list()
+  target_sequences <- list()
   for(i in 1:length(summaries)) {
     cat(paste0("Extracting gene(s) for species #", i, "/", length(summaries), "\n..."))
     file_path <- get_genome_file_path(summaries[[i]], suffix = suffix, dir = dir)
@@ -210,10 +210,10 @@ get_rpoB_target_sequences <- function(summaries,
     if (length(targets) == 0L) {
       targets <- list(DNAString())  
     }
-    names(targets) <- paste0("rpoB_", 1:length(targets), "_", summaries[[i]]$speciesname, "_", summaries[[i]]$assemblyaccession)
-    rpoB_target_sequences <- c(rpoB_target_sequences, targets)
+    names(targets) <- paste0(target_gene,"_", 1:length(targets), "_", summaries[[i]]$speciesname, "_", summaries[[i]]$assemblyaccession)
+    target_sequences <- c(target_sequences, targets)
   }
-  return(rpoB_target_sequences)
+  return(target_sequences)
 }
 
 
@@ -238,7 +238,8 @@ download_taxonomy <- function(summaries,
   # download the database:
   taxonomizr::prepareDatabase(database_file, tmpDir = "./data/taxonomizr-database", getAccessions = FALSE, protocol = "http")
   
-  our_taxa <- data.frame(tax_id = rep(NA, length(summaries)))
+  our_taxa <- data.frame(tax_id = rep(NA, length(summaries)),
+                         species = rep(NA, length(summaries)))
   for (i in 1:length(summaries)){
     our_taxa$tax_id[i] <- summaries[[i]]$taxid
     our_taxa$species[i] <- summaries[[i]]$speciesname
