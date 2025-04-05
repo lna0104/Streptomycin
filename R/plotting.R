@@ -293,17 +293,15 @@ plot_classes_genera <- function(filtered_output,
     mutate(category = fct_recode(category, " " = "None"))
   
   cols <- c(" " = rgb(0,0,0,0),
-            "518D" = brewer.pal(9, name = "Pastel1")[1],
-            "522D" = brewer.pal(9, name = "Pastel1")[4],
-            "526N" = brewer.pal(9, name = "Pastel1")[2],
-            "526Q" = brewer.pal(9, name = "Pastel1")[5],
-            "531N" = brewer.pal(9, name = "Pastel1")[3],
-            "574Y" = brewer.pal(9, name = "Pastel1")[6],
-            "514L" = brewer.pal(9, name = "Pastel1")[7],
-            # YangOnly mutations:
-            "525R" = brewer.pal(9, name = "Pastel1")[2],
-            "516Q" = brewer.pal(9, name = "Pastel1")[1],
-            "529K" = brewer.pal(9, name = "Pastel1")[3],
+            "42R" = brewer.pal(9, name = "Pastel1")[1],
+            "42T" = brewer.pal(9, name = "Pastel1")[4],
+            "43N" = brewer.pal(9, name = "Pastel1")[2],
+            "43R" = brewer.pal(9, name = "Pastel1")[5],
+            "43T" = brewer.pal(9, name = "Pastel1")[3],
+            "87E" = brewer.pal(9, name = "Pastel1")[6],
+            "87R" = brewer.pal(9, name = "Pastel1")[7],
+            "88E" = brewer.pal(9, name = "Pastel1")[8],
+            "88R" = brewer.pal(9, name = "Pastel1")[9],
             "Other" = "grey", 
             "Multiple" = "black")
   
