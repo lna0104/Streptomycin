@@ -107,7 +107,7 @@ check_out_mutation <- function(mutations_list,
   
   # calculate Levenshtein distance between E. coli and target gene core region:
   # determine whether to use the core region or the original sequence
-  if (length(protein_target) > 300) {
+  if (length(protein_Ecoli) > 300) {
     # Use core region if gene length > 300
     from_target <- ALJEbinf::translateCoordinate(501, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
     to_target <- ALJEbinf::translateCoordinate(600, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
@@ -506,30 +506,30 @@ get_wt_AA_mismatches <- function(muts, output) {
 }
 
 
-#' Calculate conservation and distance scores along the E. coli rpoB sequence
+#' Calculate conservation and distance scores along the E. coli gene sequence
 #' 
-#' For each position within the rpoB sequence, four scores are calculated for each rpoB sequence:
+#' For each position within the gene sequence, four scores are calculated for each gene sequence:
 #' 
 #' hamming_Ecoli: whether or not the AA is different from the one in E. coli
-#' hamming_rnd: whether or not the AA is different between two randomly chosen rpoB sequences
+#' hamming_rnd: whether or not the AA is different between two randomly chosen gene sequences
 #' grantham_Ecoli: distance between AA and AA in E. coli, according to the Grantham distance matrix
-#' grantham_rnd: distance between AAs in two randomly chosen rpoB sequences, according to the Grantham distance matrix
+#' grantham_rnd: distance between AAs in two randomly chosen gene sequences, according to the Grantham distance matrix
 #'
-#' @param rpoB_target_sequences 
-#' @param rpoB_reference_Ecoli 
+#' @param target_sequences 
+#' @param reference_Ecoli 
 #' @param alig_path 
 #'
 #' @returns A list with four matrices (one for each of the scores described above) and 
 #' a tibble containing all the means for each position, across sequences
 #' 
-get_conservation <- function(rpoB_target_sequences, 
-                             rpoB_reference_Ecoli,
+get_conservation <- function(target_sequences, 
+                             reference_Ecoli,
                              n_rnd = 1e5,
                              alig_path = "./output/alignments")
 {
-  l <- length(translate(rpoB_reference_Ecoli))
-  m <- length(rpoB_target_sequences)
-  rpoB_reference_Ecoli_AA <- translate(rpoB_reference_Ecoli)
+  l <- length(translate(reference_Ecoli))
+  m <- length(target_sequences)
+  reference_Ecoli_AA <- translate(reference_Ecoli)
   grantham <- granthamMatrix()
   
   plan(multisession, workers = 10) # to parallelise the function
@@ -539,15 +539,15 @@ get_conservation <- function(rpoB_target_sequences,
     hamming_Ecoli <- rep(NA, l)
     grantham_Ecoli <- rep(NA, l)
     try( {
-      load(paste0(alig_path, "/", names(rpoB_target_sequences)[k], ".RData"))
+      load(paste0(alig_path, "/", names(target_sequences)[k], ".RData"))
       coords <- coords_alig$coordinates
-      rpoB_target_AA <- translate(rpoB_target_sequences[[k]])
+      rpoB_target_AA <- translate(target_sequences[[k]])
 
       for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpoB
         pos_target <- translateCoordinate(pos_Ecoli, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
         if (!is.na(pos_target)) {
           AA_target <- as.character(rpoB_target_AA[pos_target])
-          AA_Ecoli <- as.character(rpoB_reference_Ecoli_AA[pos_Ecoli])
+          AA_Ecoli <- as.character(reference_Ecoli_AA[pos_Ecoli])
           hamming_Ecoli[pos_Ecoli] <- (AA_target != AA_Ecoli)
           if ((AA_Ecoli %in% colnames(grantham)) && (AA_target %in% colnames(grantham))) {
             grantham_Ecoli[pos_Ecoli] <- grantham[AA_target, AA_Ecoli]
@@ -576,15 +576,15 @@ get_conservation <- function(rpoB_target_sequences,
     try( {
       # sequence 1:
       i <- ijs$i[k]
-      load(paste0(alig_path, "/", names(rpoB_target_sequences)[i], ".RData"))
+      load(paste0(alig_path, "/", names(target_sequences)[i], ".RData"))
       coords1 <- coords_alig$coordinates
-      rpoB_target1_AA <- translate(rpoB_target_sequences[[i]])
+      rpoB_target1_AA <- translate(target_sequences[[i]])
       
       # sequence 2:
       j <- ijs$j[k]
-      load(paste0(alig_path, "/", names(rpoB_target_sequences)[j], ".RData"))
+      load(paste0(alig_path, "/", names(target_sequences)[j], ".RData"))
       coords2 <- coords_alig$coordinates
-      rpoB_target2_AA <- translate(rpoB_target_sequences[[j]])
+      rpoB_target2_AA <- translate(target_sequences[[j]])
       
       for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpoB
         pos_target1 <- translateCoordinate(pos_Ecoli, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
@@ -613,7 +613,7 @@ get_conservation <- function(rpoB_target_sequences,
   )
   
   hamming_Ecoli <- matrix(NA, nrow = m, ncol = l,
-                          dimnames = list(names(rpoB_target_sequences), paste0("P", 1:l)))
+                          dimnames = list(names(target_sequences), paste0("P", 1:l)))
   grantham_Ecoli <- hamming_Ecoli
   for(i in 1:m) {
     hamming_Ecoli[i,] <- results_Ecoli[[i]]$hamming_Ecoli
@@ -621,9 +621,9 @@ get_conservation <- function(rpoB_target_sequences,
   }
   
   hamming_rnd <- matrix(NA, nrow = n_rnd, ncol = l,
-                        dimnames = list(paste0(names(rpoB_target_sequences)[ijs$i], 
+                        dimnames = list(paste0(names(target_sequences)[ijs$i], 
                                                ":::",
-                                               names(rpoB_target_sequences)[ijs$j]),
+                                               names(target_sequences)[ijs$j]),
                                         paste0("P", 1:l)))
   grantham_rnd <- hamming_rnd
   for(i in 1:n_rnd) {
