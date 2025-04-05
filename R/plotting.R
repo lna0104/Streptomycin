@@ -115,6 +115,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
 
 #' Produces figure giving the frequency of mutations in three present, possible and impossible categories
 #' @param filtered_output  a data frame providing screened and filtered rpoB sequences
+#' @param filtered_output  a data frame providing screened and filtered gene sequences
 #' @param file_name the path that the plot should be save in
 #' @return A plot as a ggplot object in pdf format
 #' @export
@@ -123,8 +124,10 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
 plot_mutation_screen <- function(filtered_output, file_name) {
   
   # species with more than one rpoB copy, to be filtered out:
+  # species with more than one gene copy, to be filtered out:
   filtered_output_seqs <- filtered_output |>
     select(accession_numbers, species, rpoB_copy, target_length, alig_score, core_dist) |>
+    select(accession_numbers, species, gene_copy, target_length, alig_score, core_dist) |>
     distinct()
   multicopy_species <- filtered_output_seqs |>
     group_by(accession_numbers) |>
@@ -230,6 +233,7 @@ plot_evolvability_by_class <-function(filtered_output,
 
 #' produces a figure showing resistance and evolvability across classes and genera
 #' @param filtered_output a data frame providing screened and filtered rpoB sequences
+#' @param filtered_output a data frame providing screened and filtered gene sequences
 #' @param file_name the path that the plot should be save in
 #' @param min_frac_resistant filter that gives the minimum fraction of species within
 #' a genus that need to be resistant for this genus to be included in figure A. 
@@ -255,6 +259,7 @@ plot_classes_genera <- function(filtered_output,
   # preparing the data:
  
   # merging species with multiple rpoB copies:
+  # merging species with multiple gene copies:
   merged_filtered_output <- filtered_output |>
     group_by(species, genus, accession_numbers, mutation_name) |>
     summarise(mutation_category = ifelse(any(mutation_category == "present"),
@@ -391,15 +396,18 @@ plot_classes_genera <- function(filtered_output,
 
 
 #' produces plots to show the distribution of rpoB sequence length, aligning score and distance from RRDR of ref seq
+#' produces plots to show the distribution of gene sequence length, aligning score and distance from RRDR of ref seq
 #'
 #' @param final_output a data frame providing the results of mutation screening in all extracted rpoB sequences
 #' @param rpoB_target_sequences a DNAStringset object of all rpoB sequences 
 #' @param file_name the path that the plots should be save in
+#' @param final_output a data frame providing the results of mutation screening in all extracted gene sequences
 #'
 #' @return A plot as a ggplot object in pdf format
 #' @export
 #'
 #' @examples get_hist(final_output, rpoB_target_sequences, "./plot/myFilename.pdf")
+#' @examples get_hist(final_output, target_sequences, "./plot/myFilename.pdf")
 plot_target_sequences_stats <- function(final_output, 
                                         filtered_output, 
                                         rpoB_target_sequences,
@@ -410,6 +418,7 @@ plot_target_sequences_stats <- function(final_output,
   cols <- c("raw" = "grey20", "filtered" = "grey80")
   
   dat_raw <- select(final_output, species, accession_numbers, rpoB_copy, target_length, alig_score, core_dist) |>
+  dat_raw <- select(final_output, species, accession_numbers, gene_copy, target_length, alig_score, core_dist) |>
     mutate(filter = factor("raw")) |>
     distinct()
   dat_filtered <- select(filtered_output, species, accession_numbers, rpoB_copy, target_length, alig_score, core_dist) |>
@@ -428,6 +437,7 @@ plot_target_sequences_stats <- function(final_output,
   
   plot2 <- ggplot(dat) +
     geom_histogram(aes(alig_score, fill = filter), position = "identity") +
+    geom_histogram(aes(alig_score, fill = filter), position = "identity", binwidth = 10) +
     geom_vline(aes(xintercept = min_alig_score), col = "red") +
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
@@ -437,6 +447,7 @@ plot_target_sequences_stats <- function(final_output,
   
   plot3 <- ggplot(dat) +
     geom_histogram(aes(core_dist, fill = filter), position = "identity") +
+    geom_histogram(aes(core_dist, fill = filter), position = "identity", binwidth = 1) +
     geom_vline(aes(xintercept = max_core_dist), col = "red") +
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
