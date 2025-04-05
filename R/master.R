@@ -44,7 +44,7 @@ source("R/plotting.R")
 source("R/reports.R")
 source("R/phylogenetics.R")
 source("R/codon_networks.R")
-source("R/Yang_data.R")
+#source("R/Yang_data.R")
 source("R/structure.R")
 
 # Global settings and parameters:
@@ -55,7 +55,7 @@ globsets <- list(
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
   max_core_dist = 35, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
-  Yang_min_log2_fc = 0, # minimum log2(foldchange) in frequencies to include a mutation as "selected for"
+  # Yang_min_log2_fc = 0, # minimum log2(foldchange) in frequencies to include a mutation as "selected for"
   random_seed = 22)
 options(nwarnings = 10000)
 
