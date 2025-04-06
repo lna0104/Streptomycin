@@ -125,21 +125,24 @@ write.csv(added_name_muts, "data/rpsL_references.csv", row.names = FALSE)
 # Initialize an empty list to store the sequences from all downloads
 all_sequences <- list()
 # Loop through each genome summary in the 'summaries' list
-for (j in 1:length(summaries)){
-  id<-names(summaries[j])
+for (j in 1:length(summaries)) {
+  id <- names(summaries[j])
   cat(paste0("Downloading genome for species #", j, "/", length(summaries), "\n..."))
-  try( # continue to download the genomes if any download fails
-    file_path <- download_file(summaries[[j]],dir = "output/references")
-  )
-  # Remove .gz extension
-  fasta_file<- sub("\\.gz$", "", file_path)
-  # Read the sequences from the FASTA file
-  sequences <- readDNAStringSet(fasta_file)
-  # Extract sequences with names that match "rpsL"
-  matching_seq <- sequences[grep("rpsL", names(sequences))]
-  # Rename the sequences based on the 'added_name_muts' data frame
-  names(matching_seq) <- added_name_muts[added_name_muts$ID==id, ]$FASTA_name
-  all_sequences <- c(all_sequences, matching_seq)
+  
+  try({
+    file_path <- download_file(summaries[[j]], dir = "output/references")
+    
+    fasta_file <- sub("\\.gz$", "", file_path)
+    sequences <- readDNAStringSet(fasta_file)
+    matching_seq <- sequences[grep("rpsL", names(sequences))]
+    
+    if (length(matching_seq) > 0) {
+      names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
+      all_sequences <- c(all_sequences, matching_seq)
+    } else {
+      cat(paste0("No rpsL found for species ID ", id, "\n"))
+    }
+  })
 }
 # Combine all sequences into a single DNAStringSet object
 combined_sequences <- do.call(c, all_sequences)

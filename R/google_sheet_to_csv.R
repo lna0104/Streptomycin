@@ -18,9 +18,10 @@ muts <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78Sk
 write_csv(muts, "./data/reported_mutations.csv")
 
 
-refs <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78SksPYUtUOOsT_e6XkRxPg6hA8/edit?gid=1074478647#gid=1074478647",
+refs <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78SksPYUtUOOsT_e6XkRxPg6hA8/edit?gid=992930929#gid=992930929",
                    sheet = "References",
                    col_types = "c") |>
+  filter(Data_added=="yes")  |>
   select(-Comments) |>
   mutate(DOI = sub("\\.$", "", Link)) |>
   select(-Link) |>
