@@ -49,6 +49,10 @@ for (i in 1:nrow(selected_muts)){
       # If no reference genome was found, search for the species in general
       term_ser<- sprintf('"%s"[ORGN] AND "latest refseq"[filter]', species)
       assembly_search_results <- get_summaries(db="assembly", term=term_ser)
+      if (length(assembly_search_results)==0){
+        cat(paste0("Cannot find assembly data for ", species, ". Try search species name in NCBI."))
+        next
+      }
       assembly_search_final_result<-assembly_search_results[[1]]
       selected_muts$RefStrain[i]<-FALSE
     }
