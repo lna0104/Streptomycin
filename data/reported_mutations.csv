@@ -1,0 +1,584 @@
+Species,Strain,Genotype,Gene,Nt_pos,Nt_pos_Ecoli,Nt_original,Nt_mutation,Nt_OtoM,Nt_mut_name,Nt_mut_name_Ecoli,Codon_original,Codon_mutation,Codon_OtoM,AA_pos,AA_pos_Ecoli,AA_original,AA_mutation,AA_OtoM,AA_mut_name,AA_mut_name_Ecoli,Origin,MIC_mgPerL,Rel_fitness,n_clones,Comments,Ref_code,Modify_by
+Bacillus pumilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Danilova2017,NA
+Bacillus subtilis,NA,NA,rpsL,64,NA,C,T,NA,NA,NA,NA,NA,NA,22,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
+Bacillus subtilis,NA,NA,rpsL,167,NA,A,G,NA,NA,NA,NA,NA,NA,56,43,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
+Bacillus subtilis,NA,NA,rpsL,168,NA,A,T,NA,NA,NA,NA,NA,NA,56,43,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
+Bacillus subtilis,NA,NA,rpsL,167,NA,A,C,NA,NA,NA,NA,NA,NA,56,43,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
+Bacillus subtilis,NA,NA,rpsL,166,NA,A,C,NA,NA,NA,NA,NA,NA,56,43,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
+Bacillus subtilis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,99,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Wu2024,NA
+Bifidobacterium bifidum,Yakult,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Sato2010,NA
+Bifidobacterium bifidum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Sirichoat2020,NA
+Bifidobacterium breve,Yakult,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Kiwaki2009,NA
+Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,87,K,R,NA,NA,NA,Lab-generated,500,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224326",Criswell2006,NA
+Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,87,K,E,NA,NA,NA,Lab-generated,500,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224327",Criswell2006,NA
+Borreliella burgdorferi,NA,NA,rrs,865,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,10,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224328",Criswell2006,NA
+Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224329",Drecktrah2010,NA
+Brucella melitensis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,L,NA,NA,NA,Isolate,NA,NA,NA,NA,Cloeckaert2002,NA
+Campylobacter coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Habib2023,NA
+Campylobacter coli,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,1024,NA,NA,"STP resistant bacterial samples were obtained from pigs and analysed for mutations in rpsL, gidB and rrs. In the in vivo samples only mutations in codon 43 of rpsL were found.",Olkkola2010,NA
+Campylobacter coli,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,1024,NA,NA,STP susceptible bacterial samples were also obtained from pigs and selected for resistance by growing them on STP. These strains had more diverse mutations in both codon 43 and 88 of rpsL.,Olkkola2010,NA
+Campylobacter coli,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,1024,NA,NA,STP susceptible bacterial samples were also obtained from pigs and selected for resistance by growing them on STP. These strains had more diverse mutations in both codon 43 and 88 of rpsL.,Olkkola2010,NA
+Campylobacter coli,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,E,NA,NA,NA,Lab-generated,1024,NA,NA,STP susceptible bacterial samples were also obtained from pigs and selected for resistance by growing them on STP. These strains had more diverse mutations in both codon 43 and 88 of rpsL.,Olkkola2010,NA
+Campylobacter coli,NA,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,88,-,K,Q,NA,NA,NA,Lab-generated,1024,NA,NA,STP susceptible bacterial samples were also obtained from pigs and selected for resistance by growing them on STP. These strains had more diverse mutations in both codon 43 and 88 of rpsL.,Olkkola2010,NA
+Campylobacter coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Zarske2024,NA
+Campylobacter coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Zarske2024,NA
+Campylobacter jejuni,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Zarske2024,NA
+Campylobacter upsaliensis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Olkkola2015,NA
+Clavibacter michiganensis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2022,NA
+Clavibacter michiganensis,BT-0505-R,NA,rpsL,128,-,-,-,NA,NA,NA,NA,NA,NA,-,-,K,R,K -> R,NA,NA,Lab-generated,5000,NA,NA,A wt strain grown on streptomycin containing media whereby mutants where picked,Lyu2019,NA
+Clavibacter michiganensis,NA,NA,rpsL,NA,NA,AAA,AGA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,Confers high level of resistance.,Valenzuela2019,NA
+Corynebacterium glutamicum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Kim2011,NA
+Corynebacterium glutamicum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Wang2019b,NA
+Corynebacterium glutamicum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Wang2019b,NA
+Corynebacterium glutamicum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Wang2019b,NA
+Deinococcus geothermalis,S1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lee2022,NA
+Deinococcus geothermalis,S1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lee2022,NA
+Deinococcus geothermalis,S1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lee2022,NA
+Deinococcus geothermalis,S2,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lee2022,NA
+Erwinia amylovora,FB-93-5,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since it only provided AGA (Arg).,Chiou1995,Le Na Ngo
+Erwinia amylovora,829,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,263,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,850,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since it only provided AGA (Arg).,Chiou1995,Le Na Ngo
+Erwinia amylovora,S5,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,R11,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,SC1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,SC2,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,JR18b,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since it only provided AGA (Arg).,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AAT,NA,43,NA,K,N,K -> N,NA,NA,Isolate,4096,NA,NA,HIGH level of resistance. Not clear what the amino acid/nucleotide mutation was since it only provided AAT (Asn).,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR2,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,K -> N,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR3,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AAC,NA,43,NA,K,N,K -> N,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since only AAC (Asn) was given.,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR4,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR5,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,ACA,NA,43,NA,K,T,K -> T,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since only ACA (Thr) was given.,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR10,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,OR20,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since only AGA (Arg) was given.,Chiou1995,Le Na Ngo
+Erwinia amylovora,Ea88,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,JL1177,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,LA014,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,LA058,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since only AGA (Arg) was given.,Chiou1995,Le Na Ngo
+Erwinia amylovora,NZR4,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,NZR10,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,NA,Chiou1995,Le Na Ngo
+Erwinia amylovora,NZS4,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAA,AGA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,High level of resistance. Not clear what the amino acid/nucleotide mutation was since only AGA (Arg) was given.,Chiou1995,Le Na Ngo
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Door2013,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Forster2015,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,NA,G,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Ham2024,NA
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,NA,He2024,NA
+Erwinia amylovora,Ea116–5-29,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,43,-,K,T,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Parcey2020,Le Na Ngo
+Erwinia amylovora,Ea241,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Parcey2020,Le Na Ngo
+Erwinia amylovora,Ea160-3-51,NA,rpsL,-,-,A,T,NA,NA,NA,NA,NA,NA,43,-,K,I,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Parcey2020,Le Na Ngo
+Erwinia amylovora,OR1,NA,rpsL,-,-,A,T,NA,NA,NA,NA,NA,NA,43,-,K,N,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Parcey2020,Le Na Ngo
+Erwinia amylovora,Ea160-4-51,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,43,-,K,N,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Parcey2020,Le Na Ngo
+Erwinia amylovora,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Smits2014,NA
+Erwinia pyrifoliae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Lee2023,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,10,10,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,105,105,G,C,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,106,106,V,L,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,107,107,K,N,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,108,108,D,Y,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,11,11,R,C,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,13,13,R,H,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,19,19,N,K,NA,NA,NA,Lab-generated,3.13,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,T,K,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,T,R,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,20,20,V,E,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,21,21,P,R,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,22,22,A,G,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,23,23,L,Q,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,24,24,E,D,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3,3,V,F,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,35,35,R,S,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,39,39,T,S,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,41,P,A,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,43,K,I,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,48,48,L,Q,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,5,5,Q,R,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,53,R,S,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,53,R,H,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,57,57,T,S,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,58,58,N,K,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,6,6,L,Q,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,62,62,V,L,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,66,66,I,M,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,67,67,G,R,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7,7,V,I,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7,7,V,E,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,73,73,L,P,NA,NA,NA,Lab-generated,25,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,76,H,P,NA,NA,NA,Lab-generated,25,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,77,77,S,C,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,78,78,V,E,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,79,79,I,N,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,80,80,L,R,NA,NA,NA,Lab-generated,6,NA,NA,ram,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,81,81,I,F,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,H,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,S,NA,NA,NA,Lab-generated,25,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,93,R,S,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,94,94,Y,N,NA,NA,NA,Lab-generated,12,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,95,95,H,D,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,97,97,V,E,NA,NA,NA,Lab-generated,6,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,97,97,V,E,NA,NA,NA,Lab-generated,NA,NA,NA,Restrictive,Agarwal2011,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,44,44,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,They mutated Escherichia coli rsmG and also performed a genotyping study on rpsL from several isolates showing the ability to grow at higher streptomycin concentrations than parental strains,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7,7,L,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,77,77,H,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,86,R,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,88,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,88,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,91,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,43,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Brulisauer2023,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,KO-365,NA,rpsL,128,128,A,G,A -> G,NA,NA,NA,NA,NA,42,42,K,R,K -> R,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-368,NA,rpsL,129,129,A,C,A -> C,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-371,NA,rpsL,128,128,A,C,A -> C,NA,NA,NA,NA,NA,42,42,K,T,K -> T,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-374,NA,rpsL,128,128,A,T,A -> T,NA,NA,NA,NA,NA,42,42,K,I,K -> I,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-375,NA,rpsL,263,263,A,G,A -> G,NA,NA,NA,NA,NA,87,87,K,R,K -> R,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-430,NA,rpsL,262,262,A,G,A -> G,NA,NA,NA,NA,NA,87,87,K,E,K -> E,NA,NA,Isolate,30,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-376,NA,rpsL,272,272,C,T,C -> T,NA,NA,NA,NA,NA,90,90,P,L,P -> L,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-378,NA,rpsL,272,272,C,A,C -> A,NA,NA,NA,NA,NA,90,90,P,Q,P -> Q,NA,NA,Isolate,30,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,KO-431,NA,rpsL,275,275,G,A,G -> A,NA,NA,NA,NA,NA,91,91,G,D,G -> D,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,K12/A19,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,K12/A19,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L44,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L44,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,T,K -> T,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L1,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L11-His 1,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,K12/A19,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,87,87,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L44,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,87,87,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,B/L1,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,87,87,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,25,NA,NA,NA,Gill2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,6,Q,Stop,NA,NA,NA,Lab-generated,NA,NA,NA,The authors created a transgenic mouse model to study in vivo mutagenesis by introducing an E. coli plasmid with the rpsL gene into the mouse genome.,Gondo1996,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,R,S,NA,NA,NA,Lab-generated,25,NA,NA,NA,Gossner2021,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,I,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lopez2023,NA
+Escherichia coli,WP2,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,CM1141,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,430,430,A,G,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,430,430,A,T,NA,NA,NA,NA,NA,NA,42,42,K,I,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,431,431,A,T,NA,NA,NA,NA,NA,NA,42,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,565,565,A,G,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,574,574,C,T,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,574,574,C,T,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,CM1141,NA,rpsL,574,574,C,T,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,CM1141,NA,rpsL,574,574,C,T,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,WP2,NA,rpsL,577,577,G,A,NA,NA,NA,NA,NA,NA,91,91,G,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,CM1141,NA,rpsL,577,577,G,A,NA,NA,NA,NA,NA,NA,91,91,G,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
+Escherichia coli,MC312,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Vila-Sanjurjo2007,NA
+Escherichia coli,MC312,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Vila-Sanjurjo2007,NA
+Escherichia coli,MC312,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Vila-Sanjurjo2007,NA
+Glaesserella parasuis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,former namely Haemophilus parasuis,Dai2018,NA
+Glaesserella parasuis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,former namely Haemophilus parasuis,Dai2018,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,D,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,G,D,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Lactiplantibacillus plantarum,ATCC14917,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,56,-,K,R,NA,NA,NA,Lab-generated,variable,NA,NA,"Resistance mechanisms studied by passaging for 35 days, measuring MIC, and finally sequencing the final passaged lineages.",Zhang2018,NA
+Legionella pneumophila,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhu2015,NA
+Lysinibacillus sphaericus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Suriyanarayanan2016,NA
+Macrococcoides caseolyticum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,22,NA,P,A,NA,NA,NA,Isolate,NA,NA,NA,NA,Keller2022,NA
+Macrococcoides caseolyticum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Keller2022,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4619935,NA,T,A,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4619947,NA,Q,E,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4619953,NA,A,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4619974,NA,H,D,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4620001,NA,A,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4620004,NA,A,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4620019,NA,G,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
+Mycobacterium kansasii,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Isolate,64,NA,NA,NA,Bakula2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,10,NA,NA,NA,Abbadi2001,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,10,NA,NA,NA,Abbadi2001,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,10,NA,NA,NA,Abbadi2009,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,10,NA,NA,NA,Abbadi2009,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2019,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2019,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2024,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2024,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2024,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,T,NA,NA,NA,NA,NA,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2024,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Al-Mutairi2024,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,950,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1400,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,all members of this strain family had an identical mutation in codon 43,Bifani2001,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Borham2022,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Bouziane2019,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Bouziane2019,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,AGG,AAG -> AGG,43,NA,K,R,K -> R,NA,NA,Isolate,2048,NA,NA,22 strains had this mutation. High level of resistance. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GCA,CCA,GCA -> CCA,48,NA,A,P,A -> P,NA,NA,Isolate,NA,NA,NA,5 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GCA,GAA,GCA -> GAA,53,NA,A,E,A -> E,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CTA,CGA,CTA -> CGA,74,NA,L,R,L -> R,NA,NA,Isolate,NA,NA,NA,3 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CAG,CTG,CAG -> CTG,76,NA,Q,L,Q -> L,NA,NA,Isolate,NA,NA,NA,3 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GTA,GGA,GTA -> GGA,80,NA,V,G,V -> G,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AGA,CAA,AGA -> CAA,83,NA,R,Q,R -> Q,NA,NA,Isolate,1024,NA,NA,11 strains had this mutation. High level of resistance. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CGA,CCA,CGA -> CCA,86,NA,R,P,R -> P,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CTC,CAC,CTC -> CAC,90,NA,L,H,L -> H,NA,NA,Isolate,NA,NA,NA,3 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GGA,GCA,GGA -> GCA,92,NA,G,A,G -> A,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,TAC,CAC,TAC -> CAC,95,NA,Y,H,Y -> H,NA,NA,Isolate,128,NA,NA,9 strains had this mutation. Moderate level of resistance. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,ATA,ACA,ATA -> ACA,98,NA,I,T,I -> T,NA,NA,Isolate,NA,NA,NA,5 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,C -> T,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,10<x<100,NA,2,There was also one other mutant that had this mutation as well as mutations in gidB.,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,A -> G,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,2,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,A -> G,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,21,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,A -> G,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,8,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,A -> C,NA,NA,NA,NA,NA,88,NA,K,Q,K -> Q,NA,NA,Isolate,NA,NA,1,NA,Bwalya2021,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,15,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,31 isolates had this mutation,Cohen2020,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,8 isolates had this mutation,Cohen2020,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Cooksey1996,NA
+Mycobacterium tuberculosis,NA,NA,rrs,865,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,One isolate with low-level SM resistance had undergone a cytosine-to-guanine sub-stitution at nucleotide 865 of the 16S rRNA sequence. This position corresponds to position 912 of theE. coli16S rRNAsequence,Cooksey1996,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,12,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,4,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,K -> Q,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,483,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,485,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,496,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,8,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,795,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,870,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,2048,NA,NA,NA,Das2009,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,2048,NA,NA,NA,Das2009,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rrs,491,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rrs,905,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Dymova2014,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1401,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Dymova2014,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Feuerriegel2012,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Feuerriegel2012,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Finken1993,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Finken1993,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Finken1993,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Finken1993,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,2048,NA,NA,NA,Fukuda1999,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,1024,NA,NA,NA,Fukuda1999,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,1024,NA,NA,NA,Fukuda1999,NA
+Mycobacterium tuberculosis,NA,NA,rrs,419,NA,C,T,NA,NA,NA,NA,NA,NA,34,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Gegia2008,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Gegia2008,NA
+Mycobacterium tuberculosis,NA,NA,rrs,512,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Gegia2008,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Gegia2008,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,R,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Gegia2008,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Hasan2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,NA,Hlaing2017,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,K -> T,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,63 strains had this mutation,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,G,T,G -> T,NA,NA,AAG,AAT,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,1 strain had this mutation,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,32 strains had this mutation,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,T,A -> T,NA,NA,AAG,ATG,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,C,A -> C,NA,NA,AAG,ACG,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,1 strain had this mutation,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,151,NA,C,G,C -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,239,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,878,NA,G,A,G -> A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,905,NA,C,G,C -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Huy2023,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,C,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1274,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1401,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1491,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,12,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,310,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1465,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,181,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,19,NA,V,F,NA,NA,NA,Isolate,NA,NA,NA,"mutations V19F and R86W were rare, and seen among both streptomycin sensitive (SMS) andstreptomycin resistant (SMR) isolates",Mahrouqi2022,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,302,NA,Q,E,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,341,NA,L,F,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,409,NA,A,G,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,"mutation K43R was frequent, found in 45% of SMR isolates",Mahrouqi2022,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,W,NA,NA,NA,Isolate,NA,NA,NA,"mutations V19F and R86W were rare, and seen among both streptomycin sensitive (SMS) andstreptomycin resistant (SMR) isolates",Mahrouqi2022,NA
+Mycobacterium tuberculosis,4649/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,4513/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,5141/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,3626/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,11966/89,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,250-500,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,3555/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,500-1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,K8/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,K11/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,4362/8,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,5127/85,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,K4/94,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,3976/83,NA,rrs,NA,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,3601/84,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,K3/94,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,128,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,90 isolates had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,256,C,G,NA,NA,NA,NA,NA,NA,86,NA,R,G,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,263,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,6 isolates had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,263,A,T,NA,NA,NA,NA,NA,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,514,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,3 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,517,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,NA,905,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,CAS/26,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,H4/127,NA,rpsL,131,-,A,G,NA,NA,NA,NA,NA,NA,44,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,ORPHAN,NA,rpsL,263,-,A,T,NA,NA,NA,NA,NA,NA,88,-,K,M,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,263,-,A,T,NA,NA,NA,NA,NA,NA,88,-,K,M,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,T1/284,NA,rpsL,263,-,A,T,NA,NA,NA,NA,NA,NA,88,-,K,M,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
+Mycobacterium tuberculosis,H4/127,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,H4/127,NA,rrs,526,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,H4/361,NA,rrs,856,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,H4/127,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,H4/361,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,T1/53,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,T1/53,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Rezaei2017,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,353,NA,G,A,G -> A,NA,NA,NA,NA,NA,118,NA,G,D,G -> D,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,A -> G,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,Not given?,NA,NA,"Most common mutation, exhibited by 58.8% of the rpsL mutants in this study.",Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,A -> G,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,Origin: add Isolate,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in rpsL K43R.,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,One isolate exhibited a co-mutation in rpsL G353A.,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,A,T,A -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,912,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,644,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in K88R in rpsL.,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,125,NA,NA,"Strains consisted of clinical isolates from Brazil along with Beijing genotype isolates. Mutations in gidB were found in both susceptible and resistant strains making conclusions about its involvement in resistance diffiult. Notably, mutations in gidB only occurred in STP susceptible strains resistant towrds rifampin and isoniazid.",Spies2011,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,200,NA,NA,Two of eight resistant isolates from Japan exhibited this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,CAG,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,Two of eight resistant isolates from Japan exhibited this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,One isolate from Vietnam had this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CGC,CAC,NA,9,NA,R,H,NA,NA,NA,Isolate,NA,NA,NA,One isolate from Hong Kong had this mutation as well as the mutation in codon 43 above. Unknown significance of this mutation in terms of resistance since it has been paired with a mutation in codon 43 (which is known to confer Streptomycin resistance). Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GTG,ATG,NA,93,NA,V,M,NA,NA,NA,Isolate,NA,NA,NA,One isolate from Vietnam had this mutation as well as the mutation above. Unknown significance in terms of resistance since this was paired with a mutation in codon 88 (which is known to confer Streptomycin resistance). Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,491,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,512,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,798,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Novel mutation. One isolate from New York had this mutation as well as a mutation in rpsL codon 43. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,877,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Novel mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,904,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Novel mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,513,-,A,T,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,-,A,C,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,16,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,128,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,-,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,59/104 (56.7%) had this mutation,Wang2011,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,23/104 (22.1%) had this mutation,Wang2011,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,115 STR-R isolates had this mutation. 4 STR-S isolates had this mutation.,Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,C,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found with this mutation. 66 MDR-TB isolates found.,Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,T,NA,NA,NA,NA,NA,NA,43,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,"I STR-S, 1 STR-R, and I MDR-TB isolates found with this mutation.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,129,NA,G,T,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found.,Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,"1 STR-S, 1 STR-R, and 1 MDR-TB isolate was found.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 17 STR-R, and 7 MDR-TB isolates were found.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 1 STR-R, and 1 MDR-TB isolates found.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"3 STR-S, 26 STR-R, and 12 MDR-TB isolates found.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 5 STR-R, and 2 MDR-TB isolates found.",Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rrs,848,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R and I MDR-TB isolates found.,Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found.,Wang2019a,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Isolate,>256 ug/mL,NA,NA,"Study found both resistant and clinical isolates with mutations in gidB, MIC was tested on two different media with the highest recorded MIC being 128 ug/mL.",Wong2011,NA
+Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Danchuk2020,NA
+Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,NA,Djemal2018,NA
+Mycobacterium tuberculosis variant bovis,NA,NA,rrs,878,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Domenech2022,NA
+Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,165,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Soliman2024,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,M,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,524,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,526,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,522,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,523,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,301,NA,A,G,NA,NA,NA,NA,NA,NA,101,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,302,NA,A,G,NA,NA,NA,NA,NA,NA,101,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,302,NA,A,T,NA,NA,NA,NA,NA,NA,101,NA,K,M,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,314,NA,G,A,NA,NA,NA,NA,NA,NA,105,NA,G,D,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,167,NA,A,G,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,"The rsmG, rpsL, and rpoB genes were each amplified by PCR, using the genomic DNA of each mutant strain as a template, synthetic oligonucleotide primers designed on the basis of sequences in several Bacillus strains",Funane2018,NA
+Paenibacillus agaridevorans,NA,NA,rpsL,192,NA,G,T,NA,NA,NA,NA,NA,NA,64,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
+Pectobacterium carotovorum,AB1,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,-,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,AB2,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,-,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M16,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,-,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M3,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M4,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M6,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M11,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M12,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,K -> T,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M1,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,K -> N,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M9,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,K -> N,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M2,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M7,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M8,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M10,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M13,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M14,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pectobacterium carotovorum,M15,NA,rpsL,-,-,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Lab-generated,512,NA,NA,Pectobacterium carotovorum is synonym for Erwinia carotovora which was mentioned in the paper.,Barnard2010,NA
+Pseudomonas putida,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,NA,88,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Hosokawa2002,NA
+Riemerella anatipestifer,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Liu2019,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,NA,T,I,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,P,A,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,44,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,NA,G,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Salmonella enterica subsp. enterica serovar Enteritidis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,heterotypic synonym Salmonella enteritidis,Tang2019,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Paulander2009,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Paulander2009,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,N,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,T,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,87,-,K,R,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,P,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,L,K,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,J1074,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,94,NA,R,G,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces albus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Shemediuk2022,NA
+Streptomyces antibioticus,3720,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces antibioticus,3720,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces avermitilis,K139,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces avermitilis,K139,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces avermitilis,K139,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces avermitilis,K139,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces avermitilis,K139,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces coelicolor,K0-192,NA,rpsL,129,NA,G,A,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,200,NA,NA,NA,Hesketh1997,NA
+Streptomyces coelicolor,KO-178,NA,rpsL,262,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Hesketh1997,NA
+Streptomyces coelicolor,KO-180,NA,rpsL,262,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Hesketh1997,NA
+Streptomyces coelicolor,KO-181,NA,rpsL,262,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Hesketh1997,NA
+Streptomyces coelicolor,NA,NA,rpsL,262,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hu2001,NA
+Streptomyces coelicolor,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Huang2015,NA
+Streptomyces coelicolor,1147,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces cyanogenus,S136,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces cyanogenus,S136,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces cyanogenus,S136,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,L,K,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces cyanogenus,S136,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Koshla2021,NA
+Streptomyces filamentosus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,heterotypic synonym Streptomyces roseosporus,Wang2012,NA
+Streptomyces filamentosus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,heterotypic synonym Streptomyces roseosporus,Wang2012,NA
+Streptomyces filamentosus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,heterotypic synonym Streptomyces roseosporus,Wang2012,NA
+Streptomyces globisporus,SMY6222,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gromyko2004,NA
+Streptomyces noursei,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,108,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,heterotypic synonym Streptomyces albulus,Wang2017,NA
+Streptomyces parvulus,ATCC 12434,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces parvulus,ATCC 12434,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Streptomyces viridochromogenes,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Liu2013,NA
+Thermus thermophilus,HG18,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,41,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG3,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG14,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG31,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG19,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG11,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,37,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,K,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,A,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Veillonella parvula,PK1910,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Liu2011,NA
+Wolbachia pipientis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Fallon2013,NA
+Xanthomonas citri pv. citri,N-82-54,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611301",Hyun2012,NA
+Xanthomonas citri pv. citri,N-87-2,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611302",Hyun2012,NA
+Xanthomonas citri pv. citri,T-27,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611303",Hyun2012,NA
+Xanthomonas citri pv. citri,B-18,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611304",Hyun2012,NA
+Xanthomonas citri pv. citri,B-93,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611305",Hyun2012,NA
+Xanthomonas citri pv. citri,G-17,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611306",Hyun2012,NA
+Xanthomonas citri pv. citri,N-82-29-3,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611307",Hyun2012,NA
+Xanthomonas citri pv. citri,N-82-29-4,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611308",Hyun2012,NA
+Xanthomonas citri pv. citri,P-10,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611309",Hyun2012,NA
+Xanthomonas citri pv. citri,Sang-D-10,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611310",Hyun2012,NA
+Xanthomonas citri pv. citri,Sang-F-40,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611311",Hyun2012,NA
+Xanthomonas citri pv. citri,SIN-1,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611312",Hyun2012,NA
+Xanthomonas citri pv. citri,8-4,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611313",Hyun2012,NA
+Xanthomonas citri pv. citri,N-82-14,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611314",Hyun2012,NA
+Xanthomonas citri pv. citri,27-9,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611315",Hyun2012,NA
+Xanthomonas citri pv. citri,24-18,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611316",Hyun2012,NA
+Xanthomonas citri pv. citri,KNK-28,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611317",Hyun2012,NA
+Xanthomonas oryzae pv. oryzae,YJ-p-1,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-2,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-3,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-4,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-5,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-1,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-2,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-3,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-4,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-5,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,YJ-p-6,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,-,K,R,NA,NA,NA,Lab-generated,600,NA,NA,"Origin: IN VITRO -> Lab mutant, Ref_code: Zhang2011->Zhang2011b",Zhang2011b,Le Na Ngo
+Xanthomonas oryzae pv. oryzae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2015,NA
+Xanthomonas oryzae pv. oryzae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2015,NA
+Xanthomonas oryzae pv. oryzicola,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2011a,NA
+Xanthomonas oryzae pv. oryzicola,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2011a,NA
+Xanthomonas oryzae pv. oryzicola,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2015,NA
+Xanthomonas oryzae pv. oryzicola,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhang2015,NA
+Yersinia pestis,56/13,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1024,NA,NA,"Overall, the rpsLA128G allele causing a K43R substitution in the ribosomal S12 protein is the cause of the high level STRr in strains 56/13, 59/13, and 12/87.",Andrianaivoarimanana2021,NA
+Yersinia pestis,59/13,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1024,NA,NA,"Overall, the rpsLA128G allele causing a K43R substitution in the ribosomal S12 protein is the cause of the high level STRr in strains 56/13, 59/13, and 12/87.",Andrianaivoarimanana2022,NA
+Yersinia pestis,12/87,NA,rpsL,NA,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"Overall, the rpsLA128G allele causing a K43R substitution in the ribosomal S12 protein is the cause of the high level STRr in strains 56/13, 59/13, and 12/87.",Andrianaivoarimanana2023,NA
+Yersinia pestis,S19960127,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,4096,NA,NA,"High level of streptomycin resistance (MIC 4,096 mg/L) exhibited in Y. pestis S19960127 due to a rpsL mutation associated with substitution of amino-acid 43 of ribosomal protein S12. Sequence comparison showed no amino-acid alteration at position 88 of ribosomal protein S12 or rrs gene mutations in S19960127.",Dai2021,NA
