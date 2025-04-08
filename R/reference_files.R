@@ -133,20 +133,19 @@ for (j in 1:length(summaries)) {
   id <- names(summaries[j])
   cat(paste0("Downloading genome for species #", j, "/", length(summaries), "\n..."))
   
-  try({
-    file_path <- download_file(summaries[[j]], dir = "output/references")
-    
-    fasta_file <- sub("\\.gz$", "", file_path)
-    sequences <- readDNAStringSet(fasta_file)
-    matching_seq <- sequences[grep("rpsL", names(sequences))]
-    
-    if (length(matching_seq) > 0) {
-      names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
-      all_sequences <- c(all_sequences, matching_seq)
-    } else {
-      cat(paste0("No rpsL found for species ID ", id, "\n"))
-    }
-  })
+  file_path <- download_file(summaries[[j]], dir = "output/references")
+  
+  fasta_file <- sub("\\.gz$", "", file_path)
+  sequences <- readDNAStringSet(fasta_file)
+  matching_seq <- sequences[grep("rpsL|30S ribosomal protein S12($|\\])", names(sequences))]
+  
+  if (length(matching_seq) != 0) {
+    names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
+    all_sequences <- c(all_sequences, matching_seq)
+  }else{
+    cat(paste0("No rpsL found for species ID ", id, "\n"))
+    next
+  }
 }
 # Combine all sequences into a single DNAStringSet object
 combined_sequences <- do.call(c, all_sequences)
