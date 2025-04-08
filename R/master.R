@@ -147,7 +147,7 @@ download_files(summaries, dir = "output/genomes")
 rpsL_target_sequences <- get_target_sequences(summaries, 
                                               dir = "output/genomes", 
                                               target_gene = 'rpsL', 
-                                              target_protein = "30S ribosomal subunit protein S12|30S ribosomal protein S12")
+                                              target_protein = "30S ribosomal subunit protein S12|30S ribosomal protein S12($|[^'])")
 writeXStringSet(DNAStringSet(rpsL_target_sequences), filepath = "output/rpsL_target_sequences.fa")
 
 # download and extract taxonomy information for downloaded genomes
