@@ -1,7 +1,6 @@
 .Rproj.user
 .Rhistory
-*.RData
-*.Rds
+*.dmp
 .Ruserdata
 .DS_Store
 *.fna
