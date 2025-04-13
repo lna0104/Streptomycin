@@ -133,10 +133,10 @@ Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,88,K,Q,NA,NA,NA,Lab
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,88,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,91,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Beniez2014,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,43,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Brulisauer2023,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,EDL933,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,Sakai,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,EDL933,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
+Escherichia coli,EDL933,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Chen2013,NA
 Escherichia coli,KO-365,NA,rpsL,128,128,A,G,A -> G,NA,NA,NA,NA,NA,42,42,K,R,K -> R,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
 Escherichia coli,KO-368,NA,rpsL,129,129,A,C,A -> C,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
 Escherichia coli,KO-371,NA,rpsL,128,128,A,C,A -> C,NA,NA,NA,NA,NA,42,42,K,T,K -> T,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
@@ -158,15 +158,14 @@ Escherichia coli,B/L1,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,87,87,K,R,K -> R,NA,NA,I
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,25,NA,NA,NA,Gill2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,6,Q,Stop,NA,NA,NA,Lab-generated,NA,NA,NA,The authors created a transgenic mouse model to study in vivo mutagenesis by introducing an E. coli plasmid with the rpsL gene into the mouse genome.,Gondo1996,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,R,S,NA,NA,NA,Lab-generated,25,NA,NA,NA,Gossner2021,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,129,129,A,C,NA,rpsL_A129C,rpsL_A129C,AAA,AAC,AAA -> AAC,NA,42,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,128,128,A,C,NA,rpsL_A128C,rpsL_A128C,AAA,ACA,AAA -> ACA,NA,42,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,I,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
-Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,262,262,A,G,NA,rpsL_A262G,rpsL_A262G,AAA,GAA,AAA -> GAA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rpsL,264,264,A,C,NA,rpsL_A264C,rpsL_A264C,AAA,AAC,AAA -> AAC,NA,87,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lopez2023,NA
 Escherichia coli,WP2,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
@@ -186,24 +185,21 @@ Escherichia coli,MC312,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,
 Escherichia coli,MC312,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Vila-Sanjurjo2007,NA
 Glaesserella parasuis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,former namely Haemophilus parasuis,Dai2018,NA
 Glaesserella parasuis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,former namely Haemophilus parasuis,Dai2018,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,D,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
-Klebsiella pneumoniae,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,G,D,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,125,NA,C,T,NA,NA,NA,NA,NA,NA,41,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,129,NA,G,T,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,128,NA,A,T,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,127,NA,A,C,NA,NA,NA,NA,NA,NA,42,NA,K,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,130,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,267,NA,C,G,NA,NA,NA,NA,NA,NA,88,NA,D,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,272,NA,C,A,NA,NA,NA,NA,NA,NA,90,NA,P,Q,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,272,NA,C,G,NA,NA,NA,NA,NA,NA,90,NA,P,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,272,NA,C,T,NA,NA,NA,NA,NA,NA,90,NA,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
+Klebsiella pneumoniae,NA,NA,rpsL,275,NA,G,A,NA,NA,NA,NA,NA,NA,91,NA,G,D,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tsai2014,NA
 Lactiplantibacillus plantarum,ATCC14917,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,56,-,K,R,NA,NA,NA,Lab-generated,variable,NA,NA,"Resistance mechanisms studied by passaging for 35 days, measuring MIC, and finally sequencing the final passaged lineages.",Zhang2018,NA
 Legionella pneumophila,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Zhu2015,NA
-Lysinibacillus sphaericus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Suriyanarayanan2016,NA
+Lysinibacillus sphaericus,DSLS5,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Suriyanarayanan2016,NA
 Macrococcoides caseolyticum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,22,NA,P,A,NA,NA,NA,Isolate,NA,NA,NA,NA,Keller2022,NA
 Macrococcoides caseolyticum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Keller2022,NA
 Mycobacterium avium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4619935,NA,T,A,NA,NA,NA,Isolate,NA,NA,NA,NA,Pang2018,NA
@@ -446,9 +442,8 @@ Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,165,NA,T,C,NA,NA,NA,NA,NA,NA
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
-Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,M,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
-Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
-Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,E,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rrs,524,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rrs,526,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rrs,522,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
@@ -527,22 +522,22 @@ Streptomyces noursei,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,108,NA,K,R,NA,NA,N
 Streptomyces parvulus,ATCC 12434,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
 Streptomyces parvulus,ATCC 12434,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
 Streptomyces viridochromogenes,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Liu2013,NA
-Thermus thermophilus,HG18,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,41,41,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG3,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG14,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG31,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,85,R,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG1,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG19,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,HG11,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,37,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,K,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
-Thermus thermophilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,76,NA,H,A,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,HG18,NA,rpsL,NA,NA,CCC,CTC,NA,NA,NA,NA,NA,NA,41,41,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG3,NA,rpsL,NA,NA,AAG,AGG,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG14,NA,rpsL,NA,NA,CGT,TGT,NA,NA,NA,NA,NA,NA,85,85,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG31,NA,rpsL,NA,NA,CGT,CAT,NA,NA,NA,NA,NA,NA,85,85,R,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG1,NA,rpsL,NA,NA,AAG,AGG,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG19,NA,rpsL,NA,NA,AAG,GAG,NA,NA,NA,NA,NA,NA,87,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,HG11,NA,rpsL,NA,NA,CCG,CTG,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,CGC,TGC,NA,NA,NA,NA,NA,NA,37,NA,R,C,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,AAG,ACC,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,AAG,GAG,NA,NA,NA,NA,NA,NA,53,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,CAC,CGC,NA,NA,NA,NA,NA,NA,76,NA,H,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,CAC,GAG,NA,NA,NA,NA,NA,NA,76,NA,H,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,CAC,AAG,NA,NA,NA,NA,NA,NA,76,NA,H,K,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
+Thermus thermophilus,NA,NA,rpsL,NA,NA,CAC,GCC,NA,NA,NA,NA,NA,NA,76,NA,H,A,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2009,NA
 Veillonella parvula,PK1910,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Liu2011,NA
-Wolbachia pipientis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Fallon2013,NA
+Wolbachia pipientis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Fallon2013,NA
 Xanthomonas citri pv. citri,N-82-54,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611301",Hyun2012,NA
 Xanthomonas citri pv. citri,N-87-2,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611302",Hyun2012,NA
 Xanthomonas citri pv. citri,T-27,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,"5/21 streptomycin resistant isolates expressed streptomycin resistance by the str gene only, 3 expressed resistance by a point mutation of the rpsL gene only, and 13 expressed resistance by both the str gene and point mutation. Xanthomonas citri pv. citri and Xanthomonas smithii subsp. citri are homotypic synonyms, ncbi link: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=611303",Hyun2012,NA
