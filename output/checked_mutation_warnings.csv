@@ -126,6 +126,3 @@ K43R,K43R,Erwinia amylovora,Chiou1995,Codon_original inconsistent with Nt_pos,Th
 K43N,K43N,Erwinia amylovora,Chiou1995,Codon_original inconsistent with Nt_pos,The Nt_pos and codon_original origins from E. coli since the study uses Escherichia coli as a host and a vector for clone strA-strB gene pair of Erwinia amylovora plasmid pea34.,no,K43N,43,https://www.sciencedirect.com/science/article/pii/0378111994007214?via%3Dihub
 K43T,K43T,Erwinia amylovora,Chiou1995,Codon_original inconsistent with Nt_pos,The Nt_pos and codon_original origins from E. coli since the study uses Escherichia coli as a host and a vector for clone strA-strB gene pair of Erwinia amylovora plasmid pea34.,no,K43T,43,https://www.sciencedirect.com/science/article/pii/0378111994007214?via%3Dihub
 K43R,K42R,Wolbachia pipientis,Fallon2013,AA_original or AA_mutation inconsistent with AA_pos,Adding one to each of these positions makes them match the Wolbachia pipientis reference. I have looked into the figure and counted the number of amino acid - position 43 of E. coli.,yes,K43R,43,https://pubmed.ncbi.nlm.nih.gov/23271364/
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
