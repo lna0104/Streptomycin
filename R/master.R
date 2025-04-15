@@ -46,7 +46,6 @@ source("R/plotting.R")
 source("R/reports.R")
 source("R/phylogenetics.R")
 source("R/codon_networks.R")
-#source("R/Yang_data.R")
 source("R/structure.R")
 
 # Global settings and parameters:
@@ -191,13 +190,10 @@ all_sequences <- list()
 for (j in 1:length(summaries)) {
   id <- names(summaries[j])
   cat(paste0("Downloading genome for species #", j, "/", length(summaries), "\n..."))
-  
   file_path <- download_file(summaries[[j]], dir = "output/references")
-  
   fasta_file <- sub("\\.gz$", "", file_path)
   sequences <- readDNAStringSet(fasta_file)
   matching_seq <- sequences[grep("rpsL|30S ribosomal protein S12($|\\])", names(sequences))]
-  
   if (length(matching_seq) != 0) {
     names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
     all_sequences <- c(all_sequences, matching_seq)
@@ -329,7 +325,7 @@ rm.all.but("globsets")
 ### Step 3: Checking all target sequences for reported mutations      ###
 #########################################################################
 
-# input for this step:  processed table of reported mutations ("./output/muts.csv")
+# input for this step:  processed table of reported mutations after manually modify all warnings ("./output/checked_muts.csv")
 #                       reported frequencies of rpsL mutations under STR 
 #                       E. coli rspL reference sequence (from "./data/rspL_references.fasta")
 #                       extracted rspL target sequences ("./output/rspL_target_sequences.fa")
@@ -337,7 +333,7 @@ rm.all.but("globsets")
 #                           for all target sequences ("./output/raw_output.csv")
 
 # 1.load required data:
-muts <- read.csv("./output/muts.csv")
+muts <- read.csv("./output/checked_muts.csv")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 
@@ -367,7 +363,7 @@ rm.all.but("globsets")
 ### Step 4: Processing and filtering of raw output                   ###
 ########################################################################
 
-# input for this step:  table of reported mutations ("./output/muts.csv")
+# input for this step:  table of reported mutations ("./output/checked_muts.csv")
 #                       screened results for all gene sequences ("./output/raw_output.csv")
 #                       information of downloaded genomes from NCBI ("./output/summaries.rds)
 # output for this step: filtered results for reliable sequences("./output/filtered_output.csv")
@@ -375,7 +371,7 @@ rm.all.but("globsets")
 #                       plots of target sequence statistics ("target_sequence_stats_hist.pdf" & "target_sequence_stats_pairs.pdf")
 
 # load required data:
-muts <- read_csv("./output/muts.csv", show_col_types = FALSE)
+muts <- read_csv("./output/checked_muts.csv", show_col_types = FALSE)
 raw_output <- read_csv("./output/raw_output.csv", show_col_types = FALSE)
 genome_summaries <- read_rds("./output/summaries.rds")
 
