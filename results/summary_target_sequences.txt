@@ -1,0 +1,31 @@
+Summary of screened target rpsL sequences 
+Date: 2025-04-11 16:56:00.54829
+--------------------------------------------------------------------
+
+Target sequence statistics before filtering:
+    Number of genomes in search results: 20866
+    Number of genomes with extracted rpsL sequence(s): 20808
+    Number of genomes where no rpoB sequence could be extracted: 58
+    Number of species with downloaded genomes: 20804
+    Total number of rpsL sequences: 20872
+    Number of genomes with more than one rpsL sequence: 59
+    Maximum number of rpsL sequences per genome: 4
+Filtering statistics:
+    Minimum sequence length: 63
+    Median sequence length: 375.00
+    Mean sequence length: 384.1486
+    Maximum sequence length: 468
+    Minimum aligning score: -614.3201
+    Maximum aligning score: 537.959
+    Minimum distance from reference rpsL core: 0
+    Maximum distance from reference rpsL core: 115
+Filters applied: 
+    Minimum sequence length: 100
+    Minimum alignment score to E. coli rpsL: -614.320068359375
+    Maximum core distance to E. coli rpsL: Inf
+Target sequence statistics after filtering:
+    Number of genomes with extracted rpsL sequence(s): 20796
+    Number of species with downloaded genomes: 20792
+    Total number of rpsL sequences: 20843
+    Number of genomes with more than one rpsL sequence: 42
+    Maximum number of rpsL sequences per genome: 4
