@@ -1,0 +1,9 @@
+Summary of reported mutations 
+Date: 2025-04-17 15:38:31.393711
+--------------------------------------------------------------------
+
+Number of studies: 98
+Number of species: 40
+Total number of mutations: 311
+Amino acid positions with mutations: 32
+Number of unique amino acid mutations: 74

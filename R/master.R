@@ -267,10 +267,17 @@ compareMutationsToRef<-function(seqs, muts){
 added_warnings_muts<-compareMutationsToRef(seqs, muts)
 
 write_csv(added_warnings_muts, "./output/muts.csv")
+#3 summary and plot of reported mutations
+plot_reported_mutations(muts, file_name = "./plots/reported_mutations_original.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
+summarise_reported_mutations(muts, file_name = "./results/summary_reported_mutations_original.txt") # returns a text message summarizing previous reports
+
+
+#Manually check all warnings and correct mutations
+checked_muts<-read.csv("./output/checked_muts.csv")
 
 #3 summary and plot of reported mutations
-plot_reported_mutations(muts, file_name = "./plots/reported_mutations.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
-summarise_reported_mutations(muts, file_name = "./results/summary_reported_mutations.txt") # returns a text message summarizing previous reports
+plot_reported_mutations(checked_muts, file_name = "./plots/reported_mutations_manualfix.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
+summarise_reported_mutations(checked_muts, file_name = "./results/summary_reported_mutations_manualfix.txt") # returns a text message summarizing previous reports
 
 #empty working environment to keep everything clean
 rm.all.but("globsets")
