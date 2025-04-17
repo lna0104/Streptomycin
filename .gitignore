@@ -6,3 +6,4 @@
 *.fna
 output/*
 !output/*.csv
+!output/raw_output_errors.rds
