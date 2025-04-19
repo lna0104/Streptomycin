@@ -1,0 +1,23 @@
+accession_number,species_name,genus,resistance_status,alig_score,core_dist
+GCF_000008625.1,Aquifex aeolicus,Aquifex,0,555.173583984375,0
+GCF_000015445.1,Bartonella bacilliformis,Bartonella,0,533.65533447265625,0
+GCF_000143085.1,Nitrosococcus watsonii,Nitrosococcus,0,537.958984375,0
+GCF_000948175.1,Aeribacillus alveayuensis,Aeribacillus,0,477.02239990234375,12
+GCF_001267925.1,Herbaspirillum hiltneri,Herbaspirillum,0,550.86993408203125,0
+GCF_001456025.1,Mastigocoleus testarum,Mastigocoleus,0,537.958984375,0
+GCF_003056015.1,Candidatus Similichlamydia epinepheli,Candidatus,0,513.849365234375,4
+GCF_004336905.1,Dyella soli,Dyella,0,495.7882995605469,4
+GCF_004912135.1,Rhizobium rosettiformans,Rhizobium,0,533.65533447265625,0
+GCF_007655255.1,Extensimonas perlucida,Extensimonas,0,542.26263427734375,0
+GCF_007786215.1,Cobetia crustatorum,Cobetia,0,351.62432861328125,18
+GCF_013309895.1,Wolbachia endosymbiont of Atemnus politus,Wolbachia,1,310.1056823730469,23
+GCF_014202315.1,Thermocatellispora tengchongensis,Thermocatellispora,0,311.0398254394531,21
+GCF_019670105.1,Agarivorans albus,Agarivorans,0,537.958984375,0
+GCF_025137375.1,Dactylosporangium fulvum,Dactylosporangium,0,253.30514526367188,27
+GCF_039535455.1,Streptomyces prasinosporus,Streptomyces,0,533.65533447265625,0
+GCF_042434515.1,Lysobacter korlensis,Lysobacter,0,147.87808227539062,36
+GCF_046613545.1,Aphanothece microscopica,Aphanothece,0,330.19000244140625,20
+GCF_900105385.1,Microlunatus soli,Microlunatus,1,291.1725158691406,23
+GCF_900127505.1,thiotrophic endosymbiont of Bathymodiolus puteoserpentis (Logatchev),thiotrophic,0,537.958984375,0
+GCF_948472335.1,Streptococcus bouchesdurhonensis,Streptococcus,0,593.90643310546875,0
+GCF_949790605.1,Carnobacterium maltaromaticum,Carnobacterium,0,446.3088073730469,14

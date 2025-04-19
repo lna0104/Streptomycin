@@ -15,7 +15,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
   frequency_position <-  muts %>% 
     select(Species, AA_pos_Ecoli, Origin) %>%
     filter(!is.na(AA_pos_Ecoli)) %>%
-    filter(AA_pos_Ecoli %in% mutation_list_reports$AA_pos_Ecoli) %>% 
+#    filter(AA_pos_Ecoli %in% mutation_list_reports$AA_pos_Ecoli) %>% 
     group_by(Species, AA_pos_Ecoli) %>%
     summarise(Origin = ifelse(all(Origin == "Isolate"), "Isolate",
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
@@ -142,7 +142,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     mutate(mutation_name = str_replace(mutation_name, "_", "")) |>
     mutate(mutation_name = factor(mutation_name, levels = sort(unique(mutation_name))))
     
-  cols = c(hsv(0, 0, c(0.2, 0.73, 0.8, 0.87)), hsv(0, 1, 0.95))
+  cols = c(hsv(0, 0, c(0.2, 0.73, 0.8)), hsv(0, 1, 0.95))
     
   # plot A: screening outcome (possible, impossible, present) across mutations
   p_mutation_screen <- ggplot(data_for_plotting) +
@@ -164,7 +164,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     scale_fill_manual(values = cols, name = "Mutation possibility:") +
     labs(fill = "") 
   
-  ggsave(filename = file_name, p_mutation_screen, width = 13, height = 6)
+  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 6)
 }
 
 
@@ -222,7 +222,7 @@ plot_evolvability_by_class <-function(filtered_output,
     labs(x = "Amino acid substitution",
          y = "Class",
          fill = "Mean evolvability")
-  ggsave(filename = file_name, p, width = 13, height = 6)
+  ggsave(filename = file_name, p, width = 5, height = 6)
 }
 
 
@@ -293,15 +293,13 @@ plot_classes_genera <- function(filtered_output,
     mutate(category = fct_recode(category, " " = "None"))
   
   cols <- c(" " = rgb(0,0,0,0),
-            "42R" = brewer.pal(9, name = "Pastel1")[1],
-            "42T" = brewer.pal(9, name = "Pastel1")[4],
-            "43N" = brewer.pal(9, name = "Pastel1")[2],
-            "43R" = brewer.pal(9, name = "Pastel1")[5],
+            "43N" = brewer.pal(9, name = "Pastel1")[1],
+            "43R" = brewer.pal(9, name = "Pastel1")[2],
             "43T" = brewer.pal(9, name = "Pastel1")[3],
-            "87E" = brewer.pal(9, name = "Pastel1")[6],
-            "87R" = brewer.pal(9, name = "Pastel1")[7],
-            "88E" = brewer.pal(9, name = "Pastel1")[8],
-            "88R" = brewer.pal(9, name = "Pastel1")[9],
+            "86C" = brewer.pal(9, name = "Pastel1")[4],
+            "91L" = brewer.pal(9, name = "Pastel1")[6],
+            "88E" = brewer.pal(9, name = "Pastel1")[7],
+            "88R" = brewer.pal(9, name = "Pastel1")[5],
             "Other" = "grey", 
             "Multiple" = "black")
   
@@ -458,7 +456,10 @@ plot_target_sequences_stats <- function(final_output,
 
 
 plot_multiseq_stats <- function(multiseq_stats, file_name) {
-  cols <- c(brewer.pal(5, name = "Set1"), "black")
+  cols <- c(
+  brewer.pal(9, "Set1"),            
+  "black"                         
+)
   p <- ggplot(multiseq_stats) +
     geom_point(aes(x = alig_score, 
                    y = core_dist + rnorm(nrow(multiseq_stats), 0, 0.05),

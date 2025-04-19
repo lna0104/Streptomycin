@@ -1,0 +1,28 @@
+Summary of the mutation screen 
+Date: 2025-04-18 13:35:52.266066
+--------------------------------------------------------------------
+
+Screened mutations:
+    Number of distinct mutations screened: 7
+    Number of amino acid sites: 4
+Predicted intrinsic resistance:
+    Total number of resistance mutations present across species: 1422
+    Number of unique mutations present across species: 5
+    Number of resistant species: 1417
+    Percentage of resistant species: 6.97%
+    Number of species with multiple resistance mutations: 5
+    Number of species where one rpsL copy confers resistance and one does not: 2
+Evolvability I (number of AA mutations that a species can mutate to):
+    Range: 1...7
+    95% inter-quantile range: 4...7
+    Median: 7
+    Theoretical range: 0...7
+Evolvability II (number of mutations that can produce a resistance mutation):
+    Range: 4...16
+    95% inter-quantile range: 7...9
+    Median: 8
+    Theoretical range: 0...15
+Associations between evolvabilities (phylogenetically uncontrolled):
+    Evolvability I vs. evolvability II: r=0.51
+    Intrinsic resistance vs. evolvability I: p=0 (Welch Two Sample t-test, t=-104)
+    Intrinsic resistance vs. evolvability II: p=0.0153 (Welch Two Sample t-test, t=2.43)

@@ -245,11 +245,11 @@ process_output <- function(output) {
 
 
 #' filters final_output to retrieve data related to high quality sequences and reliable mutation list
-#' @param output a data frame providing the results of mutation screening in all extracted rpoB sequences
-#' @param min_seq_length a numeric vector providing the minimum length of an acceptable rpoB sequence
-#' @param max_dist_from_ref a numeric vector providing the maximum distance of an acceptable rpoB sequence against reference sequence
+#' @param output a data frame providing the results of mutation screening in all extracted target sequences
+#' @param min_seq_length a numeric vector providing the minimum length of an acceptable target sequence
+#' @param max_dist_from_ref a numeric vector providing the maximum distance of an acceptable target sequence against reference sequence
 #'
-#' @return a data frame providing the results of mutation screening of high quality rpoB sequences across bacterial species
+#' @return a data frame providing the results of mutation screening of high quality target sequences across bacterial species
 #' @export
 #'
 #' @examples filter_output(output, 2000, -Inf, 1500)

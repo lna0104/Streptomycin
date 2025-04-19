@@ -59,9 +59,16 @@ get_subtree <- function(output, original_tree, meta_data, outliers){
   # }) 
   
   #subset for outliers to be removed
-  subset_tip_indices_outliers <- which(purrr::reduce(lapply(outliers$outliers, function(subset_label) {
-    grepl(subset_label, original_tree$tip.label, fixed = TRUE) #checks the presence of each species names in all tip labels
-  }), `|`))
+  subset_tip_indices_outliers <- if (!is.null(outliers)) {
+    which(purrr::reduce(
+      lapply(outliers$outliers, function(subset_label) {
+        grepl(subset_label, original_tree$tip.label, fixed = TRUE)
+      }), 
+      `|`  # Logical OR to combine all matches
+    ))
+  } else {
+    NULL
+  }
   
   #sum of all subsets to be kept
   subset_tip_indices <- unique(c(subset_tip_indices_species_name, 
@@ -211,34 +218,42 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
   # clades to be labeled in the tree:
   clades_to_label <- c(#"Gammaproteobacteria",
     #"Pseudomonadales",
-    "Enterobacterales",
+    # "Enterobacterales",
     #"Vibrionales",
-    "Francisellaceae",
+    # "Francisellaceae",
     #"Betaproteobacteria",
     #"Alphaproteobacteria",
     #"Hyphomicrobiales",
     #"Rickettsiales",
-    "Epsilonproteobacteria",
-    "Bacteroidota",
+    # "Epsilonproteobacteria",
+    # "Bacteroidota",
     #"Flavobacteriales",
-    #"Actinomyceota",
-    "Streptosporangiales",
-    "Kitasatosporales",
-    "Bifidobacteriales",
-    "Mycobacteriales",
+    # "Actinomyceota",
+    # "Streptosporangiales",
+    # "Kitasatosporales",
+    # "Bifidobacteriales",
+    # "Mycobacteriales",
     #"Micrococcales",
     #"Actinomycetales",
     #"Bacilli",
     #"Lactobacillales",
-    "Mollicutes",
+    # "Mollicutes",
     #"Mycoplasmatales",
-    "Erysipelotrichales",
+    # "Erysipelotrichales",
     #"Chlostridiae"
     #"Eubacteriales",
-    "Oscillospiraceae",
-    "Symbiobacteriaceae",
-    "Thermotogae",
-    "Spirochaetia"
+    # "Oscillospiraceae",
+    # "Symbiobacteriaceae",
+    # "Thermotogae",
+    # "Spirochaetia",
+    "Sphingomonadales",
+    "Rickettsiales",
+    "Devosiaceae",
+    "Planctomycetia",
+    "Coriobacteriia",
+    "Glycomycetaceae",
+    "Lactobacillaceae",
+    "Micrococcales"
   )
   
   # change tip labels to make manipulations easier:  
@@ -250,9 +265,9 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
     mutate(major_clade = ifelse(phylum %in% clades_to_label, phylum, major_clade)) |>
     mutate(major_clade = ifelse(class %in% clades_to_label, class, major_clade)) |>
     mutate(major_clade = ifelse(order %in% clades_to_label, order, major_clade)) |>
-    mutate(major_clade = ifelse(family %in% clades_to_label, family, major_clade)) |>
-    mutate(major_clade = ifelse(major_clade %in% c("Mollicutes", "Erysipelotrichales"),
-                                "Mollicutes &\nErysipelotrichales", major_clade))
+    mutate(major_clade = ifelse(family %in% clades_to_label, family, major_clade)) 
+    # mutate(major_clade = ifelse(major_clade %in% c("Mollicutes", "Erysipelotrichales"),
+    #                             "Mollicutes &\nErysipelotrichales", major_clade))
   
   data_tree <- as_tibble(subtree) |>
     left_join(species_data, by = join_by(label == species)) |>
