@@ -475,7 +475,8 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
+# meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
+meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 outliers <- if (file.exists("./data/outliers.csv")) {
   read_csv("./data/outliers.csv", show_col_types = FALSE)
 } else {
