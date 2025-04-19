@@ -490,8 +490,6 @@ subtree <- get_subtree(filtered_output, original_tree, meta_data, outliers)
 write.tree(subtree$tree, file = "./output/subtree.nwk") 
 
 # 3. subtree visualization:
-source("R/phylogenetics.R")
-
 subtree <- read.tree("./output/subtree.nwk")
 # big tree of all species:
 plot_subtree(subtree, species_output, bacterial_taxonomy, file_name = "./plots/phylogenies/whole_genome_tree.svg")
