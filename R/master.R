@@ -56,7 +56,6 @@ globsets <- list(
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
   max_core_dist = 50, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
-  # Yang_min_log2_fc = 0, # minimum log2(foldchange) in frequencies to include a mutation as "selected for"
   random_seed = 22)
 options(nwarnings = 10000)
 
@@ -276,7 +275,7 @@ summarise_reported_mutations(muts, file_name = "./results/summary_reported_mutat
 checked_muts<-read.csv("./output/checked_muts.csv")
 
 #3 summary and plot of reported mutations
-plot_reported_mutations(checked_muts, file_name = "./plots/reported_mutations_manualfix.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
+plot_reported_mutations(checked_muts, file_name = "./plots/reported_mutations_manualfix.png", n_frequency = 3) # returns frequent reported mutations, positions and species
 summarise_reported_mutations(checked_muts, file_name = "./results/summary_reported_mutations_manualfix.txt") # returns a text message summarizing previous reports
 
 #empty working environment to keep everything clean
@@ -475,8 +474,8 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-# meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
-meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
+# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 outliers <- if (file.exists("./data/outliers.csv")) {
   read_csv("./data/outliers.csv", show_col_types = FALSE)
 } else {
@@ -495,11 +494,11 @@ subtree <- read.tree("./output/subtree.nwk")
 # big tree of all species:
 plot_subtree(subtree, species_output, bacterial_taxonomy, file_name = "./plots/phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
-# plot_subtree_clades(subtree, species_output, bacterial_taxonomy, 
-#                     genera = c("Nocardia", "Streptomyces"),
-#                     families = c("Oscillospiraceae", "Francisellaceae"),
-#                     orders = c("Enterobacterales", "Thiotrichales"),
-#                     file_path = "./plots/phylogenies/")
+plot_subtree_clades(subtree, species_output, bacterial_taxonomy, 
+                    genera = c("Wolbachia"),
+                    families = c("Devosiaceae", "Glycomycetaceae"),
+                    orders = c("Sphingomonadales", "Bacillales", "Rickettsiales", "Coriobacteriales"),
+                    file_path = "./plots/phylogenies/")
 
 summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_phylogenetics.txt")
 
