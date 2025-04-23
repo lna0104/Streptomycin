@@ -11,7 +11,8 @@ Bifidobacterium bifidum,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA
 Bifidobacterium breve,Yakult,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Kiwaki2009,NA
 Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,87,K,R,NA,NA,NA,Lab-generated,500,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224326",Criswell2006,NA
 Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,87,K,E,NA,NA,NA,Lab-generated,500,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224327",Criswell2006,NA
-Borreliella burgdorferi,NA,NA,rrs,865,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,10,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224328",Criswell2006,NA
+Borreliella burgdorferi,NA,NA,rrs,1185,1192,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,500,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224328",Criswell2006,NA
+Borreliella burgdorferi,NA,NA,rrs,1186,1193,C,U,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,300,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224328",Criswell2006,NA
 Borreliella burgdorferi,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,"Borrelia burgdorferi is a heterotypic synonym of Borreliella burgdorferi, ncbi link https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=224329",Drecktrah2010,NA
 Brucella melitensis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,L,NA,NA,NA,Isolate,NA,NA,NA,NA,Cloeckaert2002,NA
 Campylobacter coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Habib2023,NA
@@ -124,6 +125,9 @@ Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,R,C,NA,NA,NA,Lab
 Escherichia coli,NA,NA,rpsL,262,262,A,G,NA,rpsL_A262G,rpsL_A262G,AAA,GAA,AAA -> GAA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,264,264,A,C,NA,rpsL_A264C,rpsL_A264C,AAA,AAC,AAA -> AAC,NA,87,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rrs,913,913,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
+Escherichia coli,NA,NA,rrs,915,915,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
+Escherichia coli,NA,NA,rrs,912,912,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lopez2023,NA
 Escherichia coli,WP2,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
 Escherichia coli,CM1141,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
@@ -236,14 +240,14 @@ Mycobacterium tuberculosis,NA,NA,rrs,865,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,N
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,12,NA,Cuevas-Cordoba2013,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,4,NA,Cuevas-Cordoba2013,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,K -> Q,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,483,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,485,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,496,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,8,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,795,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,870,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
-Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,483,NA,A,T,A -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,485,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,496,NA,G,A,G -> A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,8,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,795,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,6,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,870,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,3,NA,Cuevas-Cordoba2013,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,2048,NA,NA,NA,Das2009,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,2048,NA,NA,NA,Das2009,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Dobner1997,NA
@@ -279,6 +283,8 @@ Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,NA,Hlaing2017,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,K -> T,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
+Mycobacterium tuberculosis,9247,NA,rrs,904,NA,C,G,C -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,"1,280",NA,NA,NA,Honore1994,NA
+Mycobacterium tuberculosis,9428,NA,rrs,904,NA,C,A,C -> A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,160,NA,NA,NA,Honore1994,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,63 strains had this mutation,Huy2023,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,G,T,G -> T,NA,NA,AAG,AAT,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,1 strain had this mutation,Huy2023,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,32 strains had this mutation,Huy2023,NA
@@ -309,9 +315,6 @@ Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA
 Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
 Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,19,NA,V,F,NA,NA,NA,Isolate,NA,NA,NA,"mutations V19F and R86W were rare, and seen among both streptomycin sensitive (SMS) andstreptomycin resistant (SMR) isolates",Mahrouqi2022,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,302,NA,Q,E,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,341,NA,L,F,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,409,NA,A,G,NA,NA,NA,Isolate,NA,NA,NA,NA,Mahrouqi2022,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,"mutation K43R was frequent, found in 45% of SMR isolates",Mahrouqi2022,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA,R,W,NA,NA,NA,Isolate,NA,NA,NA,"mutations V19F and R86W were rare, and seen among both streptomycin sensitive (SMS) andstreptomycin resistant (SMR) isolates",Mahrouqi2022,NA
 Mycobacterium tuberculosis,4649/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
@@ -322,19 +325,19 @@ Mycobacterium tuberculosis,11966/89,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,
 Mycobacterium tuberculosis,3555/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,500-1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
 Mycobacterium tuberculosis,K8/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
 Mycobacterium tuberculosis,K11/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
-Mycobacterium tuberculosis,4362/8,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,5127/85,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,K4/94,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,3976/83,NA,rrs,NA,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,3601/84,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,K3/94,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,4362/8,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,5127/85,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,K4/94,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,3976/83,NA,rrs,522,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,3601/84,NA,rrs,526,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
+Mycobacterium tuberculosis,K3/94,NA,rrs,526,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,128,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,90 isolates had this mutation,Oo2018,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,256,C,G,NA,NA,NA,NA,NA,NA,86,NA,R,G,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,263,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,6 isolates had this mutation,Oo2018,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,263,A,T,NA,NA,NA,NA,NA,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,514,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,3 isolate had this mutation,Oo2018,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,517,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
-Mycobacterium tuberculosis,NA,NA,rrs,NA,905,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,3 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
+Mycobacterium tuberculosis,NA,NA,rrs,905,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018,NA
 Mycobacterium tuberculosis,CAS/26,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
 Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
 Mycobacterium tuberculosis,BEIJING/1,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,-,NA,NA,Origin: IN VIVO -> Isolate,Rezaei2017,Le Na Ngo
@@ -373,13 +376,21 @@ Mycobacterium tuberculosis,NA,NA,rrs,798,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mycobacterium tuberculosis,NA,NA,rrs,877,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Novel mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,904,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,Novel mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
-Mycobacterium tuberculosis,NA,NA,rrs,513,-,A,T,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
-Mycobacterium tuberculosis,NA,NA,rrs,513,-,A,C,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,16,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,76,NA,G,C,NA,NA,NA,NA,NA,NA,26,NA,G,C,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,127,NA,A,C,NA,NA,NA,NA,NA,NA,43,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,T,NA,NA,NA,NA,NA,NA,88,NA,K,M,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Sun2016,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,T,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,16,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,128,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona",Tudo2010,NA
-Mycobacterium tuberculosis,NA,NA,rrs,516,-,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
+Mycobacterium tuberculosis,NA,NA,rrs,516,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,512,NA,NA,"Exact strains not given, bacteria were from 69 clinical isolates from Barcelona, mutations were in the rrs 530 loop specifically",Tudo2010,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,59/104 (56.7%) had this mutation,Wang2011,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,23/104 (22.1%) had this mutation,Wang2011,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,115 STR-R isolates had this mutation. 4 STR-S isolates had this mutation.,Wang2019a,NA
@@ -478,6 +489,7 @@ Thermus thermophilus,HG31,NA,rpsL,NA,NA,CGT,CAT,NA,NA,NA,NA,NA,NA,85,85,R,H,NA,N
 Thermus thermophilus,HG1,NA,rpsL,NA,NA,AAG,AGG,NA,NA,NA,NA,NA,NA,87,87,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
 Thermus thermophilus,HG19,NA,rpsL,NA,NA,AAG,GAG,NA,NA,NA,NA,NA,NA,87,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
 Thermus thermophilus,HG11,NA,rpsL,NA,NA,CCG,CTG,NA,NA,NA,NA,NA,NA,90,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2001,NA
+Thermus thermophilus,NA,NA,rrs,1408,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Gregory2005,NA
 Thermus thermophilus,NA,NA,rpsL,NA,NA,CGC,TGC,NA,NA,NA,NA,NA,NA,37,NA,R,C,NA,NA,NA,Lab-generated,100,NA,NA,NA,Gregory2009,NA
 Thermus thermophilus,NA,NA,rpsL,NA,NA,AAG,ACC,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,1000,NA,NA,NA,Gregory2009,NA
 Thermus thermophilus,NA,NA,rpsL,NA,NA,AAG,GAG,NA,NA,NA,NA,NA,NA,53,NA,K,E,NA,NA,NA,Lab-generated,1000,NA,NA,NA,Gregory2009,NA
