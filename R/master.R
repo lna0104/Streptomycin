@@ -54,7 +54,7 @@ globsets <- list(
   min_n_species = 3, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 300, # minimum length of included gene target sequences
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
-  max_core_dist = 50, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
+  max_core_dist = 40, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
   random_seed = 22)
 options(nwarnings = 10000)
@@ -197,7 +197,7 @@ for (j in 1:length(summaries)) {
     cat(paste0("No rpsL found for species ID ", id, "\n"))
     next
   } else if (length(matching_seq) > 1) {
-    cat("There are ", length(matching_seq), "copies of rpsL.")
+    cat("There are ", length(matching_seq), "copies of rpsL. \n")
     matching_seq <- matching_seq[1]
   }
   names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
@@ -341,7 +341,7 @@ rm.all.but("globsets")
 #                           for all target sequences ("./output/raw_output.csv")
 
 # 1.load required data:
-muts <- read.csv("./output/checked_muts.csv")
+muts <- read.csv("./output/checked_muts.csv") 
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 
@@ -379,7 +379,7 @@ rm.all.but("globsets")
 #                       plots of target sequence statistics ("target_sequence_stats_hist.pdf" & "target_sequence_stats_pairs.pdf")
 
 # load required data:
-muts <- read_csv("./output/checked_muts.csv", show_col_types = FALSE)
+muts <- read_csv("./output/checked_muts.csv", show_col_types = FALSE) 
 raw_output <- read_csv("./output/raw_output.csv", show_col_types = FALSE)
 genome_summaries <- read_rds("./output/summaries.rds")
 
@@ -476,8 +476,8 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
-# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+# meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
+meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 outliers <- if (file.exists("./data/outliers.csv")) {
   read_csv("./data/outliers.csv", show_col_types = FALSE)
 } else {

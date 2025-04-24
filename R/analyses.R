@@ -187,8 +187,8 @@ filter_mutations <- function(muts,
                              origin = "ANY") {
   
   mutation_list <- muts |>
-    filter(!is.na(AA_pos_Ecoli), !is.na(AA_original), !is.na(AA_mutation)) |>
-    filter(is.na(Warning) | Warning == "AA_pos inconsistent with AA_pos_Ecoli")
+    filter(!is.na(AA_pos_Ecoli), !is.na(AA_original), !is.na(AA_mutation)) 
+    # filter(is.na(Warning) | Warning == "AA_pos inconsistent with AA_pos_Ecoli")
   
   if (origin == "ANY") {
     origin <- muts |> pull(Origin) |> unique()
