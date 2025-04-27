@@ -104,6 +104,8 @@ Escherichia coli,KO-430,NA,rpsL,262,262,A,G,A -> G,NA,NA,NA,NA,NA,87,87,K,E,K ->
 Escherichia coli,KO-376,NA,rpsL,272,272,C,T,C -> T,NA,NA,NA,NA,NA,90,90,P,L,P -> L,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
 Escherichia coli,KO-378,NA,rpsL,272,272,C,A,C -> A,NA,NA,NA,NA,NA,90,90,P,Q,P -> Q,NA,NA,Isolate,30,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
 Escherichia coli,KO-431,NA,rpsL,275,275,G,A,G -> A,NA,NA,NA,NA,NA,91,91,G,D,G -> D,NA,NA,Isolate,10000,NA,NA,Spontaneous STP mutants collected and screened with the goal of testing the effect of mutations within rpsL and in turn protein S12 on protein synthesis.,Chumpolkulwong2004,Le Na Ngo
+Escherichia coli,NA,NA,rrs,912,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,Low level resistance and using rrsB,Frattali1990,NA
+Escherichia coli,NA,NA,rrs,912,912,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,Low level resistance and using rrsB,Frattali1990,NA
 Escherichia coli,K12/A19,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,R,K -> R,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
 Escherichia coli,K12/A19,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
 Escherichia coli,B/L44,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,42,K,N,K -> N,NA,NA,Isolate,-,NA,NA,This is from an older article and hence the authors merely speculate about the nucleotide changes associated with the amino acid changes.,Funatsu1972,Le Na Ngo
@@ -129,6 +131,7 @@ Escherichia coli,NA,NA,rrs,913,913,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,La
 Escherichia coli,NA,NA,rrs,915,915,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rrs,912,912,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lopez2023,NA
+Escherichia coli,NA,NA,rrs,523,523,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,25,NA,NA,NA,Melancon1988,NA
 Escherichia coli,WP2,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
 Escherichia coli,CM1141,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
 Escherichia coli,WP2,NA,rpsL,430,430,A,G,NA,NA,NA,NA,NA,NA,42,42,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
@@ -452,9 +455,114 @@ Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,86,NA
 Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
 Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,NA,P,H,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
 Saccharopolyspora erythraea,NRRL2338,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,NA,G,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Tanaka2009,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,642,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,744,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,756,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1272,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1441,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1605,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1749,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1863,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1866,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,1917,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2103,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2424,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2424,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Enteritidis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,heterotypic synonym Salmonella enteritidis,Tang2019,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,248,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,642,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,726,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,756,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,900,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,921,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1161,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1218,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1254,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1281,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1344,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1356,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1506,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1650,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1836,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1881,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1917,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,1926,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2298,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2352,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2355,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2367,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,Using rrsD,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,45,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,248,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,260,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,891,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,933,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1017,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1050,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1173,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1197,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1212,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1218,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1281,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1287,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1344,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1356,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1506,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1710,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1740,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,1836,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,2424,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,2424,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Paulander2009,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Paulander2009,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,636,NA,T,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,645,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,648,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,891,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1212,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1281,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1287,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1344,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1356,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1455,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1833,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1836,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1917,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1932,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2196,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2424,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2424,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,702,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,756,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1128,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1462,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1665,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1752,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1819,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1817,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1920,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2058,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,N,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,T,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
