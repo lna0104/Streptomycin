@@ -311,15 +311,26 @@ plot_classes_genera <- function(filtered_output,
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
   
+  # plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+  #   geom_boxplot(aes(x = reorder(class, dplyr::desc(class)), 
+  #                   y = n_possible), outliers = FALSE) +
+  #   theme_bw() +
+  #   scale_y_continuous(expand = c(0.01, 0)) +
+  #   scale_fill_manual(values = cols, name = "") +
+  #   labs(x = "Class",
+  #        y = "Evolvability") +
+  #   coord_flip()
+
   plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    geom_boxplot(aes(x = reorder(class, dplyr::desc(class)), 
-                    y = n_possible), outliers = FALSE) +
-    theme_bw() +
-    scale_y_continuous(expand = c(0.01, 0)) +
+  geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
+    width=1.5, size=0.3, alpha = 0.5
+  ) + 
+  theme_minimal() +
+  scale_y_continuous(expand = c(0.01, 0)) +
     scale_fill_manual(values = cols, name = "") +
-    labs(x = "Class",
-         y = "Evolvability") +
-    coord_flip()
+  labs(x = "Class", y = "Evolvability") +
+  coord_flip()
+
   
   # Plot A2: predicted resistance mutations by class
   plot_A2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
