@@ -1,5 +1,5 @@
 Summary of screened target rpsL sequences 
-Date: 2025-04-24 21:19:11.467449
+Date: 2025-04-28 14:29:56.972035
 --------------------------------------------------------------------
 
 Target sequence statistics before filtering:

@@ -6,27 +6,21 @@ Actinopolymorpha cephalotaxi,GCF_013408535.1,43R
 Actinopolymorpha pittospori,GCF_014873875.1,43R
 Actinopolymorpha rutila,GCF_013407855.1,43R
 Actinopolymorpha singaporensis,GCF_900104745.1,43R
-Actinotalea caeni,GCF_009733795.1,88R
 Actirhodobacter atriluteus,GCF_013370205.1,88R
 Adhaeretor mobilis,GCF_007741515.1,88R
 Adlercreutzia hattorii,GCF_011405655.1,88R
 Adlercreutzia rubneri,GCF_009755265.1,88R
 Aeoliella mucimassa,GCF_007748035.1,88R
 Aeoliella straminimaris,GCF_024054565.1,88R
-Aerococcus agrisoli,GCF_003797145.1,43R
 Aestuariimicrobium ganziense,GCF_015352975.1,88R
 Aestuariimicrobium kwangyangense,GCF_000421525.1,88R
 Agrobacterium radiobacter,GCF_040801995.1,43R
 Akkermansia muciniphila,GCF_009731575.1,88R
-Algihabitans albus,GCF_003572205.1,43R
 Algisphaera agarilytica,GCF_014207595.1,88R
 Alienimonas californiensis,GCF_007743815.1,88R
 Alienimonas chondri,GCF_013036045.1,88R
-Aliicoccus persicus,GCF_900110815.1,43R
 Allopontixanthobacter confluentis,GCF_009827615.1,88R
 Allopontixanthobacter sediminis,GCF_009828115.1,88R
-Allorhodopirellula heiligendammensis,GCF_007860105.1,88R
-Allorhodopirellula solitaria,GCF_007859855.1,88R
 Allosphingosinicella indica,GCF_900177405.1,88R
 Allosphingosinicella vermicomposti,GCF_003012815.1,88R
 Alteraurantiacibacter aestuarii,GCF_039523595.1,88R
@@ -57,13 +51,8 @@ Alteriqipengyuania lutimaris,GCF_003363135.1,88R
 Alterisphingorhabdus coralli,GCF_032852305.1,88R
 Anaerobaca lacustris,GCF_030012215.1,88R
 Anaerobiospirillum succiniciproducens,GCF_000482845.1,88R
-Anaerococcus provencensis,GCF_000312365.2,43R
 Anaerohalosphaera lusitana,GCF_002007645.1,88R
-Anatilimnocola aggregata,GCF_007747655.1,88R
-Anatilimnocola floriformis,GCF_024256385.1,88R
 Ancrocorticia populi,GCF_003123745.1,88R
-Aporhodopirellula aestuarii,GCF_023701485.1,88R
-Aporhodopirellula rubra,GCF_014192335.1,88R
 Aquisediminimonas profunda,GCF_019443285.1,88R
 Aquisediminimonas sediminicola,GCF_019740335.1,88R
 Aquisphaera giovannonii,GCF_008087625.1,88R
@@ -74,7 +63,6 @@ Arsenicitalea aurantiaca,GCF_003994485.1,88R
 Atopobium deltae,GCF_001552785.1,88R
 Atopobium fossor,GCF_000483125.1,88R
 Atopobium minutum,GCF_000364325.1,88R
-Atopostipes suicloacalis,GCF_900129085.1,43R
 Aurantiacibacter aquimixticola,GCF_003605475.1,88R
 Aurantiacibacter arachoides,GCF_014643415.1,88R
 Aurantiacibacter atlanticus,GCF_001077815.2,88R
@@ -93,10 +81,8 @@ Aurantiacibacter xanthus,GCF_003584015.1,88R
 Aurantiacibacter zhengii,GCF_003584125.1,88R
 Aureliella helgolandensis,GCF_007752135.1,88R
 Avibacterium paragallinarum,GCF_011765605.1,43R
-Bacteroides gallinarum,GCF_000374365.1,43N
 Bartonella taylorii,GCF_023920085.1,43R
 Beduinella massiliensis,GCF_900199405.1,88R
-Beutenbergia cavernae,GCF_000023105.1,43R
 Bifidobacterium canis,GCF_009727065.1,43R
 Bifidobacterium catenulatum,GCF_001025195.1,43R
 Blastomonas aquatica,GCF_014639875.1,88R
@@ -107,10 +93,7 @@ Blastopirellula marina,GCF_000153105.1,88R
 Blastopirellula retiformator,GCF_007859755.1,88R
 Blastopirellula sediminis,GCF_020966755.1,88R
 Borrelia miyamotoi,GCF_019668505.1,43R
-Botrimarina colliarenosi,GCF_007859955.1,88R
 Botrimarina hoheduenensis,GCF_007859815.1,88R
-Botrimarina mediterranea,GCF_007753265.1,88R
-Brachyspira innocens,GCF_000384655.1,88R
 Bradyrhizobium canariense,GCF_019402665.1,43R
 Branchiibius cervicis,GCF_042661605.1,88R
 Branchiibius hedensis,GCF_900108585.1,88R
@@ -118,8 +101,6 @@ Bremerella alba,GCF_013618625.1,88R
 Bremerella cremea,GCF_039541315.1,88R
 Bremerella volcania,GCF_007748115.1,88R
 Brevibacterium senegalense,GCF_000285835.1,43R
-Brochothrix campestris,GCF_046058945.1,43R
-Brochothrix thermosphacta,GCF_001703515.1,43R
 Bythopirellula goksoeyrii,GCF_008065115.1,88R
 Bythopirellula polymerisocia,GCF_007860015.1,88R
 Caenibius tardaugens,GCF_003860345.1,88R
@@ -136,44 +117,22 @@ Candidatus Aquarickettsia rohweri,GCF_003953955.1,43R
 Candidatus Bandiella numerosa,GCF_029981845.1,43R
 Candidatus Bandiella woodruffii,GCF_034359465.1,43R
 Candidatus Bealeia paramacronuclearis,GCF_036670005.1,88R
-Candidatus Brocadia sapporoensis,GCF_001753675.2,88R
-Candidatus Brocadia sinica,GCF_000949635.1,88R
-Candidatus Cardinium hertigii,GCF_003176915.1,43R
 Candidatus Collinsella stercoripullorum,GCF_027669965.1,88R
-Candidatus Endomicrobiellum trichonymphae,GCF_002355835.1,"43R, 88R"
 Candidatus Hamiltonella defensa,GCF_000021705.1,43R
 Candidatus Hamiltonella endosymbiont of Tuberolachnus salignus,GCF_964019775.1,43R
 Candidatus Hepatobacter penaei,GCF_000742475.1,43R
-Candidatus Kuenenia stuttgartiensis,GCF_011066545.1,88R
 Candidatus Laterigemmans baculatus,GCF_010367455.1,88R
-Candidatus Microthrix parvicella,GCF_000455525.1,88R
 Candidatus Neoehrlichia lotoris,GCF_000964795.1,43R
 Candidatus Nucleicultrix amoebiphila,GCF_002117145.1,88R
-Candidatus Orientia mediorientalis,GCF_000964595.1,43R
 Candidatus Scalindua japonica,GCF_002443295.1,88R
-Candidatus Uabimicrobium amorphum,GCF_009002475.1,88R
-Candidatus Uabimicrobium helgolandensis,GCF_041508025.1,88R
 Candidatus Wolbachia massiliensis,GCF_014771645.1,43R
-Candidatus Xianfuyuplasma coldseepsis,GCF_014023125.1,43R
 Caniella muris,GCF_943193035.1,88R
-Cardinium endosymbiont of Bemisia tabaci,GCF_004300865.1,43R
-Cardinium endosymbiont of Culicoides punctatus,GCF_004354815.1,43R
-Cardinium endosymbiont of Dermatophagoides farinae,GCF_007559345.1,43R
-Cardinium endosymbiont of Encarsia pergandiella,GCF_000304455.1,43R
-Cardinium endosymbiont of Nabis limbatus,GCF_965196625.1,43R
-Cardinium endosymbiont of Oedothorax gibbosus,GCF_936981045.1,43R
-Cardinium endosymbiont of Philonthus spinipes,GCF_964030745.1,43R
-Cardinium endosymbiont of Sogatella furcifera,GCF_003351905.1,43R
-Cardinium endosymbiont of Tipula unca,GCF_964020025.1,43R
-Caryophanon latum,GCF_001700325.1,43R
-Caryophanon tenue,GCF_001700315.1,43R
 Caulifigura coniformis,GCF_007745175.1,88R
 Cellulomonas denverensis,GCF_016862695.1,43R
 Cellulomonas taurus,GCF_012931845.1,43R
 Changpingibacter yushuensis,GCF_014041995.1,88R
 Chromobacterium subtsugae,GCF_036320555.1,43R
 Citromicrobium bathyomarinum,GCF_000176355.1,88R
-Clostridium scindens,GCF_004295125.1,43R
 Collinsella acetigenes,GCF_012844445.1,88R
 Collinsella aerofaciens,GCF_010509075.1,88R
 Collinsella bouchesdurhonensis,GCF_900155365.1,88R
@@ -199,8 +158,6 @@ Corynebacterium sputi,GCF_000427865.1,88R
 Corynebacterium striatum,GCF_016728105.1,"43R, 88R"
 Corynebacterium terpenotabidum,GCF_000418365.1,43R
 Corynebacterium urealyticum,GCF_900187235.1,88R
-Crateriforma conspicua,GCF_007752935.1,88R
-Crateriforma spongiae,GCF_047300955.1,88R
 Croceibacterium aestuarii,GCF_030657335.1,88R
 Croceibacterium atlanticum,GCF_001008165.2,88R
 Croceibacterium ferulae,GCF_003660445.1,88R
@@ -221,9 +178,7 @@ Croceicoccus pelagius,GCF_001661915.1,88R
 Croceicoccus ponticola,GCF_004004515.1,88R
 Croceicoccus sediminis,GCF_007570835.1,88R
 Cucumibacter marinus,GCF_000429865.1,88R
-Defluviitoga tunisiensis,GCF_000953715.1,88R
 Deinococcus antarcticus,GCF_042649355.1,43R
-Deinococcus rhizophilus,GCF_030271215.1,43R
 Deinococcus xinjiangensis,GCF_040361885.1,43R
 Desertimonas flava,GCF_003426815.1,88R
 Desulfobulbus oligotrophicus,GCF_016446285.1,88R
@@ -267,22 +222,13 @@ Devosia subaequoris,GCF_014197055.1,88R
 Devosia submarina,GCF_003056345.1,88R
 Devosia ureilytica,GCF_024273205.1,88R
 Devosia yakushimensis,GCF_030159855.1,88R
-Dolosicoccus paucivorans,GCF_900100125.1,43R
 Ehrlichia ruminantium,GCF_000026005.1,43R
-Emergencia timonensis,GCF_900086585.1,88R
 Engelhardtia mirabilis,GCF_007748095.1,88R
 Enorma burkinafasonensis,GCF_902150035.1,88R
 Enorma massiliensis,GCF_000311845.1,88R
 Enorma phocaeensis,GCF_900186505.1,88R
 Enorma shizhengliae,GCF_009676995.1,88R
 Enorma timonensis,GCF_000321165.1,88R
-Enterocloster bolteae,GCF_000371705.1,88R
-Enterococcus alcedinis,GCF_014635985.1,43R
-Enterococcus eurekensis,GCF_042654605.1,43R
-Enterococcus lemanii,GCF_016909125.1,43R
-Entomospira culicis,GCF_028748145.1,43R
-Entomospira entomophila,GCF_028748125.1,43R
-Entomospira nematocerorum,GCF_028748105.1,43R
 Erwinia amylovora,GCF_043228865.1,43N
 Erythrobacter alti,GCF_037996805.1,88R
 Erythrobacter ani,GCF_019204025.1,88R
@@ -314,7 +260,6 @@ Gemmata algarum,GCF_034097035.1,88R
 Gemmata massiliana,GCF_901538265.1,88R
 Gemmata obscuriglobus,GCF_003149495.1,88R
 Gemmata palustris,GCF_017939745.1,88R
-Geotoga petraea,GCF_004768445.1,88R
 Gimesia alba,GCF_007744675.1,88R
 Gimesia algae,GCF_007746795.1,88R
 Gimesia aquarii,GCF_007748195.1,88R
@@ -349,13 +294,7 @@ Gordonibacter faecis,GCF_030077735.1,88R
 Granulimonas faecalis,GCF_022834715.1,88R
 Gulbenkiania indica,GCF_001418035.1,88R
 Haloglycomyces albus,GCF_000527155.1,88R
-Helicobacter bilis,GCF_000364285.1,88R
 Helicobacter canis,GCF_008693005.1,43R
-Helicobacter cinaedi,GCF_000284635.1,43R
-Helicobacter didelphidarum,GCF_003364195.1,43R
-Helicobacter fennelliae,GCF_900451005.1,43R
-Helicobacter winghamensis,GCF_028751035.1,88R
-Heliomicrobium gestii,GCF_009877435.1,43N
 Hellea balneolensis,GCF_000428525.1,"43R, 88R"
 Hephaestia caeni,GCF_003550065.1,88R
 Hephaestia mangrovi,GCF_019880555.1,88R
@@ -373,17 +312,12 @@ Ilumatobacter coccineus,GCF_000348785.1,88R
 Ilumatobacter fluminis,GCF_004364865.1,88R
 Ilumatobacter nonamiensis,GCF_000350145.1,88R
 Indioceanicola profundi,GCF_003568845.1,43R
-Isosphaera pallida,GCF_000186345.1,88R
 Janibacter indicus,GCF_900176385.1,88R
-Jeotgalibaca arthritidis,GCF_011100465.1,43R
-Jeotgalibaca porci,GCF_011299095.1,43R
-Keratinibaculum paraultunense,GCF_016767175.1,43R
 Kocuria subflava,GCF_012163155.1,88R
 Kolteria novifilia,GCF_007748055.1,88R
 Kribbibacterium absianum,GCF_030067705.1,88R
 Lacipirellula limnantheis,GCF_007746075.1,88R
 Lacipirellula parvula,GCF_009177095.1,88R
-Lactobacillus gigeriorum,GCF_001436575.1,43R
 Lancefieldella parvula,GCF_000024225.1,88R
 Lancefieldella rimae,GCF_000174015.1,88R
 Leekyejoonella antrihumi,GCF_007845645.1,88R
@@ -391,22 +325,10 @@ Lentisphaera araneosa,GCF_000170755.1,88R
 Lentisphaera marina,GCF_028745505.1,88R
 Lentisphaera profundi,GCF_028728065.1,88R
 Leptogranulimonas caecicola,GCF_023168405.1,88R
-Levilactobacillus suantsaii,GCF_014069315.1,88R
 Lichenibacterium ramalinae,GCF_004137085.1,43R
-Lignipirellula cremea,GCF_007751035.1,88R
 Limihaloglobus sulfuriphilus,GCF_001999965.1,88R
 Limnoglobus roseus,GCF_008254045.1,88R
 Luoshenia tenuis,GCF_014384745.1,88R
-Lysinibacillus agricola,GCF_016638705.1,43R
-Lysinibacillus cavernae,GCF_009724685.1,43R
-Lysinibacillus fusiformis,GCF_000724775.3,43R
-Lysinibacillus mangiferihumi,GCF_003049665.1,43R
-Lysinibacillus parviboronicapiens,GCF_003049605.2,43R
-Lysinibacillus pinottii,GCF_024753545.1,43R
-Lysinibacillus sphaericus,GCF_002982115.1,43R
-Lysinibacillus tabacifolii,GCF_005217585.1,43R
-Lysinibacillus varians,GCF_000600105.1,43R
-Lysinibacillus xylanilyticus,GCF_001183605.1,43R
 Maioricimonas rarisocia,GCF_007747795.1,88R
 Mariluticola halotolerans,GCF_021611515.1,88R
 Mariniblastus fucicola,GCF_008087665.1,88R
@@ -419,7 +341,6 @@ Micrococcus aloeverae,GCF_022664405.1,88R
 Micrococcus antarcticus,GCF_044872765.1,88R
 Micrococcus flavus,GCF_014204815.1,88R
 Microlunatus parietis,GCF_013407955.1,88R
-Microlunatus soli,GCF_900105385.1,43R
 Microlunatus speluncae,GCF_009299835.1,88R
 Miltoncostaea marina,GCF_018141525.1,88R
 Miltoncostaea oceani,GCF_018141545.1,88R
@@ -430,22 +351,11 @@ Mycobacterium kansasii,GCF_000157895.3,43R
 Mycolicibacterium smegmatis,GCF_022370415.1,43T
 Natronoglycomyces albus,GCF_016925535.1,88R
 Natronosporangium hydrolyticum,GCF_016925615.1,88R
-Neoehrlichia mikurensis,GCF_024299005.1,43R
-Neorhodopirellula lusitana,GCF_900182915.1,88R
-Neorhodopirellula pilleata,GCF_007859915.1,88R
 Nitrosomonas eutropha,GCF_000014765.1,88R
 Nocardia inohanensis,GCF_001612945.1,43N
-Nocardioides bigeumensis,GCF_039531755.1,43R
 Nocardiopsis gilva,GCF_002263495.1,43R
 Nocardiopsis mwathae,GCF_014201195.1,43R
 Nocardiopsis rhodophaea,GCF_039530945.1,43R
-Novipirellula artificiosorum,GCF_007860135.1,88R
-Novipirellula aureliae,GCF_007860185.1,88R
-Novipirellula caenicola,GCF_039545035.1,88R
-Novipirellula galeiformis,GCF_007860095.1,88R
-Novipirellula herctigrandis,GCF_007859835.1,88R
-Novipirellula maiorica,GCF_000346295.1,88R
-Novipirellula rosea,GCF_039541335.1,88R
 Novosphingobium acidiphilum,GCF_000429005.1,88R
 Novosphingobium aerophilum,GCF_014230305.1,88R
 Novosphingobium anseongense,GCF_037482895.1,88R
@@ -512,7 +422,6 @@ Novosphingopyxis baekryungensis,GCF_000420305.1,88R
 Novosphingopyxis iocasae,GCF_014334095.1,88R
 Olegusella massiliensis,GCF_900078545.1,88R
 Oligella ureolytica,GCF_016028735.1,43R
-Oligosphaera ethanolica,GCF_030814695.1,88R
 Olsenella absiana,GCF_036408855.1,88R
 Olsenella intestinalis,GCF_023276655.1,88R
 Olsenella massiliensis,GCF_001457795.1,88R
@@ -522,73 +431,8 @@ Olsenella profusa,GCF_030811115.1,88R
 Olsenella timonensis,GCF_900119915.1,88R
 Olsenella uli,GCF_000143845.1,88R
 Olsenella urininfantis,GCF_900155635.1,88R
-Orientia tsutsugamushi,GCF_900327255.1,43R
 Ornithinibacter aureus,GCF_009858245.1,88R
-Owariibacterium komagatae,GCF_045865535.1,88R
-Paenibacillus agri,GCF_013359945.1,43R
-Paenibacillus albidus,GCF_014644435.1,43R
-Paenibacillus amylolyticus,GCF_036894225.1,43R
-Paenibacillus anaericanus,GCF_003994475.1,43R
-Paenibacillus antarcticus,GCF_008369725.1,43R
-Paenibacillus auburnensis,GCF_927798115.1,43R
-Paenibacillus barcinonensis,GCF_013347305.1,43R
-Paenibacillus borealis,GCF_000758665.1,43R
-Paenibacillus camerounensis,GCF_000723885.1,43R
-Paenibacillus castaneae,GCF_002884445.1,43R
-Paenibacillus crassostreae,GCF_001857945.1,43R
-Paenibacillus dakarensis,GCF_001373415.1,43R
-Paenibacillus dokdonensis,GCF_004916975.1,43R
-Paenibacillus donghaensis,GCF_002192415.1,43R
-Paenibacillus endophyticus,GCF_014192395.1,43R
-Paenibacillus endoradicis,GCF_024721975.1,43R
-Paenibacillus etheri,GCF_001012825.1,43R
-Paenibacillus faecalis,GCF_900289175.1,43R
-Paenibacillus gallinarum,GCF_014836635.1,43R
-Paenibacillus glacialis,GCF_001637205.1,43R
-Paenibacillus graminis,GCF_000758705.1,43R
-Paenibacillus helianthi,GCF_001909055.1,43R
-Paenibacillus ihuae,GCF_001368795.1,43R
-Paenibacillus illinoisensis,GCF_004000925.1,43R
-Paenibacillus jilunlii,GCF_010450915.1,43R
-Paenibacillus luteus,GCF_006542765.1,43R
-Paenibacillus macquariensis,GCF_900156375.1,43R
-Paenibacillus marchantiae,GCF_028771845.1,43R
-Paenibacillus monticola,GCF_009664975.1,43R
-Paenibacillus odorifer,GCF_000758725.1,43R
-Paenibacillus pabuli,GCF_001514495.1,43R
-Paenibacillus pedocola,GCF_031599675.1,43R
-Paenibacillus phytohabitans,GCF_013141775.1,43R
-Paenibacillus pini,GCF_000576305.1,43R
-Paenibacillus piscarius,GCF_022234545.1,43R
-Paenibacillus polygoni,GCF_030263935.1,43R
-Paenibacillus polysaccharolyticus,GCF_900102085.1,43R
-Paenibacillus pseudetheri,GCF_924513355.1,43R
-Paenibacillus radicibacter,GCF_024721995.1,43R
-Paenibacillus rhizoplanae,GCF_042684125.1,43R
-Paenibacillus riograndensis,GCF_000981585.1,43R
-Paenibacillus segetis,GCF_014639155.1,43R
-Paenibacillus shirakamiensis,GCF_017874255.1,43R
-Paenibacillus silagei,GCF_017874735.1,43R
-Paenibacillus silvae,GCF_014639235.1,43R
-Paenibacillus sinopodophylli,GCF_005930355.1,43R
-Paenibacillus sonchi,GCF_021312615.1,43R
-Paenibacillus taichungensis,GCF_013359905.1,43R
-Paenibacillus tianjinensis,GCF_017086365.1,43R
-Paenibacillus tritici,GCF_018207515.1,43R
-Paenibacillus tundrae,GCF_036884255.1,43R
-Paenibacillus uliginis,GCF_900177425.1,43R
-Paenibacillus vandeheii,GCF_030433635.1,43R
-Paenibacillus wynnii,GCF_000757885.1,43R
-Paenibacillus xylanexedens,GCF_001908275.1,43R
-Paenibacillus xylanilyticus,GCF_013359935.1,43R
-Paenibacillus xylanivorans,GCF_001280595.1,43R
-Paenibacillus zeisoli,GCF_003994465.1,43R
-Paenisporosarcina indica,GCF_001939075.1,43R
-Paenisporosarcina macmurdoensis,GCF_042658845.1,43R
 Paludisphaera borealis,GCF_001956985.1,88R
-Paludisphaera mucosa,GCF_029589435.1,88R
-Paludisphaera rhizosphaerae,GCF_011065895.1,88R
-Paludisphaera soli,GCF_011064595.1,88R
 Pantoea conspicua,GCF_002095315.1,43R
 Paradevosia shaoguanensis,GCF_016801025.1,88R
 Paradevosia tibetensis,GCF_008000755.1,88R
@@ -612,7 +456,6 @@ Parerythrobacter lacustris,GCF_024626475.1,88R
 Parerythrobacter lutipelagi,GCF_005434975.1,88R
 Parolsenella catena,GCF_003966955.1,88R
 Parolsenella massiliensis,GCF_900143685.1,88R
-Parvimonas micra,GCF_900637905.1,43R
 Pauljensenia hongkongensis,GCF_001746855.1,88R
 Pelagerythrobacter aerophilus,GCF_003581645.1,88R
 Pelagerythrobacter marensis,GCF_001028625.1,88R
@@ -631,14 +474,10 @@ Pelagibacterium xiamenense,GCF_021166475.1,88R
 Peptidiphaga gingivicola,GCF_001652275.1,88R
 Peptococcus niger,GCF_900101835.1,88R
 Peptococcus simiae,GCF_046097595.1,88R
-Peptoniphilus rhinitidis,GCF_000246925.1,88R
-Phocicoccus pinnipedialis,GCF_903994035.1,43R
-Phocicoccus schoeneichii,GCF_014635565.1,43R
 Phycicoccus avicenniae,GCF_018139485.1,43R
 Phycisphaera mikurensis,GCF_000284115.1,88R
 Phytoactinopolyspora endophytica,GCF_004138495.1,88R
 Phytoactinopolyspora halotolerans,GCF_010550675.1,88R
-Pirellulimonas nuda,GCF_007750855.1,88R
 Planctellipticum variicoloris,GCF_030622045.1,88R
 Planctomicrobium piriforme,GCF_900113665.1,88R
 Planctopirus ephydatiae,GCF_007752345.1,88R
@@ -653,17 +492,9 @@ Pontixanthobacter gangjinensis,GCF_009827545.1,88R
 Pontixanthobacter luteolus,GCF_947494915.1,88R
 Pontixanthobacter rizhaonensis,GCF_012972675.1,88R
 Poriferisphaera corsica,GCF_007747445.1,88R
-Porphyromonas gingivalis,GCF_000010505.1,43R
-Posidoniimonas corsicana,GCF_007859765.1,88R
-Posidoniimonas polymericola,GCF_007859935.1,88R
 Pseudactinotalea suaedae,GCF_009733815.1,88R
 Pseudactinotalea terrae,GCF_009733845.1,88R
-Pseudobythopirellula maris,GCF_007859945.1,88R
-Pseudonocardia thermophila,GCF_900142365.1,"43R, 88R"
 Pseudopontixanthobacter vadosimaris,GCF_012979275.1,88R
-Psychrobacillus antarcticus,GCF_029533155.1,88R
-Psychrobacillus insolitus,GCF_003254155.1,43R
-Psychrosphaera algicola,GCF_028401425.1,91L
 Qipengyuania aestuarii,GCF_019711535.1,88R
 Qipengyuania algicida,GCF_009828025.1,88R
 Qipengyuania aquimaris,GCF_009827445.1,88R
@@ -708,17 +539,9 @@ Rhizorhabdus histidinilytica,GCF_900167915.1,88R
 Rhizorhabdus phycosphaerae,GCF_011044255.1,88R
 Rhizorhabdus wittichii,GCF_017607425.1,88R
 Rhizorhapis suberifaciens,GCF_014200045.1,88R
-Rhodopirellula bahusiensis,GCF_002727185.1,88R
-Rhodopirellula baltica,GCF_000196115.1,88R
-Rhodopirellula europaea,GCF_000346315.1,88R
-Rhodopirellula halodulae,GCF_020966775.1,88R
-Rhodopirellula islandica,GCF_001027925.1,88R
-Rhodopirellula sallentina,GCF_000346505.1,88R
 Rickettsia endosymbiont of Ceutorhynchus assimilis,GCF_918308855.1,43R
 Rickettsiales endosymbiont of Trichoplax sp. H2,GCF_009690945.1,43R
 Rohdeia mirabilis,GCF_007750655.1,88R
-Roseiconus lacunae,GCF_008312935.1,88R
-Roseiconus nitratireducens,GCF_008629675.1,88R
 Roseimaritima multifibrata,GCF_007741495.1,88R
 Roseimaritima sediminicola,GCF_009618275.1,88R
 Roseimaritima ulvae,GCF_008065135.1,88R
@@ -732,18 +555,9 @@ Rubinisphaera italica,GCF_007859715.1,88R
 Rubinisphaera margarita,GCF_022267515.1,88R
 Rubneribacter badeniensis,GCF_002899695.1,88R
 Rubripirellula amarantea,GCF_007859865.1,88R
-Rubripirellula lacrimiformis,GCF_007741535.1,88R
-Rubripirellula obstinata,GCF_008374075.1,88R
 Rubripirellula reticaptiva,GCF_007860175.1,88R
 Rubripirellula tenax,GCF_007860125.1,88R
 Rudaeicoccus suwonensis,GCF_007829035.1,88R
-Saccharibacillus alkalitolerans,GCF_011090185.1,43R
-Saccharibacillus brassicae,GCF_006542275.1,43R
-Saccharibacillus deserti,GCF_013618475.1,43R
-Saccharibacillus endophyticus,GCF_014635605.1,43R
-Saccharibacillus kuerlensis,GCF_000378145.1,43R
-Saccharibacillus qingshengii,GCF_013185195.1,43R
-Saccharibacillus sacchari,GCF_000585395.1,43R
 Saccharothrix australiensis,GCF_003634935.1,43R
 Salininema proteolyticum,GCF_042685645.1,88R
 Salsipaludibacter albus,GCF_019798055.1,88R
@@ -751,20 +565,10 @@ Saltatorellus ferox,GCF_007751475.1,88R
 Schaalia georgiae,GCF_000429245.1,88R
 Schaalia meyeri,GCF_016127995.1,88R
 Schlesneria paludicola,GCF_000255655.1,88R
-Sedimentisphaera cyanobacteriorum,GCF_001997385.1,88R
-Sedimentisphaera salicampi,GCF_002117005.1,88R
 Segniliparus rotundus,GCF_000092825.1,88R
 Segniliparus rugosus,GCF_000185725.2,88R
-Singulisphaera acidiphila,GCF_000242455.2,88R
 Slackia equolifaciens,GCF_003725995.1,88R
 Slackia faecicanis,GCF_003725295.1,88R
-Solibacillus daqui,GCF_028747805.1,43R
-Solibacillus faecavium,GCF_014836905.1,43R
-Solibacillus ferritrahens,GCF_037027585.1,43R
-Solibacillus isronensis,GCF_000298255.1,43R
-Solibacillus kalamii,GCF_002174535.1,43R
-Solibacillus merdavium,GCF_014836935.1,43R
-Solibacillus palustris,GCF_022549215.1,43R
 Sphaerochaeta associata,GCF_022869165.1,43R
 Sphingobium abikonense,GCF_001598335.1,88R
 Sphingobium agri,GCF_023051225.1,88R
@@ -1030,7 +834,6 @@ Sphingosinicella rhizophila,GCF_032378825.1,88R
 Sphingosinicella terrae,GCF_003347635.1,88R
 Sphingosinithalassobacter portus,GCF_003171655.1,88R
 Sphingosinithalassobacter tenebrarum,GCF_011057975.1,88R
-Sporanaerobacter acetigenes,GCF_900130025.1,88R
 Stakelama flava,GCF_019351405.1,88R
 Stakelama marina,GCF_018122655.1,88R
 Stakelama pacifica,GCF_004361835.1,88R
@@ -1039,24 +842,10 @@ Stakelama sediminis,GCF_014199335.1,88R
 Stappia indica,GCF_009789575.1,43R
 Stappia stellulata,GCF_000423705.1,43R
 Stappia taiwanensis,GCF_014635285.1,43R
-Stieleria bergensis,GCF_007745635.1,88R
-Stieleria magnilauensis,GCF_007753675.1,88R
-Stieleria maiorica,GCF_008035925.1,88R
-Stieleria marina,GCF_007741555.1,88R
-Stieleria neptunia,GCF_007754155.1,88R
-Stieleria sedimenti,GCF_025060895.1,88R
-Stieleria tagensis,GCF_024129865.1,88R
-Stieleria varia,GCF_038443385.1,88R
 Stomatohabitans albus,GCF_036336025.1,88R
 Stratiformator vulcanicus,GCF_007744515.1,88R
-Streptococcus dysgalactiae,GCF_016128095.1,43N
-Streptococcus ferus,GCF_900475025.1,43R
-Streptococcus ratti,GCF_008803015.1,43R
-Streptococcus thoraltensis,GCF_000380145.1,43R
 Streptomyces aidingensis,GCF_900112355.1,88R
-Streptomyces alkaliphilus,GCF_014141535.1,88R
 Streptomyces bohaiensis,GCF_012033785.1,88R
-Streptomyces calidiresistens,GCF_014141525.1,88R
 Streptomyces chisholmiae,GCF_031845445.1,88R
 Streptomyces cyaneus,GCF_004028635.1,43R
 Streptomyces lonarensis,GCF_012033735.1,88R
@@ -1067,16 +856,10 @@ Streptomyces sedi,GCF_006335015.1,88R
 Streptomyces spiramenti,GCF_012034385.1,88R
 Streptomyces triticirhizae,GCF_003696235.1,88R
 Streptomyces zhaozhouensis,GCF_900230195.1,88R
-Sulfobacillus harzensis,GCF_012933365.1,88R
-Sulfobacillus thermosulfidooxidans,GCF_900176145.1,88R
 Sutterella wadsworthensis,GCF_016724805.1,43R
 Symmachiella dynata,GCF_007747995.1,88R
 Symmachiella macrocystis,GCF_007860075.1,88R
 Tardibacter chloracetimidivorans,GCF_001890385.1,88R
-Tautonia marina,GCF_009177065.1,88R
-Tautonia plasticadhaerens,GCF_007752535.1,88R
-Tautonia rosea,GCF_012958305.1,88R
-Tautonia sociabilis,GCF_003977685.1,88R
 Taylorella asinigenitalis,GCF_000226625.1,43R
 Taylorella equigenitalis,GCF_028868935.1,43R
 Telmatocola sphagniphila,GCF_018398935.1,88R
@@ -1094,7 +877,6 @@ Thermodesulfobacterium hveragerdense,GCF_000423845.1,88R
 Thermodesulfobacterium hydrogeniphilum,GCF_000746255.1,88R
 Thermodesulfobacterium thermophilum,GCF_000421605.1,88R
 Thermogemmata fonticola,GCF_013694095.1,88R
-Thermogutta terrifontis,GCF_002277955.1,88R
 Thermophilibacter gallinarum,GCF_014982725.1,88R
 Thermophilibacter immobilis,GCF_015277515.1,88R
 Thermophilibacter mediterraneus,GCF_900119385.1,88R
@@ -1114,11 +896,6 @@ Tsuneonella suprasediminis,GCF_003605755.1,88R
 Tsuneonella troitsensis,GCF_001441535.1,88R
 Tuwongella immobilis,GCF_901538355.1,88R
 Urbifossiella limnaea,GCF_007747215.1,88R
-Vagococcus coleopterorum,GCF_011303955.1,43R
-Vagococcus intermedius,GCF_029144185.1,43R
-Vagococcus salmoninarum,GCF_003987495.1,43R
-Victivallis lenta,GCF_009695545.1,88R
-Victivallis vadensis,GCF_003096415.1,88R
 Wolbachia endosymbiont (group A) of Acrocera orbiculus,GCF_947250015.1,43R
 Wolbachia endosymbiont (group A) of Agelastica alni,GCF_964026805.1,43R
 Wolbachia endosymbiont (group A) of Aleiodes leptofemur,GCF_964028465.1,43R
@@ -1309,7 +1086,6 @@ Wolbachia endosymbiont (group B) of Yponomeuta malinellus,GCF_964026795.1,43R
 Wolbachia endosymbiont of Aedes aegypti,GCF_017896245.1,43R
 Wolbachia endosymbiont of Aedes albopictus,GCF_024804185.1,43R
 Wolbachia endosymbiont of Anopheles demeilloni,GCF_018491735.2,43R
-Wolbachia endosymbiont of Anurida maritima,GCF_042182995.1,43R
 Wolbachia endosymbiont of Armadillidium arcangelii,GCF_040207875.1,43R
 Wolbachia endosymbiont of Armadillidium vulgare,GCF_001027565.1,43R
 Wolbachia endosymbiont of Atemnus politus,GCF_013309895.1,43R
@@ -1360,7 +1136,6 @@ Wolbachia endosymbiont of Drosophila tristis,GCF_028981745.1,43R
 Wolbachia endosymbiont of Drosophila tsacasi,GCF_028982115.1,43R
 Wolbachia endosymbiont of Drosophila willistoni,GCF_040084705.1,43R
 Wolbachia endosymbiont of Drosophila yakuba,GCF_018467115.1,43R
-Wolbachia endosymbiont of Encarsia formosa,GCF_039540065.1,43R
 Wolbachia endosymbiont of Erebia cassioides,GCF_018555315.1,43R
 Wolbachia endosymbiont of Frankliniella intonsa,GCF_029856955.1,43R
 Wolbachia endosymbiont of Glossina morsitans morsitans,GCF_000689175.1,43R
@@ -1372,7 +1147,6 @@ Wolbachia endosymbiont of Liriomyza huidobrensis,GCF_042928915.1,43R
 Wolbachia endosymbiont of Listronotus oregonensis,GCF_031205055.1,43R
 Wolbachia endosymbiont of Litomosoides brasiliensis,GCF_013366805.1,43R
 Wolbachia endosymbiont of Litomosoides sigmodontis,GCF_013365435.1,43R
-Wolbachia endosymbiont of Madathamugadia hiepei,GCF_013366855.1,43R
 Wolbachia endosymbiont of Mansonella ozzardi,GCF_020278625.1,43R
 Wolbachia endosymbiont of Mansonella perstans,GCF_020278605.1,43R
 Wolbachia endosymbiont of Muscidifurax uniraptor,GCF_000174095.1,43R
@@ -1414,5 +1188,4 @@ Wolbachia pipientis,GCF_007971685.1,43R
 Xanthomonas phaseoli,GCF_008639345.1,88R
 Xylanivirga thermophila,GCF_004138105.1,88R
 Zavarzinella formosa,GCF_000255705.1,88R
-Zhenpiania hominis,GCF_014333425.1,88R
 Zymomonas mobilis,GCF_000498655.1,88R
