@@ -21,6 +21,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop")
 
+
   plot1 <- frequency_position %>%
     mutate(AA_pos_Ecoli = factor(AA_pos_Ecoli, levels = sort(unique(AA_pos_Ecoli)))) %>%
     ggplot() +
@@ -37,7 +38,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
          y = "Number of species", 
          fill = "Origin:") +
     scale_y_continuous(breaks = seq(0, 50, by = 5), expand = c(0.01, 0)) +
-    scale_fill_brewer(palette = "Pastel1") 
+    scale_fill_manual(values = wes_palette("FantasticFox1"))
 
   #2. the frequency of each reported amino acid substitution across species:
 
@@ -72,7 +73,8 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
          y = "Number of species", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_brewer(palette = "Pastel1", breaks=c('Lab-generated', 'Isolate', 'Both')) 
+    scale_fill_manual(values = wes_palette("FantasticFox1"), breaks=c('Lab-generated', 'Isolate', 'Both'))
+    # scale_fill_brewer(palette = "Pastel1", breaks=c('Lab-generated', 'Isolate', 'Both')) 
 
   #3. how many mutations for each species have been reported
   frequency_per_species <-  muts |>
@@ -102,7 +104,8 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
          y = "Number of reported mutations", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_brewer(palette = "Pastel1") 
+    scale_fill_manual(values = wes_palette("FantasticFox1"))
+    # scale_fill_brewer(palette = "Pastel1") 
 
   #combine plots:
   reported_mutations <- ggarrange(plot2, plot3, 
@@ -149,7 +152,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     geom_bar(aes(x = mutation_name, fill = mutation_category), width = 1)  +
     theme_bw() +
     theme(axis.text.x = element_text(angle=90, 
-                                     vjust=0.1, 
+                                     vjust=0.5, 
                                      hjust=0.95,
                                      size=10), 
           axis.text.y = element_text(size=10),
@@ -164,7 +167,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     scale_fill_manual(values = cols, name = "Mutation possibility:") +
     labs(fill = "") 
   
-  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 6)
+  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 8)
 }
 
 
@@ -178,8 +181,8 @@ plot_evolvability_by_class <-function(filtered_output,
                            Bacteroidota = "Bc",
                            Campylobacterota = "Ca",
                            Cyanobacteriota = "Cy",
-                           Deinococcota = "D",
-                           Mycoplasmatota = "M",
+                           Fusobacteriota = "F",
+                           Myxococcota = "M",
                            Planctomycetota = "Pl",
                            Pseudomonadota = "Ps",
                            Spirochaetota = "S",
@@ -292,17 +295,25 @@ plot_classes_genera <- function(filtered_output,
     mutate(category = fct_relevel(category, "Multiple", after = Inf)) |>
     mutate(category = fct_recode(category, " " = "None"))
   
+  # cols <- c(" " = rgb(0,0,0,0),
+  #           "43N" = brewer.pal(9, name = "Pastel1")[1],
+  #           "43R" = brewer.pal(9, name = "Pastel1")[2],
+  #           "43T" = brewer.pal(9, name = "Pastel1")[3],
+  #           "86C" = brewer.pal(9, name = "Pastel1")[4],
+  #           "91L" = brewer.pal(9, name = "Pastel1")[6],
+  #           "88E" = brewer.pal(9, name = "Pastel1")[7],
+  #           "88R" = brewer.pal(9, name = "Pastel1")[5],
+  #           "Other" = "grey", 
+  #           "Multiple" = "black")
+  
   cols <- c(" " = rgb(0,0,0,0),
-            "43N" = brewer.pal(9, name = "Pastel1")[1],
-            "43R" = brewer.pal(9, name = "Pastel1")[2],
-            "43T" = brewer.pal(9, name = "Pastel1")[3],
-            "86C" = brewer.pal(9, name = "Pastel1")[4],
-            "91L" = brewer.pal(9, name = "Pastel1")[6],
-            "88E" = brewer.pal(9, name = "Pastel1")[7],
-            "88R" = brewer.pal(9, name = "Pastel1")[5],
+            "43N" = wes_palette("Darjeeling1")[2],
+            "43R" = wes_palette("Darjeeling1")[3],
+            "43T" = wes_palette("Darjeeling1")[1],
+            "88E" = wes_palette("Darjeeling1")[4],
+            "88R" = wes_palette("Darjeeling1")[5],
             "Other" = "grey", 
             "Multiple" = "black")
-  
   # Plot A: evolvability by class
   classes_for_plotting <- species_with_muts |>
     group_by(class) |>
@@ -323,11 +334,11 @@ plot_classes_genera <- function(filtered_output,
 
   plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
   geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-    width=1.5, size=0.3, alpha = 0.5
+    width=1.3, size=0.3, alpha = 0.5
   ) + 
   theme_minimal() +
   scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = cols, name = "") +
+  scale_fill_manual(values = cols, name = "") +
   labs(x = "Class", y = "Evolvability") +
   coord_flip()
 
@@ -357,7 +368,7 @@ plot_classes_genera <- function(filtered_output,
   genera_for_plotting <- species_with_muts |>
     group_by(genus) |>
     summarise(n = n(), n_res = sum(category != " "), .groups = "drop") |>
-    filter(!(genus %in% c("Candidatus", "Wolbachia"))) |>
+    # filter(!(genus %in% c("Candidatus", "Wolbachia"))) |>
     mutate(fraction_res = n_res / n) |>
     filter(fraction_res >= min_frac_resistant, n >= min_genus_size) |>
     slice_max(fraction_res, n = n_genera_to_plot) |>
@@ -387,7 +398,7 @@ plot_classes_genera <- function(filtered_output,
   
   combined_plot <- ggarrange(plot_A1, plot_A2, plot_B,
                              ncol = 3,
-                             widths = c(1, 0.55, 1),
+                             widths = c(1, 0.8, 1),
                              labels = list("A", "", "  B"),
                              common.legend = TRUE,
                              legend = "bottom") + 

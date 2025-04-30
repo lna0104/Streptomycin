@@ -37,6 +37,7 @@ library(pander)
 library(quarto)
 library(NGLVieweR)
 library(htmlwidgets)
+library(wesanderson)
 
 
 source("R/util.R")
@@ -269,15 +270,15 @@ added_warnings_muts<-compareMutationsToRef(seqs, muts)
 
 write_csv(added_warnings_muts, "./output/muts.csv")
 #3 summary and plot of reported mutations
-plot_reported_mutations(muts, file_name = "./plots/reported_mutations_original.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
-summarise_reported_mutations(muts, file_name = "./results/summary_reported_mutations_original.txt") # returns a text message summarizing previous reports
+plot_reported_mutations(added_warnings_muts, file_name = "./plots/reported_mutations_original.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
+summarise_reported_mutations(added_warnings_muts, file_name = "./results/summary_reported_mutations_original.txt") # returns a text message summarizing previous reports
 
 
 #Manually check all warnings and correct mutations
 checked_muts<-read.csv("./output/checked_muts.csv")
 
 #3 summary and plot of reported mutations
-plot_reported_mutations(checked_muts, file_name = "./plots/reported_mutations_manualfix.png", n_frequency = 3) # returns frequent reported mutations, positions and species
+plot_reported_mutations(checked_muts, file_name = "./plots/reported_mutations_manualfix.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
 summarise_reported_mutations(checked_muts, file_name = "./results/summary_reported_mutations_manualfix.txt") # returns a text message summarizing previous reports
 
 #empty working environment to keep everything clean
@@ -533,15 +534,15 @@ mutation_list_reports <- filter_mutations(muts,
 
 networks <- tribble(
   ~type,    ~site_order, ~pos, ~focal_codon,
-  "type64", c(3, 2, 1),  516,  "GAC",
-  "type64", c(3, 2, 1),  529,  "CGT",
-  "type28", c(3, 2, 1),  531,  "TCG",
-  "type64", c(3, 2, 1),  531,  "TCG",
-  "type10", c(1, 2, 3),  522,  "TCT",
-  "type28", c(2, 3, 1),  522,  "TCT",
-  "type64", c(2, 3, 1),  522,  "TCT",
-  "type10", c(2, 3, 1),  526,  "CAC",
-  "type64", c(1, 3, 2),  513,  "CAG")
+  "type64", c(3, 2, 1),  43,  "AAG",
+  "type28", c(3, 2, 1),  43,  "AAG",
+  "type64", c(3, 2, 1),  86,  "CGT",
+  "type28", c(3, 2, 1),  86,  "CGT",
+  "type64", c(3, 2, 1),  92,  "GGT",
+  "type28", c(3, 2, 1),  92,  "GGT",
+  "type64", c(3, 2, 1),  88,  "AAG",
+  "type28", c(3, 2, 1),  88,  "AAG",
+  )
 
 for(i in 1:nrow(networks)) {
   plot_codon_network(type = networks$type[i],
@@ -576,7 +577,8 @@ mutations <- read_csv("./output/checked_muts.csv", show_col_types = FALSE) |>
 set.seed(globsets$random_seed)
 cons <- get_conservation(rpsL_target_sequences, rpsL_reference_Ecoli, n_rnd = 1e5)
 save(cons, file = "./output/cons.RData")
-summarise_conservation(cons,
+summarise_conservation(cons, 
+                       target_gene = "rpsL",
                        file_name = "./results/summary_conservation.txt")
 plot_cons(cons, 
           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
@@ -587,7 +589,7 @@ plot_cons(cons,
           dist_type = "grantham",
           file_name = "./plots/AA_conservation_grantham.pdf")
 
-# download PDB file for E. coli rpoB:
+# download PDB file for E. coli rpsL:
 pdb <- read.pdb("5uac")
 # Select beta chain (all chains are duplicated in crystal structure):
 chain_selection <- atom.select(pdb, chain = "C")
@@ -611,8 +613,6 @@ render_summary(summaries = c("reported_mutations",
                              "target_sequences", 
                              "mutation_screen", 
                              "phylogenetics",
-                             "mutation_screen_YangOnly",
-                             "mutation_screen_AllMutations",
                              "conservation"),
               preamble = "./data/summary_preamble.qmd",
               summaries_path = "./results")
