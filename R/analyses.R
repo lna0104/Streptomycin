@@ -525,14 +525,15 @@ get_wt_AA_mismatches <- function(muts, output) {
 get_conservation <- function(target_sequences, 
                              reference_Ecoli,
                              n_rnd = 1e5,
-                             alig_path = "./output/alignments")
+                             alig_path = "./output/alignments",
+                             n_workers)
 {
   l <- length(translate(reference_Ecoli))
   m <- length(target_sequences)
   reference_Ecoli_AA <- translate(reference_Ecoli)
   grantham <- granthamMatrix()
   
-  plan(multisession, workers = 10) # to parallelise the function
+  plan(multisession, workers = n_workers) # to parallelise the function
   
   # distances to E. coli:
   results_Ecoli <- future_lapply(1:m, function(k) {

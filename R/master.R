@@ -575,7 +575,7 @@ mutations <- read_csv("./output/checked_muts.csv", show_col_types = FALSE) |>
 
 # calculate conservation/diversity scores along the rpoB sequence:
 set.seed(globsets$random_seed)
-cons <- get_conservation(rpsL_target_sequences, rpsL_reference_Ecoli, n_rnd = 1e5)
+cons <- get_conservation(rpsL_target_sequences, rpsL_reference_Ecoli, n_rnd = 1e5, n_workers=10)
 save(cons, file = "./output/cons.RData")
 summarise_conservation(cons, 
                        target_gene = "rpsL",
