@@ -171,7 +171,7 @@ screen_target_sequences <- function(target_sequences, reference_Ecoli, mutation_
 
 #' Prepare a (possibly filtered) table of mutations to be screened:
 #'
-#' @param muts a data frame providing info on rpoB mutations reported in the literature
+#' @param muts a data frame providing info on rpsL mutations reported in the literature
 #' @param min_n_species a numeric vector providing the minimum number of species which a mutation has been reported in
 #' @param min_n_studies a numeric vector providing the minimum number studies which a mutation has been reported in
 #' @param origin Origin of mutations to be included, e.g., "Isolate" or "Lab mutant". 
@@ -525,14 +525,15 @@ get_wt_AA_mismatches <- function(muts, output) {
 get_conservation <- function(target_sequences, 
                              reference_Ecoli,
                              n_rnd = 1e5,
-                             alig_path = "./output/alignments")
+                             alig_path = "./output/alignments",
+                             n_workers)
 {
   l <- length(translate(reference_Ecoli))
   m <- length(target_sequences)
   reference_Ecoli_AA <- translate(reference_Ecoli)
   grantham <- granthamMatrix()
   
-  plan(multisession, workers = 10) # to parallelise the function
+  plan(multisession, workers = n_workers) # to parallelise the function
   
   # distances to E. coli:
   results_Ecoli <- future_lapply(1:m, function(k) {
@@ -541,12 +542,12 @@ get_conservation <- function(target_sequences,
     try( {
       load(paste0(alig_path, "/", names(target_sequences)[k], ".RData"))
       coords <- coords_alig$coordinates
-      rpoB_target_AA <- translate(target_sequences[[k]])
+      rpsL_target_AA <- translate(target_sequences[[k]])
 
-      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpoB
+      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpsL
         pos_target <- translateCoordinate(pos_Ecoli, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
         if (!is.na(pos_target)) {
-          AA_target <- as.character(rpoB_target_AA[pos_target])
+          AA_target <- as.character(rpsL_target_AA[pos_target])
           AA_Ecoli <- as.character(reference_Ecoli_AA[pos_Ecoli])
           hamming_Ecoli[pos_Ecoli] <- (AA_target != AA_Ecoli)
           if ((AA_Ecoli %in% colnames(grantham)) && (AA_target %in% colnames(grantham))) {
@@ -578,20 +579,20 @@ get_conservation <- function(target_sequences,
       i <- ijs$i[k]
       load(paste0(alig_path, "/", names(target_sequences)[i], ".RData"))
       coords1 <- coords_alig$coordinates
-      rpoB_target1_AA <- translate(target_sequences[[i]])
+      rpsL_target1_AA <- translate(target_sequences[[i]])
       
       # sequence 2:
       j <- ijs$j[k]
       load(paste0(alig_path, "/", names(target_sequences)[j], ".RData"))
       coords2 <- coords_alig$coordinates
-      rpoB_target2_AA <- translate(target_sequences[[j]])
+      rpsL_target2_AA <- translate(target_sequences[[j]])
       
-      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpoB
+      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpsL
         pos_target1 <- translateCoordinate(pos_Ecoli, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
         pos_target2 <- translateCoordinate(pos_Ecoli, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
         if ((!is.na(pos_target1)) && (!is.na(pos_target2))) {
-          AA_target1 <- as.character(rpoB_target1_AA[pos_target1])
-          AA_target2 <- as.character(rpoB_target2_AA[pos_target2])
+          AA_target1 <- as.character(rpsL_target1_AA[pos_target1])
+          AA_target2 <- as.character(rpsL_target2_AA[pos_target2])
           hamming_rnd[pos_Ecoli] <- (AA_target1 != AA_target2)
           if ((AA_target1 %in% colnames(grantham)) && (AA_target2 %in% colnames(grantham))) {
             grantham_rnd[pos_Ecoli] <- grantham[AA_target1, AA_target2]
