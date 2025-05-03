@@ -427,7 +427,7 @@ rm.all.but("globsets")
 # input for this step:  extracted target gene sequences (./"output/rpsL_target_sequences.fa")
 #                       E. coli gene reference sequence ("./data/rpsL_references.fasta")
 #                       filtered output of mutation screen ("./output/filtered_output.csv")
-#                       bacterial taxonomic information ("./output/bacterial_taxonomy.csv")
+#                       GTDB bacterial taxonomic information ("./output/gtdb_taxonomy.csv")
 #                       
 # output for this step: filtered results for reliable sequences("./output/filtered_output.csv")
 #                       summary of screening result ("./output/summary_screen_mutations.txt")
@@ -479,7 +479,7 @@ rm.all.but("globsets")
 # input for this step:  filtered results for reliable sequences("./output/filtered_output.csv")
 #                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
 #                       its metadata ("./data/bac120_metadata_r214.tsv")
-#                       bacterial taxonomic information ("./output/bacterial_taxonomy.csv")
+#                       GTDB bacterial taxonomic information ("./output/gtdb_taxonomy.csv")
 #                       names of outlier species in the tree ("./output/outliers.csv")
 
 # output for this step: subtree of original tree with tip_labels table ("./output/subtree.RData")
