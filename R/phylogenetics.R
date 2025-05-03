@@ -57,7 +57,7 @@ get_subtree <- function(output, original_tree, meta_data){
   #   which(grepl(subset_label, original_tree$tip.label, fixed = TRUE))[1] #checks the presence of each species names in all tip labels, and returns index of first one
   # }) 
   
-  # #subset for outliers to be removed
+  #subset for outliers to be removed
   # subset_tip_indices_outliers <- if (!is.null(outliers)) {
   #   which(purrr::reduce(
   #     lapply(outliers$outliers, function(subset_label) {
@@ -76,7 +76,7 @@ get_subtree <- function(output, original_tree, meta_data){
   
   #6. get the sub_tree
   subset_tree <- get_subtree_with_tips(original_tree, only_tips = subset_tip_indices, 
-                                      force_keep_root = TRUE)$subtree
+                                      omit_tips= NULL, force_keep_root = TRUE)$subtree
   
   
   ### I did some extra coding to find actual name of those tip labels which only have "genus name sp."
@@ -105,7 +105,7 @@ get_subtree <- function(output, original_tree, meta_data){
 #' and at the same time returns the bootstrapping values for each node
 #' @export
 #'
-#' @examples get_tree_with_boots(rpoB_target_sequences)
+#' @examples get_tree_with_boots(rpsL_target_sequences)
 get_tree_with_boots <- function(seqs){
   #keep long enough sequences 
   seqs <- seqs[lengths(seqs) >= 2000]
@@ -204,65 +204,40 @@ get_phylosignals <- function(subtree,
 #' plot subtree
 #'
 #' @param subtree a phylo object of the subset tree  
-#' @param filtered_output a data frame providing the results of mutation screening of high quality rpoB sequences across bacterial species
-#' @param bacterial_taxonomy a data frame providing info on bacterial taxonomic phylogeny
+#' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL sequences across bacterial species
+#' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GDTB
 #' @param file_name the path that the plot should be save in
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
 #' @export
 #'
-#' @examples plot_subtree(subtree, filtered_output, bacterial_taxonomy, "./plots/myfilename.pdf")
-plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name){
+#' @examples plot_subtree(subtree, filtered_output, meta_data, "./plots/myfilename.pdf")
+plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
   
   # clades to be labeled in the tree:
-  clades_to_label <- c(#"Gammaproteobacteria",
-    #"Pseudomonadales",
-    # "Enterobacterales",
-    #"Vibrionales",
-    # "Francisellaceae",
-    #"Betaproteobacteria",
-    #"Alphaproteobacteria",
-    #"Hyphomicrobiales",
-    #"Rickettsiales",
-    # "Epsilonproteobacteria",
-    # "Bacteroidota",
-    #"Flavobacteriales",
-    # "Actinomyceota",
-    # "Streptosporangiales",
-    # "Kitasatosporales",
-    # "Bifidobacteriales",
-    # "Mycobacteriales",
-    #"Micrococcales",
-    #"Actinomycetales",
-    #"Bacilli",
-    #"Lactobacillales",
-    # "Mollicutes",
-    #"Mycoplasmatales",
-    # "Erysipelotrichales",
-    #"Chlostridiae"
-    #"Eubacteriales",
-    # "Oscillospiraceae",
-    # "Symbiobacteriaceae",
-    # "Thermotogae",
-    # "Spirochaetia",
-    "Sphingomonadales",
-    # "Rickettsiales",
-    "Anaplasmataceae",
-    # "Alphaproteobacteria",
-    "Devosiaceae",
-    "Planctomycetia",
+  clades_to_label <- c(
+    # "Sphingomonadaceae", #family
+    "Sphingomonadales", #order
+    "Devosiaceae", #family
+    # "Rhizobiales", #order
+    # "Thermodesulfobacteriaceae", #family
+    # "Actinopolymorphaceae", #family
+    # "Micromonosporaceae", #family
+    # "Mycobacteriaceae", #family
+    # "Streptomycetaceae", #family
+    # "Coriobacteriales", #order
+    "Actinomycetales", #order
+    "Mycobacteriales", #order
+    "Coriobacteriia", #class
+    "Planctomycetia" #class
     # "Coriobacteriia",
-    "Coriobacteriales",
-    "Glycomycetaceae",
-    "Lactobacillaceae",
-    "Micrococcales"
   )
   
   # change tip labels to make manipulations easier:  
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
   
   species_data <- species_output |>
-    left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column genus
+    left_join(gtdb_taxonomy, by = join_by(species), relationship = "many-to-many") |> #join bacterial families to tree information by column species
     mutate(major_clade = NA) |>
     mutate(major_clade = ifelse(phylum %in% clades_to_label, phylum, major_clade)) |>
     mutate(major_clade = ifelse(class %in% clades_to_label, class, major_clade)) |>
@@ -348,8 +323,9 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
 #' plot subtree for a specific clade (genus, family, order, class)
 #'
 #' @param subtree a phylo object of the subset tree  
-#' @param filtered_output a data frame providing the results of mutation screening of high quality rpoB sequences across bacterial species
-#' @param bacterial_taxonomy a data frame providing info on bacterial taxonomic phylogeny
+#' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL
+#'  sequences across bacterial species
+#' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GTDB
 #' @param genus the name of the genus
 #' @param family the name of the family
 #' @param order the name of the order
@@ -358,10 +334,10 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
 #' @return a plot presenting phylo_genetic relationship among bacterial species
 #' @export
 #'
-#' @examples plot_subtree(subtree, filtered_output, bacterial_taxonomy, "./plots/myfilename.pdf")
+#' @examples plot_subtree(subtree, filtered_output, gtdb_taxonomy, "./plots/myfilename.pdf")
 plot_subtree_clade <- function(subtree, 
                                species_output, 
-                               bacterial_taxonomy, 
+                               gtdb_taxonomy, 
                                genus = NULL, family = NULL, order = NULL, class = NULL,
                                file_name){
   
@@ -372,7 +348,8 @@ plot_subtree_clade <- function(subtree,
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
   
   species_data <- species_output |>
-    left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") #join bacterial families to tree information by column genus
+    select(!genus) |>
+    left_join(gtdb_taxonomy, by = join_by(species), relationship = "many-to-many") #join bacterial families to tree information by column species
   
   if (!is.null(genus)) {
     species_to_include <- dplyr::filter(species_data, genus == .env$genus)
@@ -440,8 +417,9 @@ plot_subtree_clade <- function(subtree,
 #' plot subtree for a group of genera
 #'
 #' @param subtree a phylo object of the subset tree  
-#' @param filtered_output a data frame providing the results of mutation screening of high quality rpoB sequences across bacterial species
-#' @param bacterial_taxonomy a data frame providing info on bacterial taxonomic phylogeny
+#' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL
+#'  sequences across bacterial species
+#' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GTDB
 #' @param genera genera for which to plot a phylogenetic tree
 #' @param families genera for which to plot a phylogenetic tree
 #' @param orders genera for which to plot a phylogenetic tree
@@ -450,7 +428,7 @@ plot_subtree_clade <- function(subtree,
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
 #'
-plot_subtree_clades <- function(subtree, species_output, bacterial_taxonomy, 
+plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy, 
                                 genera = NULL, 
                                 families = NULL, 
                                 orders = NULL, 
@@ -460,7 +438,7 @@ plot_subtree_clades <- function(subtree, species_output, bacterial_taxonomy,
     purrr::map(genera, 
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
-                                       bacterial_taxonomy = bacterial_taxonomy, 
+                                       gtdb_taxonomy = gtdb_taxonomy, 
                                        genus = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -469,7 +447,7 @@ plot_subtree_clades <- function(subtree, species_output, bacterial_taxonomy,
     purrr::map(families, 
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
-                                       bacterial_taxonomy = bacterial_taxonomy, 
+                                       gtdb_taxonomy = gtdb_taxonomy, 
                                        family = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -478,7 +456,7 @@ plot_subtree_clades <- function(subtree, species_output, bacterial_taxonomy,
     purrr::map(orders, 
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
-                                       bacterial_taxonomy = bacterial_taxonomy, 
+                                       gtdb_taxonomy = gtdb_taxonomy, 
                                        order = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -487,7 +465,7 @@ plot_subtree_clades <- function(subtree, species_output, bacterial_taxonomy,
     purrr::map(classes, 
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
-                                       bacterial_taxonomy = bacterial_taxonomy, 
+                                       gtdb_taxonomy = gtdb_taxonomy, 
                                        class = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)

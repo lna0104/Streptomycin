@@ -452,12 +452,13 @@ get_theoretical_evolvabilities <- function(output) {
 }
 
 
-get_resistance_taxonomy <- function(output, bacterial_taxonomy, file_path) {
+get_resistance_taxonomy <- function(output, gtdb_taxonomy, file_path) {
   resistant_species <- output |>
     group_by(genus, species, accession_numbers) |>
     summarise(resistant = any(mutation_category == "present"), .groups = "drop") |>
-    left_join(bacterial_taxonomy, join_by(genus == genus)) 
-  
+    select(!genus) |>
+    left_join(gtdb_taxonomy, join_by(species)) 
+ 
   resistant_genera <- resistant_species |>
     group_by(genus, family, order, class, phylum) |>
     summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>

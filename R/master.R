@@ -440,14 +440,27 @@ rm.all.but("globsets")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
-bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+# meta_data_parsed <- meta_data |>
+#   select(gtdb_taxonomy) |>
+#   distinct() |>
+#   separate(gtdb_taxonomy, 
+#            into = c("domain", "phylum", "class", "order", "family", "genus", "species"), 
+#            sep = ";", 
+#            remove = FALSE) %>%
+#   mutate(across(domain:species, ~ sub("^[a-z]__","", .))) 
+# write_csv(meta_data_parsed, "./data/gtdb_taxonomy.csv") 
+
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+
 
 #2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/mutation_screen.pdf")
-plot_classes_genera(filtered_output, bacterial_taxonomy, file_name= "./plots/classes_genera.pdf")
-plot_evolvability_by_class(filtered_output, bacterial_taxonomy, file_name = "./plots/evolvability_by_class.pdf")
+plot_classes_genera(filtered_output, gtdb_taxonomy, file_name= "./plots/classes_genera.pdf")
+plot_evolvability_by_class(filtered_output, gtdb_taxonomy, file_name = "./plots/evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_mutation_screen.txt")
-get_resistance_taxonomy(filtered_output, bacterial_taxonomy, file_path = "./output/")
+get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/predicted_resistance.csv")
 
 #3. analyse species with multiple gene copies:
@@ -476,9 +489,9 @@ rm.all.but("globsets")
 # 1.load required files:
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
-bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-# meta_data <- read_tsv("./data/bac120_metadata_r214.tsv", show_col_types = FALSE) #GTDB information on included species
+# bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 # outliers <- if (file.exists("./data/outliers.csv")) {
 #   read_csv("./data/outliers.csv", show_col_types = FALSE)
 # } else {
@@ -495,12 +508,13 @@ write.tree(subtree$tree, file = "./output/subtree.nwk")
 # 3. subtree visualization:
 subtree <- read.tree("./output/subtree.nwk")
 # big tree of all species:
-plot_subtree(subtree, species_output, bacterial_taxonomy, file_name = "./plots/phylogenies/whole_genome_tree.svg")
+plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
-plot_subtree_clades(subtree, species_output, bacterial_taxonomy, 
-                    genera = c("Wolbachia"),
-                    families = c("Devosiaceae", "Glycomycetaceae"),
-                    orders = c("Sphingomonadales", "Bacillales", "Rickettsiales", "Coriobacteriales"),
+plot_subtree_clades(subtree, species_output, gtdb_taxonomy, 
+                    genera = c("Sphingomonas"),
+                    families = c("Devosiaceae"),
+                    orders = c("Sphingomonadales", "Coriobacteriales", "Rhizobiales", "Pirellulales", "Mycobacteriales"),
+                    classes = c("Planctomycetia", "Actinomycetes"),
                     file_path = "./plots/phylogenies/")
 
 summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_phylogenetics.txt")

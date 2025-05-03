@@ -172,11 +172,11 @@ plot_mutation_screen <- function(filtered_output, file_name) {
 
 
 plot_evolvability_by_class <-function(filtered_output, 
-                                       bacterial_taxonomy, 
+                                       gtdb_taxonomy, 
                                        n_classes_to_plot = 20,
                                        file_name) {
   # phylum abbreviations:
-  phylum_abbreviations = c(Actinomycetota = "A",
+  phylum_abbreviations = c(Actinomycetota = "At",
                            Bacillota = "Ba",
                            Bacteroidota = "Bc",
                            Campylobacterota = "Ca",
@@ -185,21 +185,28 @@ plot_evolvability_by_class <-function(filtered_output,
                            Myxococcota = "M",
                            Planctomycetota = "Pl",
                            Pseudomonadota = "Ps",
-                           Spirochaetota = "S",
+                           Spirochaetota = "Sp",
                            Thermodesulfobacteriota = "T",
+                           Desulfobacterota = "D",
+                           Desulfobacterota_I = "D_I",
+                           Bacteroidota_A = "Bc_A",
+                           Synergistota = "Sy",
+                           Acidobacteriota = "Ac",
+                           Verrucomicrobiota = "V",
                            Misc = "Misc")
   #average of possibility per mutation across classes
   plot_data <- filtered_output |>
-    rename(genus = genus) |>
+    # rename(genus = genus) |>
     group_by(species, genus, accession_numbers, mutation_name, n_possible) |>
     summarise(n = n(), .groups = 'drop') |>
     filter(n == 1) |>            # remove multi-copy species
-    left_join(bacterial_taxonomy |> select(genus, class)) |>
+    # left_join(bacterial_taxonomy |> select(genus, class)) |>
+    left_join(gtdb_taxonomy |> select(species, class)) |>
     filter(!is.na(class)) |>
     mutate(class = fct_lump_n(class, n = n_classes_to_plot)) |>
     group_by(class, mutation_name) |>
     summarise(n_pos = mean(n_possible), .groups = 'drop') |>
-    left_join(bacterial_taxonomy |> select(class, phylum) |> distinct()) |>
+    left_join(gtdb_taxonomy |> select(class, phylum) |> distinct()) |>
     mutate(phylum = ifelse(class == "Other", "Misc", phylum)) |>
     mutate(phylum = phylum_abbreviations[phylum]) |>
     mutate(class = factor(class), phylum = factor(phylum)) |>
@@ -247,11 +254,11 @@ plot_evolvability_by_class <-function(filtered_output,
 #'
 #' @examples plot_classes_genera(filtered_output, "./plot/myFilename.pdf")
 plot_classes_genera <- function(filtered_output,
-                                bacterial_taxonomy,
+                                gtdb_taxonomy,
                                 file_name,
                                 n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
-                                min_genus_size = 12, 
+                                min_genus_size = 10, 
                                 n_genera_to_plot = 30,
                                 n_muts_to_plot = 6) {
   
@@ -284,8 +291,8 @@ plot_classes_genera <- function(filtered_output,
   species_with_muts <- n_muts_per_species |>
     left_join(first_mut_per_species, by = join_by(species)) |>
     mutate(category = ifelse(muts_present == 0L, "None", ifelse(muts_present > 1, "Multiple", first_mut))) |>
-    select(species, genus, category, n_possible) |>
-    left_join(bacterial_taxonomy, by = join_by(genus == genus))|>
+    select(species, category, n_possible) |>
+    left_join(gtdb_taxonomy, by = join_by(species))|>
     distinct() |>
     mutate(class = factor(class)) |>
     mutate(genus = factor(genus)) |>
@@ -333,14 +340,14 @@ plot_classes_genera <- function(filtered_output,
   #   coord_flip()
 
   plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-  geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-    width=1.3, size=0.3, alpha = 0.5
-  ) + 
-  theme_minimal() +
-  scale_y_continuous(expand = c(0.01, 0)) +
-  scale_fill_manual(values = cols, name = "") +
-  labs(x = "Class", y = "Evolvability") +
-  coord_flip()
+    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
+      width=1.3, size=0.3, alpha = 0.5
+    ) + 
+    theme_minimal() +
+    scale_y_continuous(expand = c(0.01, 0)) +
+    scale_fill_manual(values = cols, name = "") +
+    labs(x = "Class", y = "Evolvability") +
+    coord_flip()
 
   
   # Plot A2: predicted resistance mutations by class
