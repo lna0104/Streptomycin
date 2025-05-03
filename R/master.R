@@ -451,7 +451,7 @@ filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FAL
 #            remove = FALSE) %>%
 #   mutate(across(domain:species, ~ sub("^[a-z]__","", .))) 
 # write_csv(meta_data_parsed, "./data/gtdb_taxonomy.csv") 
-
+# Generate gtdb_taxonomy file from GTDB metadata
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 
 
