@@ -4,13 +4,12 @@
 #' @param output a data frame containing the predicted mutations for all species
 #' @param original_tree a phylo object providing the bacterial tree of life (from GTDB)
 #' @param meta_data a data frame providing the information of species which are included in bacterial tree of life (from GTDB)
-#' @param outliers a data frame providing species which are misplaced inside the original tree
 #'
 #' @return a list providing the subset tree and a data frame presenting all tip labels
 #' @export
 #'
-#' @examples get_subtree(filtered_output, original_tree, meta_data, outliers)
-get_subtree <- function(output, original_tree, meta_data, outliers){
+#' @examples get_subtree(filtered_output, original_tree, meta_data)
+get_subtree <- function(output, original_tree, meta_data){
 
   our_species <- output |>
     select(species, accession_numbers) |>
@@ -58,17 +57,17 @@ get_subtree <- function(output, original_tree, meta_data, outliers){
   #   which(grepl(subset_label, original_tree$tip.label, fixed = TRUE))[1] #checks the presence of each species names in all tip labels, and returns index of first one
   # }) 
   
-  #subset for outliers to be removed
-  subset_tip_indices_outliers <- if (!is.null(outliers)) {
-    which(purrr::reduce(
-      lapply(outliers$outliers, function(subset_label) {
-        grepl(subset_label, original_tree$tip.label, fixed = TRUE)
-      }), 
-      `|`  # Logical OR to combine all matches
-    ))
-  } else {
-    NULL
-  }
+  # #subset for outliers to be removed
+  # subset_tip_indices_outliers <- if (!is.null(outliers)) {
+  #   which(purrr::reduce(
+  #     lapply(outliers$outliers, function(subset_label) {
+  #       grepl(subset_label, original_tree$tip.label, fixed = TRUE)
+  #     }), 
+  #     `|`  # Logical OR to combine all matches
+  #   ))
+  # } else {
+  #   NULL
+  # }
   
   #sum of all subsets to be kept
   subset_tip_indices <- unique(c(subset_tip_indices_species_name, 
@@ -77,7 +76,7 @@ get_subtree <- function(output, original_tree, meta_data, outliers){
   
   #6. get the sub_tree
   subset_tree <- get_subtree_with_tips(original_tree, only_tips = subset_tip_indices, 
-                                       omit_tips = subset_tip_indices_outliers, force_keep_root = TRUE)$subtree
+                                      force_keep_root = TRUE)$subtree
   
   
   ### I did some extra coding to find actual name of those tip labels which only have "genus name sp."
