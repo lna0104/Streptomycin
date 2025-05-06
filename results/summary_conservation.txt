@@ -1,0 +1,24 @@
+Summary of the amino acid conservation analyses 
+Date: 2025-05-06 11:29:35.474732
+--------------------------------------------------------------------
+
+Mean Hamming distance to E. coli across all sequences:
+    Number of sequences: 15740
+    Mean across AA positions: 0.226062118293233
+    Max across AA positions: 0.943202033036849
+    Min across AA positions: 0
+Mean Hamming distance across randomly sampled pairs ofrpsL sequences:
+    Number of sequence pairs: 100000
+    Mean across AA positions: 0.231670434571266
+    Max across AA positions: 0.88367714376493
+    Min across AA positions: 0
+Mean Grantham distance to E. coli across all sequences:
+    Number of sequences: 15740
+    Mean across AA positions: 15.7975369179425
+    Max across AA positions: 161.740199504416
+    Min across AA positions: 0
+Mean Grantham distance across randomly sampled pairs ofrpsL sequences:
+    Number of sequence pairs: 100000
+    Mean across AA positions: 15.4150348878232
+    Max across AA positions: 77.8605684017521
+    Min across AA positions: 0
