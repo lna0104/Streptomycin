@@ -444,23 +444,25 @@ filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FAL
 # meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 # meta_data_parsed <- meta_data |>
 #   select(gtdb_taxonomy) |>
-#   distinct() |>
 #   separate(gtdb_taxonomy, 
 #            into = c("domain", "phylum", "class", "order", "family", "genus", "species"), 
 #            sep = ";", 
 #            remove = FALSE) %>%
-#   mutate(across(domain:species, ~ sub("^[a-z]__","", .))) 
+#   mutate(across(domain:species, ~ sub("^[a-z]__","", .))) |>
+#   select(genus, family, order, class, phylum) |>
+#   distinct()
 # write_csv(meta_data_parsed, "./data/gtdb_taxonomy.csv") 
 # Generate gtdb_taxonomy file from GTDB metadata
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
 
 
 #2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/mutation_screen.pdf")
-plot_classes_genera(filtered_output, gtdb_taxonomy, file_name= "./plots/classes_genera.pdf")
-plot_evolvability_by_class(filtered_output, gtdb_taxonomy, file_name = "./plots/evolvability_by_class.pdf")
+plot_classes_genera(filtered_output, gtdb_taxonomy, genus_variants, file_name= "./plots/classes_genera.pdf")
+plot_evolvability_by_class(filtered_output, gtdb_taxonomy, genus_variants, file_name = "./plots/evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_mutation_screen.txt")
-get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/")
+get_resistance_taxonomy(filtered_output, gtdb_taxonomy, genus_variants,  file_path = "./output/")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/predicted_resistance.csv")
 
 #3. analyse species with multiple gene copies:
@@ -480,7 +482,6 @@ rm.all.but("globsets")
 #                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
 #                       its metadata ("./data/bac120_metadata_r214.tsv")
 #                       GTDB bacterial taxonomic information ("./output/gtdb_taxonomy.csv")
-#                       names of outlier species in the tree ("./output/outliers.csv")
 
 # output for this step: subtree of original tree with tip_labels table ("./output/subtree.RData")
 #                       subtree of original tree (nwk file: "./output/subtree.nwk")
@@ -497,6 +498,7 @@ gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #b
 # } else {
 #   NULL
 # }
+genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
 
 # 2. get species-level summary of mutation screen data:
 species_output <- get_species_output(filtered_output)
@@ -508,13 +510,13 @@ write.tree(subtree$tree, file = "./output/subtree.nwk")
 # 3. subtree visualization:
 subtree <- read.tree("./output/subtree.nwk")
 # big tree of all species:
-plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/phylogenies/whole_genome_tree.svg")
+plot_subtree(subtree, species_output, gtdb_taxonomy, genus_variants, file_name = "./plots/phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
-plot_subtree_clades(subtree, species_output, gtdb_taxonomy, 
+plot_subtree_clades(subtree, species_output, gtdb_taxonomy, genus_variants, 
                     genera = c("Sphingomonas"),
-                    families = c("Devosiaceae"),
-                    orders = c("Sphingomonadales", "Coriobacteriales", "Rhizobiales", "Pirellulales", "Mycobacteriales"),
-                    classes = c("Planctomycetia", "Actinomycetes"),
+                    families = c("Devosiaceae", "Mycobacteriaceae"),
+                    orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+                    classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
                     file_path = "./plots/phylogenies/")
 
 summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_phylogenetics.txt")
@@ -524,7 +526,7 @@ rm.all.but("globsets")
 
 
 ########################################################################
-### Step 8: Codon networks                                           ###
+### Step 8: Codon networks                                         ###
 ########################################################################
 
 # input for this step:  extracted target sequences (./"output/rpsL_target_sequences.fa")
@@ -604,15 +606,16 @@ plot_cons(cons,
           file_name = "./plots/AA_conservation_grantham.pdf")
 
 # download PDB file for E. coli rpsL:
-pdb <- read.pdb("5uac")
-# Select beta chain (all chains are duplicated in crystal structure):
-chain_selection <- atom.select(pdb, chain = "C")
+pdb <- read.pdb("8cgj")
+# pdb <- read.pdb("8cai")
+# Select L chain (Small ribosomal subunit protein uS12):
+chain_selection <- atom.select(pdb, chain = "L")
 # Extract the selected chain:
 pdb_chain <- trim.pdb(pdb, chain_selection)
 # Save the selected chain to a PDB file
-write.pdb(pdb_chain, file = "./data/5uac_chainC.pdb")
+write.pdb(pdb_chain, file = "./data/8cgj_chainL.pdb")
 # Produce html file of protein structure with distance to E. coli indicated:
-visualise_RpoB_structure(file_pdb = "./data/5uac_chainC.pdb",
+visualise_rpsL_structure(file_pdb = "./data/8cgj_chainL.pdb",
                          pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
                          mut_colour_variable = cons$means$grantham_Ecoli,
                          file_html = "./plots/rpsL_structure.html")

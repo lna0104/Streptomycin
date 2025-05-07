@@ -231,6 +231,7 @@ process_output <- function(output) {
     mutate(species = gsub("_", " ", species)) |> # remove underscore from species names
     mutate(mutation_name = paste(AA_pos_Ecoli, AA_mutation, sep = "_")) |> # create a unique name for mutations
     mutate(genus = sub(" .*", "", species)) |>
+    mutate(genus = str_to_title(genus))  |> # capitalize first character of genus
     #categorise each mutation in three possible options:
     # 1) mutation is already present ("present")
     # 2) mutation is not present but can be gained ("possible")
@@ -452,12 +453,22 @@ get_theoretical_evolvabilities <- function(output) {
 }
 
 
-get_resistance_taxonomy <- function(output, gtdb_taxonomy, file_path) {
+get_resistance_taxonomy <- function(output, gtdb_taxonomy, genus_variants, file_path) {
   resistant_species <- output |>
     group_by(genus, species, accession_numbers) |>
     summarise(resistant = any(mutation_category == "present"), .groups = "drop") |>
-    select(!genus) |>
-    left_join(gtdb_taxonomy, join_by(species)) 
+    left_join(gtdb_taxonomy, join_by(genus)) |>
+    # Join with genus_variants to correct genus names split into variants (e.g., _C, _D)
+    left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+    mutate(
+    family = if_else(is.na(family), family_var, family),
+    order = if_else(is.na(order), order_var, order),
+    class = if_else(is.na(class), class_var, class),
+    phylum = if_else(is.na(phylum), phylum_var, phylum)
+    ) |> 
+    select(-family_var, -order_var, -class_var, -phylum_var) |> 
+    distinct()
  
   resistant_genera <- resistant_species |>
     group_by(genus, family, order, class, phylum) |>

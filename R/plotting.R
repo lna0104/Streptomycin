@@ -173,6 +173,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
 
 plot_evolvability_by_class <-function(filtered_output, 
                                        gtdb_taxonomy, 
+                                       genus_variants,
                                        n_classes_to_plot = 20,
                                        file_name) {
   # phylum abbreviations:
@@ -189,20 +190,30 @@ plot_evolvability_by_class <-function(filtered_output,
                            Thermodesulfobacteriota = "T",
                            Desulfobacterota = "D",
                            Desulfobacterota_I = "D_I",
+                           Deinococcota = "Di", 
                            Bacteroidota_A = "Bc_A",
                            Synergistota = "Sy",
                            Acidobacteriota = "Ac",
                            Verrucomicrobiota = "V",
                            Misc = "Misc")
   #average of possibility per mutation across classes
-  plot_data <- filtered_output |>
+  processed_data <- filtered_output |>
     # rename(genus = genus) |>
     group_by(species, genus, accession_numbers, mutation_name, n_possible) |>
     summarise(n = n(), .groups = 'drop') |>
     filter(n == 1) |>            # remove multi-copy species
     # left_join(bacterial_taxonomy |> select(genus, class)) |>
-    left_join(gtdb_taxonomy |> select(species, class)) |>
-    filter(!is.na(class)) |>
+    left_join(gtdb_taxonomy |> select(genus, class)) |>
+    left_join(genus_variants |> select(genus_origin, class_var = class),
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+    mutate(
+    class = if_else(is.na(class), class_var, class),
+    ) |>
+    select(-class_var) |>
+    distinct() |>
+    filter(!is.na(class))
+
+  plot_data <- processed_data |>
     mutate(class = fct_lump_n(class, n = n_classes_to_plot)) |>
     group_by(class, mutation_name) |>
     summarise(n_pos = mean(n_possible), .groups = 'drop') |>
@@ -241,6 +252,7 @@ plot_evolvability_by_class <-function(filtered_output,
 #' produces a figure showing resistance and evolvability across classes and genera
 #' @param filtered_output a data frame providing screened and filtered gene sequences
 #' @param file_name the path that the plot should be save in
+#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param min_frac_resistant filter that gives the minimum fraction of species within
 #' a genus that need to be resistant for this genus to be included in figure A. 
 #' @param min_genus_size minimum number of species within a genus for this genus to be included in the figure 
@@ -255,6 +267,7 @@ plot_evolvability_by_class <-function(filtered_output,
 #' @examples plot_classes_genera(filtered_output, "./plot/myFilename.pdf")
 plot_classes_genera <- function(filtered_output,
                                 gtdb_taxonomy,
+                                genus_variants,
                                 file_name,
                                 n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
@@ -288,12 +301,22 @@ plot_classes_genera <- function(filtered_output,
     summarise(first_mut = mutation_name[1])
   
   # table of species and which resistance mutations they have (including "none" or "multiple"):
-  species_with_muts <- n_muts_per_species |>
+  processed_data <-  n_muts_per_species |>
     left_join(first_mut_per_species, by = join_by(species)) |>
     mutate(category = ifelse(muts_present == 0L, "None", ifelse(muts_present > 1, "Multiple", first_mut))) |>
-    select(species, category, n_possible) |>
-    left_join(gtdb_taxonomy, by = join_by(species))|>
-    distinct() |>
+    select(species, genus, category, n_possible) |>
+    left_join(gtdb_taxonomy, by = join_by(genus == genus), relationship = "many-to-many" )|>
+    left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+    mutate(
+    class = if_else(is.na(class), class_var, class),
+    phylum = if_else(is.na(phylum), phylum_var, phylum)
+    ) |>
+    select(-class_var, -phylum_var) |>
+    distinct() 
+
+   
+  species_with_muts <- processed_data |>
     mutate(class = factor(class)) |>
     mutate(genus = factor(genus)) |>
     mutate(category = str_replace(category, "_", "")) |>

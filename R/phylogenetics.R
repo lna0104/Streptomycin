@@ -206,19 +206,21 @@ get_phylosignals <- function(subtree,
 #' @param subtree a phylo object of the subset tree  
 #' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL sequences across bacterial species
 #' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GDTB
+#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param file_name the path that the plot should be save in
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
 #' @export
 #'
 #' @examples plot_subtree(subtree, filtered_output, meta_data, "./plots/myfilename.pdf")
-plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
+plot_subtree <- function(subtree, species_output, gtdb_taxonomy, genus_variants, file_name){
   
   # clades to be labeled in the tree:
   clades_to_label <- c(
     # "Sphingomonadaceae", #family
     "Sphingomonadales", #order
     "Devosiaceae", #family
+    # "Pirellulales", #order
     # "Rhizobiales", #order
     # "Thermodesulfobacteriaceae", #family
     # "Actinopolymorphaceae", #family
@@ -226,8 +228,9 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
     # "Mycobacteriaceae", #family
     # "Streptomycetaceae", #family
     # "Coriobacteriales", #order
-    "Actinomycetales", #order
-    "Mycobacteriales", #order
+    # "Actinomycetales", #order
+    "Rickettsiales", #order
+    "Micromonosporaceae", #family
     "Coriobacteriia", #class
     "Planctomycetia" #class
     # "Coriobacteriia",
@@ -237,7 +240,24 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
   
   species_data <- species_output |>
-    left_join(gtdb_taxonomy, by = join_by(species), relationship = "many-to-many") |> #join bacterial families to tree information by column species
+    left_join(gtdb_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
+    #join with genus_variants to fix genus name
+    left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+    mutate(
+      family = if_else(is.na(family), family_var, family),
+      order = if_else(is.na(order), order_var, order),
+      class = if_else(is.na(class), class_var, class),
+      phylum = if_else(is.na(phylum), phylum_var, phylum)
+    ) |> 
+    select(-family_var, -order_var, -class_var, -phylum_var) |> 
+    # There are multiple variants of these genera with different family and order assignments,
+    # but the plot does not support duplicate species entries.    
+    mutate(
+      family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
+      order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
+    ) |> 
+    distinct() |>
     mutate(major_clade = NA) |>
     mutate(major_clade = ifelse(phylum %in% clades_to_label, phylum, major_clade)) |>
     mutate(major_clade = ifelse(class %in% clades_to_label, class, major_clade)) |>
@@ -326,6 +346,7 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
 #' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL
 #'  sequences across bacterial species
 #' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GTDB
+#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param genus the name of the genus
 #' @param family the name of the family
 #' @param order the name of the order
@@ -338,6 +359,7 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, file_name){
 plot_subtree_clade <- function(subtree, 
                                species_output, 
                                gtdb_taxonomy, 
+                               genus_variants,
                                genus = NULL, family = NULL, order = NULL, class = NULL,
                                file_name){
   
@@ -348,8 +370,24 @@ plot_subtree_clade <- function(subtree,
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
   
   species_data <- species_output |>
-    select(!genus) |>
-    left_join(gtdb_taxonomy, by = join_by(species), relationship = "many-to-many") #join bacterial families to tree information by column species
+    left_join(gtdb_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
+    # Join with genus_variants to correct genus names split into variants 
+    left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+    mutate(
+      family = if_else(is.na(family), family_var, family),
+      order = if_else(is.na(order), order_var, order),
+      class = if_else(is.na(class), class_var, class),
+      phylum = if_else(is.na(phylum), phylum_var, phylum)
+    ) |> 
+    select(-family_var, -order_var, -class_var, -phylum_var) |> 
+    # There are multiple variants of these genera with different family and order assignments,
+    # but the plot does not support duplicate species entries.    
+    mutate(
+      family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
+      order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
+    ) |> 
+    distinct() 
   
   if (!is.null(genus)) {
     species_to_include <- dplyr::filter(species_data, genus == .env$genus)
@@ -420,6 +458,7 @@ plot_subtree_clade <- function(subtree,
 #' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL
 #'  sequences across bacterial species
 #' @param gtdb_taxonomy a data frame providing info on bacterial taxonomic phylogeny from GTDB
+#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param genera genera for which to plot a phylogenetic tree
 #' @param families genera for which to plot a phylogenetic tree
 #' @param orders genera for which to plot a phylogenetic tree
@@ -428,7 +467,7 @@ plot_subtree_clade <- function(subtree,
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
 #'
-plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy, 
+plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy, genus_variants,
                                 genera = NULL, 
                                 families = NULL, 
                                 orders = NULL, 
@@ -439,6 +478,7 @@ plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy,
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
                                        gtdb_taxonomy = gtdb_taxonomy, 
+                                       genus_variants = genus_variants,
                                        genus = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -448,6 +488,7 @@ plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy,
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
                                        gtdb_taxonomy = gtdb_taxonomy, 
+                                       genus_variants = genus_variants,                                       
                                        family = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -457,6 +498,7 @@ plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy,
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
                                        gtdb_taxonomy = gtdb_taxonomy, 
+                                       genus_variants = genus_variants,
                                        order = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
@@ -465,7 +507,8 @@ plot_subtree_clades <- function(subtree, species_output, gtdb_taxonomy,
     purrr::map(classes, 
                \(x) plot_subtree_clade(subtree = subtree, 
                                        species_output = species_output, 
-                                       gtdb_taxonomy = gtdb_taxonomy, 
+                                       gtdb_taxonomy = gtdb_taxonomy,
+                                       genus_variants = genus_variants,
                                        class = x,
                                        file_name = paste0(file_path, "/", x, ".pdf")),
                .progress = TRUE)
