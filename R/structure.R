@@ -9,7 +9,7 @@
 #'
 #' @return returns the visualisation in html format
 #' 
-visualise_RpoB_structure <- function(file_pdb, 
+visualise_rpsL_structure <- function(file_pdb, 
                                      pos,
                                      mut_colour_variable,
                                      n_cols = 100,
@@ -18,7 +18,7 @@ visualise_RpoB_structure <- function(file_pdb,
   max_value <- max(mut_colour_variable[pos], na.rm = TRUE)
   colourScale <- hsv(0.66, seq(0, 1, length.out = n_cols), 1)
   
-  ngl <- NGLVieweR("./data/5uac_chainC.pdb", width = "800px", height = "800px")
+  ngl <- NGLVieweR(file_pdb, width = "800px", height = "800px")
   
   # Color the entire chain by position
   ngl <- ngl |>
