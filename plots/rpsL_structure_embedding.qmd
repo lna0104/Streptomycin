@@ -1,0 +1,29 @@
+---
+title: "Supplemental file: rpsL structure"
+format:
+  html:
+    self-contained: true
+---
+
+#### Streptomycin resistance in bacteria: insights into evolution and evolvability.
+
+::: {html}
+<style>
+  .iframe-container {
+    display: flex;
+    justify-content: center; /* Center the iframe */
+    margin-top: 1em;
+  }
+  iframe {
+    width: 800px;
+    height: 800px;
+    border: 1px solid black; 
+  }
+</style>
+<div class="iframe-container">
+  <iframe src="rpsL_structure.html"></iframe>
+</div>
+:::
+
+
+![](distance_legend.png){width="30%" fig-align="right"}
