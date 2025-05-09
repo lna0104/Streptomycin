@@ -1,0 +1,144 @@
+---
+title: "Streptomycin resistance in bacteria: insights into evolution and evolvability"
+subtitle: Summaries of analyses
+date: today
+format: pdf
+editor: visual
+---
+
+## Summary of reported mutations 
+
+
+
+* Number of studies: 98
+* Number of species: 40
+* Total number of mutations: 311
+* Amino acid positions with mutations: 31
+* Number of unique amino acid mutations: 66
+
+## Summary of screened target rpsL sequences 
+
+
+
+* Target sequence statistics before filtering:
+    + Number of genomes in search results: 20866
+    + Number of genomes with extracted rpsL sequence(s): 20808
+    + Number of genomes where no rpsL sequence could be extracted: 58
+    + Number of species with downloaded genomes: 20804
+    + Total number of rpsL sequences: 20872
+    + Number of genomes with more than one rpsL sequence: 59
+    + Maximum number of rpsL sequences per genome: 4
+* Filtering statistics:
+    + Minimum sequence length: 63
+    + Median sequence length: 375.00
+    + Mean sequence length: 384.1486
+    + Maximum sequence length: 468
+    + Minimum aligning score: -614.3201
+    + Maximum aligning score: 537.959
+    + Minimum distance from reference rpsL core: 0
+    + Maximum distance from reference rpsL core: 115
+* Filters applied: 
+    + Minimum sequence length: 300
+    + Minimum alignment score to E. coli rpsL: -614.320068359375
+    + Maximum core distance to E. coli rpsL: 40
+* Target sequence statistics after filtering:
+    + Number of genomes with extracted rpsL sequence(s): 15725
+    + Number of species with downloaded genomes: 15721
+    + Total number of rpsL sequences: 15740
+    + Number of genomes with more than one rpsL sequence: 15
+    + Maximum number of rpsL sequences per genome: 2
+
+## Summary of the mutation screen 
+
+
+
+* Screened mutations:
+    + Number of distinct mutations screened: 8
+    + Number of amino acid sites: 5
+* Predicted intrinsic resistance:
+    + Total number of resistance mutations present across species: 1193
+    + Number of unique mutations present across species: 4
+    + Number of resistant species: 1190
+    + Percentage of resistant species: 7.57%
+    + Number of species with multiple resistance mutations: 3
+    + Number of species where one rpsL copy confers resistance and one does not: 0
+* Evolvability I (number of AA mutations that a species can mutate to):
+    + Range: 2...8
+    + 95% inter-quantile range: 6...8
+    + Median: 8
+    + Theoretical range: 0...8
+* Evolvability II (number of mutations that can produce a resistance mutation):
+    + Range: 5...18
+    + 95% inter-quantile range: 7...10
+    + Median: 9
+    + Theoretical range: 0...17
+* Associations between evolvabilities (phylogenetically uncontrolled):
+    + Evolvability I vs. evolvability II: r=0.559
+    + Intrinsic resistance vs. evolvability I: p=0 (Welch Two Sample t-test, t=-115)
+    + Intrinsic resistance vs. evolvability II: p=5.41e-17 (Welch Two Sample t-test, t=8.5)
+
+## Summary of the phylogenetic analyses 
+
+
+
+* Phylogenetic tree:
+    + Number of species: 11955
+    + Number of species predicted to be resistant in tree: 604
+* Number of species sampled from tree when calculating phylogenetic signals: 5000
+* Phylogenetic signal in predicted resistance:
+    + Test: permutation test of mean phylogenetic distance of resistant species
+    + Number of permutations: 1000
+    + p-value: 0
+* Phylogenetic signal in evolvability I (number of evolvable AA mutations):
+    + Pagel's lambda: 0.984
+    + p(lambda): 0
+    + Blomberg's K: 0.329
+    + p(K): 0.001
+* Phylogenetic signal in evolvability II (number of nt mutations producing AA resistance mutations):
+    + Pagel's lambda: 1
+    + p(lambda): 0
+    + Blomberg's K: 0.289
+    + p(K): 0.001
+
+## Summary of the amino acid conservation analyses 
+
+
+
+* Mean Hamming distance to E. coli across all sequences:
+    + Number of sequences: 15740
+    + Mean across AA positions: 0.226062118293233
+    + Max across AA positions: 0.943202033036849
+    + Min across AA positions: 0
+* Mean Hamming distance across randomly sampled pairs ofrpsL sequences:
+    + Number of sequence pairs: 100000
+    + Mean across AA positions: 0.231670434571266
+    + Max across AA positions: 0.88367714376493
+    + Min across AA positions: 0
+* Mean Grantham distance to E. coli across all sequences:
+    + Number of sequences: 15740
+    + Mean across AA positions: 15.7975369179425
+    + Max across AA positions: 161.740199504416
+    + Min across AA positions: 0
+* Mean Grantham distance across randomly sampled pairs ofrpsL sequences:
+    + Number of sequence pairs: 100000
+    + Mean across AA positions: 15.4150348878232
+    + Max across AA positions: 77.8605684017521
+    + Min across AA positions: 0
+
+## Session Info
+
+**R version 4.4.3 (2025-02-28)**
+
+**Platform:** x86_64-apple-darwin20 
+
+**locale:**
+en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8
+
+**attached base packages:** 
+_parallel_, _stats4_, _stats_, _graphics_, _grDevices_, _utils_, _datasets_, _methods_ and _base_
+
+**other attached packages:** 
+_wesanderson(v.0.3.7)_, _htmlwidgets(v.1.6.4)_, _NGLVieweR(v.1.4.0)_, _quarto(v.1.4.4)_, _pander(v.0.6.6)_, _ggh4x(v.0.3.0)_, _GGally(v.2.2.1)_, _RColorBrewer(v.1.1-3)_, _plotrix(v.3.8-4)_, _ggpubr(v.0.6.0)_, _patchwork(v.1.3.0)_, _scales(v.1.3.0)_, _colorspace(v.2.1-1)_, _ggnewscale(v.0.5.1)_, _bio3d(v.2.4-5)_, _treeio(v.1.30.0)_, _tidytree(v.0.4.6)_, _ggtree(v.3.14.0)_, _phangorn(v.2.12.1)_, _phytools(v.2.4-4)_, _maps(v.3.4.2.1)_, _ape(v.5.8-1)_, _castor(v.1.8.3)_, _Rcpp(v.1.0.14)_, _MSA2dist(v.1.10.1)_, _pwalign(v.1.2.0)_, _rentrez(v.1.2.3)_, _varhandle(v.2.0.6)_, _future.apply(v.1.11.3)_, _future(v.1.40.0)_, _openssl(v.2.3.2)_, _lubridate(v.1.9.4)_, _forcats(v.1.0.0)_, _stringr(v.1.5.1)_, _dplyr(v.1.1.4)_, _purrr(v.1.0.4)_, _readr(v.2.1.5)_, _tidyr(v.1.3.1)_, _tibble(v.3.2.1)_, _ggplot2(v.3.5.2)_, _tidyverse(v.2.0.0)_, _ALJEbinf(v.0.1.0)_, _Biostrings(v.2.74.1)_, _GenomeInfoDb(v.1.42.3)_, _XVector(v.0.46.0)_, _IRanges(v.2.40.1)_, _S4Vectors(v.0.44.0)_ and _BiocGenerics(v.0.52.0)_
+
+**loaded via a namespace (and not attached):** 
+_rstudioapi(v.0.17.1)_, _jsonlite(v.2.0.0)_, _magrittr(v.2.0.3)_, _farver(v.2.1.2)_, _rmarkdown(v.2.29)_, _ragg(v.1.4.0)_, _fs(v.1.6.6)_, _zlibbioc(v.1.52.0)_, _vctrs(v.0.6.5)_, _askpass(v.1.2.1)_, _rstatix(v.0.7.2)_, _htmltools(v.0.5.8.1)_, _DEoptim(v.2.2-8)_, _broom(v.1.0.8)_, _Formula(v.1.2-5)_, _gridGraphics(v.0.5-1)_, _parallelly(v.1.43.0)_, _naturalsort(v.0.1.3)_, _plyr(v.1.8.9)_, _igraph(v.2.1.4)_, _mime(v.0.13)_, _lifecycle(v.1.0.4)_, _iterators(v.1.0.14)_, _pkgconfig(v.2.0.3)_, _Matrix(v.1.7-3)_, _R6(v.2.6.1)_, _fastmap(v.1.2.0)_, _shiny(v.1.10.0)_, _GenomeInfoDbData(v.1.2.13)_, _digest(v.0.6.37)_, _numDeriv(v.2016.8-1.1)_, _aplot(v.0.2.5)_, _ps(v.1.9.1)_, _RSpectra(v.0.16-2)_, _textshaping(v.1.0.0)_, _GenomicRanges(v.1.58.0)_, _labeling(v.0.4.3)_, _clusterGeneration(v.1.3.8)_, _timechange(v.0.3.0)_, _httr(v.1.4.7)_, _abind(v.1.4-8)_, _compiler(v.4.4.3)_, _bit64(v.4.6.0-1)_, _withr(v.3.0.2)_, _doParallel(v.1.0.17)_, _backports(v.1.5.0)_, _optimParallel(v.1.0-2)_, _carData(v.3.0-5)_, _ggstats(v.0.9.0)_, _ggsignif(v.0.6.4)_, _MASS(v.7.3-65)_, _scatterplot3d(v.0.3-44)_, _tools(v.4.4.3)_, _httpuv(v.1.6.15)_, _glue(v.1.8.0)_, _quadprog(v.1.5-8)_, _promises(v.1.3.2)_, _nlme(v.3.1-168)_, _grid(v.4.4.3)_, _ade4(v.1.7-23)_, _generics(v.0.1.3)_, _seqinr(v.4.2-36)_, _gtable(v.0.3.6)_, _tzdb(v.0.5.0)_, _hms(v.1.1.3)_, _car(v.3.1-3)_, _foreach(v.1.5.2)_, _pillar(v.1.10.2)_, _vroom(v.1.6.5)_, _yulab.utils(v.0.2.0)_, _later(v.1.4.2)_, _lattice(v.0.22-7)_, _bit(v.4.6.0)_, _tidyselect(v.1.2.1)_, _knitr(v.1.50)_, _gridExtra(v.2.3)_, _svglite(v.2.1.3)_, _xfun(v.0.52)_, _expm(v.1.0-0)_, _stringi(v.1.8.7)_, _UCSC.utils(v.1.2.0)_, _yaml(v.2.3.10)_, _lazyeval(v.0.2.2)_, _ggfun(v.0.1.8)_, _evaluate(v.1.0.3)_, _codetools(v.0.2-20)_, _ggplotify(v.0.1.2)_, _cli(v.3.6.4)_, _systemfonts(v.1.2.2)_, _xtable(v.1.8-4)_, _munsell(v.0.5.1)_, _processx(v.3.8.6)_, _globals(v.0.16.3)_, _coda(v.0.19-4.1)_, _XML(v.3.99-0.18)_, _listenv(v.0.9.1)_, _viridisLite(v.0.4.2)_, _crayon(v.1.5.3)_, _combinat(v.0.0-8)_, _rlang(v.1.1.6)_, _cowplot(v.1.1.3)_, _fastmatch(v.1.1-6)_ and _mnormt(v.2.1.1)_

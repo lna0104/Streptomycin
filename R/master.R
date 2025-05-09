@@ -615,6 +615,7 @@ pdb_chain <- trim.pdb(pdb, chain_selection)
 # Save the selected chain to a PDB file
 write.pdb(pdb_chain, file = "./data/8cgj_chainL.pdb")
 # Produce html file of protein structure with distance to E. coli indicated:
+# load("./output/cons.RData")
 visualise_rpsL_structure(file_pdb = "./data/8cgj_chainL.pdb",
                          pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
                          mut_colour_variable = cons$means$grantham_Ecoli,
@@ -626,7 +627,7 @@ quarto_render("plots/rpsL_structure_embedding.qmd")
 ########################################################################
 
 # collating all individual summary files and rendering them as a single pdf file:
-render_summary(summaries = c("reported_mutations", 
+render_summary(summaries = c("reported_mutations_manualfix", 
                              "target_sequences", 
                              "mutation_screen", 
                              "phylogenetics",
