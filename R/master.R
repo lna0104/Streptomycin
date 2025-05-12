@@ -589,7 +589,7 @@ mutations <- read_csv("./output/checked_muts.csv", show_col_types = FALSE) |>
   filter_mutations(min_n_species = globsets$min_n_species, 
                    min_n_studies = globsets$min_n_studies)
 
-# calculate conservation/diversity scores along the rpoB sequence:
+# calculate conservation/diversity scores along the rpsL sequence:
 set.seed(globsets$random_seed)
 cons <- get_conservation(rpsL_target_sequences, rpsL_reference_Ecoli, n_rnd = 1e5, n_workers=10)
 save(cons, file = "./output/cons.RData")

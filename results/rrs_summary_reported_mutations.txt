@@ -1,0 +1,9 @@
+Summary of reported mutations 
+Date: 2025-05-01 22:25:36.447564
+--------------------------------------------------------------------
+
+Number of studies: 34
+Number of species: 6
+Total number of mutations: 116
+Nucleotide positions with mutations: 46
+Number of unique nucleotide mutations: 54
