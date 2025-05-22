@@ -38,6 +38,14 @@ library(quarto)
 library(NGLVieweR)
 library(htmlwidgets)
 library(wesanderson)
+library(ggrepel)
+library(patchwork)
+library(cowplot) 
+library(ggraph)
+library(tidygraph)
+library(ggh4x)
+library(igraph)
+
 
 
 source("R/util.R")
@@ -273,7 +281,6 @@ write_csv(added_warnings_muts, "./output/muts.csv")
 plot_reported_mutations(added_warnings_muts, file_name = "./plots/reported_mutations_original.pdf", n_frequency = 3) # returns frequent reported mutations, positions and species
 summarise_reported_mutations(added_warnings_muts, file_name = "./results/summary_reported_mutations_original.txt") # returns a text message summarizing previous reports
 
-
 #Manually check all warnings and correct mutations
 checked_muts<-read.csv("./output/checked_muts.csv")
 
@@ -460,6 +467,7 @@ genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types
 #2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/mutation_screen.pdf")
 plot_classes_genera(filtered_output, gtdb_taxonomy, genus_variants, file_name= "./plots/classes_genera.pdf")
+# plot_classes_genera(filtered_output, gtdb_taxonomy, genus_variants, file_name= "./plots/classes_genera.svg")
 plot_evolvability_by_class(filtered_output, gtdb_taxonomy, genus_variants, file_name = "./plots/evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_mutation_screen.txt")
 get_resistance_taxonomy(filtered_output, gtdb_taxonomy, genus_variants,  file_path = "./output/")
@@ -480,7 +488,7 @@ rm.all.but("globsets")
 
 # input for this step:  filtered results for reliable sequences("./output/filtered_output.csv")
 #                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
-#                       its metadata ("./data/bac120_metadata_r214.tsv")
+#                       its metadata ("./data/bac120_metadata.tsv")
 #                       GTDB bacterial taxonomic information ("./output/gtdb_taxonomy.csv")
 
 # output for this step: subtree of original tree with tip_labels table ("./output/subtree.RData")
@@ -490,6 +498,7 @@ rm.all.but("globsets")
 # 1.load required files:
 filtered_output <- read_csv("./output/filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
+# original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
@@ -598,10 +607,14 @@ summarise_conservation(cons,
                        file_name = "./results/summary_conservation.txt")
 plot_cons(cons, 
           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
+          pos_range = c(40,100),
+          n_plots = 1,
           dist_type = "hamming",
           file_name = "./plots/AA_conservation_hamming.pdf")
 plot_cons(cons, 
           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
+          pos_range = c(40,100),
+          n_plots = 1,
           dist_type = "grantham",
           file_name = "./plots/AA_conservation_grantham.pdf")
 
@@ -609,14 +622,17 @@ plot_cons(cons,
 pdb <- read.pdb("8cgj")
 # pdb <- read.pdb("8cai")
 # Select L chain (Small ribosomal subunit protein uS12):
-chain_selection <- atom.select(pdb, chain = "L")
-# Extract the selected chain:
+# Select A chain (16S rRNA where streptomycin bind to)
+chain_selection <- atom.select(pdb, chain = c("L", "A"))
+# Extract the selected structure:
 pdb_chain <- trim.pdb(pdb, chain_selection)
-# Save the selected chain to a PDB file
-write.pdb(pdb_chain, file = "./data/8cgj_chainL.pdb")
+# Save the selected structure to a PDB file
+write.pdb(pdb_chain, file = "./data/8cgj_chain.pdb")
 # Produce html file of protein structure with distance to E. coli indicated:
 # load("./output/cons.RData")
-visualise_rpsL_structure(file_pdb = "./data/8cgj_chainL.pdb",
+visualise_rpsL_structure(file_pdb = "./data/8cgj_chain.pdb",
+                         chain_ids = c("L","A"),
+                         ligand_resid = "5I0",
                          pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
                          mut_colour_variable = cons$means$grantham_Ecoli,
                          file_html = "./plots/rpsL_structure.html")

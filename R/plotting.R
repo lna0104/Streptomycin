@@ -12,18 +12,18 @@
 plot_reported_mutations <- function(muts, file_name, n_frequency) {
 
   #1. the frequency of reported mutations across sites (currently not included in figure)
-  frequency_position <-  muts %>% 
-    select(Species, AA_pos_Ecoli, Origin) %>%
-    filter(!is.na(AA_pos_Ecoli)) %>%
-#    filter(AA_pos_Ecoli %in% mutation_list_reports$AA_pos_Ecoli) %>% 
-    group_by(Species, AA_pos_Ecoli) %>%
+  frequency_position <-  muts |> 
+    select(Species, AA_pos_Ecoli, Origin) |>
+    filter(!is.na(AA_pos_Ecoli)) |>
+#    filter(AA_pos_Ecoli %in% mutation_list_reports$AA_pos_Ecoli) |> 
+    group_by(Species, AA_pos_Ecoli) |>
     summarise(Origin = ifelse(all(Origin == "Isolate"), "Isolate",
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop")
 
 
-  plot1 <- frequency_position %>%
-    mutate(AA_pos_Ecoli = factor(AA_pos_Ecoli, levels = sort(unique(AA_pos_Ecoli)))) %>%
+  plot1 <- frequency_position |>
+    mutate(AA_pos_Ecoli = factor(AA_pos_Ecoli, levels = sort(unique(AA_pos_Ecoli)))) |>
     ggplot() +
     geom_bar(aes(x = AA_pos_Ecoli, fill = Origin), width = 0.5) +
     theme_classic() +
@@ -46,8 +46,8 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
     select(Species, AA_pos_Ecoli, AA_mutation, Origin) |>
     filter(!is.na(AA_pos_Ecoli), !is.na(AA_mutation)) |>
     mutate(mutation_name = paste0(AA_pos_Ecoli, AA_mutation)) |> 
-    select(Species, mutation_name, Origin) %>%
-    group_by(Species, mutation_name) %>%
+    select(Species, mutation_name, Origin) |>
+    group_by(Species, mutation_name) |>
     summarise(Origin = ifelse(all(Origin == "Isolate"), "Isolate",
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop") |>
@@ -57,11 +57,11 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
     filter(n() >= n_frequency)
   
   plot2 <- ggplot(frequency_mutation) +
-    geom_bar(aes(x = mutation_name, fill = Origin))  +
+    geom_bar(aes(x = mutation_name, fill = Origin), colour="white")  +
     theme_classic() +
-    theme(axis.text.x = element_text(angle=90, 
-                                     vjust=0.1, 
-                                     hjust=0.95, 
+    theme(axis.text.x = element_text(angle=0, 
+                                    #  vjust=0.1, 
+                                    #  hjust=0.95, 
                                      size=6), 
           axis.text.y = element_text(size=6), 
           axis.title=element_text(size=6, face="bold"),
@@ -73,8 +73,13 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
          y = "Number of species", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = wes_palette("FantasticFox1"), breaks=c('Lab-generated', 'Isolate', 'Both'))
-    # scale_fill_brewer(palette = "Pastel1", breaks=c('Lab-generated', 'Isolate', 'Both')) 
+    scale_fill_manual(values = c(
+      "Lab-generated" = "#3B9AB2",  
+      "Isolate" = "#EBCC2A",       
+      "Both" = "#EF5703"            
+    ), breaks=c('Lab-generated', 'Isolate', 'Both')) +
+    coord_flip()
+    # scale_fill_brewer(palette = "Spectral", breaks=c('Lab-generated', 'Isolate', 'Both')) 
 
   #3. how many mutations for each species have been reported
   frequency_per_species <-  muts |>
@@ -88,15 +93,16 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
     group_by(Species) |> 
     filter(n() > n_frequency) 
   
-  plot3 <- frequency_per_species %>%
+  plot3 <- frequency_per_species |>
     ggplot() +
-    geom_bar(aes(x = fct_infreq(Species), fill = Origin), width = 0.5) +
+    geom_bar(aes(x = fct_rev(fct_infreq(Species)), fill = Origin), colour="white", width = 0.5) +
     theme_classic() +
-    theme(axis.text.x = element_text(angle=90, 
-                                     hjust=0.95,
-                                     vjust=0.2, 
+    theme(axis.text.x = element_text(angle=0, 
+                                    #  hjust=0.95,
+                                    #  vjust=0.2, 
                                      size=6), 
-          axis.title=element_text(size=6, face="bold"),
+          axis.title=element_text(size=6, 
+                                  face="bold"),
           axis.text.y=element_text(size=6), 
           plot.title=element_text(hjust=0), 
           legend.position = "top") +
@@ -104,15 +110,23 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
          y = "Number of reported mutations", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = wes_palette("FantasticFox1"))
+    scale_fill_manual(values = c(
+      "Lab-generated" = "#3B9AB2",  
+      "Isolate" = "#EBCC2A",       
+      "Both" = "#EF5703"            
+    )) +
+    coord_flip()
     # scale_fill_brewer(palette = "Pastel1") 
 
   #combine plots:
   reported_mutations <- ggarrange(plot2, plot3, 
-                                  nrow=2, common.legend = TRUE,
-                                  labels = c("A", "B"), hjust = 0, vjust = 0.5)
+                                  ncol=2, common.legend = TRUE,
+                                  widths = c(1, 1),
+                                  labels = c("A", "B"),
+                                  legend = "bottom",
+                                  hjust = -0.2, vjust = 1.5)
   
-  ggsave(filename = file_name, reported_mutations, width = 6, height = 6)
+  ggsave(filename = file_name, reported_mutations, width = 8, height = 4)
 }
   
 
@@ -145,13 +159,15 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     mutate(mutation_name = str_replace(mutation_name, "_", "")) |>
     mutate(mutation_name = factor(mutation_name, levels = sort(unique(mutation_name))))
     
-  cols = c(hsv(0, 0, c(0.2, 0.73, 0.8)), hsv(0, 1, 0.95))
+  # cols = c(hsv(0, 0, c(0.2, 0.73, 0.8)), hsv(0, 1, 0.95))
+  cols <- c("#899DA4","#f9e5ae", "#FAEFD1", "#C93312")
     
   # plot A: screening outcome (possible, impossible, present) across mutations
   p_mutation_screen <- ggplot(data_for_plotting) +
-    geom_bar(aes(x = mutation_name, fill = mutation_category), width = 1)  +
+    geom_bar(aes(x = mutation_name, fill = mutation_category), width = 1, 
+      color = "white", linewidth=0.2)  +
     theme_bw() +
-    theme(axis.text.x = element_text(angle=90, 
+    theme(axis.text.x = element_text(angle=0, 
                                      vjust=0.5, 
                                      hjust=0.95,
                                      size=10), 
@@ -160,43 +176,44 @@ plot_mutation_screen <- function(filtered_output, file_name) {
           axis.title.y=element_text(size=10, face = "bold"),
           legend.title = element_text(size=10),
           legend.text = element_text(size=10),
-          legend.position = "top") +
+          legend.position = "bottom") +
     labs(x = "Amino acid substitution",
          y = "Number of species") +
     scale_y_continuous(breaks = seq(0, 20000, by = 1000), expand = c(0.01, 0)) +
     scale_fill_manual(values = cols, name = "Mutation possibility:") +
-    labs(fill = "") 
+    labs(fill = "") + 
+    coord_flip()
   
-  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 8)
+  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 4)
 }
 
 
-plot_evolvability_by_class <-function(filtered_output, 
-                                       gtdb_taxonomy, 
+plot_evolvability_by_class <-function(filtered_output,
+                                       gtdb_taxonomy,
                                        genus_variants,
-                                       n_classes_to_plot = 20,
+                                       n_classes_to_plot = 50,
                                        file_name) {
-  # phylum abbreviations:
-  phylum_abbreviations = c(Actinomycetota = "At",
-                           Bacillota = "Ba",
-                           Bacteroidota = "Bc",
-                           Campylobacterota = "Ca",
-                           Cyanobacteriota = "Cy",
-                           Fusobacteriota = "F",
-                           Myxococcota = "M",
-                           Planctomycetota = "Pl",
-                           Pseudomonadota = "Ps",
-                           Spirochaetota = "Sp",
-                           Thermodesulfobacteriota = "T",
-                           Desulfobacterota = "D",
-                           Desulfobacterota_I = "D_I",
-                           Deinococcota = "Di", 
-                           Bacteroidota_A = "Bc_A",
-                           Synergistota = "Sy",
-                           Acidobacteriota = "Ac",
-                           Verrucomicrobiota = "V",
-                           Misc = "Misc")
-  #average of possibility per mutation across classes
+  # # phylum abbreviations:
+  # phylum_abbreviations = c(Actinomycetota = "At",
+  #                          Bacillota = "Ba",
+  #                          Bacteroidota = "Bc",
+  #                          Campylobacterota = "Ca",
+  #                          Cyanobacteriota = "Cy",
+  #                          Fusobacteriota = "F",
+  #                          Myxococcota = "M",
+  #                          Planctomycetota = "Pl",
+  #                          Pseudomonadota = "Ps",
+  #                          Spirochaetota = "Sp",
+  #                          Thermodesulfobacteriota = "T",
+  #                          Desulfobacterota = "D",
+  #                          Desulfobacterota_I = "D_I",
+  #                          Deinococcota = "Di",
+  #                          Bacteroidota_A = "Bc_A",
+  #                          Synergistota = "Sy",
+  #                          Acidobacteriota = "Ac",
+  #                          Verrucomicrobiota = "V",
+  #                          Misc = "Misc")
+  #merge data to class taxonomy
   processed_data <- filtered_output |>
     # rename(genus = genus) |>
     group_by(species, genus, accession_numbers, mutation_name, n_possible) |>
@@ -205,7 +222,7 @@ plot_evolvability_by_class <-function(filtered_output,
     # left_join(bacterial_taxonomy |> select(genus, class)) |>
     left_join(gtdb_taxonomy |> select(genus, class)) |>
     left_join(genus_variants |> select(genus_origin, class_var = class),
-      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+      by = c("genus" = "genus_origin"), relationship = "many-to-many") |>
     mutate(
     class = if_else(is.na(class), class_var, class),
     ) |>
@@ -213,40 +230,47 @@ plot_evolvability_by_class <-function(filtered_output,
     distinct() |>
     filter(!is.na(class))
 
+  #average of possibility per mutation across classes
   plot_data <- processed_data |>
     mutate(class = fct_lump_n(class, n = n_classes_to_plot)) |>
     group_by(class, mutation_name) |>
     summarise(n_pos = mean(n_possible), .groups = 'drop') |>
     left_join(gtdb_taxonomy |> select(class, phylum) |> distinct()) |>
     mutate(phylum = ifelse(class == "Other", "Misc", phylum)) |>
-    mutate(phylum = phylum_abbreviations[phylum]) |>
+    # mutate(phylum = phylum_abbreviations[phylum]) |>
     mutate(class = factor(class), phylum = factor(phylum)) |>
     mutate(phylum = fct_relevel(phylum, "Misc", after = Inf)) |>
     mutate(mutation_name = str_replace(mutation_name, "_", ""))
-  
+
   p <- ggplot(plot_data) +
-    geom_tile(aes(x = mutation_name, 
-                  y = interaction(reorder(class, dplyr::desc(class)), 
-                                  reorder(phylum, dplyr::desc(phylum)),
-                                  sep = "!"), 
+    geom_tile(aes(x = mutation_name,
+                  y = interaction(class,
+                                  phylum,
+                                  sep = "!"),
                   fill = n_pos)) +
     theme_bw() +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 8),
-          #axis.text.y = element_text(size = 6),
-          axis.title.x = element_text(size = 10, face = "bold"),
-          axis.title.y = element_text(size = 10, face = "bold"),
-          #legend.title = element_text(size = 6),
-          #legend.text = element_text(size = 6),
-          legend.position = "bottom") +
     scale_y_discrete(guide = guide_axis_nested(delim = "!"), name = "Phylum and class") +
-    scale_fill_gradient(low = hsv(0, 0, 0.2), high = hsv(0, 0, 1), limits = c(0, 3)) +
+    scale_fill_gradientn(colours = c("#d75b1d", "#fddda0", "#FAEFD1"))+
     labs(x = "Amino acid substitution",
          y = "Class",
-         fill = "Mean evolvability")
-  ggsave(filename = file_name, p, width = 5, height = 6)
+         fill = "Mean evolvability") +
+    theme(
+      axis.text.x = element_text(angle = 90, vjust=-0.01, hjust=1, size = 8),
+      # axis.text.y = element_text(size = 6),
+      axis.title.x = element_text(size = 10, face = "bold"),
+      axis.title.y = element_text(size = 10, face = "bold"),
+      # legend.title = element_text(size = 6),
+      # legend.text = element_text(size = 6),
+      legend.position = "top",
+      ggh4x.axis.nesttext.x=element_text(angle=60, vjust=1),
+      ggh4x.axis.nestline.x=element_line(linewidth=0.75)
+      # axis.title.x=element_blank()    
+      ) + 
+    coord_flip() 
+  
+    
+  ggsave(filename = file_name, p, width = 8, height = 5)
 }
-
-
 
 
 #' produces a figure showing resistance and evolvability across classes and genera
@@ -269,10 +293,10 @@ plot_classes_genera <- function(filtered_output,
                                 gtdb_taxonomy,
                                 genus_variants,
                                 file_name,
-                                n_classes_to_plot = 20,
+                                n_classes_to_plot = 15,
                                 min_frac_resistant = 0.1, 
                                 min_genus_size = 10, 
-                                n_genera_to_plot = 30,
+                                n_genera_to_plot = 25,
                                 n_muts_to_plot = 6) {
   
   # preparing the data:
@@ -287,7 +311,7 @@ plot_classes_genera <- function(filtered_output,
   
   # number of predicted mutations present in each species:
   n_muts_per_species <- merged_filtered_output |>
-    group_by(species, accession_numbers, genus) |>
+    group_by(species, genus, accession_numbers) |>
     summarise(muts_present = sum(mutation_category == "present"), 
               n_possible = sum(mutation_category == "possible"),
               # n_possible = ifelse(any(mutation_category == "present"),
@@ -315,7 +339,6 @@ plot_classes_genera <- function(filtered_output,
     select(-class_var, -phylum_var) |>
     distinct() 
 
-   
   species_with_muts <- processed_data |>
     mutate(class = factor(class)) |>
     mutate(genus = factor(genus)) |>
@@ -337,20 +360,83 @@ plot_classes_genera <- function(filtered_output,
   #           "Multiple" = "black")
   
   cols <- c(" " = rgb(0,0,0,0),
-            "43N" = wes_palette("Darjeeling1")[2],
-            "43R" = wes_palette("Darjeeling1")[3],
-            "43T" = wes_palette("Darjeeling1")[1],
-            "88E" = wes_palette("Darjeeling1")[4],
-            "88R" = wes_palette("Darjeeling1")[5],
-            "Other" = "grey", 
+            "43N" =  wes_palette("Zissou1")[5],
+            "43R" =  wes_palette("Zissou1")[3],
+            "88R" =  wes_palette("Zissou1")[1],
+            "Other" = "grey",
             "Multiple" = "black")
-  # Plot A: evolvability by class
-  classes_for_plotting <- species_with_muts |>
+
+  # Plot A: Number species per class
+  n_species_per_class <- species_with_muts |>
+    mutate(class = as.character(class), 
+         class = ifelse(is.na(class) | class == "", "Unidentified", class)) |>
     group_by(class) |>
-    summarise(n = n(), .groups = "drop") |>
-    filter(!is.na(class)) |>
+    summarise(n = n(), .groups = "drop")
+
+  classes_for_plotting <- n_species_per_class |>
+    filter(class != "Unidentified") |>
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
+
+  pie_data <- n_species_per_class |>
+    mutate(class_grouped = case_when(
+      class %in% classes_for_plotting ~ class,
+      class == "Unidentified" ~ "Unidentified",
+      TRUE ~ "Other"
+    )) |>
+    mutate(class_grouped = fct_relevel(class_grouped, "Other", "Unidentified", after = Inf)) |>
+    group_by(class_grouped) |>
+    summarise(n = sum(n), .groups = "drop") |>
+    mutate(
+      csum = rev(cumsum(rev(n))), 
+      pos = n/2 + lead(csum, 1),
+      pos = if_else(is.na(pos), n/2, pos)) 
+
+  brewer_colors <- c(brewer.pal(12, name = "Paired"), brewer.pal(8, name = "Dark2"))
+
+  cols_class <- c(
+    "Actinomycetes"      = brewer_colors[1],
+    "Alphaproteobacteria"= brewer_colors[12],
+    "Bacteroidia"        = brewer_colors[3],
+    "Campylobacteria"    = brewer_colors[4],
+    "Clostridia"         = brewer_colors[5],
+    "Coriobacteriia"     = brewer_colors[10],
+    "Cyanobacteriia"      = brewer_colors[7],
+    "Desulfovibrionia"   = brewer_colors[8],
+    "Gammaproteobacteria"= brewer_colors[9],
+    "Negativicutes"      = brewer_colors[11],
+    "Spirochaetia"       = brewer_colors[13],
+    "Desulfuromonadia"   = brewer_colors[14],
+    "Leptospiria"        = brewer_colors[15],
+    "Myxococcia"         = brewer_colors[16],
+    "Planctomycetia"     = brewer_colors[17],
+    "Unidentified"       = "gray70",
+    "Other"              = "#4D4D4D"  # dark grey
+ )
+
+  plot_A <- ggplot(pie_data, aes(x = "" , y = n, fill = fct_inorder(class_grouped))) +
+    geom_col(width = 1, color="white") +
+    coord_polar(theta = "y") +
+    scale_fill_manual(values = cols_class) +
+    # geom_text_repel(data = pie_data,
+    #                 aes(x=1.4, y = pos, label = class_grouped),
+    #                 nudge_x = 0.8,
+    # direction = "y",
+    # segment.size = 0.2,
+    # box.padding = 1,
+    # size = 4,
+    # show.legend = FALSE,
+    # segment.curvature = 0.5,
+    # segment.ncp = 0) +
+    theme_void() +
+    theme(
+      plot.margin = margin(0, 0.5, 0.2, 0.5, "cm"),
+      legend.position = "right"
+    ) + 
+    labs(fill="Class") +
+    guides(fill = guide_legend(ncol = 2))
+
+  # Plot B: evolvability by class
   
   # plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
   #   geom_boxplot(aes(x = reorder(class, dplyr::desc(class)), 
@@ -362,38 +448,37 @@ plot_classes_genera <- function(filtered_output,
   #        y = "Evolvability") +
   #   coord_flip()
 
-  plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-      width=1.3, size=0.3, alpha = 0.5
+  plot_B1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible, fill = class),
+      width=1.2, size=0.3
     ) + 
-    theme_minimal() +
+    scale_fill_manual(values = cols_class, guide = "none") + 
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = cols, name = "") +
     labs(x = "Class", y = "Evolvability") +
     coord_flip()
 
-  
-  # Plot A2: predicted resistance mutations by class
-  plot_A2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    geom_bar(aes(x = reorder(class, dplyr::desc(class)), 
+  # Plot B2: predicted resistance mutations by class
+  plot_B2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+    geom_bar(aes(x = reorder(class, dplyr::desc(class)),
                  fill = category),
              position = "fill") +
     theme_bw() +
     scale_y_continuous(expand = c(0.01, 0), 
                        labels = scales::percent_format(accuracy = 1)) +
-    scale_fill_manual(values = cols, name = "") +
     labs(x = "Class",
          y = "Resistant species") +
     coord_flip() +
-    guides(fill=guide_legend(nrow=1, byrow=TRUE)) + 
     theme(
       axis.title.y = element_blank(),
-      axis.text.y = element_blank(),
-      plot.margin = margin(0.2, 0.4, 0.2, 0.2, "cm")
-    )
-      
-  # Plot B: predicted resistance mutations by genus
+      axis.text.y = element_blank()) + 
+    scale_fill_manual(values = cols, name = " ") +
+    guides(fill=guide_legend(nrow=1, byrow=TRUE)) 
+
+  plot_B2_no_legend <- plot_B2 + theme(legend.position = "none")
+  legend_b2 <- get_legend(plot_B2)
   
+  # Plot C: predicted resistance mutations by genus
+
   # genera to be plotted:
   genera_for_plotting <- species_with_muts |>
     group_by(genus) |>
@@ -403,38 +488,139 @@ plot_classes_genera <- function(filtered_output,
     filter(fraction_res >= min_frac_resistant, n >= min_genus_size) |>
     slice_max(fraction_res, n = n_genera_to_plot) |>
     pull(genus)
+
+  # Prepare taxonomy levels
+  taxonomy <- species_with_muts |> 
+    filter(genus %in% genera_for_plotting,
+           class %in% classes_for_plotting) |> 
+    select(-c(category, n_possible)) 
+
+  # Generate edges from class → order → family → genus 
+  taxonomy_edges <- bind_rows(
+    taxonomy |> transmute(from = class, to = order),
+    taxonomy |> transmute(from = order, to = family),
+    taxonomy |> transmute(from = family, to = genus)
+    )|> 
+    distinct() |>
+    filter(!is.na(from), !is.na(to))
+
+  # Create graph object
+  graph <- tbl_graph(edges = taxonomy_edges, directed = TRUE)
   
-  plot_B <- ggplot(filter(species_with_muts, 
-                          genus %in% genera_for_plotting) |>
-                     mutate(genus = factor(paste0(" ", genus))) |>
+  # Function to propagate class name down the tree
+  propagate_class <- function(graph_tbl, class_names) {
+    V(graph_tbl)$class_parent <- NA
+    
+    for (class_node in which(V(graph_tbl)$name %in% class_names)) {
+      descendants <- igraph::subcomponent(graph_tbl, class_node, mode = "out")
+      V(graph_tbl)$class_parent[descendants] <- V(graph_tbl)$name[class_node]
+    }
+    
+    graph_tbl
+  }
+  
+  # Apply propagation
+  class_names <- names(cols_class)
+  graph_colored <- propagate_class(graph, class_names)
+
+  # Annotate class and genus in the plot
+  graph_for_plotting <- graph_colored |> 
+    activate(nodes) |> 
+    mutate(
+      rank = case_when(
+        name %in% unique(taxonomy$class) ~ "class",
+        name %in% unique(taxonomy$genus) ~ "genus",
+        TRUE ~ "Other"
+    ),
+      color = cols_class[class_parent]) |>
+    arrange(desc(rank == "class"), desc(name))
+
+  # Plot the multi-layer tree
+  plot_C1 <- ggraph(graph_for_plotting, layout = "sugiyama") +
+                geom_edge_link() +
+                geom_node_point(aes(filter = rank == "Other"), alpha = 0) +  # Hide "Other" nodes (invisible points)
+                geom_node_label(aes(label = ifelse(rank %in% c("class", "genus"), name, ""), color = I(color)), repel = TRUE) +
+                theme_void() +
+                scale_colour_manual(values = cols_class) +
+                scale_y_reverse() +
+                coord_flip() +
+                theme(
+                  plot.margin = margin(0, 0.3, 0, 0.2, "cm")
+                  )
+
+  
+  #Extract genus order
+  layout <- create_layout(graph_for_plotting, layout = "sugiyama")
+  genus_order <- as_tibble(layout, active = "nodes") |> 
+    filter(rank == "genus") |>
+    arrange(x) |> 
+    pull(name) 
+  
+  plot_C2 <- ggplot(filter(species_with_muts, 
+                          genus %in% genus_order, 
+                          class %in% classes_for_plotting) |>
+                     mutate(genus = factor(genus, levels=genus_order)) |>
                      mutate(class = as.character(class)) |>
-                     mutate(class = ifelse(is.na(class), "?", substr(class, 1, 1))) |>
+                    #  mutate(class = ifelse(is.na(class), "?", substr(class, 1, 1))) |>
                      mutate(class = factor(class))) +
-    geom_bar(aes(x = interaction(reorder(genus, dplyr::desc(genus)),
-                                 reorder(class, dplyr::desc(class)), 
-                                 sep = "!"), 
-                 fill = category),
+    geom_bar(aes(x = genus, fill = category),
              position = "fill") +
     theme_bw() +
-    scale_x_discrete(guide = guide_axis_nested(delim = "!"), name = "Class and genus") +
+    # scale_x_discrete(guide = guide_axis_nested(delim = "!"), name = "Class and genus") +
     scale_y_continuous(expand = c(0.01, 0), 
                        labels = scales::percent_format(accuracy = 1)) +
     scale_fill_manual(values = cols, name = "") +
-    labs(x = "Genus",
-         y = "Resistant species") +
+    labs(y = "Resistant species") +
     coord_flip() +
     guides(fill=guide_legend(nrow=1, byrow=TRUE)) +
-    theme(plot.margin = margin(0.2, 0.3, 0.2, 0.7, "cm"))
+    theme(
+      plot.margin = margin(0.5, 0.5, 0.2, 0, "cm"), 
+      legend.position = "none",
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank()
+      )
   
-  combined_plot <- ggarrange(plot_A1, plot_A2, plot_B,
-                             ncol = 3,
-                             widths = c(1, 0.8, 1),
-                             labels = list("A", "", "  B"),
-                             common.legend = TRUE,
-                             legend = "bottom") + 
-    theme(plot.margin = margin(0.2, 0.2, 0.2, 0.2, "cm"))
+  # Combine B1 and B2 
+  plot_B <- plot_grid(plot_B1, plot_B2_no_legend, 
+                    nrow = 1, rel_widths = c(1.2, 1))
+
+  # Combine A and B horizontal
+  left_column <-ggarrange(plot_A, plot_B,
+                ncol = 1,
+                heights = c(0.8,1),
+                labels = c("A", "B"),
+                common.legend = FALSE)  
+
+
+  #Combine C1 and C2 vertical
+  plot_C <- plot_grid(plot_C1, plot_C2,
+                    ncol = 2,
+                    rel_widths = c(1.2, 1),
+                    labels = c("", ""),
+                    align = "h") +
+                    theme(
+                      plot.margin = margin(0, 0.2, 0, 0.5, "cm")
+                    )         
+                          
+
+  # Combine everything with C 
+  main_plot <- plot_grid(left_column, plot_C,
+                       ncol = 2,
+                       rel_widths = c(1, 1),
+                       labels = c("", "C"))
+        
+  # Add the legend 
+  add_legend_plot <- plot_grid(main_plot, legend_b2, ncol = 1, rel_heights = c(1, 0.07)) 
+
+    # combined_plot <- ggarrange(plot_B1, plot_B2, plot_C,
+    #                            ncol = 3,
+    #                            widths = c(1, 0.6, 1),
+    #                            labels = list("A", "", "  B"),
+    #                            common.legend = TRUE,
+    #                            legend = "bottom") + 
+    #   theme(plot.margin = margin(0.2, 0.2, 0.2, 0.2, "cm"))
   
-  ggsave(filename = file_name, combined_plot, width = 9, height = 7)
+  ggsave(filename = file_name, add_legend_plot, width = 15, height = 10)
 }
 
 
@@ -527,7 +713,7 @@ plot_multiseq_stats <- function(multiseq_stats, file_name) {
 }
 
 
-plot_cons <- function(cons, pos, dist_type, n_plots = 6, file_name) {
+plot_cons <- function(cons, pos, dist_type, pos_range = NULL, n_plots = 6, file_name) {
 
   mean_dsts <- cons$means |>
     mutate(pos = 1:nrow(cons$means))
@@ -550,7 +736,17 @@ plot_cons <- function(cons, pos, dist_type, n_plots = 6, file_name) {
     stop("Unknown dist_type argument. (Must be 'hamming' or 'grantham')")
   }
 
-  pos_ranges <- split_indices(nrow(mean_dsts)/2, n_plots)
+  if (is.null(pos_range)) {
+    # Split positions based on filtered range
+    pos_ranges <- split_indices(nrow(mean_dsts) / 2, n_plots)
+  }else{
+    range_vals <- seq(pos_range[1], pos_range[2], length.out = n_plots + 1)
+    pos_ranges <- data.frame(
+      start = floor(range_vals[-length(range_vals)]),
+      end   = ceiling(range_vals[-1]) - 1
+    )
+  }
+
   p <- list()
   max_d <- max(c(mean_dsts$toplot_Ecoli, mean_dsts$toplot_rnd), na.rm = TRUE)
   
@@ -568,12 +764,21 @@ plot_cons <- function(cons, pos, dist_type, n_plots = 6, file_name) {
       theme_bw()
   }
   
-  p_combined <- p[[1]]
-  for(i in 2:n_plots) {
-    p_combined <- p_combined + p[[i]]
+  # p_combined <- p[[1]]
+  # for(i in 2:n_plots) {
+  #   p_combined <- p_combined + p[[i]]
+  # }
+  # p_combined <- p_combined + plot_layout(ncol = 1)
+  # ggsave(filename = file_name, p_combined, width = 9, height = 12)
+  
+  # Combine plots
+  if (n_plots == 1) {
+    p_combined <- p[[1]]
+    ggsave(filename = file_name, plot = p_combined, width = 9, height = 3)
+  } else {
+    p_combined <- wrap_plots(p, ncol = 1)
+    ggsave(filename = file_name, plot = p_combined, width = 9, height = 12)
   }
-  p_combined <- p_combined + plot_layout(ncol = 1)
-  ggsave(filename = file_name, p_combined, width = 9, height = 12)
 }
 
 

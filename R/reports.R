@@ -1,6 +1,6 @@
 #' Summarise reported mutations
 #'
-#' @param muts a data frame providing info on mutations reported in the literature
+#' @param muts a data frame providing info on rpoB mutations reported in the literature
 #' @param min_n_species a numeric vector showing the minimum number of species which a mutation has been reported in
 #' @param file_name a path that the summary should be saved in
 #'
@@ -10,6 +10,7 @@
 #' @examples summarise_reported_mutation (muts, min_n_species, "./output/myfilename.txt")
 summarise_reported_mutations <- function(muts, file_name, subtitle = "") {
   
+  # stats before filtering:
   # studies:
   n_studies <- muts |>
     pull(Ref_code) |>
@@ -38,15 +39,84 @@ summarise_reported_mutations <- function(muts, file_name, subtitle = "") {
     unique() |>
     length()
   
+  # stats after filtering:
+  mutation_list_reports <- filter_mutations(muts,
+                                            min_n_species = globsets$min_n_species, 
+                                            min_n_studies = globsets$min_n_studies)
+  muts_F <- muts |>
+    semi_join(mutation_list_reports, by = join_by(AA_pos_Ecoli, AA_mutation))
+  # studies:
+  n_studies_F <- muts_F |>
+    pull(Ref_code) |>
+    unique() |>
+    length()
+  
+  # positions with mutations:
+  n_positions_F <- muts_F %>%
+    filter(!is.na(AA_pos_Ecoli), !is.na(AA_mutation)) %>%
+    distinct(AA_pos_Ecoli) %>% 
+    pull() |>
+    length()
+  
+  # AA mutations: 
+  n_AA_mutations_F <- muts_F %>%
+    filter(!is.na(AA_pos_Ecoli), !is.na(AA_mutation)) %>%
+    mutate(mutation_name = paste(AA_pos_Ecoli, AA_mutation, sep = "_")) %>% 
+    distinct(mutation_name) %>% 
+    pull() |>
+    length()
+  
+  #reported species
+  n_species_F <- muts_F |>
+    filter(!is.na(AA_pos_Ecoli), !is.na(AA_mutation)) |>
+    pull(Species) |> 
+    unique() |>
+    length()
+  
+  # Results relating to MTB:
+  # number of filtered mutations reported in clinical MTB isolates:
+  mtb_clinical <- muts |>
+    filter(Species == "Mycobacterium tuberculosis" & Origin == "Isolate") |>
+    distinct(AA_pos_Ecoli, AA_mutation)
+  
+  n_clinicalMTB_and_F <- mutation_list_reports |>
+    semi_join(mtb_clinical, by = join_by(AA_pos_Ecoli, AA_mutation)) |>
+    nrow()
+  
+  n_F_not_clinicalMTB <- mutation_list_reports |>
+    anti_join(mtb_clinical, by = join_by(AA_pos_Ecoli, AA_mutation)) |>
+    nrow()
+  
+  mutation_list_reports_no_MTB <- muts |>
+    filter(Species != "Mycobacterium tuberculosis") |>
+    filter_mutations(min_n_species = globsets$min_n_species, 
+                     min_n_studies = globsets$min_n_studies)
+  
+  n_filtered_mutations_no_MTB <- nrow(mutation_list_reports_no_MTB)
+  n_MTB_predicted_without_MTB <- mutation_list_reports_no_MTB |>
+    semi_join(mtb_clinical) |>
+    nrow()
+  
   report <- paste0(
     "Summary of reported mutations ", subtitle, "\n",
     "Date: ", Sys.time(), "\n",
     "--------------------------------------------------------------------\n\n",
-    "Number of studies: ", n_studies, "\n",
-    "Number of species: ", n_species, "\n",
-    "Total number of mutations: ", nrow(muts), "\n",
-    "Amino acid positions with mutations: ", n_positions, "\n",
-    "Number of unique amino acid mutations: ", n_AA_mutations, "\n"
+    "All mutations:\n",
+    "    Number of studies: ", n_studies, "\n",
+    "    Number of species: ", n_species, "\n",
+    "    Total number of mutations: ", nrow(muts), "\n",
+    "    Amino acid positions with mutations: ", n_positions, "\n",
+    "    Number of unique amino acid mutations: ", n_AA_mutations, "\n",
+    "Filtered mutations:\n",
+    "    Number of studies: ", n_studies_F, "\n",
+    "    Number of species: ", n_species_F, "\n",
+    "    Total number of mutations: ", nrow(muts_F), "\n",
+    "    Amino acid positions with mutations: ", n_positions_F, "\n",
+    "    Number of unique amino acid mutations: ", n_AA_mutations_F, "\n",
+    "Mutations in Mycobacterium tuberculosis (MTB) clinical isolates:\n",
+    "    Number of filtered mutations also reported in MTB: ", n_clinicalMTB_and_F, "\n",
+    "    Number of filtered mutations collated without MTB data: ", n_filtered_mutations_no_MTB, "\n",
+    "    Number of filtered mutations collated without MTB data also reported in MTB: ", n_MTB_predicted_without_MTB, "\n"
   )
   write_file(report, file_name)
   cat(report)

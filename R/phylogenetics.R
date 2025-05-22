@@ -65,9 +65,7 @@ get_subtree <- function(output, original_tree, meta_data){
   #     }), 
   #     `|`  # Logical OR to combine all matches
   #   ))
-  # } else {
-  #   NULL
-  # }
+  # } 
   
   #sum of all subsets to be kept
   subset_tip_indices <- unique(c(subset_tip_indices_species_name, 
@@ -292,12 +290,12 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, genus_variants,
   p_tree <- ggtree(subtree_data, 
                    layout = "circular", 
                    branch.length="none", 
-                   color="grey85")
+                   color="#eee0cd")
   
   # add predicted resistance:  
   p1 <- gheatmap(p_tree, species_data |> select(species, resistance) |> column_to_rownames(var="species"), 
                  offset = 0, color=NULL, colnames=FALSE, width = 0.05) +
-    scale_fill_manual(values=c("resistant" = "red", "susceptible" = "grey90"),
+    scale_fill_manual(values=c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
                       labels=c("resistant", "susceptible", ""),
                       na.value = hsv(0,0,0,0),
                       name = "Predicted\nresistance")
@@ -306,12 +304,12 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, genus_variants,
   p2 <- gheatmap(p1 + new_scale_fill(),
                  species_data |> select(species, evolvabilityI) |> column_to_rownames(var="species"),
                  offset = 3.4, color=NULL, colnames=FALSE, width = 0.05) +
-    scale_fill_viridis_c(na.value = "grey20", name = "Predicted\nevolvability", option = "plasma") +
+    scale_fill_gradientn(colours = c("#0077b6", "#ffd700"), na.value = "grey20", name = "Predicted\nevolvability") +
     scale_y_continuous(limits = c(0, round(1.005 * (nrow(data_tree) + 1) / 2)))
   
   # add major orders:
   #cols <- rep(brewer.pal(8, "Set1"), 100)[1:length(clades$major_clade)]
-  cols <- c(brewer.pal(9, "Set1"), brewer.pal(9, "Pastel1"))[1:length(clades$major_clade)]
+  cols <- c(brewer.pal(8, "Dark2"), brewer.pal(9, "Pastel1"))[1:length(clades$major_clade)]
   p3 <- p2 + geom_cladelab(node = clades$common_ancestor,
                            label = clades$major_clade,
                            align=TRUE,

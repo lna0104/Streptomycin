@@ -19,11 +19,35 @@ format:
     height: 800px;
     border: 1px solid black; 
   }
+  
+ .legend-row {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+  }
+  
+   .distance-legend {
+    width: 200px;
+  }
+
+  .chain-legend {
+    width: 350px; 
+  }
 </style>
+
 <div class="iframe-container">
   <iframe src="rpsL_structure.html"></iframe>
+</div>
+
+<div class="legend-row">
+  <img src="distance_legend.png" alt="Distance Legend" class="distance-legend">
+  <img src="chain_legend.png" alt="Chain Legend" class="chain-legend">
 </div>
 :::
 
 
-![](distance_legend.png){width="30%" fig-align="right"}
+
+
+
+
