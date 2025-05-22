@@ -409,7 +409,7 @@ plot_classes_genera <- function(filtered_output,
     "Desulfuromonadia"   = brewer_colors[14],
     "Leptospiria"        = brewer_colors[15],
     "Myxococcia"         = brewer_colors[16],
-    "Planctomycetia"     = brewer_colors[17],
+    "Planctomycetia"     = brewer_colors[2],
     "Unidentified"       = "gray70",
     "Other"              = "#4D4D4D"  # dark grey
  )
