@@ -61,12 +61,12 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
     theme(axis.text.x = element_text(angle=90, 
                                      vjust=0.1, 
                                      hjust=0.95, 
-                                     size=6), 
-          axis.text.y = element_text(size=6), 
-          axis.title=element_text(size=6, face="bold"),
+                                     size=8), 
+          axis.text.y = element_text(size=8), 
+          axis.title=element_text(size=10, face="bold"),
           plot.title=element_text(hjust=0),
-          legend.title = element_text(size=6),
-          legend.text = element_text(size=6),
+          legend.title = element_text(size=10),
+          legend.text = element_text(size=8),
           legend.position = "top") +
     labs(x = "Nucleotide substitution",
          y = "Number of species", 
@@ -91,19 +91,24 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
     geom_bar(aes(x = fct_infreq(Species), fill = Origin), width = 0.5) +
     theme_classic() +
     theme(axis.text.x = element_text(angle=90, 
-                                     hjust=0.95,
+                                     hjust=0.9,
                                      vjust=0.2, 
-                                     size=6), 
-          axis.title=element_text(size=6, face="bold"),
-          axis.text.y=element_text(size=6), 
+                                     size=8), 
+          axis.title=element_text(size=8, face="bold"),
+          axis.text.y=element_text(size=8), 
           plot.title=element_text(hjust=0), 
           legend.position = "top") +
     labs(x = "Species",
          y = "Number of reported mutations", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = wes_palette("FantasticFox1"))
- 
+    scale_fill_manual(values = c(
+      "Lab-generated" = "#3B9AB2",  
+      "Isolate" = "#EBCC2A",       
+      "Both" = "#EF5703"            
+    ), breaks=c('Lab-generated', 'Isolate', 'Both')) 
+  
+  # ggsave(filename = "./plots/rrs_reported_mutations_per_species.pdf", plot3, width = 10, height = 6)
 
   #combine plots:
   reported_mutations <- ggarrange(plot2, plot3, 

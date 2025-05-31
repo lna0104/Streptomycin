@@ -38,14 +38,10 @@ library(quarto)
 library(NGLVieweR)
 library(htmlwidgets)
 library(wesanderson)
-library(ggrepel)
-library(patchwork)
 library(cowplot) 
 library(ggraph)
 library(tidygraph)
-library(ggh4x)
 library(igraph)
-
 
 
 source("R/util.R")
@@ -561,12 +557,15 @@ networks <- tribble(
   ~type,    ~site_order, ~pos, ~focal_codon,
   "type64", c(3, 2, 1),  43,  "AAG",
   "type28", c(3, 2, 1),  43,  "AAG",
-  "type64", c(3, 2, 1),  86,  "CGT",
+  "type10", c(3, 2, 1),  43,  "AAG",
+  "type10", c(3, 2, 1),  86,  "CGT",
   "type28", c(3, 2, 1),  86,  "CGT",
+  "type64", c(3, 2, 1),  86,  "CGT",
   "type64", c(3, 2, 1),  92,  "GGT",
   "type28", c(3, 2, 1),  92,  "GGT",
   "type64", c(3, 2, 1),  88,  "AAG",
   "type28", c(3, 2, 1),  88,  "AAG",
+  "type10", c(3, 2, 1),  88,  "AAG",
   )
 
 for(i in 1:nrow(networks)) {
@@ -619,8 +618,8 @@ plot_cons(cons,
           file_name = "./plots/AA_conservation_grantham.pdf")
 
 # download PDB file for E. coli rpsL:
-pdb <- read.pdb("8cgj")
-# pdb <- read.pdb("8cai")
+# pdb <- read.pdb("8cgj")
+pdb <- read.pdb("./plots/8cgj.pdb")
 # Select L chain (Small ribosomal subunit protein uS12):
 # Select A chain (16S rRNA where streptomycin bind to)
 chain_selection <- atom.select(pdb, chain = c("L", "A"))
@@ -632,7 +631,6 @@ write.pdb(pdb_chain, file = "./data/8cgj_chain.pdb")
 # load("./output/cons.RData")
 visualise_rpsL_structure(file_pdb = "./data/8cgj_chain.pdb",
                          chain_ids = c("L","A"),
-                         ligand_resid = "5I0",
                          pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
                          mut_colour_variable = cons$means$grantham_Ecoli,
                          file_html = "./plots/rpsL_structure.html")

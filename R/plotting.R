@@ -216,6 +216,8 @@ plot_evolvability_by_class <-function(filtered_output,
   #merge data to class taxonomy
   processed_data <- filtered_output |>
     # rename(genus = genus) |>
+    # remove all present mutations
+    filter(mutation_category != "present") |>
     group_by(species, genus, accession_numbers, mutation_name, n_possible) |>
     summarise(n = n(), .groups = 'drop') |>
     filter(n == 1) |>            # remove multi-copy species
@@ -242,7 +244,24 @@ plot_evolvability_by_class <-function(filtered_output,
     mutate(phylum = fct_relevel(phylum, "Misc", after = Inf)) |>
     mutate(mutation_name = str_replace(mutation_name, "_", ""))
 
-  p <- ggplot(plot_data) +
+  # Generate all combinations of class and mutation_name
+  complete_grid <- expand_grid(
+    class = unique(plot_data$class),
+    mutation_name = unique(plot_data$mutation_name)
+  )
+
+  # Add phylum info 
+  class_phylum <- plot_data |> select(class, phylum) |> distinct()
+  complete_grid <- complete_grid |>
+    left_join(class_phylum, by = "class")
+
+  # Merge with existing plot_data to fill in missing entries
+  plot_data_complete <- complete_grid |>
+    left_join(plot_data, by = c("class", "mutation_name", "phylum")) |>
+    mutate(n_pos = coalesce(n_pos, 0)) |>  # or use NA_real_ if you prefer
+    select(class, mutation_name, n_pos, phylum)
+
+  p <- ggplot(plot_data_complete) +
     geom_tile(aes(x = mutation_name,
                   y = interaction(class,
                                   phylum,
@@ -293,7 +312,7 @@ plot_classes_genera <- function(filtered_output,
                                 gtdb_taxonomy,
                                 genus_variants,
                                 file_name,
-                                n_classes_to_plot = 15,
+                                n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
                                 min_genus_size = 10, 
                                 n_genera_to_plot = 25,
@@ -378,65 +397,64 @@ plot_classes_genera <- function(filtered_output,
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
 
-  pie_data <- n_species_per_class |>
-    mutate(class_grouped = case_when(
-      class %in% classes_for_plotting ~ class,
-      class == "Unidentified" ~ "Unidentified",
-      TRUE ~ "Other"
-    )) |>
-    mutate(class_grouped = fct_relevel(class_grouped, "Other", "Unidentified", after = Inf)) |>
-    group_by(class_grouped) |>
-    summarise(n = sum(n), .groups = "drop") |>
-    mutate(
-      csum = rev(cumsum(rev(n))), 
-      pos = n/2 + lead(csum, 1),
-      pos = if_else(is.na(pos), n/2, pos)) 
+  # pie_data <- n_species_per_class |>
+  #   mutate(class_grouped = case_when(
+  #     class %in% classes_for_plotting ~ class,
+  #     class == "Unidentified" ~ "Unidentified",
+  #     TRUE ~ "Other"
+  #   )) |>
+  #   mutate(class_grouped = fct_relevel(class_grouped, "Other", "Unidentified", after = Inf)) |>
+  #   group_by(class_grouped) |>
+  #   summarise(n = sum(n), .groups = "drop") |>
+  #   mutate(
+  #     csum = rev(cumsum(rev(n))), 
+  #     pos = n/2 + lead(csum, 1),
+  #     pos = if_else(is.na(pos), n/2, pos)) 
 
-  brewer_colors <- c(brewer.pal(12, name = "Paired"), brewer.pal(8, name = "Dark2"))
+  # brewer_colors <- c(brewer.pal(12, name = "Paired"), brewer.pal(8, name = "Dark2"))
 
-  cols_class <- c(
-    "Actinomycetes"      = brewer_colors[1],
-    "Alphaproteobacteria"= brewer_colors[12],
-    "Bacteroidia"        = brewer_colors[3],
-    "Campylobacteria"    = brewer_colors[4],
-    "Clostridia"         = brewer_colors[5],
-    "Coriobacteriia"     = brewer_colors[10],
-    "Cyanobacteriia"      = brewer_colors[7],
-    "Desulfovibrionia"   = brewer_colors[8],
-    "Gammaproteobacteria"= brewer_colors[9],
-    "Negativicutes"      = brewer_colors[11],
-    "Spirochaetia"       = brewer_colors[13],
-    "Desulfuromonadia"   = brewer_colors[14],
-    "Leptospiria"        = brewer_colors[15],
-    "Myxococcia"         = brewer_colors[16],
-    "Planctomycetia"     = brewer_colors[2],
-    "Unidentified"       = "gray70",
-    "Other"              = "#4D4D4D"  # dark grey
- )
+  # cols_class <- c(
+  #   "Actinomycetes"      = brewer_colors[1],
+  #   "Alphaproteobacteria"= brewer_colors[12],
+  #   "Bacteroidia"        = brewer_colors[3],
+  #   "Campylobacteria"    = brewer_colors[4],
+  #   "Clostridia"         = brewer_colors[5],
+  #   "Coriobacteriia"     = brewer_colors[10],
+  #   "Cyanobacteriia"      = brewer_colors[7],
+  #   "Desulfovibrionia"   = brewer_colors[8],
+  #   "Gammaproteobacteria"= brewer_colors[9],
+  #   "Negativicutes"      = brewer_colors[11],
+  #   "Spirochaetia"       = brewer_colors[13],
+  #   "Desulfuromonadia"   = brewer_colors[14],
+  #   "Leptospiria"        = brewer_colors[15],
+  #   "Myxococcia"         = brewer_colors[16],
+  #   "Planctomycetia"     = brewer_colors[2],
+  #   "Unidentified"       = "gray70",
+  #   "Other"              = "#4D4D4D"  # dark grey)
 
-  plot_A <- ggplot(pie_data, aes(x = "" , y = n, fill = fct_inorder(class_grouped))) +
-    geom_col(width = 1, color="white") +
-    coord_polar(theta = "y") +
-    scale_fill_manual(values = cols_class) +
-    # geom_text_repel(data = pie_data,
-    #                 aes(x=1.4, y = pos, label = class_grouped),
-    #                 nudge_x = 0.8,
-    # direction = "y",
-    # segment.size = 0.2,
-    # box.padding = 1,
-    # size = 4,
-    # show.legend = FALSE,
-    # segment.curvature = 0.5,
-    # segment.ncp = 0) +
-    theme_void() +
-    theme(
-      plot.margin = margin(0, 0.5, 0.2, 0.5, "cm"),
-      legend.position = "right"
-    ) + 
-    labs(fill="Class") +
-    guides(fill = guide_legend(ncol = 2))
+  # plot_A <- ggplot(pie_data, aes(x = "" , y = n, fill = fct_inorder(class_grouped))) +
+  #   geom_col(width = 1, color="white") +
+  #   coord_polar(theta = "y") +
+  #   scale_fill_manual(values = cols_class) +
+  #   # geom_text_repel(data = pie_data,
+  #   #                 aes(x=1.4, y = pos, label = class_grouped),
+  #   #                 nudge_x = 0.8,
+  #   # direction = "y",
+  #   # segment.size = 0.2,
+  #   # box.padding = 1,
+  #   # size = 4,
+  #   # show.legend = FALSE,
+  #   # segment.curvature = 0.5,
+  #   # segment.ncp = 0) +
+  #   theme_void() +
+  #   theme(
+  #     plot.margin = margin(0, 0.5, 0.2, 0.5, "cm"),
+  #     legend.position = "right"
+  #   ) + 
+  #   labs(fill="Class") +
+  #   guides(fill = guide_legend(ncol = 2))
 
-  # Plot B: evolvability by class
+  # Plot A: evolvability by class
   
   # plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
   #   geom_boxplot(aes(x = reorder(class, dplyr::desc(class)), 
@@ -448,17 +466,21 @@ plot_classes_genera <- function(filtered_output,
   #        y = "Evolvability") +
   #   coord_flip()
 
-  plot_B1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible, fill = class),
+  plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+    # geom_jitter(
+    # aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
+    # width = 0.2, size = 2.5, alpha = 0.1
+    # ) +
+    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
       width=1.2, size=0.3
     ) + 
-    scale_fill_manual(values = cols_class, guide = "none") + 
+    # scale_fill_manual(values = cols_class, guide = "none") + 
     scale_y_continuous(expand = c(0.01, 0)) +
     labs(x = "Class", y = "Evolvability") +
     coord_flip()
 
-  # Plot B2: predicted resistance mutations by class
-  plot_B2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+  # Plot A2: predicted resistance mutations by class
+  plot_A2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
     geom_bar(aes(x = reorder(class, dplyr::desc(class)),
                  fill = category),
              position = "fill") +
@@ -474,10 +496,10 @@ plot_classes_genera <- function(filtered_output,
     scale_fill_manual(values = cols, name = " ") +
     guides(fill=guide_legend(nrow=1, byrow=TRUE)) 
 
-  plot_B2_no_legend <- plot_B2 + theme(legend.position = "none")
-  legend_b2 <- get_legend(plot_B2)
+  plot_A2_no_legend <- plot_A2 + theme(legend.position = "none")
+  legend_a2 <- get_legend(plot_A2)
   
-  # Plot C: predicted resistance mutations by genus
+  # Plot B: predicted resistance mutations by genus
 
   # genera to be plotted:
   genera_for_plotting <- species_with_muts |>
@@ -491,8 +513,7 @@ plot_classes_genera <- function(filtered_output,
 
   # Prepare taxonomy levels
   taxonomy <- species_with_muts |> 
-    filter(genus %in% genera_for_plotting,
-           class %in% classes_for_plotting) |> 
+    filter(genus %in% genera_for_plotting) |> 
     select(-c(category, n_possible)) 
 
   # Generate edges from class → order → family → genus 
@@ -507,46 +528,46 @@ plot_classes_genera <- function(filtered_output,
   # Create graph object
   graph <- tbl_graph(edges = taxonomy_edges, directed = TRUE)
   
-  # Function to propagate class name down the tree
-  propagate_class <- function(graph_tbl, class_names) {
-    V(graph_tbl)$class_parent <- NA
+  # # Function to propagate class name down the tree
+  # propagate_class <- function(graph_tbl, class_names) {
+  #   V(graph_tbl)$class_parent <- NA
     
-    for (class_node in which(V(graph_tbl)$name %in% class_names)) {
-      descendants <- igraph::subcomponent(graph_tbl, class_node, mode = "out")
-      V(graph_tbl)$class_parent[descendants] <- V(graph_tbl)$name[class_node]
-    }
+  #   for (class_node in which(V(graph_tbl)$name %in% class_names)) {
+  #     descendants <- igraph::subcomponent(graph_tbl, class_node, mode = "out")
+  #     V(graph_tbl)$class_parent[descendants] <- V(graph_tbl)$name[class_node]
+  #   }
     
-    graph_tbl
-  }
+  #   graph_tbl
+  # }
   
   # Apply propagation
-  class_names <- names(cols_class)
-  graph_colored <- propagate_class(graph, class_names)
+  # class_names <- names(cols_class)
+  # graph_colored <- propagate_class(graph, class_names)
 
   # Annotate class and genus in the plot
-  graph_for_plotting <- graph_colored |> 
+  graph_for_plotting <- graph |> 
     activate(nodes) |> 
     mutate(
       rank = case_when(
         name %in% unique(taxonomy$class) ~ "class",
         name %in% unique(taxonomy$genus) ~ "genus",
         TRUE ~ "Other"
-    ),
-      color = cols_class[class_parent]) |>
+    )) |>
+      # color = cols_class[class_parent]) |>
     arrange(desc(rank == "class"), desc(name))
 
   # Plot the multi-layer tree
-  plot_C1 <- ggraph(graph_for_plotting, layout = "sugiyama") +
-                geom_edge_link() +
-                geom_node_point(aes(filter = rank == "Other"), alpha = 0) +  # Hide "Other" nodes (invisible points)
-                geom_node_label(aes(label = ifelse(rank %in% c("class", "genus"), name, ""), color = I(color)), repel = TRUE) +
-                theme_void() +
-                scale_colour_manual(values = cols_class) +
-                scale_y_reverse() +
-                coord_flip() +
-                theme(
-                  plot.margin = margin(0, 0.3, 0, 0.2, "cm")
-                  )
+  plot_B1 <- ggraph(graph_for_plotting, layout = "sugiyama") +
+    geom_edge_link() +
+    geom_node_point(aes(filter = rank == "Other"), alpha = 0) +  
+    geom_node_label(aes(label = ifelse(rank %in% c("class", "genus"), name, "")), repel = TRUE) +
+    theme_void() +
+    # scale_colour_manual(values = cols_class) +
+    scale_y_reverse() +
+    coord_flip() +
+    theme(
+      plot.margin = margin(0, 0.3, 0, 0.2, "cm")
+    )
 
   
   #Extract genus order
@@ -556,9 +577,8 @@ plot_classes_genera <- function(filtered_output,
     arrange(x) |> 
     pull(name) 
   
-  plot_C2 <- ggplot(filter(species_with_muts, 
-                          genus %in% genus_order, 
-                          class %in% classes_for_plotting) |>
+  plot_B2 <- ggplot(filter(species_with_muts, 
+                          genus %in% genus_order) |>
                      mutate(genus = factor(genus, levels=genus_order)) |>
                      mutate(class = as.character(class)) |>
                     #  mutate(class = ifelse(is.na(class), "?", substr(class, 1, 1))) |>
@@ -580,20 +600,12 @@ plot_classes_genera <- function(filtered_output,
       axis.title.y = element_blank()
       )
   
-  # Combine B1 and B2 
-  plot_B <- plot_grid(plot_B1, plot_B2_no_legend, 
+  # Combine A1 and A2 
+  plot_A <- plot_grid(plot_A1, plot_A2_no_legend, 
                     nrow = 1, rel_widths = c(1.2, 1))
 
-  # Combine A and B horizontal
-  left_column <-ggarrange(plot_A, plot_B,
-                ncol = 1,
-                heights = c(0.8,1),
-                labels = c("A", "B"),
-                common.legend = FALSE)  
-
-
-  #Combine C1 and C2 vertical
-  plot_C <- plot_grid(plot_C1, plot_C2,
+  #Combine B1 and  B2 vertical
+  plot_B <- plot_grid(plot_B1, plot_B2,
                     ncol = 2,
                     rel_widths = c(1.2, 1),
                     labels = c("", ""),
@@ -603,14 +615,13 @@ plot_classes_genera <- function(filtered_output,
                     )         
                           
 
-  # Combine everything with C 
-  main_plot <- plot_grid(left_column, plot_C,
+  main_plot <- plot_grid(plot_A, plot_B,
                        ncol = 2,
                        rel_widths = c(1, 1),
                        labels = c("", "C"))
         
   # Add the legend 
-  add_legend_plot <- plot_grid(main_plot, legend_b2, ncol = 1, rel_heights = c(1, 0.07)) 
+  add_legend_plot <- plot_grid(main_plot, legend_a2, ncol = 1, rel_heights = c(1, 0.07)) 
 
     # combined_plot <- ggarrange(plot_B1, plot_B2, plot_C,
     #                            ncol = 3,
@@ -620,7 +631,7 @@ plot_classes_genera <- function(filtered_output,
     #                            legend = "bottom") + 
     #   theme(plot.margin = margin(0.2, 0.2, 0.2, 0.2, "cm"))
   
-  ggsave(filename = file_name, add_legend_plot, width = 15, height = 10)
+  ggsave(filename = file_name, add_legend_plot, width = 14, height = 8)
 }
 
 

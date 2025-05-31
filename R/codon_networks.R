@@ -278,21 +278,28 @@ plot_codon_network <- function(type = "type28",
                   node_radius, 
                   col = ifelse(nodes$freq[i] < freq_threshold, "lightgrey",
                                hsv(0.16, nodes$freq[i]/max(nodes$freq), 1)))
+
+      # draw.circle(nodes$coord_x[i], 
+      #             nodes$coord_y[i], 
+      #             node_radius, 
+      #             col = ifelse(nodes$freq[i] < freq_threshold, "lightgrey",
+      #                          hsv(0.16, nodes$freq[i]/0.7, 1)))
+
       if (nodes$resistant[i]) {
         draw.circle(nodes$coord_x[i], 
                     nodes$coord_y[i], 
                     node_radius, 
-                    border = "red",
+                    border = "#C93312",
                     lwd = 3)
       }
       text(nodes$coord_x[i], nodes$coord_y[i] + node_radius/3, nodes$Codon_target[i])
       text(nodes$coord_x[i], nodes$coord_y[i] - node_radius/3, nodes$AA3[i])
     }
   }
-  text(min(nodes$coord_x - node_radius, na.rm = TRUE),
+  text(max(nodes$coord_x + node_radius, na.rm = TRUE),
        max(nodes$coord_y + node_radius, na.rm = TRUE),
       paste("pos =", pos),
-      adj = c(0, 1))
+      adj = c(1, 1))
   
   add_gradient_legend(minx, 
                       minx + (maxx-minx)/6, 

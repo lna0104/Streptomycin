@@ -13,7 +13,6 @@
 #' 
 visualise_rpsL_structure <- function(file_pdb, 
                                      chain_ids = c("L","A"),
-                                     ligand_resid = "5I0",
                                      pos,
                                      mut_colour_variable,
                                      n_cols = 100,
@@ -26,14 +25,13 @@ visualise_rpsL_structure <- function(file_pdb,
   ngl <- NGLVieweR(file_pdb, width = "800px", height = "800px") |>
     stageParameters(backgroundColor = "white", zoomSpeed = 1)
   
-  # Color the entire chain and ligand by position
   # ngl <- ngl |>
   #   stageParameters(backgroundColor = "white", zoomSpeed = 1) |>
   #   addRepresentation("cartoon",
   #                     param = list(name = "cartoon", colorScheme = "residueindex"))
 
   # Add the two chains with different colors
-  chain_colors <- brewer.pal(8, name = "Set2")
+  chain_colors <- brewer.pal(8, name = "Set3")
 
   for (i in seq_along(chain_ids)) {
     ngl <- ngl |>
@@ -41,21 +39,26 @@ visualise_rpsL_structure <- function(file_pdb,
                         param = list(
                           name = paste0("chain_", chain_ids[i]),
                           sele = paste0(":", chain_ids[i]),
-                          colorScheme = "uniform", 
+                          colorScheme = "uniform",
                           colorValue = chain_colors[i]
                         ))
   }
-
+  ngl <- ngl |>
+    addRepresentation("distance", param = list(
+      atomPair = list(list("12:L.CA", "20:L.CA")), # Specify the atom pair here
+      color = chain_colors[1],
+      labelVisible = FALSE
+    )) 
+  
   # Add the ligand as ball+stick
-  ligand_sele <- paste0(ligand_resid, " and :", chain_ids[2]) 
 
   ngl <- ngl |>
     addRepresentation("ball+stick",
                       param = list(
-                        name = "ligand",
-                        sele = ligand_sele,
-                        colorScheme = "element"
-                      ))
+                        sele = ":A and hetero and 1603",
+                        color = "element"
+                      )) 
+  
 
   # add labels at known mutation sites:
   for(p in pos) {
@@ -71,7 +74,8 @@ visualise_rpsL_structure <- function(file_pdb,
                           showBorder = TRUE,
                           borderColor = "black",
                           colorValue = "black",
-                          backgroundColor = colourScale[col_i],
+                          # backgroundColor = colourScale[col_i],
+                          backgroundColor = "red",
                           backgroundOpacity = 1,
                           radius = 3,
                           fixedSize = FALSE
@@ -84,7 +88,7 @@ visualise_rpsL_structure <- function(file_pdb,
   
   # legend for mutation color scale 
 
-  png("plots/distance_legend.pdf", width = 200, height = 100)
+  png("plots/distance_legend.png", width = 200, height = 100)
   par(mar = c(4,1,1,1))
   plot(NA, xlim = c(0, max_value), ylim = c(0,1),
        xlab = "Mean amino acid distance", ylab = NA,
@@ -96,13 +100,13 @@ visualise_rpsL_structure <- function(file_pdb,
        col = colourScale, border = NA)
   dev.off()
 
+  custom_chain_names <- c("rpsL", "rrs")
   # legend for chain colors 
-  png("plots/chain_legend.pdf", width = 300, height = 150)
+  png("plots/chain_legend.png", width = 200, height = 100)
   par(mar = c(4, 4, 2, 2))
   plot.new()
   # Draw legend with chain names and the corresponding pastel colors
-  legend("center", legend = chain_ids, fill = chain_colors,
-         title = "Chains", cex = 1.2, bty = "n")
+  legend("center", legend = custom_chain_names, fill = chain_colors, bty = "n", horiz = TRUE)
   dev.off()
 
   return(ngl)
