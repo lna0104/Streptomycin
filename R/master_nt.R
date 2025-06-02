@@ -264,6 +264,8 @@ muts <- mutation_list_reports |>
 
 write_csv(muts, "./output/muts_rrs.csv")
 #3 summary and plot of reported mutations
+plot_reported_article_before_process(muts, file_name = "./plots/rrs_reported_articles.pdf")
+
 plot_reported_mutations_nt(muts, file_name = "./plots/rrs_reported_mutations.pdf", n_frequency = 1) # returns frequent reported mutations, positions and species
 summarise_reported_mutations_nt(muts, file_name = "./results/rrs_summary_reported_mutations.txt") # returns a text message summarizing previous reports
 

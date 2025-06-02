@@ -408,3 +408,70 @@ plot_classes_genera <- function(filtered_output,
   
   ggsave(filename = file_name, combined_plot, width = 9, height = 7)
 }
+
+
+plot_reported_article_before_process <- function(muts, n_frequency = 1, file_name){
+  plotting_data <- muts |>
+    mutate(Mutation_name = paste0(Nt_original, Nt_pos, Nt_mutation)) |>
+    select(Species, Mutation_name, Ref_code) |>
+    distinct()
+  
+  n_articles_per_mutation <- plotting_data |>
+    group_by(Mutation_name) |>
+    summarise(n_articles = n_distinct(Ref_code)) |>
+    filter(n_articles>n_frequency) |>
+    arrange(n_articles)
+
+
+  plot1 <- n_articles_per_mutation %>%
+    ggplot(aes(x = reorder(Mutation_name, -n_articles), y = n_articles)) +
+    geom_bar(stat = "identity", fill = "grey75") +
+    labs(
+      x = "Mutations",
+      y = "Number of articles"
+    ) +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle=90, 
+                                     vjust=0.1, 
+                                     hjust=0.95, 
+                                     size=8), 
+          axis.text.y = element_text(size=8), 
+          axis.title=element_text(size=10, face="bold"),
+          plot.title=element_text(hjust=0),
+          legend.title = element_text(size=10),
+          legend.text = element_text(size=8)) 
+  
+  n_articles_per_species <- plotting_data |>
+    group_by(Species) |>
+    summarise(n_articles = n_distinct(Ref_code)) |>
+    # filter(n_articles>n_frequency) |>
+    arrange(n_articles)
+  
+  plot2 <- n_articles_per_species %>%
+    ggplot(aes(x = reorder(Species, -n_articles), y = n_articles)) +
+    geom_bar(stat = "identity", fill = "grey75") +
+    labs(
+      x = "Species",
+      y = "Number of articles"
+    ) +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle=90, 
+                                     vjust=0.1, 
+                                     hjust=0.95, 
+                                     size=8), 
+          axis.text.y = element_text(size=8), 
+          axis.title=element_text(size=10, face="bold"),
+          plot.title=element_text(hjust=0),
+          legend.title = element_text(size=10),
+          legend.text = element_text(size=8)) 
+  
+  #combine plots:
+  combine_plots <- ggarrange(plot1, plot2, 
+                                  nrow=2, heights = c(0.8, 1.2),
+                                  common.legend = FALSE,
+                                  labels = c("A", "B"))
+  
+  ggsave(filename = file_name, combine_plots, width = 12, height = 8)
+
+  
+}
