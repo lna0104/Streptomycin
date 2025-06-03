@@ -11,13 +11,14 @@ This project aims to assess both intrinsic resistance—where streptomycin resis
 
 - R/: Contains all analysis scripts, including:
 
-  - master.R: Main pipeline for analyzing rpsL mutations.
-
-  - master_nt.R: Main pipeline for analyzing rrs mutations.
+  - master.R: Pipeline for analyzing rpsL mutations. This script runs the complete streptomycin resistance analysis, including genome retrieval, mutation screening, phylogenetic mapping, codon network modeling, structural analysis, and report generation.
+  - master_nt.R: Pipeline for analyzing rrs mutations. This script is intended to parallel the rpsL workflow but is currently incomplete and includes only partial steps of the analysis.
+      
+- data/: Input data files and metadata required for analysis.
 
 - output/: Intermediate analysis outputs, such as filtered sequences and mutation screens.
 
-- plots/: Final figures generated for the report or thesis.
+- plots/: Final figures generated for the project.
 
 - results/: Summary tables and final processed results.
 
