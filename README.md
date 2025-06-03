@@ -18,9 +18,9 @@ This project aims to assess both intrinsic resistance—where streptomycin resis
 
 - output/: Intermediate analysis outputs, such as filtered sequences and mutation screens.
 
-- plots/: Final figures generated for the project.
+- plots/: Final figures generated for this analysis.
 
-- results/: Summary tables and final processed results.
+- results/: Summary files and final outputs generated throughout the pipeline. 
 
 
 ## Citation
