@@ -13,7 +13,7 @@ muts <- read_sheet("https://docs.google.com/spreadsheets/d/15M9eY1o_3uzA2zeR78Sk
   filter(Gene == "rpsL" | Gene == "rrs") |>
   filter(Origin %in% c("Isolate", "Lab mutant", "Construct")) |>
   mutate(Origin = ifelse(Origin %in% c("Lab mutant", "Construct"), "Lab-generated", Origin)) |>
-  select(-Entry_by) |>
+  select(-c(Entry_by, Modify_by)) |>
   arrange(Species, Ref_code, AA_pos, AA_pos_Ecoli)
 write_csv(muts, "./data/reported_mutations.csv")
 

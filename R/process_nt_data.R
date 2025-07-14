@@ -1,3 +1,81 @@
+# Functions relating to coordinates, i.e. tables relating positions in one focal sequence
+# to positions in a homologous reference sequence (usually in E. coli).
+
+#' Calculate a table of coordinates
+#'
+#' This function takes two DNA sequences,
+#' and calculates a table of corresponding positions in this alignment ("coordinates").
+#'
+#' @param dnaFocal Focal DNA sequence.
+#' @param dnaRef Reference DNA sequence, e.g. Escherichia coli.
+#' @param aligOutput If FALSE (default), only the actual coordinates are returned.
+#' If TRUE then the alignment is also returned.
+#'
+#' @return By default, a table with two columns: the position in the focal sequence (posFocal),
+#' and the position in the reference sequence (posRef).
+#' If aligOutput==TRUE, a list containing the coordinates and the alignment.
+#'
+#' @export
+#'
+getCoordinatesNt <- function(dnaFocal,
+                           dnaRef,
+                           aligOutput = FALSE) {
+  
+  alig<- pwalign::pairwiseAlignment(dnaFocal, dnaRef)
+  
+  # extract the aligned sequences from the alignment
+  aligFocal <- Biostrings::DNAString(toString(pwalign::alignedPattern(alig)))
+  aligRef <- Biostrings::DNAString(toString(pwalign::alignedSubject(alig)))
+  
+  posFocal <- 0L
+  posRef <- 0L
+  coordinates <- data.frame(posFocal = rep(NA_integer_, length(aligFocal)),
+                            posRef   = NA_integer_)
+  for (i in 1:length(aligFocal)) {
+    letterFocal <- Biostrings::extractAt(aligFocal, IRanges::IRanges(i)) |>
+      as.character()
+    letterRef <- Biostrings::extractAt(aligRef, IRanges::IRanges(i)) |>
+      as.character()
+    if (letterFocal != "-") {
+      posFocal <- posFocal + 1L
+      coordinates$posFocal[i] <- posFocal
+    }
+    if (letterRef != "-") {
+      posRef <- posRef + 1L
+      coordinates$posRef[i] <- posRef
+    }
+  }
+  if (aligOutput) {
+    return(list(coordinates = coordinates,
+                alignment = alig))
+  } else {
+    return(coordinates)
+  }
+}
+
+#' Obtain tables of coordinates.
+#'
+#' Takes a list of homologous sequences of which one is designated a reference,
+#' aligns them all to the reference (at nucleotide level), and calculates for each sequence
+#' a table of corresponding coordinates.
+#'
+#' @param seqs A DNAStringSet object containing a set of homologous sequences.
+#' @param refSeq_ID The name of the sequence designated as the reference.
+#'
+#' @return A list of tables of coordinates. Each of these tables has two columns:
+#' the position in the focal sequence (posFocal), and the position in the reference sequence (posRef).
+#' @export
+#'
+getAllCoordinatesNt <- function(seqs, refSeq_ID) {
+  coordinates <- vector(mode = "list", length = length(seqs))
+  names(coordinates) <- names(seqs)
+  for(i in 1:length(seqs)) {
+    cat(paste0("Determining coordinates for ", names(seqs)[i], ".\n"))
+    coordinates[[i]] <- getCoordinatesNt(seqs[[i]], seqs[[refSeq_ID]])
+  }
+  return(coordinates)
+}
+
 # Functions to generate "mutations tables", i.e. tables listing mutations
 # in one or several sequences. Each row in such a table represents a particular
 # mutation, and the fillMutationsTable function tries to make sure that the table

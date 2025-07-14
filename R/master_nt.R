@@ -206,12 +206,14 @@ for (j in 1:length(summaries)) {
     cat(paste0("No rrs found for species ID ", species, "\n"))
     next
   } else if (length(matching_seqs) > 1) {
-    cat("There are ", length(matching_seq), "copies of rrs of", species, "\n")
+    cat("There are ", length(matching_seqs), "copies of rrs of", species, "\n")
     if (species == "Escherichia coli"){
       matching_seq <- matching_seqs[grep("\\[gene=rrsB\\]", names(matching_seqs))]
     } else{
       matching_seq <- matching_seqs[1] 
     }
+  } else {
+    matching_seq <- matching_seqs
   }
   names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
   all_sequences <- c(all_sequences, matching_seq)
@@ -257,8 +259,9 @@ if(file.exists("./data/fastahash_rrs.Rds") && as.character(openssl::sha1(file(".
   saveRDS(old_fastahash, 
        file = "./data/fastahash_rrs.Rds")
   print("Sequences file has changed, regenerating coordinates")
-  #get coordinates
-  coordinates <- ALJEbinf::getAllCoordinates(seqs, "rrs_Escherichia_coli_MG1655")
+  # get coordinates
+  # coordinates <- ALJEbinf::getAllCoordinates(seqs, "rrs_Escherichia_coli_MG1655")
+  coordinates <- getAllCoordinatesNt(seqs, "rrs_Escherichia_coli_MG1655")
   save(coordinates, file = "./output/coordinates_rrs.RData")
 }
 
@@ -270,7 +273,6 @@ muts <- mutation_list_reports |>
 write_csv(muts, "./output/muts_rrs.csv")
 #3 summary and plot of reported mutations
 plot_reported_article_before_process(muts, file_name = "./plots/rrs_reported_articles.pdf")
-
 plot_reported_mutations_nt(muts, file_name = "./plots/rrs_reported_mutations.pdf", n_frequency = 1) # returns frequent reported mutations, positions and species
 summarise_reported_mutations_nt(muts, file_name = "./results/rrs_summary_reported_mutations.txt") # returns a text message summarizing previous reports
 
