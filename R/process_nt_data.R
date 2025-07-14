@@ -255,7 +255,7 @@ fillMutationsTableNt <- function(muts, refs, seqs, coordinates) {
   muts$Nt_pos_Ecoli <- suppressWarnings(as.integer(muts$Nt_pos_Ecoli))
   # muts$AA_pos <- suppressWarnings(as.integer(muts$AA_pos))
   # muts$AA_pos_Ecoli <- suppressWarnings(as.integer(muts$AA_pos_Ecoli))
-  #muts$MIC_mgPerL <- as.double(muts$MIC_mgPerL)
+  muts$MIC_mgPerL <- as.double(muts$MIC_mgPerL)
 
   # infer gene name from mutation name:
   # for(i in 1:nrow(muts)) {
@@ -310,17 +310,12 @@ fillMutationsTableNt <- function(muts, refs, seqs, coordinates) {
               (muts$Strain_ID[k] == strainIDs[j])) {
             muts$RefSeq_ID[k] <- refSeq_ID
             if (all(is.na(c(muts$Nt_pos[k], muts$Nt_pos_Ecoli[k],
-                            muts$Nt_mut_name[k], muts$Nt_mut_name_Ecoli[k],
-                            muts$AA_pos[k], muts$AA_pos_Ecoli[k],
-                            muts$AA_mut_name[k], muts$AA_mut_name_Ecoli[k]))) && (is.na(muts$Warning[k]))) {
-              muts$Warning[k] <- "No mutation position (Nt or AA) available"
+                            muts$Nt_mut_name[k], muts$Nt_mut_name_Ecoli[k]))) && (is.na(muts$Warning[k]))) {
+              muts$Warning[k] <- "No mutation position (Nt) available"
             }
             if (all(is.na(c(muts$Nt_mutation[k],
-                            muts$Nt_mut_name[k], muts$Nt_mut_name_Ecoli[k],
-                            muts$Codon_mutation[k],
-                            muts$AA_mutation[k],
-                            muts$AA_mut_name[k], muts$AA_mut_name_Ecoli[k]))) && (is.na(muts$Warning[k]))) {
-              muts$Warning[k] <- "No mutation (Nt, codon or AA) available"
+                            muts$Nt_mut_name[k], muts$Nt_mut_name_Ecoli[k]))) && (is.na(muts$Warning[k]))) {
+              muts$Warning[k] <- "No mutation (Nt) available"
             }
             if (is.na(muts$Warning[k])) {
               if (isPointMutationNt(muts, k)) {

@@ -243,7 +243,10 @@ rm.all.but("globsets")
 refs <- read_csv("./data/rrs_references.csv", show_col_types = FALSE)
 seqs <- readDNAStringSet("./data/rrs_references.fasta")
 mutation_list_reports <- read_csv("./data/reported_mutations.csv", show_col_types = FALSE)|>
-  filter(Gene=="rrs")
+  filter(Gene=="rrs") |>
+  filter(Ref_code != "Viet2018") |>
+  select(-c(Codon_original, Codon_mutation, Codon_OtoM, AA_pos, AA_pos_Ecoli, AA_original,
+            AA_mutation, AA_OtoM, AA_mut_name, AA_mut_name_Ecoli))
 
 # Check whether the above files have been changed and hence the coordinates need to be updated 
 if(file.exists("./data/fastahash_rrs.Rds") && as.character(openssl::sha1(file("./data/rrs_references.fasta"))) == readRDS("./data/fastahash_rrs.Rds")){
