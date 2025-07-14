@@ -127,9 +127,9 @@ Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,53,R,C,NA,NA,NA,Lab
 Escherichia coli,NA,NA,rpsL,262,262,A,G,NA,rpsL_A262G,rpsL_A262G,AAA,GAA,AAA -> GAA,NA,87,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,264,264,A,C,NA,rpsL_A264C,rpsL_A264C,AAA,AAC,AAA -> AAC,NA,87,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosaka2004,NA
+Escherichia coli,NA,NA,rrs,912,912,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rrs,913,913,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rrs,915,915,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
-Escherichia coli,NA,NA,rrs,912,912,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Leclerc1991,NA
 Escherichia coli,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Lopez2023,NA
 Escherichia coli,NA,NA,rrs,523,523,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,25,NA,NA,NA,Melancon1988,NA
 Escherichia coli,WP2,NA,rpsL,427,427,C,T,NA,NA,NA,NA,NA,NA,41,41,P,L,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Timms1992,NA
@@ -206,8 +206,8 @@ Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA
 Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
-Mycobacterium tuberculosis,NA,NA,rrs,1400,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
 Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1400,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,100,NA,NA,NA,Bauskenieks2015,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,all members of this strain family had an identical mutation in codon 43,Bifani2001,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Borham2022,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Bouziane2019,NA
@@ -238,8 +238,8 @@ Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA
 Mycobacterium tuberculosis,NA,NA,rrs,513,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Chen2015,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,31 isolates had this mutation,Cohen2020,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,8 isolates had this mutation,Cohen2020,NA
-Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Cooksey1996,NA
 Mycobacterium tuberculosis,NA,NA,rrs,865,912,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,NA,NA,NA,One isolate with low-level SM resistance had undergone a cytosine-to-guanine sub-stitution at nucleotide 865 of the 16S rRNA sequence. This position corresponds to position 912 of theE. coli16S rRNAsequence,Cooksey1996,NA
+Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Cooksey1996,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,12,NA,Cuevas-Cordoba2013,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,4,NA,Cuevas-Cordoba2013,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,K -> Q,NA,NA,Isolate,NA,NA,2,NA,Cuevas-Cordoba2013,NA
@@ -304,15 +304,15 @@ Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,N
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,C,NA,NA,NA,NA,NA,NA,43,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,12,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,181,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,310,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rrs,1274,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rrs,1401,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
-Mycobacterium tuberculosis,NA,NA,rrs,1491,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
-Mycobacterium tuberculosis,NA,NA,rrs,12,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
-Mycobacterium tuberculosis,NA,NA,rrs,310,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
-Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rrs,1465,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
-Mycobacterium tuberculosis,NA,NA,rrs,181,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
+Mycobacterium tuberculosis,NA,NA,rrs,1491,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
 Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
@@ -328,10 +328,10 @@ Mycobacterium tuberculosis,11966/89,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,
 Mycobacterium tuberculosis,3555/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,500-1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
 Mycobacterium tuberculosis,K8/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
 Mycobacterium tuberculosis,K11/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996,NA
+Mycobacterium tuberculosis,3976/83,NA,rrs,522,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,4362/8,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,5127/85,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,K4/94,NA,rrs,523,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
-Mycobacterium tuberculosis,3976/83,NA,rrs,522,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,3601/84,NA,rrs,526,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,K3/94,NA,rrs,526,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,128,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,90 isolates had this mutation,Oo2018,NA
@@ -359,13 +359,13 @@ Mycobacterium tuberculosis,T1/53,NA,rrs,907,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,353,NA,G,A,G -> A,NA,NA,NA,NA,NA,118,NA,G,D,G -> D,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,A -> G,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,Not given?,NA,NA,"Most common mutation, exhibited by 58.8% of the rpsL mutants in this study.",Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,A -> G,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,Origin: add Isolate,Shrestha2020,Le  Na Ngo
-Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in rpsL K43R.,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,One isolate exhibited a co-mutation in rpsL G353A.,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,517,NA,A,T,A -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,644,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in K88R in rpsL.,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in rpsL K43R.,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rrs,912,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Shrestha2020,Le  Na Ngo
-Mycobacterium tuberculosis,NA,NA,rrs,644,NA,A,G,A -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,This exhibited a co-mutation in K88R in rpsL.,Shrestha2020,Le  Na Ngo
 Mycobacterium tuberculosis,NA,NA,rpsL,-,-,A,G,NA,NA,NA,NA,NA,NA,43,-,K,R,NA,NA,NA,Isolate,125,NA,NA,"Strains consisted of clinical isolates from Brazil along with Beijing genotype isolates. Mutations in gidB were found in both susceptible and resistant strains making conclusions about its involvement in resistance diffiult. Notably, mutations in gidB only occurred in STP susceptible strains resistant towrds rifampin and isoniazid.",Spies2011,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,200,NA,NA,Two of eight resistant isolates from Japan exhibited this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,AAG,CAG,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,Two of eight resistant isolates from Japan exhibited this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,Le Na Ngo
@@ -417,10 +417,10 @@ Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,N,N
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,42,NA,K,T,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,E,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,NA,K,R,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
-Mycolicibacterium smegmatis,NA,NA,rrs,524,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
-Mycolicibacterium smegmatis,NA,NA,rrs,526,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rrs,522,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
 Mycolicibacterium smegmatis,NA,NA,rrs,523,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,524,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,200,NA,NA,NA,Springer2001,NA
+Mycolicibacterium smegmatis,NA,NA,rrs,526,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Lab-generated,20-100,NA,NA,NA,Springer2001,NA
 Paenibacillus agaridevorans,NA,NA,rpsL,301,NA,A,G,NA,NA,NA,NA,NA,NA,101,NA,K,E,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
 Paenibacillus agaridevorans,NA,NA,rpsL,302,NA,A,G,NA,NA,NA,NA,NA,NA,101,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
 Paenibacillus agaridevorans,NA,NA,rpsL,302,NA,A,T,NA,NA,NA,NA,NA,NA,101,NA,K,M,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Funane2018,NA
@@ -498,8 +498,8 @@ Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2298,NA,T,C,NA,NA,NA,
 Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2352,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2355,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,2367,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
-Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,Using rrsD,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,45,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,Using rrsD,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,248,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,260,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,891,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
@@ -531,6 +531,7 @@ Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,636,NA,T,A,N
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,645,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,648,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,891,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
+Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1212,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
@@ -562,7 +563,6 @@ Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1819,NA,T,C,
 Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1817,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1920,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,NA
-Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2058,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,N,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,T,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA

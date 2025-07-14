@@ -56,8 +56,8 @@ source("R/process_nt_data.R")
 
 # Global settings and parameters:
 globsets <- list(
-  min_n_studies = 3, # minimum number of studies that a mutation needs to be reported in for inclusion
-  min_n_species = 3, # minimum number of species that a mutation needs to be reported in for inclusion
+  min_n_studies = 2, # minimum number of studies that a mutation needs to be reported in for inclusion
+  min_n_species = 1, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 1200, # minimum length of included gene target sequences
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
   max_core_dist = 120, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
@@ -72,7 +72,8 @@ set.seed(globsets$random_seed)
 ########################################################################
 # Read the mutations data from a CSV file
 muts<-read.csv("./data/reported_mutations.csv") |>
-  filter(Gene=="rrs")
+  filter(Gene=="rrs") |>
+  filter(Ref_code != "Viet2018")
 
 # Select unique species from the mutations data and create a gene reference data frame
 selected_muts <- muts |>
@@ -143,12 +144,11 @@ for (i in 1:nrow(selected_muts)){
     extract_strain_info <- function(nuc_result) {
       strain <- nuc_result$strain
       ref_seq <- nuc_result$accessionversion
-
+      
       # If the species is E. coli, force strain to be MG1655
       if (grepl("Escherichia coli", species, ignore.case = TRUE)) {
         strain <- "MG1655"
       }
-      
       
       return(list(strain = strain, ref_seq = ref_seq))
     }
@@ -196,19 +196,22 @@ all_sequences <- list()
 # Loop through each genome summary in the 'summaries' list
 for (j in 1:length(summaries)) {
   id <- names(summaries[j])
+  species <- summaries[[j]]$speciesname
   cat(paste0("Downloading genome for species #", j, "/", length(summaries), "\n..."))
   file_path <- download_file(summaries[[j]], suffix = "_rna_from_genomic.fna.gz", dir = "output/rrs_references")
   fasta_file <- sub("\\.gz$", "", file_path)
   sequences <- readDNAStringSet(fasta_file)
-  matching_seq <- sequences[grep("rrs|16S ribosomal RNA($|\\])", names(sequences))]
-  if (length(matching_seq) == 0){
-    cat(paste0("No rrs found for species ID ", summaries[[j]]$speciesname, "\n"))
+  matching_seqs <- sequences[grep("rrs|16S ribosomal RNA($|\\])", names(sequences))]
+  if (length(matching_seqs) == 0){
+    cat(paste0("No rrs found for species ID ", species, "\n"))
     next
-  } else if (length(matching_seq) > 1) {
-    cat("There are ", length(matching_seq), "copies of rpsL of", summaries[[j]]$speciesname, "\n")
-    #distance_dist <- stringDist(matching_seq, method = "levenshtein")
-    least_different_name <- least_different_sequence(matching_seq)
-    matching_seq <- matching_seq[least_different_name]
+  } else if (length(matching_seqs) > 1) {
+    cat("There are ", length(matching_seq), "copies of rrs of", species, "\n")
+    if (species == "Escherichia coli"){
+      matching_seq <- matching_seqs[grep("\\[gene=rrsB\\]", names(matching_seqs))]
+    } else{
+      matching_seq <- matching_seqs[1] 
+    }
   }
   names(matching_seq) <- added_name_muts[added_name_muts$ID == id, ]$FASTA_name
   all_sequences <- c(all_sequences, matching_seq)
@@ -221,7 +224,6 @@ writeXStringSet(combined_sequences, "data/rrs_references.fasta")
 
 #empty working environment to keep everything clean
 rm.all.but("globsets")
-
 
 ########################################################################
 ### Step 2: Processing table of known STR resistance mutations       ###
