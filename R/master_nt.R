@@ -40,24 +40,22 @@ library(htmlwidgets)
 library(wesanderson)
 
 
-
 source("R/util.R")
-source("R/bioinformatics_nt.R")
 source("R/bioinformatics.R")
-source("R/analyses.R")
+source("R/bioinformatics_nt.R")
+source("R/analyses_nt.R")
 source("R/plotting_nt.R")
-source("R/plotting.R")
 source("R/reports_nt.R")
 source("R/reports.R")
 source("R/phylogenetics.R")
-source("R/codon_networks.R")
 source("R/structure.R")
 source("R/process_nt_data.R")
+
 
 # Global settings and parameters:
 globsets <- list(
   min_n_studies = 2, # minimum number of studies that a mutation needs to be reported in for inclusion
-  min_n_species = 1, # minimum number of species that a mutation needs to be reported in for inclusion
+  min_n_species = 2, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 1200, # minimum length of included gene target sequences
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
   max_core_dist = 120, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
@@ -352,7 +350,7 @@ mutation_list <- mutation_list_reports |>
 
 # 3.screen all rrs sequences for existing and possible mutations:
 raw_output <- screen_target_sequences_nt(rrs_target_sequences, rrs_reference_Ecoli, 
-                                      mutation_list, target_gene="rrs", n_workers=6)
+                                      mutation_list, target_gene="rrs", n_workers=3)
 
 #save error messages:
 saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors.rds")
@@ -439,9 +437,9 @@ filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types =
 bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 
 #2. analysis of mutant screen:
-plot_mutation_screen(filtered_output, file_name = "./plots/rrs_mutation_screen.pdf")
-plot_classes_genera(filtered_output, bacterial_taxonomy, file_name= "./plots/rrs_classes_genera.pdf")
-plot_evolvability_by_class(filtered_output, bacterial_taxonomy, file_name = "./plots/rrs_evolvability_by_class.pdf")
+plot_mutation_screen_nt(filtered_output, file_name = "./plots/rrs_mutation_screen.pdf")
+plot_classes_genera_nt(filtered_output, bacterial_taxonomy, file_name= "./plots/rrs_classes_genera.pdf")
+plot_evolvability_by_class_nt(filtered_output, bacterial_taxonomy, file_name = "./plots/rrs_evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rrs", file_name = "./results/rrs_summary_mutation_screen.txt")
 get_resistance_taxonomy(filtered_output, bacterial_taxonomy, file_path = "./output/")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance.csv")
@@ -451,6 +449,57 @@ multiseq_stats <- compare_gene_copies(filtered_output, rpsL_target_sequences, rp
 write_csv(multiseq_stats, "./output/rrs_multiseq_stats.csv")
 #multiseq_stats <- read_csv("./output/multiseq_stats.csv", show_col_types = FALSE)
 plot_multiseq_stats(multiseq_stats, "./plots/rrs_multiseq.pdf")
+
+#empty working environment to keep everything clean:
+rm.all.but("globsets")
+
+#########################################################################
+### Step 7: Phylogenetic distribution of resistance and evolvability  ###
+#########################################################################
+
+# input for this step:  filtered results for reliable sequences("./output/filtered_output.csv")
+#                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
+#                       its metadata ("./data/bac120_metadata.tsv")
+#                       GTDB bacterial taxonomic information ("./output/gtdb_taxonomy.csv")
+
+# output for this step: subtree of original tree with tip_labels table ("./output/subtree.RData")
+#                       subtree of original tree (nwk file: "./output/subtree.nwk")
+#                       plot of subtree
+
+# 1.load required files:
+filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
+# original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
+# bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+# outliers <- if (file.exists("./data/outliers.csv")) {
+#   read_csv("./data/outliers.csv", show_col_types = FALSE)
+# } else {
+#   NULL
+# }
+genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
+
+# 2. get species-level summary of mutation screen data:
+species_output <- get_species_output(filtered_output)
+
+# 2.subset the tree based on species accessions and names:
+subtree <- get_subtree(filtered_output, original_tree, meta_data)
+write.tree(subtree$tree, file = "./output/rrs_subtree.nwk") 
+
+# 3. subtree visualization:
+subtree <- read.tree("./output/rrs_subtree.nwk")
+# big tree of all species:
+plot_subtree(subtree, species_output, gtdb_taxonomy, genus_variants, file_name = "./plots/rrs_phylogenies/rrs_whole_genome_tree.svg")
+# smaller trees of individual clades:
+plot_subtree_clades(subtree, species_output, gtdb_taxonomy, genus_variants, 
+                    genera = c("Sphingomonas"),
+                    families = c("Devosiaceae", "Mycobacteriaceae"),
+                    orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+                    classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
+                    file_path = "./plots/phylogenies/")
+
+summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/rrs_summary_phylogenetics.txt")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
