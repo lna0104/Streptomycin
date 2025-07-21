@@ -328,12 +328,12 @@ Mycobacterium tuberculosis,11966/89,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,
 Mycobacterium tuberculosis,3555/83,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,500-1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996
 Mycobacterium tuberculosis,K8/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996
 Mycobacterium tuberculosis,K11/94,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,1000,NA,NA,"Clinical isolates of M. tuberculosis studied included 8 strains with an altered rpsL, 6 with point mutations in the 530 region of the 16S rRNA gene (rrs), and 5 strains with wild-type rpsL and rrs. (added here the strains with rpsL mutations)",Meier1996
-Mycobacterium tuberculosis,3976/83,NA,rrs,522,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
-Mycobacterium tuberculosis,4362/8,NA,rrs,523,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
-Mycobacterium tuberculosis,5127/85,NA,rrs,523,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996
-Mycobacterium tuberculosis,K4/94,NA,rrs,523,NA,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
-Mycobacterium tuberculosis,3601/84,NA,rrs,526,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
-Mycobacterium tuberculosis,K3/94,NA,rrs,526,NA,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,3976/83,NA,rrs,NA,522,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,4362/8,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,5127/85,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,K4/94,NA,rrs,NA,523,A,C,A -> C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,3601/84,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,50-250,NA,NA,NA,Meier1996
+Mycobacterium tuberculosis,K3/94,NA,rrs,NA,526,C,T,C -> T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,250-500,NA,NA,NA,Meier1996
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,128,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,90 isolates had this mutation,Oo2018
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,256,C,G,NA,NA,NA,NA,NA,NA,86,NA,R,G,NA,NA,NA,Isolate,NA,NA,NA,1 isolate had this mutation,Oo2018
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,263,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,6 isolates had this mutation,Oo2018
