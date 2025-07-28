@@ -418,15 +418,15 @@ get_theoretical_evolvabilities <- function(output) {
            resistant_to = AA_mut_name_to %in% mutation_list$mut_name) |>
     filter(AA_from != '*')
   
-  evolvabilitiesI <- possibilities |>
-    filter(!resistant_from) |>
-    select(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from, AA_mut_name_to, resistant_to) |>
-    distinct() |>
-    group_by(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from) |>
-    summarise(evolvabilityI = sum(resistant_to), .groups = 'drop') |>
-    group_by(AA_pos_Ecoli) |>
-    summarise(min_evolvabilityI = min(evolvabilityI),
-              max_evolvabilityI = max(evolvabilityI))
+  # evolvabilitiesI <- possibilities |>
+  #   filter(!resistant_from) |>
+  #   select(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from, AA_mut_name_to, resistant_to) |>
+  #   distinct() |>
+  #   group_by(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from) |>
+  #   summarise(evolvabilityI = sum(resistant_to), .groups = 'drop') |>
+  #   group_by(AA_pos_Ecoli) |>
+  #   summarise(min_evolvabilityI = min(evolvabilityI),
+  #             max_evolvabilityI = max(evolvabilityI))
   
   evolvabilitiesI <- possibilities |>
     filter(!resistant_from) |>
@@ -437,6 +437,7 @@ get_theoretical_evolvabilities <- function(output) {
     group_by(AA_pos_Ecoli) |>
     summarise(min_evolvabilityI = min(evolvabilityI),
               max_evolvabilityI = max(evolvabilityI))
+
   evolvabilitiesII <- possibilities |>
     group_by(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from) |>
     summarise(evolvabilityII = sum(resistant_to), .groups = 'drop') |>

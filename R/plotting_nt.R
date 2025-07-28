@@ -211,12 +211,13 @@ plot_mutation_screen_nt <- function(filtered_output, file_name) {
     #                                   n_possible, 
     #                                   mutation_category)) |>
     mutate(mutation_category = factor(mutation_category, 
-                                      levels = c("impossible", "possible", "present"))) |>
+                                      levels = c("possible", "present"))) |>
     mutate(mutation_name = str_replace(mutation_name, "_", "")) |>
     mutate(mutation_name = factor(mutation_name, levels = sort(unique(mutation_name))))
   
   # cols = c(hsv(0, 0, c(0.2, 0.73, 0.8)), hsv(0, 1, 0.95))
-  cols <- c("#899DA4","#f9e5ae", "#FAEFD1", "#C93312")
+  # cols <- c("#899DA4","#f9e5ae", "#FAEFD1", "#C93312")
+  cols <- c("#f9e5ae", "#C93312")
   
   # plot A: screening outcome (possible, impossible, present) across mutations
   p_mutation_screen <- ggplot(data_for_plotting) +
@@ -266,7 +267,7 @@ plot_classes_genera_nt <- function(filtered_output,
                                 n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
                                 min_genus_size = 10, 
-                                n_genera_to_plot = 25,
+                                n_genera_to_plot = 20,
                                 n_muts_to_plot = 6) {
   
   # preparing the data:
@@ -274,10 +275,10 @@ plot_classes_genera_nt <- function(filtered_output,
   # merging species with multiple gene copies:
   merged_filtered_output <- filtered_output |>
     group_by(species, genus, accession_numbers, mutation_name) |>
-    summarise(mutation_category = ifelse(any(mutation_category == "present"),
-                                         "present",
-                                         ifelse(any(mutation_category == "possible"), "possible", "impossible")), 
-              .groups = "drop")
+    summarise(
+        mutation_category = if (any(mutation_category == "present")) "present" else "possible",
+        .groups = "drop"
+      )
   
   # number of predicted mutations present in each species:
   n_muts_per_species <- merged_filtered_output |>
@@ -330,9 +331,10 @@ plot_classes_genera_nt <- function(filtered_output,
   #           "Multiple" = "black")
   
   cols <- c(" " = rgb(0,0,0,0),
-            "43N" =  wes_palette("Zissou1")[5],
-            "43R" =  wes_palette("Zissou1")[3],
-            "88R" =  wes_palette("Zissou1")[1],
+            "523C" =  wes_palette("Zissou1")[5],
+            "885A" =  wes_palette("Zissou1")[3],
+            "912G" =  wes_palette("Zissou1")[1],
+            "913G" =  wes_palette("Zissou1")[2],
             "Other" = "grey",
             "Multiple" = "black")
   
@@ -454,6 +456,7 @@ plot_classes_genera_nt <- function(filtered_output,
   
   #Extract genus order
   layout <- create_layout(graph_for_plotting, layout = "sugiyama")
+
   genus_order <- as_tibble(layout, active = "nodes") |> 
     filter(rank == "genus") |>
     arrange(x) |> 
@@ -516,86 +519,75 @@ plot_classes_genera_nt <- function(filtered_output,
   ggsave(filename = file_name, add_legend_plot, width = 14, height = 8)
 }
 
-plot_evolvability_by_class_nt <-function(filtered_output,
-                                          gtdb_taxonomy,
-                                          genus_variants,
-                                          n_classes_to_plot = 50,
-                                          file_name) {
-  #merge data to class taxonomy
-  processed_data <- filtered_output |>
-    # rename(genus = genus) |>
-    # remove all present mutations
-    filter(mutation_category != "present") |>
-    group_by(species, genus, accession_numbers, mutation_name, n_possible) |>
-    summarise(n = n(), .groups = 'drop') |>
-    filter(n == 1) |>            # remove multi-copy species
-    # left_join(bacterial_taxonomy |> select(genus, class)) |>
-    left_join(gtdb_taxonomy |> select(genus, class)) |>
-    left_join(genus_variants |> select(genus_origin, class_var = class),
-              by = c("genus" = "genus_origin"), relationship = "many-to-many") |>
-    mutate(
-      class = if_else(is.na(class), class_var, class),
-    ) |>
-    select(-class_var) |>
-    distinct() |>
-    filter(!is.na(class))
+
+#' produces plots to show the distribution of gene sequence length, aligning score and distance from RRDR of ref seq
+#'
+#' @param final_output a data frame providing the results of mutation screening in all extracted gene sequences
+#' @param filtered_output a data frame providing screened and filtered gene sequences
+#' @param file_names the path that the plots should be save in
+#'
+#' @return A plot as a ggplot object in pdf format
+#' @export
+#'
+#' @examples get_hist(final_output, target_sequences, "./plot/myFilename.pdf")
+plot_target_sequences_stats_nt <- function(final_output, 
+                                        filtered_output, 
+                                        min_seq_length,
+                                        min_alig_score,
+                                        max_core_dist,
+                                        file_names) {
+  cols <- c("raw" = "grey20", "filtered" = "grey80")
   
-  #average of possibility per mutation across classes
-  plot_data <- processed_data |>
-    mutate(class = fct_lump_n(class, n = n_classes_to_plot)) |>
-    group_by(class, mutation_name) |>
-    summarise(n_pos = mean(n_possible), .groups = 'drop') |>
-    left_join(gtdb_taxonomy |> select(class, phylum) |> distinct()) |>
-    mutate(phylum = ifelse(class == "Other", "Misc", phylum)) |>
-    # mutate(phylum = phylum_abbreviations[phylum]) |>
-    mutate(class = factor(class), phylum = factor(phylum)) |>
-    mutate(phylum = fct_relevel(phylum, "Misc", after = Inf)) |>
-    mutate(mutation_name = str_replace(mutation_name, "_", ""))
+  dat_raw <- select(final_output, species, accession_numbers, gene_copy, target_length, alig_score, core_dist) |>
+    mutate(filter = factor("raw")) |>
+    distinct()
+  dat_filtered <- select(filtered_output, species, accession_numbers, gene_copy, target_length, alig_score, core_dist) |>
+    mutate(filter = factor("filtered")) |>
+    distinct()
+  dat <- rbind(dat_raw, dat_filtered)
   
-  # Generate all combinations of class and mutation_name
-  complete_grid <- expand_grid(
-    class = unique(plot_data$class),
-    mutation_name = unique(plot_data$mutation_name)
-  )
+  plot1 <- ggplot(dat) +
+    geom_histogram(aes(target_length, fill = filter), position = "identity") +
+    geom_vline(aes(xintercept = min_seq_length), col = "red") +
+    theme_classic() +  # Apply a minimal theme
+    theme(panel.grid.major = element_blank(),  # Remove major grid lines
+          panel.grid.minor = element_blank()) +
+    labs(x = "Length", y = "Number of sequences", fill = "") +
+    scale_fill_manual(values = cols)
   
-  # Add phylum info 
-  class_phylum <- plot_data |> select(class, phylum) |> distinct()
-  complete_grid <- complete_grid |>
-    left_join(class_phylum, by = "class")
+  plot2 <- ggplot(dat) +
+    geom_histogram(aes(alig_score, fill = filter), position = "identity", binwidth = 10) +
+    geom_vline(aes(xintercept = min_alig_score), col = "red") +
+    theme_classic() +  # Apply a minimal theme
+    theme(panel.grid.major = element_blank(),  # Remove major grid lines
+          panel.grid.minor = element_blank()) +
+    labs(x = "Alignment score", y = NULL, fill = "") +
+    scale_fill_manual(values = cols)
   
-  # Merge with existing plot_data to fill in missing entries
-  plot_data_complete <- complete_grid |>
-    left_join(plot_data, by = c("class", "mutation_name", "phylum")) |>
-    mutate(n_pos = coalesce(n_pos, 0)) |>  # or use NA_real_ if you prefer
-    select(class, mutation_name, n_pos, phylum)
+  plot3 <- ggplot(dat) +
+    geom_histogram(aes(core_dist, fill = filter), position = "identity", binwidth = 1) +
+    geom_vline(aes(xintercept = max_core_dist), col = "red") +
+    theme_classic() +  # Apply a minimal theme
+    theme(panel.grid.major = element_blank(),  # Remove major grid lines
+          panel.grid.minor = element_blank()) +
+    labs(x = "Levenshtein distance", y = NULL, fill = "") +
+    scale_fill_manual(values = cols)
   
-  p <- ggplot(plot_data_complete) +
-    geom_tile(aes(x = mutation_name,
-                  y = interaction(class,
-                                  phylum,
-                                  sep = "!"),
-                  fill = n_pos)) +
-    theme_bw() +
-    scale_y_discrete(guide = guide_axis_nested(delim = "!"), name = "Phylum and class") +
-    scale_fill_gradientn(colours = c("#d75b1d", "#fddda0", "#FAEFD1"))+
-    labs(x = "Amino acid substitution",
-         y = "Class",
-         fill = "Mean evolvability") +
-    theme(
-      axis.text.x = element_text(angle = 90, vjust=-0.01, hjust=1, size = 8),
-      # axis.text.y = element_text(size = 6),
-      axis.title.x = element_text(size = 10, face = "bold"),
-      axis.title.y = element_text(size = 10, face = "bold"),
-      # legend.title = element_text(size = 6),
-      # legend.text = element_text(size = 6),
-      legend.position = "top",
-      ggh4x.axis.nesttext.x=element_text(angle=60, vjust=1),
-      ggh4x.axis.nestline.x=element_line(linewidth=0.75)
-      # axis.title.x=element_blank()    
-    ) + 
-    coord_flip() 
+  hists <- ggarrange(plot1, plot2, plot3, 
+                     nrow = 1, 
+                     labels = LETTERS[1:3], 
+                     common.legend = TRUE, vjust = 0)
+  ggsave(filename = file_names[1], hists, width = 10, height = 4)
   
-  
-  ggsave(filename = file_name, p, width = 8, height = 5)
+  # pairs plot showing covariation between the three variables:
+  pairs_plot <- ggpairs(dat, 
+                        columns = c("target_length", "alig_score", "core_dist"), 
+                        aes(color = filter, alpha = 0.01),
+                        columnLabels = c("length", "alignment score", "core distance")) +
+    theme_bw()
+  ggsave(filename = file_names[2], pairs_plot, width = 12, height = 12)
 }
+
+
+
 

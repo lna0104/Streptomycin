@@ -1,31 +1,31 @@
 Summary of screened target rrs sequences 
-Date: 2025-07-19 16:18:33.589875
+Date: 2025-07-27 16:09:02.911158
 --------------------------------------------------------------------
 
 Target sequence statistics before filtering:
     Number of genomes in search results: 110
-    Number of genomes with extracted rrs sequence(s): 109
-    Number of genomes where no rrs sequence could be extracted: 1
-    Number of species with downloaded genomes: 108
-    Total number of rrs sequences: 139
-    Number of genomes with more than one rrs sequence: 17
-    Maximum number of rrs sequences per genome: 7
+    Number of genomes with extracted rrs sequence(s): 17511
+    Number of genomes where no rrs sequence could be extracted: -17401
+    Number of species with downloaded genomes: 17508
+    Total number of rrs sequences: 41044
+    Number of genomes with more than one rrs sequence: 6821
+    Maximum number of rrs sequences per genome: 36
 Filtering statistics:
-    Minimum sequence length: 1096
+    Minimum sequence length: 129
     Median sequence length: 1531.00
-    Mean sequence length: 1526.424
-    Maximum sequence length: 1548
-    Minimum aligning score: -1574.12
-    Maximum aligning score: 3055.86
+    Mean sequence length: 1507.616
+    Maximum sequence length: 2155
+    Minimum aligning score: -2513.60
+    Maximum aligning score: 2212.096
     Minimum distance from reference rrs core: 0
-    Maximum distance from reference rrs core: 89
+    Maximum distance from reference rrs core: 390
 Filters applied: 
     Minimum sequence length: 1200
-    Minimum alignment score to E. coli rrs: -1574.12023925781
-    Maximum core distance to E. coli rrs: 120
+    Minimum alignment score to E. coli rrs: -2513.59985351562
+    Maximum core distance to E. coli rrs: 220
 Target sequence statistics after filtering:
-    Number of genomes with extracted rrs sequence(s): 108
-    Number of species with downloaded genomes: 107
-    Total number of rrs sequences: 138
-    Number of genomes with more than one rrs sequence: 17
-    Maximum number of rrs sequences per genome: 7
+    Number of genomes with extracted rrs sequence(s): 16694
+    Number of species with downloaded genomes: 16691
+    Total number of rrs sequences: 39682
+    Number of genomes with more than one rrs sequence: 6553
+    Maximum number of rrs sequences per genome: 36
