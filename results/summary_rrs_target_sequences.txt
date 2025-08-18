@@ -1,11 +1,11 @@
 Summary of screened target rrs sequences 
-Date: 2025-07-27 16:09:02.911158
+Date: 2025-08-08 10:58:23.639805
 --------------------------------------------------------------------
 
 Target sequence statistics before filtering:
-    Number of genomes in search results: 110
+    Number of genomes in search results: 21210
     Number of genomes with extracted rrs sequence(s): 17511
-    Number of genomes where no rrs sequence could be extracted: -17401
+    Number of genomes where no rrs sequence could be extracted: 3699
     Number of species with downloaded genomes: 17508
     Total number of rrs sequences: 41044
     Number of genomes with more than one rrs sequence: 6821

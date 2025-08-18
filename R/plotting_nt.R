@@ -302,7 +302,7 @@ plot_classes_genera_nt <- function(filtered_output,
     select(species, genus, category, n_possible) |>
     left_join(gtdb_taxonomy, by = join_by(genus == genus), relationship = "many-to-many" )|>
     left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
-              by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
+              by = join_by(genus == genus_origin), relationship = "many-to-many") |> 
     mutate(
       class = if_else(is.na(class), class_var, class),
       phylum = if_else(is.na(phylum), phylum_var, phylum)
@@ -590,4 +590,112 @@ plot_target_sequences_stats_nt <- function(final_output,
 
 
 
+plot_mutation_screen_gene_copies <- function(filtered_output, file_name){
 
+  gene_copies_species <- filtered_output |>
+    select(accession_numbers, species, target_name, mutation_name, mutation_category) |>
+    distinct() |>
+    group_by(accession_numbers, species, target_name) |>
+    summarise(
+      mutation_category_per_mut = if (any(mutation_category == "present")) {
+      "present"
+    } else {
+      "not present"
+    },
+    .groups = "drop"
+    ) |>
+    group_by(accession_numbers, species) |>
+    summarise(
+      gene_copy = n(),
+      mutation_category_per_species = if (any(mutation_category_per_mut == "present")) {
+        "present"
+      } else {
+        "not present"
+      },
+      .groups = "drop"
+    )
+
+
+  # plot histogram number of species with and with out mutations per gene copies 
+  hist_plot <- ggplot(gene_copies_species, aes(x = gene_copy, fill = mutation_category_per_species)) +
+    geom_histogram(binwidth = 1) +
+    scale_x_continuous(
+      limits = c(0, 37),
+      breaks = 1:37, 
+      expand = c(0, 0.1)
+    ) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+    scale_fill_manual(
+      values = c(
+        "present" = "#C93312",   
+        "not present"   = "#899DA4"    
+      )
+    ) +
+    labs(
+        x = "Gene copies",
+        y = "Number of species",
+        fill = "Mutation category") +
+    theme_classic()+
+    theme(
+      axis.title=element_text(size=10, face="bold"),
+      axis.text = element_text(size = 8)
+    )
+  
+  ggsave(filename = file_name, hist_plot, width = 12, height = 8)
+}
+
+
+plot_mutation_copy_profile <- function(filtered_output, file_name){
+  
+  n_copy_per_species <- filtered_output |>
+    select(accession_numbers, species, target_name) |>
+    distinct() |>
+    group_by(accession_numbers, species) |>
+    summarise(
+      gene_copy = n(),
+      .groups = "drop"
+    ) 
+  
+  gene_copies_per_mut <- filtered_output |>
+    group_by(accession_numbers, species, mutation_name) |>
+    summarise(
+      mutation_category_per_species = if (any(mutation_category == "present")) {
+        "present"
+      } else {
+        "not present"
+      },
+      .groups = "drop"
+    ) |> 
+    left_join(n_copy_per_species, by = c("accession_numbers", "species"))
+  
+  
+  hist_plot <- ggplot(gene_copies_per_mut, aes(x = gene_copy, fill = mutation_category_per_species)) +
+    geom_histogram(binwidth = 1) +
+    scale_x_continuous(
+      limits = c(0, 37),
+      breaks = 1:37, 
+      expand = c(0, 0.1)
+    ) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+    scale_fill_manual(
+      values = c(
+        "present" = "#C93312",   
+        "not present" = "#899DA4"    
+      )
+    ) +
+    labs(
+      x = "Gene copies",
+      y = "Number of species",
+      fill = "Mutation category"
+    ) +
+    theme_classic() +
+    theme(
+      axis.title = element_text(size=10, face="bold"),
+      axis.text  = element_text(size=6),
+      strip.text = element_text(size=9, face="bold")
+    ) +
+    facet_wrap(~ mutation_name, scales = "free_y")
+  
+  ggsave(filename = file_name, hist_plot, width = 12, height = 10)
+  
+}

@@ -335,91 +335,145 @@ get_resistance_taxonomy_nt <- function(output, gtdb_taxonomy, genus_variants, fi
   write_csv(resistant_classes, paste0(file_path, "rrs_resistant_classes.csv"))
 }
 
-compare_gene_copies_nt <- function(filtered_output, target_sequences, reference_Ecoli) {
-
-  # species with more than one gene copy:
-  multicopy_species <- filtered_output |>
-    select(accession_numbers, gene_copy) |>
-    distinct() |>
-    group_by(accession_numbers) |>
-    summarise(n = n(), .groups = "drop") |>
-    filter(n > 1L) |>
-    pull(accession_numbers)
+#' Calculate conservation and distance scores along the E. coli gene sequence
+#' 
+#' For each position within the gene sequence, four scores are calculated for each gene sequence:
+#' 
+#' hamming_Ecoli: whether or not the nucleotide is different from the one in E. coli
+#' hamming_rnd: whether or not the nucleotide is different between two randomly chosen gene sequences
+#'
+#' @param target_sequences 
+#' @param reference_Ecoli 
+#' @param alig_path 
+#'
+#' @returns A list with four matrices (one for each of the scores described above) and 
+#' a tibble containing all the means for each position, across sequences
+#' 
+get_conservation_nt <- function(target_sequences, 
+                             reference_Ecoli,
+                             n_rnd = 1e5,
+                             alig_path = "./output/alignments_nt",
+                             n_workers)
+{
+  # l <- length(translate(reference_Ecoli))
+  l <- length(reference_Ecoli)
+  m <- length(target_sequences)
+  # reference_Ecoli_AA <- translate(reference_Ecoli)
+  # grantham <- granthamMatrix()
   
-  # If there are no species with multiple copies, proceed to the next step
-  if (length(multicopy_species) == 0) {
-    message("No species with multiple gene copies found.")
-    return(invisible(NULL))  
+  plan(multisession, workers = n_workers) # to parallelise the function
+  
+  # distances to E. coli:
+  results_Ecoli <- future_lapply(1:m, function(k) {
+    hamming_Ecoli <- rep(NA, l)
+    # grantham_Ecoli <- rep(NA, l)
+    try( {
+      load(paste0(alig_path, "/", names(target_sequences)[k], ".RData"))
+      coords <- coords_alig$coordinates
+      rrs_target_nt <- target_sequences[[k]]
+      
+      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpsL
+        pos_target <- translateCoordinate(pos_Ecoli, coords, direction = "RefToFocal")
+        if (!is.na(pos_target)) {
+          nt_target <- as.character(rrs_target_nt[pos_target])
+          nt_Ecoli <- as.character(reference_Ecoli[pos_Ecoli])
+          hamming_Ecoli[pos_Ecoli] <- (nt_target != nt_Ecoli)
+          # if ((nt_Ecoli %in% colnames(grantham)) && (nt_target %in% colnames(grantham))) {
+          #   grantham_Ecoli[pos_Ecoli] <- grantham[nt_target, nt_Ecoli]
+          # } else {
+          #   warning(paste0("Unknown nucleotide (", nt_target, ")."))
+          # }
+        } else {
+          hamming_Ecoli[pos_Ecoli] <- TRUE
+          # grantham_Ecoli[pos_Ecoli] <- NA
+        }
+      }
+    }
+    )
+    return(list(hamming_Ecoli = hamming_Ecoli))
+  }
+  )
+  
+  # distances between random sequences:
+  ijs <- expand_grid(i = 1:m, j = 1:m) |>
+    filter(i < j) |>
+    slice_sample(n = n_rnd)
+  
+  results_rnd <- future_lapply(1:n_rnd, function(k) {
+    hamming_rnd <- rep(NA, l)
+    # grantham_rnd <- rep(NA, l)
+    try( {
+      # sequence 1:
+      i <- ijs$i[k]
+      load(paste0(alig_path, "/", names(target_sequences)[i], ".RData"))
+      coords1 <- coords_alig$coordinates
+      rrs_target1_nt <- target_sequences[[i]]
+      
+      # sequence 2:
+      j <- ijs$j[k]
+      load(paste0(alig_path, "/", names(target_sequences)[j], ".RData"))
+      coords2 <- coords_alig$coordinates
+      rrs_target2_nt <- target_sequences[[j]]
+      
+      for(pos_Ecoli in 1:(l-1)) { # loop through E. coli rpsL
+        pos_target1 <- translateCoordinate(pos_Ecoli, coords1, direction = "RefToFocal")
+        pos_target2 <- translateCoordinate(pos_Ecoli, coords2, direction = "RefToFocal")
+        if ((!is.na(pos_target1)) && (!is.na(pos_target2))) {
+          nt_target1 <- as.character(rrs_target1_nt[pos_target1])
+          nt_target2 <- as.character(rrs_target2_nt[pos_target2])
+          hamming_rnd[pos_Ecoli] <- (nt_target1 != nt_target2)
+          # if ((AA_target1 %in% colnames(grantham)) && (AA_target2 %in% colnames(grantham))) {
+          #   grantham_rnd[pos_Ecoli] <- grantham[AA_target1, AA_target2]
+          # } else {
+          #   warning(paste0("Unknown AA (", AA_target, ")."))
+          # }
+        } else if (xor(is.na(pos_target1), is.na(pos_target2))) {
+          hamming_rnd[pos_Ecoli] <- TRUE
+          # grantham_rnd[pos_Ecoli] <- NA
+        } else {
+          hamming_rnd[pos_Ecoli] <- NA
+          # grantham_rnd[pos_Ecoli] <- NA
+        }
+      }
+    }
+    )
+    return(list(hamming_rnd = hamming_rnd))
+  }
+  )
+  
+  hamming_Ecoli <- matrix(NA, nrow = m, ncol = l,
+                          dimnames = list(names(target_sequences), paste0("P", 1:l)))
+  # grantham_Ecoli <- hamming_Ecoli
+  for(i in 1:m) {
+    hamming_Ecoli[i,] <- results_Ecoli[[i]]$hamming_Ecoli
+    # grantham_Ecoli[i,] <- results_Ecoli[[i]]$grantham_Ecoli
   }
   
-  # protein_Ecoli <- Biostrings::translate(reference_Ecoli)
-  # # If the gene is rpoB
-  # if (length(protein_Ecoli) > 300) {
-  #   core_Ecoli <- protein_Ecoli[501:600]
-  # }else{
-  # # If the gene is rpsL
-  #   core_Ecoli <- protein_Ecoli
-  # }
+  hamming_rnd <- matrix(NA, nrow = n_rnd, ncol = l,
+                        dimnames = list(paste0(names(target_sequences)[ijs$i], 
+                                               ":::",
+                                               names(target_sequences)[ijs$j]),
+                                        paste0("P", 1:l)))
+  # grantham_rnd <- hamming_rnd
+  for(i in 1:n_rnd) {
+    hamming_rnd[i,] <- results_rnd[[i]]$hamming_rnd
+    # grantham_rnd[i,] <- results_rnd[[i]]$grantham_rnd
+  }
   
-  plan(multisession) # to parallelise the function
-  multiseq_stats <- future_lapply(1:length(multicopy_species), function(i) {
-    cat(paste0("Working on multi-copy species #", i, "/", length(multicopy_species), "...\n")) #notify when the analysis of each sequence starts
-    seq_names <- filtered_output |>
-      filter(accession_numbers == multicopy_species[i]) |>
-      pull(target_name) |>
-      unique()
-    species_name <- filtered_output |>
-      filter(accession_numbers == multicopy_species[i]) |>
-      pull(species) |>
-      unique()
-    genus <- filtered_output |>
-      filter(accession_numbers == multicopy_species[i]) |>
-      pull(genus) |>
-      unique()
-    # determine resistance status (how many of the two gene copies confer resistance)
-    resistance_status <- filtered_output |>
-      filter(accession_numbers == multicopy_species[i]) |>
-      group_by(gene_copy) |>
-      summarise(resistant_copy = any(mutation_category == "present"), .groups = "drop") |>
-      pull(resistant_copy) |>
-      sum()  
-    
-    if (length(seq_names) > 2L) {
-      warning("More than two gene copies in genome ", multicopy_species[i], ", ignored.")
-      output <- NULL
-    } else {
-      coords1 <- getCoordinatesNt(target_sequences[[seq_names[1]]], 
-                                          reference_Ecoli)
-      coords2 <- getCoordinatesNt(target_sequences[[seq_names[2]]], 
-                                          reference_Ecoli)
-      # protein_target1 <- Biostrings::translate(target_sequences[[seq_names[1]]])
-      # protein_target2 <- Biostrings::translate(target_sequences[[seq_names[2]]])
-      
-      if (length(protein_target1) > 300 & length(protein_target2) > 300) {
-        # calculate Levenshtein distance between E. coli and target rpoB core region (AA pos 501...600):
-        from_target1 <- ALJEbinf::translateCoordinate(501, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-        to_target1 <- ALJEbinf::translateCoordinate(600, coords1, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-        core_target1 <- protein_target1[from_target1:to_target1]
-        from_target2 <- ALJEbinf::translateCoordinate(501, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-        to_target2 <- ALJEbinf::translateCoordinate(600, coords2, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-        core_target2 <- protein_target2[from_target2:to_target2]
-      }else{
-        # calculate Levenshtein distance between E. coli and target rpsL
-        core_target1 <- protein_target1
-        core_target2 <- protein_target2
-      }
-      
-      
-      output <- list(accession_number = multicopy_species[i],
-                     species_name = species_name,
-                     genus = genus,
-                     resistance_status = resistance_status,
-                     alig_score = pwalign::score(pwalign::pairwiseAlignment(protein_target1, protein_target2)),
-                     core_dist = as.double(pwalign::stringDist(c(Biostrings::AAStringSet(core_target1), 
-                                                                 Biostrings::AAStringSet(core_target2)),
-                                                               method = "levenshtein")))
-    }
-    return(output)
-  })
-  return(do.call(rbind, purrr::map(multiseq_stats, as_tibble)))
+  # means aross all sequences:
+  means = tibble(hamming_Ecoli = colMeans(hamming_Ecoli, na.rm = TRUE),
+                 # grantham_Ecoli = colMeans(grantham_Ecoli, na.rm = TRUE),
+                 hamming_rnd = colMeans(hamming_rnd, na.rm = TRUE))
+                 # grantham_rnd = colMeans(grantham_rnd, na.rm = TRUE))
+  
+  return(list(hamming_Ecoli = hamming_Ecoli, 
+              # grantham_Ecoli = grantham_Ecoli,
+              hamming_rnd = hamming_rnd, 
+              # grantham_rnd = grantham_rnd,
+              means = means))
 }
+
+
+
+
+

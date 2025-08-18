@@ -183,8 +183,8 @@ summarise_target_sequences <- function(genome_summary,
   max_length <- max(final_output_seqs$target_length)
   
   #aligning scores and dist
-  min_alig_score <- min(final_output$alig_score)
-  max_alig_score <- max(final_output$alig_score)
+  min_alig_score_from_ref <- min(final_output$alig_score)
+  max_alig_score_from_ref <- max(final_output$alig_score)
   max_dist_from_ref <- max(final_output$core_dist)
   min_dist_from_ref <- min(final_output$core_dist)
   
@@ -225,8 +225,8 @@ summarise_target_sequences <- function(genome_summary,
     "    Median sequence length: ", format(median_length, nsmall = 2), "\n",
     "    Mean sequence length: ", format(mean_length, nsmall = 2), "\n",
     "    Maximum sequence length: ", max_length, "\n",
-    "    Minimum aligning score: ", format(min_alig_score, nsmall = 2), "\n",
-    "    Maximum aligning score: ", format(max_alig_score, nsmall = 2), "\n",
+    "    Minimum aligning score: ", format(min_alig_score_from_ref, nsmall = 2), "\n",
+    "    Maximum aligning score: ", format(max_alig_score_from_ref, nsmall = 2), "\n",
     "    Minimum distance from reference ", target_gene, " core: ", min_dist_from_ref, "\n",
     "    Maximum distance from reference ", target_gene, " core: ", max_dist_from_ref, "\n",
     "Filters applied: ", "\n",
@@ -490,10 +490,10 @@ make_table_intrinsic_resistance <- function(filtered_output, file_name) {
   filtered_output |>
     filter(mutation_category == "present") |>
     mutate(mutation_name = str_replace(mutation_name, "_", "")) |>
-    group_by(accession_numbers, species) |>
+    group_by(accession_numbers, species, genus) |>
     summarise(mutations = paste(mutation_name, collapse = ", "), .groups = "drop") |>
     rename(accession_number = accession_numbers) |>
-    select(species, accession_number, mutations) |>
+    select(species, accession_number, genus, mutations) |>
     arrange(species) |>
     write_csv(file_name)
 }

@@ -170,7 +170,7 @@ summarise_mutation_screen_nt <- function(filtered_output, target_gene, file_name
     "    Median: ", quant_evolvabilityI[3], "\n",
     # "    Theoretical range: ", theoretical_evolvabilities$min_evolvabilityI, "...",
     #                            theoretical_evolvabilities$max_evolvabilityI, "\n",
-    "    Theoretical range: ", 1, "...",
+    "    Theoretical range: ", 0, "...",
                                n_screened_mutations, "\n",                           
     # "Evolvability II (number of mutations that can produce a resistance mutation):\n",
     # "    Range: ", quant_evolvabilityII[1], "...", quant_evolvabilityII[5], "\n",
@@ -181,7 +181,7 @@ summarise_mutation_screen_nt <- function(filtered_output, target_gene, file_name
     "Associations between evolvabilities (phylogenetically uncontrolled):\n",
     # "    Evolvability I vs. evolvability II: r=", format(corr_evolvabilityI_vs_II, digits = 3), "\n",
     "    Intrinsic resistance vs. evolvability I: p=", format(t_test_evolvabilityI$p.value, digits = 3), 
-      " (", t_test_evolvabilityI$method, ", t=", format(t_test_evolvabilityI$statistic, digits = 3), ")\n",
+      " (", t_test_evolvabilityI$method, ", t=", format(t_test_evolvabilityI$statistic, digits = 3), ")\n"
     # "    Intrinsic resistance vs. evolvability II: p=", format(t_test_evolvabilityII$p.value, digits = 3), 
     # " (", t_test_evolvabilityII$method, ", t=", format(t_test_evolvabilityII$statistic, digits = 3), ")\n"
   )
@@ -190,3 +190,82 @@ summarise_mutation_screen_nt <- function(filtered_output, target_gene, file_name
   cat(paste0("\n\nThis summary has been saved in file ", file_name, ".\n"))
   return(invisible(NULL))
 }
+
+
+summarise_phylogenetics_nt <- function(subtree, species_output, sample_n = NULL, file_name, subtitle = "") {
+  
+  phylo_signals <- get_phylosignals_nt(subtree, species_output, sample_n = sample_n)
+  subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
+  
+  n_resistant <- species_output |>
+    filter(resistance == "resistant") |>
+    pull(species) |>
+    base::intersect(subtree$tip.label) |>
+    length()
+  
+  if (is.null(sample_n))
+    sample_n <- "all"
+  
+  report <- paste0(
+    "Summary of the phylogenetic analyses ", subtitle, "\n",
+    "Date: ", Sys.time(), "\n",
+    "--------------------------------------------------------------------\n\n",
+    "Phylogenetic tree:\n",
+    "    Number of species: ", Ntip.phylo(subtree), "\n",
+    "    Number of species predicted to be resistant in tree: ", n_resistant, "\n",
+    "Number of species sampled from tree when calculating phylogenetic signals: ", sample_n, "\n",
+    "Phylogenetic signal in predicted resistance:\n",
+    "    Test: permutation test of mean phylogenetic distance of resistant species\n",
+    "    Number of permutations: ", length(phylo_signals$permtest_resistance$mean_distance_tips_permutated), "\n",
+    "    p-value: ", phylo_signals$permtest_resistance$P, "\n")
+    # "Phylogenetic signal in evolvability I (number of evolvable nucleotide mutations):\n",
+    # "    Pagel's lambda: ", format(phylo_signals$lambda_evolvabilityI$lambda, digits = 3), "\n",
+    # "    p(lambda): ", format(phylo_signals$lambda_evolvabilityI$P, digits = 3), "\n",
+    # "    Blomberg's K: ", format(phylo_signals$K_evolvabilityI$K, digits = 3), "\n",
+    # "    p(K): ", format(phylo_signals$K_evolvabilityI$P, digits = 3), "\n",
+    # "Phylogenetic signal in evolvability II (number of nt mutations producing AA resistance mutations):\n",
+    # "    Pagel's lambda: ", format(phylo_signals$lambda_evolvabilityII$lambda, digits = 3), "\n",
+    # "    p(lambda): ", format(phylo_signals$lambda_evolvabilityII$P, digits = 3), "\n",
+    # "    Blomberg's K: ", format(phylo_signals$K_evolvabilityII$K, digits = 3), "\n",
+    # "    p(K): ", format(phylo_signals$K_evolvabilityII$P, digits = 3), "\n")
+  write_file(report, file_name)
+  cat(report)
+  cat(paste0("\n\nThis summary has been saved in file ", file_name, ".\n"))
+  return(invisible(NULL))
+}
+
+
+summarise_conservation_nt <- function(cons, target_gene, file_name, subtitle = "") {
+  
+  report <- paste0(
+    "Summary of the nucleotide conservation analyses ", subtitle, "\n",
+    "Date: ", Sys.time(), "\n",
+    "--------------------------------------------------------------------\n\n",
+    "Mean Hamming distance to E. coli across all sequences:\n",
+    "    Number of sequences: ", nrow(cons$hamming_Ecoli), "\n",
+    "    Mean across nucleotide positions: ", mean(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
+    "    Max across nucleotide positions: ", max(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
+    "    Min across nucleotide positions: ", min(cons$means$hamming_Ecoli, na.rm = TRUE),  "\n",
+    "Mean Hamming distance across randomly sampled pairs of", target_gene, " sequences:\n",
+    "    Number of sequence pairs: ", nrow(cons$hamming_rnd), "\n",
+    "    Mean across nucleotide positions: ", mean(cons$means$hamming_rnd, na.rm = TRUE),  "\n",
+    "    Max across nucleotide positions: ", max(cons$means$hamming_rnd, na.rm = TRUE),  "\n",
+    "    Min across nucleotide positions: ", min(cons$means$hamming_rnd, na.rm = TRUE),  "\n")
+    # "Mean Grantham distance to E. coli across all sequences:\n",
+    # "    Number of sequences: ", nrow(cons$grantham_Ecoli), "\n",
+    # "    Mean across AA positions: ", mean(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
+    # "    Max across AA positions: ", max(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
+    # "    Min across AA positions: ", min(cons$means$grantham_Ecoli, na.rm = TRUE),  "\n",
+    # "Mean Grantham distance across randomly sampled pairs of", target_gene, " sequences:\n",
+    # "    Number of sequence pairs: ", nrow(cons$grantham_rnd), "\n",
+    # "    Mean across AA positions: ", mean(cons$means$grantham_rnd, na.rm = TRUE),  "\n",
+    # "    Max across AA positions: ", max(cons$means$grantham_rnd, na.rm = TRUE),  "\n",
+    # "    Min across AA positions: ", min(cons$means$grantham_rnd, na.rm = TRUE),  "\n")
+  
+  write_file(report, file_name)
+  cat(report)
+  cat(paste0("\n\nThis summary has been saved in file ", file_name, ".\n"))
+  return(invisible(NULL))
+}
+
+

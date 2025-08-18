@@ -215,23 +215,12 @@ plot_subtree <- function(subtree, species_output, gtdb_taxonomy, genus_variants,
   
   # clades to be labeled in the tree:
   clades_to_label <- c(
-    # "Sphingomonadaceae", #family
-    "Sphingomonadales", #order
-    "Devosiaceae", #family
-    # "Pirellulales", #order
-    # "Rhizobiales", #order
-    # "Thermodesulfobacteriaceae", #family
-    # "Actinopolymorphaceae", #family
-    # "Micromonosporaceae", #family
-    # "Mycobacteriaceae", #family
-    # "Streptomycetaceae", #family
-    # "Coriobacteriales", #order
-    # "Actinomycetales", #order
-    "Rickettsiales", #order
-    "Micromonosporaceae", #family
-    "Coriobacteriia", #class
-    "Planctomycetia" #class
-    # "Coriobacteriia",
+   "Bacteroidia",
+   "Microbacteriaceae",
+   "Streptomycetaceae",
+   "Streptococcaceae",
+   "Burkholderiaceae"
+   # "Burkholderiales"
   )
   
   # change tip labels to make manipulations easier:  

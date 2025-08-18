@@ -4,7 +4,8 @@
 #' @param file_pdb pdb file containing the protein structure
 #' @param chain_id Character. Protein chain identifier to display (default = "L").
 #' @param ligand_resid Character. Residue name of the ligand to include (default = "5I0").
-#' @param pos positions to label
+#' @param AA_pos AA positions to label
+#' @param Nt_pos Nt positions to label
 #' @param mut_colour_variable values used for colour of labels
 #' @param n_cols number of colours in colour gradient
 #' @param file_html name of output html file
@@ -13,7 +14,8 @@
 #' 
 visualise_rpsL_structure <- function(file_pdb, 
                                      chain_ids = c("L","A"),
-                                     pos,
+                                     AA_pos,
+                                     Nt_pos,
                                      mut_colour_variable,
                                      n_cols = 100,
                                      file_html) {
@@ -61,7 +63,30 @@ visualise_rpsL_structure <- function(file_pdb,
   
 
   # add labels at known mutation sites:
-  for(p in pos) {
+  for(p in AA_pos) {
+    col_i <- round(mut_colour_variable[p]/max_value * n_cols)
+    ngl <- ngl |> 
+      addRepresentation("label",
+                        param = list(
+                          sele = paste(p, "and .CA and", paste0(":", chain_ids[1])),
+                          #labelType = "format",
+                          #labelFormat = "%(resname)s%(resno)s",
+                          labelGrouping = "residue",
+                          showBackground = TRUE,
+                          showBorder = TRUE,
+                          borderColor = "black",
+                          colorValue = "black",
+                          # backgroundColor = colourScale[col_i],
+                          backgroundColor = "red",
+                          backgroundOpacity = 1,
+                          radius = 3,
+                          fixedSize = FALSE
+                        )) #|>
+#      addRepresentation("line",
+#                        param = list(sele = as.character(p), colorValue = "grey30"))
+  }
+  
+  for(p in AA_pos) {
     col_i <- round(mut_colour_variable[p]/max_value * n_cols)
     ngl <- ngl |> 
       addRepresentation("label",

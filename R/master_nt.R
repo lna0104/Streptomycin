@@ -48,6 +48,7 @@ source("R/util.R")
 #source("R/bioinformatics.R")
 source("R/bioinformatics_nt.R")
 source("R/analyses_nt.R")
+source("R/analyses.R")
 source("R/plotting_nt.R")
 source("R/reports_nt.R")
 source("R/reports.R")
@@ -276,7 +277,7 @@ write_csv(muts, "./output/muts_rrs.csv")
 #3 summary and plot of reported mutations
 plot_reported_article_before_process(muts, file_name = "./plots/rrs_reported_articles.pdf")
 plot_reported_mutations_nt(muts, file_name = "./plots/rrs_reported_mutations.pdf", n_frequency = 1) # returns frequent reported mutations, positions and species
-summarise_reported_mutations_nt(muts, file_name = "./results/rrs_summary_reported_mutations.txt") # returns a text message summarizing previous reports
+summarise_reported_mutations_nt(muts, file_name = "./results/summary_rrs_reported_mutations.txt") # returns a text message summarizing previous reports
 
 #empty working environment to keep everything clean
 rm.all.but("globsets")
@@ -354,7 +355,7 @@ mutation_list <- mutation_list_reports |>
 
 # 3.screen all rrs sequences for existing and possible mutations:
 raw_output <- screen_target_sequences_nt(rrs_target_sequences, rrs_reference_Ecoli, 
-                                      mutation_list, target_gene="rrs", n_workers=3)
+                                      mutation_list, target_gene="rrs", n_workers=8)
 
 #save error messages:
 saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors.rds")
@@ -407,7 +408,7 @@ summarise_target_sequences(genome_summaries,
                            min_alig_score = globsets$min_alig_score,
                            max_core_dist = globsets$max_core_dist,
                            target_gene = 'rrs',
-                           file_name = "./results/rrs_summary_target_sequences_rrs.txt")
+                           file_name = "./results/summary_rrs_target_sequences.txt")
 plot_target_sequences_stats_nt(raw_output, 
                               filtered_output,
                               min_seq_length = globsets$min_seq_length,
@@ -435,9 +436,7 @@ rm.all.but("globsets")
 #                       plot showing the statistics for species with multiple gene copies ("./plots/rrs_multicopy_stats.pdf")
 
 # 1. load required data:
-rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
-rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
-filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+filtered_output <- read_csv("./output/rrs_filtered_output_dist_190_align_2000.csv", show_col_types = FALSE)
 # Generate gtdb_taxonomy file from GTDB metadata
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
@@ -446,15 +445,13 @@ genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types
 plot_mutation_screen_nt(filtered_output, file_name = "./plots/rrs_mutation_screen.pdf")
 plot_classes_genera_nt(filtered_output, gtdb_taxonomy, genus_variants, file_name= "./plots/rrs_classes_genera.pdf")
 # plot_evolvability_by_class(filtered_output, gtdb_taxonomy, genus_variants, file_name = "./plots/rrs_evolvability_by_class.pdf")
-summarise_mutation_screen_nt(filtered_output, target_gene = "rrs", file_name = "./results/rrs_summary_mutation_screen.txt")
+summarise_mutation_screen_nt(filtered_output, target_gene = "rrs", file_name = "./results/summary_rrs_mutation_screen.txt")
 get_resistance_taxonomy_nt(filtered_output, gtdb_taxonomy, genus_variants, file_path = "./output/")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance.csv")
 
 #3. analyse species with multiple gene copies:
-multiseq_stats <- compare_gene_copies_nt(filtered_output, rrs_target_sequences, rrs_reference_Ecoli)
-write_csv(multiseq_stats, "./output/rrs_multiseq_stats.csv")
-#multiseq_stats <- read_csv("./output/multiseq_stats.csv", show_col_types = FALSE)
-plot_multiseq_stats(multiseq_stats, "./plots/rrs_multiseq.pdf")
+plot_mutation_screen_gene_copies(filtered_output, file_name = "./plots/rrs_multiseq_mutation_screen.pdf")
+plot_mutation_copy_profile(filtered_output, file_name = "./plots/rrs_variation_mutation_across_copies_dist_190_align_2000.pdf")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
@@ -487,7 +484,7 @@ gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #b
 genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
 
 # 2. get species-level summary of mutation screen data:
-species_output <- get_species_output(filtered_output)
+species_output <- get_species_output_nt(filtered_output)
 
 # 2.subset the tree based on species accessions and names:
 subtree <- get_subtree(filtered_output, original_tree, meta_data)
@@ -499,14 +496,69 @@ subtree <- read.tree("./output/rrs_subtree.nwk")
 plot_subtree(subtree, species_output, gtdb_taxonomy, genus_variants, file_name = "./plots/rrs_phylogenies/rrs_whole_genome_tree.svg")
 # smaller trees of individual clades:
 plot_subtree_clades(subtree, species_output, gtdb_taxonomy, genus_variants, 
-                    genera = c("Sphingomonas"),
-                    families = c("Devosiaceae", "Mycobacteriaceae"),
-                    orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
-                    classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
-                    file_path = "./plots/phylogenies/")
+                    # genera = c("Sphingomonas"),
+                    families = c("Streptomycetaceae", "Burkholderiaceae", "Microbacteriaceae", "Streptococcaceae"),
+                    # orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+                    classes = c("Actinomycetes", "Bacteroidia","Bacilli"),
+                    file_path = "./plots/rrs_phylogenies/")
 
-summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/rrs_summary_phylogenetics.txt")
+summarise_phylogenetics_nt(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rrs_phylogenetics.txt")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
+
+########################################################################
+### Step 8: Plotting rrs structure and sequence conservation       ###
+########################################################################
+
+# load required data:
+rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
+filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+filtered_targets <- filtered_output |> pull(target_name) |> unique()
+rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")[filtered_targets]
+
+mutations <- read_csv("./output/muts_rrs.csv", show_col_types = FALSE)  |>
+  filter_mutations_nt(min_n_species = globsets$min_n_species, 
+                      min_n_studies = globsets$min_n_studies)
+
+# calculate conservation/diversity scores along the rpsL sequence:
+set.seed(globsets$random_seed)
+cons <- get_conservation_nt(rrs_target_sequences, rrs_reference_Ecoli, n_rnd = 1e5, n_workers=10, 
+                            alig_path = "./output/alignments_nt")
+save(cons, file = "./output/rrs_cons.RData")
+summarise_conservation_nt(rrs_cons, 
+                           target_gene = "rrs",
+                           file_name = "./results/summary_rrs_conservation.txt")
+plot_cons(rrs_cons, 
+          pos = mutations |> pull(Nt_pos_Ecoli) |> unique(),
+          pos_range = c(500,950),
+          n_plots = 1,
+          dist_type = "hamming",
+          file_name = "./plots/rrs_nt_conservation_hamming.pdf")
+# plot_cons(cons, 
+#           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
+#           pos_range = c(40,100),
+#           n_plots = 1,
+#           dist_type = "grantham",
+#           file_name = "./plots/rrs_AA_conservation_grantham.pdf")
+
+########################################################################
+### Step 9: Compile final report                                    ###
+########################################################################
+
+# collating all individual summary files and rendering them as a single pdf file:
+# render_summary(summaries = c("reported_mutations_manualfix",
+#                              "target_sequences",
+#                              "mutation_screen",
+#                              "phylogenetics",
+#                              "conservation"),
+#                preamble = "./data/summary_rrs_preamble.qmd",
+#                summaries_path = "./results")
+render_summary(summaries = c("rrs_reported_mutations",
+                             "rrs_target_sequences",
+                             "rrs_mutation_screen",
+                             "rrs_phylogenetics"),
+               preamble = "./data/summary_rrs_preamble.qmd",
+               summaries_path = "./results")
+
 
