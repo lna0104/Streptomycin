@@ -61,39 +61,45 @@ processed_data <- combined_species |>
   mutate(
     class = if_else(is.na(class), class_var, class),
     phylum = if_else(is.na(phylum), phylum_var, phylum)
-  ) 
+  ) |>
+  filter(!is.na(class)) |>
+  dplyr::count(phylum, class, category)
 
-p<-ggplot(processed_data, aes(
-      x = interaction(class,
-                      phylum,
-                      sep = "!"),  
-      fill = category
-    )) +
-      geom_bar() +
-      guides(x = legendry::guide_axis_nested(key = "!")) +
-      scale_fill_manual(values = c(
-        "rrs" = '#21908dff',
-        "rpsL" = '#fde725ff',
-        "both" = '#440154ff'
-      )) +
-      labs(
-        x = "Phylum and Class",
-        y = "Number of species",
-        fill = "Category"
-      ) +
-      theme_bw() +
-      theme(
-        legend.position = "top",
-        axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
-        axis.title = element_text(size = 10)
-    )
 
-ggsave(
-  filename = "./plots/phylum_class_rrs_rpsL.pdf",
-  plot = p,
-  width = 10,   
-  height = 6
+ggplot(processed_data, aes(
+  x = weave_factors(class, phylum),  
+  y = n,
+  fill = category
+)) +
+  geom_col() +
+  guides(x = "axis_nested") +
+  scale_fill_manual(values = c(
+    "rrs" = '#21908dff',
+    "rpsL" = '#fde725ff',
+    "both" = '#440154ff'
+  )) +
+  labs(
+    x = "Phylum and Class",
+    y = "Number of species",
+    fill = "Category"
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "top",
+    ggh4x.axis.nestline.x = element_line(linetype = 2),
+    axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
+    axis.title = element_text(size = 10)
+  )
+
+df <- data.frame(
+  item = c("Coffee", "Tea", "Apple", "Pear", "Car"),
+  type = c("Drink", "Drink", "Fruit", "Fruit", ""),
+  amount = c(5, 1, 2, 3, 1),
+  stringsAsFactors = FALSE
 )
 
+ggplot(df, aes(interaction(item, type), amount)) +
+  geom_col() +
+  guides(x = legendry::guide_axis_nested())
 
 

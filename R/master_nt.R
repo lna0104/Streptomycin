@@ -63,7 +63,7 @@ globsets <- list(
   min_n_species = 2, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 1200, # minimum length of included gene target sequences
   min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
-  max_core_dist = 220, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
+  max_core_dist = 190, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
   random_seed = 22)
 options(nwarnings = 10000)
@@ -436,7 +436,7 @@ rm.all.but("globsets")
 #                       plot showing the statistics for species with multiple gene copies ("./plots/rrs_multicopy_stats.pdf")
 
 # 1. load required data:
-filtered_output <- read_csv("./output/rrs_filtered_output_dist_190_align_2000.csv", show_col_types = FALSE)
+filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
 # Generate gtdb_taxonomy file from GTDB metadata
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
@@ -451,7 +451,7 @@ make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_pred
 
 #3. analyse species with multiple gene copies:
 plot_mutation_screen_gene_copies(filtered_output, file_name = "./plots/rrs_multiseq_mutation_screen.pdf")
-plot_mutation_copy_profile(filtered_output, file_name = "./plots/rrs_variation_mutation_across_copies_dist_190_align_2000.pdf")
+plot_mutation_copy_profile(filtered_output, file_name = "./plots/rrs_variation_mutation_across_copies.pdf")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
