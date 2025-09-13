@@ -50,8 +50,11 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
     summarise(Origin = ifelse(all(Origin == "Isolate"), "Isolate",
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop") |>
-    arrange(desc(mutation_name)) |>
-    mutate(mutation_name = factor(mutation_name, levels = sort(unique(mutation_name)))) |>
+    # arrange based on numeric position in mutation name
+    mutate(pos_num = as.numeric(str_extract(mutation_name, "^[0-9]+"))) |>
+    arrange(pos_num, mutation_name) |>
+    mutate(mutation_name = factor(mutation_name, 
+                                  levels = unique(mutation_name))) |>
     group_by(mutation_name) |>
     filter(n() >= n_frequency)
   
@@ -72,7 +75,11 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
          y = "Number of species", 
          fill = "Origin:") +
     scale_y_continuous(expand = c(0.01, 0)) +
-    scale_fill_manual(values = wes_palette("FantasticFox1"), breaks=c('Lab-generated', 'Isolate', 'Both'))
+    scale_fill_manual(values = c(
+      "Lab-generated" = "#3B9AB2",  
+      "Isolate" = "#EBCC2A",       
+      "Both" = "#EF5703"            
+    ), breaks=c('Lab-generated', 'Isolate', 'Both')) 
 
   #3. how many mutations for each species have been reported
   frequency_per_species <-  muts |>
@@ -666,8 +673,7 @@ plot_mutation_copy_profile <- function(filtered_output, file_name){
       },
       .groups = "drop"
     ) |> 
-    left_join(n_copy_per_species, by = c("accession_numbers", "species"))
-  
+    left_join(n_copy_per_species, by = c("accession_numbers", "species")) 
   
   hist_plot <- ggplot(gene_copies_per_mut, aes(x = gene_copy, fill = mutation_category_per_species)) +
     geom_histogram(binwidth = 1) +
