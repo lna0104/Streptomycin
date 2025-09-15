@@ -596,7 +596,8 @@ plot_target_sequences_stats_nt <- function(final_output,
 }
 
 
-
+# Plot number of species across different gene copy counts
+# Species are colored by whether mutations are present 
 plot_mutation_screen_gene_copies <- function(filtered_output, file_name){
 
   gene_copies_species <- filtered_output |>
@@ -651,8 +652,10 @@ plot_mutation_screen_gene_copies <- function(filtered_output, file_name){
   ggsave(filename = file_name, hist_plot, width = 12, height = 8)
 }
 
+# Plot gene copy distribution per mutation
+# Species are colored by whether mutations are present 
 
-plot_mutation_copy_profile <- function(filtered_output, file_name){
+plot_gene_copies_per_mutation <- function(filtered_output, file_name){
   
   n_copy_per_species <- filtered_output |>
     select(accession_numbers, species, target_name) |>
@@ -703,5 +706,95 @@ plot_mutation_copy_profile <- function(filtered_output, file_name){
     facet_wrap(~ mutation_name, scales = "free_y")
   
   ggsave(filename = file_name, hist_plot, width = 12, height = 10)
-  
 }
+
+plot_variance_gene_copies <- function(filtered_output, file_name){
+  n_copy_per_species <- filtered_output |>
+    select(accession_numbers, species, target_name) |>
+    distinct() |>
+    group_by(accession_numbers, species) |>
+    summarise(
+      gene_copy = n(),
+      .groups = "drop"
+    ) |>
+    filter(gene_copy > 1) 
+  
+  n_variants_per_species <- filtered_output |>
+    filter(accession_numbers %in% n_copy_per_species$accession_numbers) |> 
+    group_by(accession_numbers, species, Nt_pos_Ecoli) |> 
+    summarise(
+      n_variants = n_distinct(Nt_target),
+      .groups = "drop"
+    ) 
+  
+  bar_plot <- ggplot(n_variants_per_species, aes(x = factor(n_variants))) +
+    geom_bar(fill = "lightgray", color = "black") +
+    facet_wrap(~ Nt_pos_Ecoli, ncol = 2) + 
+    labs(
+      x = "16S rRNA copy number spread",
+      y = "Number of species"
+    ) +
+    theme_classic() +
+    theme(
+      axis.title = element_text(size = 10),
+      axis.text  = element_text(size = 8)
+    )
+  
+  ggsave(filename = file_name, bar_plot, width = 6, height = 6)
+
+}
+
+#' Produce bar plots showing species counts or percentages per class and phylum
+#'
+#' This function generates bar plots of species distribution across taxonomic 
+#' classes and phyla, grouped by a categorical variable (e.g., "rrs", "rpsL", "both").
+#' It supports nested x-axis labels for class/phylum and can plot either absolute 
+#' counts or percentages of species.
+plot_class_counts_and_percents <- function(processed_data, file_name){
+  
+  # Make a combined dataset: raw counts + proportions
+  plot_data_counts <- processed_data |>
+    mutate(plot_type = "Count")
+  
+  plot_data_props <- processed_data |>
+    group_by(class, phylum) |>
+    mutate(prop = n / sum(n)) |>
+    ungroup() |>
+    mutate(plot_type = "Proportion")
+  
+  # Stack them together
+  plot_data <- bind_rows(
+    plot_data_counts |> mutate(value = n),
+    plot_data_props |> mutate(value = prop)
+  )
+  
+  ggplot(plot_data, aes(
+    x = interaction(class, phylum, sep = "!"),
+    y = value,
+    fill = category
+  )) +
+    geom_col() +
+    scale_x_discrete(guide = guide_axis_nested(key = "!"), name = "Phylum and class") +
+    scale_fill_manual(values = c(
+      "rrs" = '#21908dff',
+      "rpsL" = '#fde725ff',
+      "both" = '#440154ff'
+    )) +
+    facet_grid(rows = vars(plot_type), scales = "free_y") +
+    labs(
+      x = "Class",
+      fill = "Category"
+    ) +
+    theme_bw() +
+    theme(
+      legend.position = "top",
+      ggh4x.axis.nestline.x = element_line(linetype = 2),
+      axis.title.y = element_blank(),
+      axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
+      axis.title.x = element_text(size = 10)
+    )
+  ggsave(filename = file_name, width = 14, height = 8)
+}
+
+
+

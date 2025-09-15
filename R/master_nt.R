@@ -45,7 +45,7 @@ library(igraph)
 
 
 source("R/util.R")
-#source("R/bioinformatics.R")
+source("R/bioinformatics.R")
 source("R/bioinformatics_nt.R")
 source("R/analyses_nt.R")
 source("R/analyses.R")
@@ -62,7 +62,7 @@ globsets <- list(
   min_n_studies = 2, # minimum number of studies that a mutation needs to be reported in for inclusion
   min_n_species = 2, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 1200, # minimum length of included gene target sequences
-  min_alig_score = -Inf, # minimum alignment score (with E. coli) of included gene target sequences
+  min_alig_score = -2000, # minimum alignment score (with E. coli) of included gene target sequences
   max_core_dist = 190, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
   random_seed = 22)
@@ -451,7 +451,8 @@ make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_pred
 
 #3. analyse species with multiple gene copies:
 plot_mutation_screen_gene_copies(filtered_output, file_name = "./plots/rrs_multiseq_mutation_screen.pdf")
-plot_mutation_copy_profile(filtered_output, file_name = "./plots/rrs_variation_mutation_across_copies.pdf")
+plot_gene_copies_per_mutation(filtered_output, file_name = "./plots/rrs_copies_per_mutation.pdf")
+plot_variance_gene_copies(filtered_output, file_name = "./plots/rrs_nucleotide_variants_per_species.pdf")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")

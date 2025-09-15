@@ -4,8 +4,6 @@ library(VennDiagram)
 library(ggh4x)
 library(legendry)
 
-
-
 # Load data
 rrs_gene_list <- read_csv("./results/rrs_predicted_resistance.csv")
 rpsL_gene_list <- read_csv("./results/predicted_resistance.csv")
@@ -13,6 +11,38 @@ rpsL_gene_list <- read_csv("./results/predicted_resistance.csv")
 # Combine all species 
 all_species <- bind_rows(rrs_gene_list, rpsL_gene_list) %>%
   distinct(species, genus)
+
+# Classify category
+combined_species <- all_species %>%
+  mutate(
+    category = case_when(
+      species %in% rrs_gene_list$species & species %in% rpsL_gene_list$species ~ "both",
+      species %in% rrs_gene_list$species ~ "rrs",
+      species %in% rpsL_gene_list$species ~ "rpsL"
+    )
+  )
+
+# Load gtdb taxonomy file from GTDB metadata
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
+
+# Merge data with taxonomy
+processed_data <- combined_species |>
+  select(species, genus, category) |>
+  left_join(gtdb_taxonomy, by = join_by(genus == genus))|>
+  left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
+            by = join_by(genus == genus_origin), relationship = "many-to-many") |>
+  mutate(
+    class = if_else(is.na(class), class_var, class),
+    phylum = if_else(is.na(phylum), phylum_var, phylum)
+  ) |>
+  filter(!is.na(class)) |>
+  group_by(class, phylum, category) |>
+  summarise(
+    n = n(),
+    .groups = "drop"
+  ) 
+
 
 # Venn diagram showing the overlapping number of resistant species
 venn.diagram(
@@ -39,67 +69,8 @@ venn.diagram(
   cat.col = c('#21908dff', '#fde725ff')
 )
 
-# Classify category
-combined_species <- all_species %>%
-  mutate(
-    category = case_when(
-      species %in% rrs_gene_list$species & species %in% rpsL_gene_list$species ~ "both",
-      species %in% rrs_gene_list$species ~ "rrs",
-      species %in% rpsL_gene_list$species ~ "rpsL"
-    )
-  )
 
-# Generate gtdb_taxonomy file from GTDB metadata
-gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
-genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
+plot_class_counts_and_percents(processed_data, file_name = "./plots/rrs_rpsL_classes_genera.pdf")
 
-processed_data <- combined_species |>
-  select(species, genus, category) |>
-  left_join(gtdb_taxonomy, by = join_by(genus == genus))|>
-  left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
-            by = join_by(genus == genus_origin), relationship = "many-to-many") |> 
-  mutate(
-    class = if_else(is.na(class), class_var, class),
-    phylum = if_else(is.na(phylum), phylum_var, phylum)
-  ) |>
-  filter(!is.na(class)) |>
-  dplyr::count(phylum, class, category)
-
-
-ggplot(processed_data, aes(
-  x = weave_factors(class, phylum),  
-  y = n,
-  fill = category
-)) +
-  geom_col() +
-  guides(x = "axis_nested") +
-  scale_fill_manual(values = c(
-    "rrs" = '#21908dff',
-    "rpsL" = '#fde725ff',
-    "both" = '#440154ff'
-  )) +
-  labs(
-    x = "Phylum and Class",
-    y = "Number of species",
-    fill = "Category"
-  ) +
-  theme_bw() +
-  theme(
-    legend.position = "top",
-    ggh4x.axis.nestline.x = element_line(linetype = 2),
-    axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
-    axis.title = element_text(size = 10)
-  )
-
-df <- data.frame(
-  item = c("Coffee", "Tea", "Apple", "Pear", "Car"),
-  type = c("Drink", "Drink", "Fruit", "Fruit", ""),
-  amount = c(5, 1, 2, 3, 1),
-  stringsAsFactors = FALSE
-)
-
-ggplot(df, aes(interaction(item, type), amount)) +
-  geom_col() +
-  guides(x = legendry::guide_axis_nested())
 
 
