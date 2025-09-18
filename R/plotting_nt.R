@@ -91,7 +91,7 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop") |>
     group_by(Species) |> 
-    filter(n() > n_frequency) 
+    filter(n() >= n_frequency) 
   
   plot3 <- frequency_per_species %>%
     ggplot() +
@@ -641,7 +641,7 @@ plot_mutation_screen_gene_copies <- function(filtered_output, file_name){
     ) +
     labs(
         x = "Gene copies",
-        y = "Number of species",
+        y = "Number of genomes",
         fill = "Mutation category") +
     theme_classic()+
     theme(
@@ -694,7 +694,7 @@ plot_gene_copies_per_mutation <- function(filtered_output, file_name){
     ) +
     labs(
       x = "Gene copies",
-      y = "Number of species",
+      y = "Number of genomes",
       fill = "Mutation category"
     ) +
     theme_classic() +
@@ -731,8 +731,8 @@ plot_variance_gene_copies <- function(filtered_output, file_name){
     geom_bar(fill = "lightgray", color = "black") +
     facet_wrap(~ Nt_pos_Ecoli, ncol = 2) + 
     labs(
-      x = "16S rRNA copy number spread",
-      y = "Number of species"
+      x = "Number of unique nucleotides",
+      y = "Number of genomes"
     ) +
     theme_classic() +
     theme(
