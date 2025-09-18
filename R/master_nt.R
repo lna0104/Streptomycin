@@ -274,6 +274,8 @@ muts <- mutation_list_reports |>
   filter(!is.na(Nt_mut_name_Ecoli))
 
 write_csv(muts, "./output/muts_rrs.csv")
+# muts <- read.csv("./output/muts_rrs.csv", header = TRUE, sep = ",")
+
 #3 summary and plot of reported mutations
 plot_reported_article_before_process(muts, file_name = "./plots/rrs_reported_articles.pdf")
 plot_reported_mutations_nt(muts, file_name = "./plots/rrs_reported_mutations.pdf", n_frequency = 1) # returns frequent reported mutations, positions and species
@@ -343,7 +345,8 @@ rm.all.but("globsets")
 # 1.load required data:
 muts <- read.csv("./output/muts_rrs.csv") 
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
-rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
+# rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
+rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
 
 # 2.make a list of reliable mutations to be screened:
 mutation_list_reports <- filter_mutations_nt(muts,
@@ -358,11 +361,11 @@ raw_output <- screen_target_sequences_nt(rrs_target_sequences, rrs_reference_Eco
                                       mutation_list, target_gene="rrs", n_workers=8)
 
 #save error messages:
-saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors.rds")
+saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors_EU5/41.rds")
 
 #save results:
 raw_output <- do.call(rbind, raw_output[sapply(raw_output, is.data.frame)])
-write_csv(raw_output, file = "./output/rrs_raw_output.csv")
+write_csv(raw_output, file = "./output/rrs_raw_output_EU5/41.csv")
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
