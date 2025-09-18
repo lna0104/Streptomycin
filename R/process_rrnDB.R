@@ -70,9 +70,9 @@ options(nwarnings = 10000)
 
 set.seed(globsets$random_seed)
 
-# Load data
-meta_data <- read_tsv("data/rrnDB-5.10.tsv")
-rrs_rrndb_sequences <- readDNAStringSet("./data/rrnDB-5.10_16S_rRNA.fasta")
+##############################################################################
+### Step 3: Retrieving target sequences from all bacterial reference genomes ###
+##############################################################################
 
 # Define the desired database 
 db <- "assembly" 
@@ -86,9 +86,18 @@ term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"
 summaries_ref <- get_summaries(db, term_ref)
 # combine summaries and save them
 summaries <- c(summaries_ref, summaries_rep)
-
 # Create assembly accession list
 assembly_numbers_ref <- sapply(summaries, function(x) x$assemblyaccession) |> unname()
+
+# Load data
+meta_data <- read_tsv("data/rrnDB-5.10.tsv")
+rrs_rrndb_sequences <- readDNAStringSet("./data/rrnDB-5.10_16S_rRNA.fasta")
+
+# Extract meta for representative/reference sequences
+rrnDB_meta_data <- meta_data |>
+  filter(`Data source record id` %in% assembly_numbers_ref)
+
+write_csv(rrnDB_meta_data, file = "./output/rrnDB_meta_data.csv")
 
 # Extract headers 
 headers <- names(rrs_rrndb_sequences)
