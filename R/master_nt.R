@@ -255,7 +255,7 @@ mutation_list_reports <- read_csv("./data/reported_mutations.csv", show_col_type
             AA_mutation, AA_OtoM, AA_mut_name, AA_mut_name_Ecoli))
 
 # Check whether the above files have been changed and hence the coordinates need to be updated 
-if(file.exists("./data/fastahash_rrs.Rds") && as.character(openssl::sha1(file("./data/rrs_references.fasta"))) == readRDS("./data/fastahash_rrs.Rds")){
+if(file.exists("./data/rrs_fastahash.Rds") && as.character(openssl::sha1(file("./data/rrs_references.fasta"))) == readRDS("./data/fastahash_rrs.Rds")){
   print("Sequences file has not changed, loading original coordinates")
   load(file = "./output/coordinates_rrs.RData")
 } else {
@@ -335,7 +335,7 @@ rm.all.but("globsets")
 ### Step 4: Checking all target sequences for reported mutations      ###
 #########################################################################
 
-# input for this step:  processed table of reported mutations after manually modify all warnings ("./output/muts_rrs.csv")
+# input for this step:  processed table of reported mutations after manually modify all warnings ("./output/rrs_muts.csv")
 #                       reported frequencies of rrs mutations under STR 
 #                       E. coli rrs reference sequence (from "./data/rrs_references.fasta")
 #                       extracted rrs target sequences ("./output/rrs_target_sequences.fa")

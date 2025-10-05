@@ -9,7 +9,7 @@ source("R/plotting_nt.R")
 
 # Load data
 rrs_data <- read_csv("./output/rrs_filtered_output.csv")
-rpsL_data <- read_csv("./output/filtered_output.csv")
+rpsL_data <- read_csv("./output/rpsL_filtered_output.csv")
 
 # Explore data
 # Unique genomes in each dataset

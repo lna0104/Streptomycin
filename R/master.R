@@ -239,7 +239,7 @@ mutation_list_reports <- read_csv("./data/reported_mutations.csv", show_col_type
   filter(Gene=="rpsL")
 
 # Check whether the above files have been changed and hence the coordinates need to be updated 
-if(file.exists("./data/fastahash.Rds") && as.character(openssl::sha1(file("./data/rpsL_references.fasta"))) == readRDS("./data/fastahash.Rds")){
+if(file.exists("./data/rpsL_fastahash.Rds") && as.character(openssl::sha1(file("./data/rpsL_references.fasta"))) == readRDS("./data/fastahash.Rds")){
   print("Sequences file has not changed, loading original coordinates")
   load(file = "./output/coordinates.RData")
 } else {
