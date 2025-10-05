@@ -647,4 +647,5 @@ render_summary(summaries = c("rpsL_reported_mutations_manualfix",
                              "rpsL_phylogenetics",
                              "rpsL_conservation"),
               preamble = "./data/summary_preamble.qmd",
-              summaries_path = "./results")
+              summaries_path = "./results",
+              gene_name = "rpsL")

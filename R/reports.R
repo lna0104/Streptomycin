@@ -460,7 +460,7 @@ summarise_conservation <- function(cons, target_gene, file_name, subtitle = "") 
 
 
 
-render_summary <- function(summaries, preamble, summaries_path, show_all_dates = FALSE) {
+render_summary <- function(summaries, preamble, summaries_path, gene_name, show_all_dates = FALSE) {
   
   lines <- vector(mode = "list", length = length(summaries) + 2)
   lines[[1]] <- readLines(preamble)
@@ -481,8 +481,8 @@ render_summary <- function(summaries, preamble, summaries_path, show_all_dates =
   }
   lines[[length(summaries) + 2]] <- c("", "## Session Info", "", pander::pander_return(sessionInfo()))
   lines <- unlist(lines)
-  write_lines(lines, paste0(summaries_path, "/summary.qmd"))
-  quarto_render(paste0(summaries_path, "/summary.qmd"))
+  write_lines(lines, paste0(summaries_path, "/summary_", gene_name,".qmd"))
+  quarto_render(paste0(summaries_path, "/summary_", gene_name, ".qmd"))
 }
 
 
