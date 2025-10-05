@@ -25,6 +25,7 @@ Streptomycin_Resistance_Landscape/
 │   ├── master.R              # Main pipeline for rpsL analysis (amino acid level)
 │   ├── master_nt.R           # Main pipeline for rrs analysis (nucleotide level)
 │   ├── util.R                # Utility functions (e.g., extract species names)
+│   ├── process_nt_data.R     # Functions adapted from ALJEbinf for nucleotide data
 │   ├── analyses*.R           # Functions for mutation screening, alignment comparison, evolvability assessment, and resistance summarization
 │   ├── bioinformatics*.R     # Functions for downloading, parsing, and organizing NCBI RefSeq genomes and taxonomy data
 │   ├── phylogenetics*.R      # Tree construction and plotting
