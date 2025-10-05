@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository implements a computational pipeline to map streptomycin (STR) resistance across bacterial genomes. Building on a framework developed for rifampicin [1](https://doi.org/10.1101/2024.11.05.622190) ![DOI:10.1101/2024.11.05.622190](https://zenodo.org/badge/DOI/10.1101/2024.11.05.622190.svg), the analysis screens \~20,000 bacterial genomes for known resistance mutations in the *rpsL* and *rrs* genes (ribosomal protein S12 and 16S rRNA, respectively). The goals are to identify taxa with intrinsic resistance (mutations already present) and those with high evolvability (potential to acquire resistance via single-nucleotide changes). The workflow for this project is illustrated in Figure 1.
+This repository implements a computational pipeline to map streptomycin (STR) resistance across bacterial genomes. Building on a framework developed for rifampicin [1](https://doi.org/10.1101/2024.11.05.622190) ![<DOI:10.1101/2024.11.05.622190>], the analysis screens \~20,000 bacterial genomes for known resistance mutations in the *rpsL* and *rrs* genes (ribosomal protein S12 and 16S rRNA, respectively). The goals are to identify taxa with intrinsic resistance (mutations already present) and those with high evolvability (potential to acquire resistance via single-nucleotide changes). The workflow for this project is illustrated in Figure 1.
 
 ![Figure 1: Overview of the analysis workflow](plots/workflow.png)
 
@@ -62,6 +62,7 @@ Streptomycin_Resistance_Landscape/
 ## Citation
 
 [1]: https://doi.org/10.1101/2024.11.05.622190 "Bolourchi, N., Brown, C. R. P., Letten, A. D., & Engelstädter, J. (2024). Evolution and evolvability of rifampicin resistance across the bacterial tree of life. bioRxiv."
+
 
 ## Author & Contact
 
