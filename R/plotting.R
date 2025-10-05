@@ -189,8 +189,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
 
 
 plot_evolvability_by_class <-function(filtered_output,
-                                       gtdb_taxonomy,
-                                       genus_variants,
+                                      bacterial_taxonomy,
                                        n_classes_to_plot = 50,
                                        file_name) {
   # # phylum abbreviations:
@@ -222,14 +221,14 @@ plot_evolvability_by_class <-function(filtered_output,
     summarise(n = n(), .groups = 'drop') |>
     filter(n == 1) |>            # remove multi-copy species
     # left_join(bacterial_taxonomy |> select(genus, class)) |>
-    left_join(gtdb_taxonomy |> select(genus, class)) |>
-    left_join(genus_variants |> select(genus_origin, class_var = class),
-      by = c("genus" = "genus_origin"), relationship = "many-to-many") |>
-    mutate(
-    class = if_else(is.na(class), class_var, class),
-    ) |>
-    select(-class_var) |>
-    distinct() |>
+    left_join(bacterial_taxonomy |> select(genus, class)) |>
+    # left_join(genus_variants |> select(genus_origin, class_var = class),
+    #   by = c("genus" = "genus_origin"), relationship = "many-to-many") |>
+    # mutate(
+    # class = if_else(is.na(class), class_var, class),
+    # ) |>
+    # select(-class_var) |>
+    # distinct() |>
     filter(!is.na(class))
 
   #average of possibility per mutation across classes
@@ -237,7 +236,7 @@ plot_evolvability_by_class <-function(filtered_output,
     mutate(class = fct_lump_n(class, n = n_classes_to_plot)) |>
     group_by(class, mutation_name) |>
     summarise(n_pos = mean(n_possible), .groups = 'drop') |>
-    left_join(gtdb_taxonomy |> select(class, phylum) |> distinct()) |>
+    left_join(bacterial_taxonomy |> select(class, phylum) |> distinct()) |>
     mutate(phylum = ifelse(class == "Other", "Misc", phylum)) |>
     # mutate(phylum = phylum_abbreviations[phylum]) |>
     mutate(class = factor(class), phylum = factor(phylum)) |>
@@ -268,7 +267,7 @@ plot_evolvability_by_class <-function(filtered_output,
                                   sep = "!"),
                   fill = n_pos)) +
     theme_bw() +
-    scale_y_discrete(guide = guide_axis_nested(delim = "!"), name = "Phylum and class") +
+    scale_y_discrete(guide = guide_axis_nested(key = "!"), name = "Phylum and class") +
     scale_fill_gradientn(colours = c("#d75b1d", "#fddda0", "#FAEFD1"))+
     labs(x = "Amino acid substitution",
          y = "Class",
@@ -280,10 +279,9 @@ plot_evolvability_by_class <-function(filtered_output,
       axis.title.y = element_text(size = 10, face = "bold"),
       # legend.title = element_text(size = 6),
       # legend.text = element_text(size = 6),
-      legend.position = "top",
-      ggh4x.axis.nesttext.x=element_text(angle=60, vjust=1),
-      ggh4x.axis.nestline.x=element_line(linewidth=0.75)
-      # axis.title.x=element_blank()    
+      legend.position = "top"
+      # ggh4x.axis.nesttext.x=element_text(angle=60, vjust=1),
+      # ggh4x.axis.nestline.x=element_line(linewidth=0.75)
       ) + 
     coord_flip() 
   
@@ -295,7 +293,6 @@ plot_evolvability_by_class <-function(filtered_output,
 #' produces a figure showing resistance and evolvability across classes and genera
 #' @param filtered_output a data frame providing screened and filtered gene sequences
 #' @param file_name the path that the plot should be save in
-#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param min_frac_resistant filter that gives the minimum fraction of species within
 #' a genus that need to be resistant for this genus to be included in figure A. 
 #' @param min_genus_size minimum number of species within a genus for this genus to be included in the figure 
@@ -309,8 +306,7 @@ plot_evolvability_by_class <-function(filtered_output,
 #'
 #' @examples plot_classes_genera(filtered_output, "./plot/myFilename.pdf")
 plot_classes_genera <- function(filtered_output,
-                                gtdb_taxonomy,
-                                genus_variants,
+                                bacterial_taxonomy,
                                 file_name,
                                 n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
@@ -330,7 +326,7 @@ plot_classes_genera <- function(filtered_output,
   
   # number of predicted mutations present in each species:
   n_muts_per_species <- merged_filtered_output |>
-    group_by(species, genus, accession_numbers) |>
+    group_by(species, accession_numbers, genus) |>
     summarise(muts_present = sum(mutation_category == "present"), 
               n_possible = sum(mutation_category == "possible"),
               # n_possible = ifelse(any(mutation_category == "present"),
@@ -344,21 +340,12 @@ plot_classes_genera <- function(filtered_output,
     summarise(first_mut = mutation_name[1])
   
   # table of species and which resistance mutations they have (including "none" or "multiple"):
-  processed_data <-  n_muts_per_species |>
+  species_with_muts <- n_muts_per_species |>
     left_join(first_mut_per_species, by = join_by(species)) |>
     mutate(category = ifelse(muts_present == 0L, "None", ifelse(muts_present > 1, "Multiple", first_mut))) |>
     select(species, genus, category, n_possible) |>
-    left_join(gtdb_taxonomy, by = join_by(genus == genus), relationship = "many-to-many" )|>
-    left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
-      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
-    mutate(
-    class = if_else(is.na(class), class_var, class),
-    phylum = if_else(is.na(phylum), phylum_var, phylum)
-    ) |>
-    select(-class_var, -phylum_var) |>
-    distinct() 
-
-  species_with_muts <- processed_data |>
+    left_join(bacterial_taxonomy, by = join_by(genus == genus))|>
+    distinct() |>
     mutate(class = factor(class)) |>
     mutate(genus = factor(genus)) |>
     mutate(category = str_replace(category, "_", "")) |>
@@ -367,16 +354,6 @@ plot_classes_genera <- function(filtered_output,
     mutate(category = fct_relevel(category, "Multiple", after = Inf)) |>
     mutate(category = fct_recode(category, " " = "None"))
   
-  # cols <- c(" " = rgb(0,0,0,0),
-  #           "43N" = brewer.pal(9, name = "Pastel1")[1],
-  #           "43R" = brewer.pal(9, name = "Pastel1")[2],
-  #           "43T" = brewer.pal(9, name = "Pastel1")[3],
-  #           "86C" = brewer.pal(9, name = "Pastel1")[4],
-  #           "91L" = brewer.pal(9, name = "Pastel1")[6],
-  #           "88E" = brewer.pal(9, name = "Pastel1")[7],
-  #           "88R" = brewer.pal(9, name = "Pastel1")[5],
-  #           "Other" = "grey", 
-  #           "Multiple" = "black")
   
   cols <- c(" " = rgb(0,0,0,0),
             "43N" =  wes_palette("Zissou1")[5],
@@ -397,74 +374,6 @@ plot_classes_genera <- function(filtered_output,
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
 
-  # pie_data <- n_species_per_class |>
-  #   mutate(class_grouped = case_when(
-  #     class %in% classes_for_plotting ~ class,
-  #     class == "Unidentified" ~ "Unidentified",
-  #     TRUE ~ "Other"
-  #   )) |>
-  #   mutate(class_grouped = fct_relevel(class_grouped, "Other", "Unidentified", after = Inf)) |>
-  #   group_by(class_grouped) |>
-  #   summarise(n = sum(n), .groups = "drop") |>
-  #   mutate(
-  #     csum = rev(cumsum(rev(n))), 
-  #     pos = n/2 + lead(csum, 1),
-  #     pos = if_else(is.na(pos), n/2, pos)) 
-
-  # brewer_colors <- c(brewer.pal(12, name = "Paired"), brewer.pal(8, name = "Dark2"))
-
-  # cols_class <- c(
-  #   "Actinomycetes"      = brewer_colors[1],
-  #   "Alphaproteobacteria"= brewer_colors[12],
-  #   "Bacteroidia"        = brewer_colors[3],
-  #   "Campylobacteria"    = brewer_colors[4],
-  #   "Clostridia"         = brewer_colors[5],
-  #   "Coriobacteriia"     = brewer_colors[10],
-  #   "Cyanobacteriia"      = brewer_colors[7],
-  #   "Desulfovibrionia"   = brewer_colors[8],
-  #   "Gammaproteobacteria"= brewer_colors[9],
-  #   "Negativicutes"      = brewer_colors[11],
-  #   "Spirochaetia"       = brewer_colors[13],
-  #   "Desulfuromonadia"   = brewer_colors[14],
-  #   "Leptospiria"        = brewer_colors[15],
-  #   "Myxococcia"         = brewer_colors[16],
-  #   "Planctomycetia"     = brewer_colors[2],
-  #   "Unidentified"       = "gray70",
-  #   "Other"              = "#4D4D4D"  # dark grey)
-
-  # plot_A <- ggplot(pie_data, aes(x = "" , y = n, fill = fct_inorder(class_grouped))) +
-  #   geom_col(width = 1, color="white") +
-  #   coord_polar(theta = "y") +
-  #   scale_fill_manual(values = cols_class) +
-  #   # geom_text_repel(data = pie_data,
-  #   #                 aes(x=1.4, y = pos, label = class_grouped),
-  #   #                 nudge_x = 0.8,
-  #   # direction = "y",
-  #   # segment.size = 0.2,
-  #   # box.padding = 1,
-  #   # size = 4,
-  #   # show.legend = FALSE,
-  #   # segment.curvature = 0.5,
-  #   # segment.ncp = 0) +
-  #   theme_void() +
-  #   theme(
-  #     plot.margin = margin(0, 0.5, 0.2, 0.5, "cm"),
-  #     legend.position = "right"
-  #   ) + 
-  #   labs(fill="Class") +
-  #   guides(fill = guide_legend(ncol = 2))
-
-  # Plot A: evolvability by class
-  
-  # plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-  #   geom_boxplot(aes(x = reorder(class, dplyr::desc(class)), 
-  #                   y = n_possible), outliers = FALSE) +
-  #   theme_bw() +
-  #   scale_y_continuous(expand = c(0.01, 0)) +
-  #   scale_fill_manual(values = cols, name = "") +
-  #   labs(x = "Class",
-  #        y = "Evolvability") +
-  #   coord_flip()
 
   plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
     # geom_jitter(
@@ -527,22 +436,6 @@ plot_classes_genera <- function(filtered_output,
 
   # Create graph object
   graph <- tbl_graph(edges = taxonomy_edges, directed = TRUE)
-  
-  # # Function to propagate class name down the tree
-  # propagate_class <- function(graph_tbl, class_names) {
-  #   V(graph_tbl)$class_parent <- NA
-    
-  #   for (class_node in which(V(graph_tbl)$name %in% class_names)) {
-  #     descendants <- igraph::subcomponent(graph_tbl, class_node, mode = "out")
-  #     V(graph_tbl)$class_parent[descendants] <- V(graph_tbl)$name[class_node]
-  #   }
-    
-  #   graph_tbl
-  # }
-  
-  # Apply propagation
-  # class_names <- names(cols_class)
-  # graph_colored <- propagate_class(graph, class_names)
 
   # Annotate class and genus in the plot
   graph_for_plotting <- graph |> 
@@ -618,19 +511,10 @@ plot_classes_genera <- function(filtered_output,
   main_plot <- plot_grid(plot_A, plot_B,
                        ncol = 2,
                        rel_widths = c(1, 1),
-                       labels = c("", "C"))
+                       labels = c("A", "B"))
         
   # Add the legend 
   add_legend_plot <- plot_grid(main_plot, legend_a2, ncol = 1, rel_heights = c(1, 0.07)) 
-
-    # combined_plot <- ggarrange(plot_B1, plot_B2, plot_C,
-    #                            ncol = 3,
-    #                            widths = c(1, 0.6, 1),
-    #                            labels = list("A", "", "  B"),
-    #                            common.legend = TRUE,
-    #                            legend = "bottom") + 
-    #   theme(plot.margin = margin(0.2, 0.2, 0.2, 0.2, "cm"))
-  
   ggsave(filename = file_name, add_legend_plot, width = 14, height = 8)
 }
 

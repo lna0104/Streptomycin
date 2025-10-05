@@ -252,9 +252,8 @@ plot_mutation_screen_nt <- function(filtered_output, file_name) {
 }
 
 #' produces a figure showing resistance and evolvability across classes and genera
-#' @param filtered_output a data frame providing screened and filtered gene sequences
+#' @param filtered_output a data frame providing screened and filtered rpoB sequences
 #' @param file_name the path that the plot should be save in
-#' @param genus_variants a data frame identifying genera in the filtered_output that correspond to multiple entries in the GTDB taxonomy data (e.g., "Actinomadura" represented as "Actinomadura_C" and "Actinomadura_D").
 #' @param min_frac_resistant filter that gives the minimum fraction of species within
 #' a genus that need to be resistant for this genus to be included in figure A. 
 #' @param min_genus_size minimum number of species within a genus for this genus to be included in the figure 
@@ -268,13 +267,12 @@ plot_mutation_screen_nt <- function(filtered_output, file_name) {
 #'
 #' @examples plot_classes_genera_nt(filtered_output, "./plot/myFilename.pdf")
 plot_classes_genera_nt <- function(filtered_output,
-                                gtdb_taxonomy,
-                                genus_variants,
+                                bacterial_taxonomy,
                                 file_name,
                                 n_classes_to_plot = 20,
                                 min_frac_resistant = 0.1, 
-                                min_genus_size = 10, 
-                                n_genera_to_plot = 20,
+                                min_genus_size = 12, 
+                                n_genera_to_plot = 30,
                                 n_muts_to_plot = 6) {
   
   # preparing the data:
@@ -282,14 +280,14 @@ plot_classes_genera_nt <- function(filtered_output,
   # merging species with multiple gene copies:
   merged_filtered_output <- filtered_output |>
     group_by(species, genus, accession_numbers, mutation_name) |>
-    summarise(
-        mutation_category = if (any(mutation_category == "present")) "present" else "possible",
-        .groups = "drop"
-      )
+    summarise(mutation_category = ifelse(any(mutation_category == "present"),
+                                         "present",
+                                         ifelse(any(mutation_category == "possible"), "possible", "impossible")), 
+              .groups = "drop")
   
   # number of predicted mutations present in each species:
   n_muts_per_species <- merged_filtered_output |>
-    group_by(species, genus, accession_numbers) |>
+    group_by(species, accession_numbers, genus) |>
     summarise(muts_present = sum(mutation_category == "present"), 
               n_possible = sum(mutation_category == "possible"),
               # n_possible = ifelse(any(mutation_category == "present"),
@@ -303,21 +301,12 @@ plot_classes_genera_nt <- function(filtered_output,
     summarise(first_mut = mutation_name[1])
   
   # table of species and which resistance mutations they have (including "none" or "multiple"):
-  processed_data <-  n_muts_per_species |>
+  species_with_muts <- n_muts_per_species |>
     left_join(first_mut_per_species, by = join_by(species)) |>
     mutate(category = ifelse(muts_present == 0L, "None", ifelse(muts_present > 1, "Multiple", first_mut))) |>
     select(species, genus, category, n_possible) |>
-    left_join(gtdb_taxonomy, by = join_by(genus == genus), relationship = "many-to-many" )|>
-    left_join(genus_variants |> select(genus_origin, class_var = class, phylum_var = phylum),
-              by = join_by(genus == genus_origin), relationship = "many-to-many") |> 
-    mutate(
-      class = if_else(is.na(class), class_var, class),
-      phylum = if_else(is.na(phylum), phylum_var, phylum)
-    ) |>
-    select(-class_var, -phylum_var) |>
-    distinct() 
-  
-  species_with_muts <- processed_data |>
+    left_join(bacterial_taxonomy, by = join_by(genus == genus))|>
+    distinct() |>
     mutate(class = factor(class)) |>
     mutate(genus = factor(genus)) |>
     mutate(category = str_replace(category, "_", "")) |>
@@ -326,205 +315,43 @@ plot_classes_genera_nt <- function(filtered_output,
     mutate(category = fct_relevel(category, "Multiple", after = Inf)) |>
     mutate(category = fct_recode(category, " " = "None"))
   
-  # cols <- c(" " = rgb(0,0,0,0),
-  #           "43N" = brewer.pal(9, name = "Pastel1")[1],
-  #           "43R" = brewer.pal(9, name = "Pastel1")[2],
-  #           "43T" = brewer.pal(9, name = "Pastel1")[3],
-  #           "86C" = brewer.pal(9, name = "Pastel1")[4],
-  #           "91L" = brewer.pal(9, name = "Pastel1")[6],
-  #           "88E" = brewer.pal(9, name = "Pastel1")[7],
-  #           "88R" = brewer.pal(9, name = "Pastel1")[5],
-  #           "Other" = "grey", 
-  #           "Multiple" = "black")
   
   cols <- c(" " = rgb(0,0,0,0),
-            "523C" =  wes_palette("Zissou1")[5],
-            "885A" =  wes_palette("Zissou1")[3],
-            "912G" =  wes_palette("Zissou1")[1],
-            "913G" =  wes_palette("Zissou1")[2],
-            "Other" = "grey",
-            "Multiple" = "black")
+            "523C" = wes_palette("FantasticFox1")[1],
+            "885A" = wes_palette("FantasticFox1")[2],
+            "912G" = wes_palette("FantasticFox1")[3],
+            "913G" = wes_palette("AsteroidCity2")[3],
+            "Other" = "grey", 
+            "Multiple" = wes_palette("FantasticFox1")[5])
   
-  # Plot A: Number species per class
-  n_species_per_class <- species_with_muts |>
-    mutate(class = as.character(class), 
-           class = ifelse(is.na(class) | class == "", "Unidentified", class)) |>
+  classes_for_plotting <- species_with_muts |>
     group_by(class) |>
-    summarise(n = n(), .groups = "drop")
-  
-  classes_for_plotting <- n_species_per_class |>
-    filter(class != "Unidentified") |>
+    summarise(n = n(), .groups = "drop") |>
+    filter(!is.na(class)) |>
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
   
-  plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    # geom_jitter(
-    # aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-    # width = 0.2, size = 2.5, alpha = 0.1
-    # ) +
-    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-                width=1.2, size=0.3
-    ) + 
-    # scale_fill_manual(values = cols_class, guide = "none") + 
-    scale_y_continuous(expand = c(0.01, 0)) +
-    labs(x = "Class", y = "Evolvability") +
-    coord_flip()
-  
-  # Plot A2: predicted resistance mutations by class
-  plot_A2 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    geom_bar(aes(x = reorder(class, dplyr::desc(class)),
+  # Plot: predicted resistance mutations by class
+  bar_plot <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
+    geom_bar(aes(x = reorder(class, dplyr::desc(class)), 
                  fill = category),
              position = "fill") +
     theme_bw() +
     scale_y_continuous(expand = c(0.01, 0), 
                        labels = scales::percent_format(accuracy = 1)) +
+    scale_fill_manual(values = cols, name = "") +
     labs(x = "Class",
          y = "Resistant species") +
     coord_flip() +
+    guides(fill=guide_legend(nrow=1, byrow=TRUE)) + 
     theme(
-      axis.title.y = element_blank(),
-      axis.text.y = element_blank()) + 
-    scale_fill_manual(values = cols, name = " ") +
-    guides(fill=guide_legend(nrow=1, byrow=TRUE)) 
-  
-  plot_A2_no_legend <- plot_A2 + theme(legend.position = "none")
-  legend_a2 <- get_legend(plot_A2)
-  
-  # Plot B: predicted resistance mutations by genus
-  
-  # genera to be plotted:
-  genera_for_plotting <- species_with_muts |>
-    group_by(genus) |>
-    summarise(n = n(), n_res = sum(category != " "), .groups = "drop") |>
-    # filter(!(genus %in% c("Candidatus", "Wolbachia"))) |>
-    mutate(fraction_res = n_res / n) |>
-    filter(fraction_res >= min_frac_resistant, n >= min_genus_size) |>
-    slice_max(fraction_res, n = n_genera_to_plot) |>
-    pull(genus)
-  
-  # Prepare taxonomy levels
-  taxonomy <- species_with_muts |> 
-    filter(genus %in% genera_for_plotting) |> 
-    select(-c(category, n_possible)) 
-  
-  # Generate edges from class → order → family → genus 
-  taxonomy_edges <- bind_rows(
-    taxonomy |> transmute(from = class, to = order),
-    taxonomy |> transmute(from = order, to = family),
-    taxonomy |> transmute(from = family, to = genus)
-  )|> 
-    distinct() |>
-    filter(!is.na(from), !is.na(to))
-  
-  # Create graph object
-  graph <- tbl_graph(edges = taxonomy_edges, directed = TRUE)
-  
-  # # Function to propagate class name down the tree
-  # propagate_class <- function(graph_tbl, class_names) {
-  #   V(graph_tbl)$class_parent <- NA
-  
-  #   for (class_node in which(V(graph_tbl)$name %in% class_names)) {
-  #     descendants <- igraph::subcomponent(graph_tbl, class_node, mode = "out")
-  #     V(graph_tbl)$class_parent[descendants] <- V(graph_tbl)$name[class_node]
-  #   }
-  
-  #   graph_tbl
-  # }
-  
-  # Apply propagation
-  # class_names <- names(cols_class)
-  # graph_colored <- propagate_class(graph, class_names)
-  
-  # Annotate class and genus in the plot
-  graph_for_plotting <- graph |> 
-    activate(nodes) |> 
-    mutate(
-      rank = case_when(
-        name %in% unique(taxonomy$class) ~ "class",
-        name %in% unique(taxonomy$genus) ~ "genus",
-        TRUE ~ "Other"
-      )) |>
-    # color = cols_class[class_parent]) |>
-    arrange(desc(rank == "class"), desc(name))
-  
-  # Plot the multi-layer tree
-  plot_B1 <- ggraph(graph_for_plotting, layout = "sugiyama") +
-    geom_edge_link() +
-    geom_node_point(aes(filter = rank == "Other"), alpha = 0) +  
-    geom_node_label(aes(label = ifelse(rank %in% c("class", "genus"), name, "")), repel = TRUE) +
-    theme_void() +
-    # scale_colour_manual(values = cols_class) +
-    scale_y_reverse() +
-    coord_flip() +
-    theme(
-      plot.margin = margin(0, 0.3, 0, 0.2, "cm")
+      legend.position = "bottom",
+      plot.margin = margin(0.2, 0.4, 0.2, 0.2, "cm")
     )
-  
-  
-  #Extract genus order
-  layout <- create_layout(graph_for_plotting, layout = "sugiyama")
 
-  genus_order <- as_tibble(layout, active = "nodes") |> 
-    filter(rank == "genus") |>
-    arrange(x) |> 
-    pull(name) 
-  
-  plot_B2 <- ggplot(filter(species_with_muts, 
-                           genus %in% genus_order) |>
-                      mutate(genus = factor(genus, levels=genus_order)) |>
-                      mutate(class = as.character(class)) |>
-                      #  mutate(class = ifelse(is.na(class), "?", substr(class, 1, 1))) |>
-                      mutate(class = factor(class))) +
-    geom_bar(aes(x = genus, fill = category),
-             position = "fill") +
-    theme_bw() +
-    # scale_x_discrete(guide = guide_axis_nested(delim = "!"), name = "Class and genus") +
-    scale_y_continuous(expand = c(0.01, 0), 
-                       labels = scales::percent_format(accuracy = 1)) +
-    scale_fill_manual(values = cols, name = "") +
-    labs(y = "Resistant species") +
-    coord_flip() +
-    guides(fill=guide_legend(nrow=1, byrow=TRUE)) +
-    theme(
-      plot.margin = margin(0.5, 0.5, 0.2, 0, "cm"), 
-      legend.position = "none",
-      axis.text.y = element_blank(),
-      axis.title.y = element_blank()
-    )
-  
-  # Combine A1 and A2 
-  plot_A <- plot_grid(plot_A1, plot_A2_no_legend, 
-                      nrow = 1, rel_widths = c(1.2, 1))
-  
-  #Combine B1 and  B2 vertical
-  plot_B <- plot_grid(plot_B1, plot_B2,
-                      ncol = 2,
-                      rel_widths = c(1.2, 1),
-                      labels = c("", ""),
-                      align = "h") +
-    theme(
-      plot.margin = margin(0, 0.2, 0, 0.5, "cm")
-    )         
-  
-  
-  main_plot <- plot_grid(plot_A, plot_B,
-                         ncol = 2,
-                         rel_widths = c(1, 1),
-                         labels = c("", "C"))
-  
-  # Add the legend 
-  add_legend_plot <- plot_grid(main_plot, legend_a2, ncol = 1, rel_heights = c(1, 0.07)) 
-  
-  # combined_plot <- ggarrange(plot_B1, plot_B2, plot_C,
-  #                            ncol = 3,
-  #                            widths = c(1, 0.6, 1),
-  #                            labels = list("A", "", "  B"),
-  #                            common.legend = TRUE,
-  #                            legend = "bottom") + 
-  #   theme(plot.margin = margin(0.2, 0.2, 0.2, 0.2, "cm"))
-  
-  ggsave(filename = file_name, add_legend_plot, width = 14, height = 8)
+  ggsave(filename = file_name, bar_plot, width = 6, height = 8)
 }
+
 
 
 #' produces plots to show the distribution of gene sequence length, aligning score and distance from RRDR of ref seq
@@ -595,163 +422,21 @@ plot_target_sequences_stats_nt <- function(final_output,
   ggsave(filename = file_names[2], pairs_plot, width = 12, height = 12)
 }
 
-
-# Plot number of species across different gene copy counts
-# Species are colored by whether mutations are present 
-plot_mutation_screen_gene_copies <- function(filtered_output, file_name){
-
-  gene_copies_species <- filtered_output |>
-    select(accession_numbers, species, target_name, mutation_name, mutation_category) |>
-    distinct() |>
-    group_by(accession_numbers, species, target_name) |>
-    summarise(
-      mutation_category_per_mut = if (any(mutation_category == "present")) {
-      "present"
-    } else {
-      "not present"
-    },
-    .groups = "drop"
-    ) |>
-    group_by(accession_numbers, species) |>
-    summarise(
-      gene_copy = n(),
-      mutation_category_per_species = if (any(mutation_category_per_mut == "present")) {
-        "present"
-      } else {
-        "not present"
-      },
-      .groups = "drop"
-    )
-
-
-  # plot histogram number of species with and with out mutations per gene copies 
-  hist_plot <- ggplot(gene_copies_species, aes(x = gene_copy, fill = mutation_category_per_species)) +
-    geom_histogram(binwidth = 1) +
-    scale_x_continuous(
-      limits = c(0, 37),
-      breaks = 1:37, 
-      expand = c(0, 0.1)
-    ) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-    scale_fill_manual(
-      values = c(
-        "present" = "#C93312",   
-        "not present"   = "#899DA4"    
-      )
-    ) +
-    labs(
-        x = "Gene copies",
-        y = "Number of genomes",
-        fill = "Mutation category") +
-    theme_classic()+
-    theme(
-      axis.title=element_text(size=10, face="bold"),
-      axis.text = element_text(size = 8)
-    )
-  
-  ggsave(filename = file_name, hist_plot, width = 12, height = 8)
+plot_multiseq_stats_nt <- function(multiseq_stats, file_name) {
+  p <- ggplot(multiseq_stats) +
+    geom_point(aes(x = mean_alig_score, 
+                   y = mean_core_dist), color = "steelblue") +
+    scale_x_continuous(limits = c(0, 5000), ) +
+    labs(x = "Mean alignment score", y = "Mean Levenshtein distance") +
+    theme_bw()
+  ggsave(filename = file_name, p, width = 8, height = 5)
 }
 
-# Plot gene copy distribution per mutation
-# Species are colored by whether mutations are present 
 
-plot_gene_copies_per_mutation <- function(filtered_output, file_name){
-  
-  n_copy_per_species <- filtered_output |>
-    select(accession_numbers, species, target_name) |>
-    distinct() |>
-    group_by(accession_numbers, species) |>
-    summarise(
-      gene_copy = n(),
-      .groups = "drop"
-    ) 
-  
-  gene_copies_per_mut <- filtered_output |>
-    group_by(accession_numbers, species, mutation_name) |>
-    summarise(
-      mutation_category_per_species = if (any(mutation_category == "present")) {
-        "present"
-      } else {
-        "not present"
-      },
-      .groups = "drop"
-    ) |> 
-    left_join(n_copy_per_species, by = c("accession_numbers", "species")) 
-  
-  hist_plot <- ggplot(gene_copies_per_mut, aes(x = gene_copy, fill = mutation_category_per_species)) +
-    geom_histogram(binwidth = 1) +
-    scale_x_continuous(
-      limits = c(0, 37),
-      breaks = 1:37, 
-      expand = c(0, 0.1)
-    ) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-    scale_fill_manual(
-      values = c(
-        "present" = "#C93312",   
-        "not present" = "#899DA4"    
-      )
-    ) +
-    labs(
-      x = "Gene copies",
-      y = "Number of genomes",
-      fill = "Mutation category"
-    ) +
-    theme_classic() +
-    theme(
-      axis.title = element_text(size=10, face="bold"),
-      axis.text  = element_text(size=6),
-      strip.text = element_text(size=9, face="bold")
-    ) +
-    facet_wrap(~ mutation_name, scales = "free_y")
-  
-  ggsave(filename = file_name, hist_plot, width = 12, height = 10)
-}
-
-plot_variance_gene_copies <- function(filtered_output, file_name){
-  n_copy_per_species <- filtered_output |>
-    select(accession_numbers, species, target_name) |>
-    distinct() |>
-    group_by(accession_numbers, species) |>
-    summarise(
-      gene_copy = n(),
-      .groups = "drop"
-    ) |>
-    filter(gene_copy > 1) 
-  
-  n_variants_per_species <- filtered_output |>
-    filter(accession_numbers %in% n_copy_per_species$accession_numbers) |> 
-    group_by(accession_numbers, species, Nt_pos_Ecoli) |> 
-    summarise(
-      n_variants = n_distinct(Nt_target),
-      .groups = "drop"
-    ) 
-  
-  bar_plot <- ggplot(n_variants_per_species, aes(x = factor(n_variants))) +
-    geom_bar(fill = "lightgray", color = "black") +
-    facet_wrap(~ Nt_pos_Ecoli, ncol = 2) + 
-    labs(
-      x = "Number of unique nucleotides",
-      y = "Number of genomes"
-    ) +
-    theme_classic() +
-    theme(
-      axis.title = element_text(size = 10),
-      axis.text  = element_text(size = 8)
-    )
-  
-  ggsave(filename = file_name, bar_plot, width = 6, height = 6)
-
-}
-
-#' Produce bar plots showing species counts or percentages per class and phylum
-#'
-#' This function generates bar plots of species distribution across taxonomic 
-#' classes and phyla, grouped by a categorical variable (e.g., "rrs", "rpsL", "both").
-#' It supports nested x-axis labels for class/phylum and can plot either absolute 
-#' counts or percentages of species.
 plot_class_counts_and_percents <- function(processed_data, file_name){
   
+  processed_data <- processed_data |>
+    mutate(category = factor(category, levels = c("none","both", "rpsL", "rrs")))
   # Make a combined dataset: raw counts + proportions
   plot_data_counts <- processed_data |>
     mutate(plot_type = "Count")
@@ -776,9 +461,10 @@ plot_class_counts_and_percents <- function(processed_data, file_name){
     geom_col() +
     scale_x_discrete(guide = guide_axis_nested(key = "!"), name = "Phylum and class") +
     scale_fill_manual(values = c(
-      "rrs" = '#21908dff',
-      "rpsL" = '#fde725ff',
-      "both" = '#440154ff'
+      "rrs" =  "#2a9d8f",
+      "rpsL" = "#e76f51",
+      "both" = "#fcbf49",
+      "none" = "#e1d9ce"
     )) +
     facet_grid(rows = vars(plot_type), scales = "free_y") +
     labs(
@@ -792,8 +478,9 @@ plot_class_counts_and_percents <- function(processed_data, file_name){
       axis.title.y = element_blank(),
       axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
       axis.title.x = element_text(size = 10)
-    )
-  ggsave(filename = file_name, width = 14, height = 8)
+    ) +
+    scale_y_continuous(expand = c(0.01, 0))
+  ggsave(filename = file_name, width = 15, height = 8)
 }
 
 

@@ -1,5 +1,5 @@
 Summary of the mutation screen 
-Date: 2025-09-18 01:42:07.541636
+Date: 2025-09-24 16:57:02.292147
 --------------------------------------------------------------------
 
 Screened mutations:
@@ -12,10 +12,3 @@ Predicted intrinsic resistance:
     Percentage of resistant species: 24.31%
     Number of species with multiple resistance mutations: 1963
     Number of species where one rrs copy confers resistance and one does not: 378
-Evolvability I (number of nucleotide mutations that a species can mutate to):
-    Range: 0...4
-    95% inter-quantile range: 1...4
-    Median: 4
-    Theoretical range: 0...4
-Associations between evolvabilities (phylogenetically uncontrolled):
-    Intrinsic resistance vs. evolvability I: p=0 (Welch Two Sample t-test, t=-102)

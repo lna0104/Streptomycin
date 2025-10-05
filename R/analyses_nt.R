@@ -1,6 +1,6 @@
 #' Prepare a (possibly filtered) table of mutations to be screened:
 #'
-#' @param muts a data frame providing info on rrs mutations reported in the literature
+#' @param muts a data frame providing info on rrs (nucleotide) mutations reported in the literature
 #' @param min_n_species a numeric vector providing the minimum number of species which a mutation has been reported in
 #' @param min_n_studies a numeric vector providing the minimum number studies which a mutation has been reported in
 #' @param origin Origin of mutations to be included, e.g., "Isolate" or "Lab mutant". 
@@ -199,6 +199,130 @@ filter_output_nt <- function(output, min_seq_length, min_alig_score, max_core_di
   return(filtered_output)
 }
 
+
+#' Compare multiple rrs gene copies within bacterial species
+#'
+#' This function identifies bacterial species that carry more than one copy of the rrs gene 
+#' and performs pairwise comparisons of all copies to assess sequence similarity and core-region divergence.
+#' It calculates alignment scores and Levenshtein distances for the E. coli 16S rRNA core region (nt 510–920)
+#' across all copy pairs, and summarizes resistance status and pairwise metrics for each species.
+#'
+#' @param filtered_output A data frame containing high-quality rrs sequence metadata, including accession numbers, species, genus, gene copy IDs, target names, and mutation information.
+#' @param rrs_target_sequences A named list of DNA sequences corresponding to each rrs target in filtered_output.
+#' @param rrs_reference_Ecoli A reference E. coli rrs sequence used to define the core region coordinates for pairwise comparisons.
+#' @param outfile Character string specifying the path to the CSV file where the summarized results will be written.
+#' @export
+#' 
+
+compare_rrs_copies <- function(filtered_output, rrs_target_sequences, rrs_reference_Ecoli) {
+  
+  # Create file with header if it doesn't exist
+  if (!file.exists(outfile)) {
+    write_csv(tibble(
+      accession_number = character(),
+      species_name = character(),
+      genus = character(),
+      resistance_status = integer(),
+      mean_alig_score = double(),
+      mean_core_dist = double(),
+      n_pairs = integer()
+    ), outfile)
+  }
+  
+  # Identify species with more than one rrs copy
+  multicopy_species <- filtered_output |>
+    distinct(accession_numbers, gene_copy) |>
+    count(accession_numbers, name = "n") |>
+    filter(n > 1L) |>
+    pull(accession_numbers)
+   
+  # Define E. coli core region coordinates (510–920 nt)
+  core_Ecoli <- rrs_reference_Ecoli[510:920]
+  
+  plan(multisession, workers = 5)  # parallel execution
+  
+  multiseq_stats <- future_lapply(seq_along(multicopy_species), function(i) {
+    acc <- multicopy_species[i]
+    cat(sprintf("Working on multi-copy species #%d/%d...\n", i, length(multicopy_species)))
+    # Extract metadata
+    seq_names <- filtered_output |>
+      filter(accession_numbers == acc) |>
+      pull(target_name) |>
+      unique()
+    
+    species_name <- filtered_output |>
+      filter(accession_numbers == acc) |>
+      pull(species) |>
+      unique()
+    
+    genus <- filtered_output |>
+      filter(accession_numbers == acc) |>
+      pull(genus) |>
+      unique()
+    
+    # Determine resistance status (how many copies carry resistance mutations)
+    resistance_status <- filtered_output |>
+      filter(accession_numbers == acc) |>
+      group_by(gene_copy) |>
+      summarise(resistant_copy = any(mutation_category == "present"), .groups = "drop") |>
+      pull(resistant_copy) |>
+      sum()
+    
+    # All pairwise combinations of copies
+    combs <- combn(seq_names, 2, simplify = FALSE)
+    
+    results <- lapply(combs, function(pair) {
+      seq1 <- rrs_target_sequences[[pair[1]]]
+      seq2 <- rrs_target_sequences[[pair[2]]]
+      
+      # Map E. coli core region onto the two sequences
+      coords1 <- getCoordinatesNt(seq1, rrs_reference_Ecoli)
+      coords2 <- getCoordinatesNt(seq2, rrs_reference_Ecoli)
+      
+      from1 <- ALJEbinf::translateCoordinate(510, coords1, direction = "RefToFocal")
+      to1   <- ALJEbinf::translateCoordinate(920, coords1, direction = "RefToFocal")
+      core1 <- seq1[from1:to1]
+      
+      from2 <- ALJEbinf::translateCoordinate(510, coords2, direction = "RefToFocal")
+      to2   <- ALJEbinf::translateCoordinate(920, coords2, direction = "RefToFocal")
+      core2 <- seq2[from2:to2]
+      
+      tibble(
+        accession_number = acc,
+        alig_score = pwalign::score(
+          pwalign::pairwiseAlignment(seq1, seq2)
+        ),
+        core_dist = as.double(
+          pwalign::stringDist(
+            c(Biostrings::DNAStringSet(core1), Biostrings::DNAStringSet(core2)),
+            method = "levenshtein"
+          )
+        )
+      )
+    }) |> bind_rows()
+    
+    # Summarise pairwise results for this species
+    summary <- results |>
+      summarise(
+        accession_number = first(accession_number),
+        species_name     = first(species_name),
+        genus            = first(genus),
+        resistance_status = resistance_status,
+        mean_alig_score  = mean(alig_score, na.rm = TRUE),
+        mean_core_dist   = mean(core_dist, na.rm = TRUE),
+        n_pairs          = n()
+      )
+    
+    # Append result to file immediately
+    write_csv(summary, outfile, append = TRUE)
+    return(summary)
+  })
+  
+  # Combine all results
+  output <- bind_rows(multiseq_stats)
+  return(multiseq_stats)
+}
+
 #' Summarise output to species-level
 #'
 #' @param output 
@@ -220,119 +344,18 @@ get_species_output_nt <- function(output) {
     # step 2: summarise across all screened mutations:
     group_by(species, genus, accession_numbers) |>
     summarise(resistance = any(mutation_category == "present"),
-              evolvabilityI = sum(mutation_category == "possible"),
+              # evolvabilityI = sum(mutation_category == "possible"),
               # evolvabilityII = sum(n_possible),
               .groups = "drop") |>
     # step 3: discard sequences in cases where there are >1 genome per species:
     group_by(species, genus) |>
     summarise(resistance = dplyr::first(resistance),
-              evolvabilityI = dplyr::first(evolvabilityI),
+              # evolvabilityI = dplyr::first(evolvabilityI),
               # evolvabilityII = dplyr::first(evolvabilityII),
               .groups = "drop") |>
     # step 4: turn resistance column into categorical:
     mutate(resistance = ifelse(resistance, "resistant", "susceptible"))
   return(species_output)
-}
-
-# # The following function returns the minimum and maximum possible
-# # values of both evolvability I and II
-# get_theoretical_evolvabilities_nt <- function(output) {
-#   mutation_list <- output |>
-#     select(Nt_pos_Ecoli, Nt_mutation) |>
-#     distinct() |>
-#     mutate(mut_name = paste(Nt_pos_Ecoli, Nt_mutation, sep = '_'))
-#   Nt_pos_Ecoli <- mutation_list |>
-#     pull(Nt_pos_Ecoli) |>
-#     unique()
-#   nts <- c('A', 'C', 'T', 'G')
-#   # all_codons <- paste0(rep(nts, each = 16),
-#   #                      rep(paste0(rep(nts, each = 4), rep(nts, 4)), 4))
-#   possibilities <- expand_grid(Nt_pos_Ecoli, 
-#                                 # codon_from = all_codons, 
-#                                 # codon_to = all_codons) |>
-#                                 nts_from = nts, 
-#                                 nts_to = nts) |>
-#     # mutate(hamming = hamming_str(codon_from, codon_to)) |>
-#     mutate(hamming = hamming_str(nts_from, nts_to)) |>
-#     filter(hamming == 1L) |>
-#     select(-hamming) |>
-#     # mutate(AA_from = Biostrings::GENETIC_CODE[codon_from],
-#     #        AA_to = Biostrings::GENETIC_CODE[codon_to]) |>
-#     mutate(Nt_mut_name_from = paste(Nt_pos_Ecoli, nts_from, sep = '_'),
-#            Nt_mut_name_to = paste(Nt_pos_Ecoli, nts_to, sep = '_')) |>
-#     mutate(resistant_from = Nt_mut_name_from %in% mutation_list$mut_name,
-#            resistant_to = Nt_mut_name_to %in% mutation_list$mut_name)
-#     # filter(nts_from != '*')
-  
-  
-#   evolvabilitiesI <- possibilities |>
-#     filter(!resistant_from) |>
-#     # select(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from, AA_mut_name_to, resistant_to) |>
-#     select(Nt_pos_Ecoli, nts_from, Nt_mut_name_from, Nt_mut_name_to, resistant_to) |>
-#     distinct() |>
-#     # group_by(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from) |>
-#     group_by(Nt_pos_Ecoli, nts_from, Nt_mut_name_from) |>
-#     summarise(evolvabilityI = sum(resistant_to), .groups = 'drop') |>
-#     group_by(Nt_pos_Ecoli) |>
-#     summarise(min_evolvabilityI = min(evolvabilityI),
-#               max_evolvabilityI = max(evolvabilityI))
-
-#   # evolvabilitiesII <- possibilities |>
-#   #   group_by(AA_pos_Ecoli, codon_from, AA_from, AA_mut_name_from) |>
-#   #   summarise(evolvabilityII = sum(resistant_to), .groups = 'drop') |>
-#   #   group_by(AA_pos_Ecoli) |>
-#   #   summarise(min_evolvabilityII = min(evolvabilityII),
-#   #             max_evolvabilityII = max(evolvabilityII))
-  
-#   return(list(
-#     min_evolvabilityI = evolvabilitiesI |> pull(min_evolvabilityI) |> sum(),
-#     max_evolvabilityI = evolvabilitiesI |> pull(max_evolvabilityI) |> sum(),
-#     # min_evolvabilityII = evolvabilitiesII |> pull(min_evolvabilityII) |> sum(),
-#     # max_evolvabilityII = evolvabilitiesII |> pull(max_evolvabilityII) |> sum()
-#     ))
-# }
-
-get_resistance_taxonomy_nt <- function(output, gtdb_taxonomy, genus_variants, file_path) {
-  resistant_species <- output |>
-    group_by(genus, species, accession_numbers) |>
-    summarise(resistant = any(mutation_category == "present"), .groups = "drop") |>
-    left_join(gtdb_taxonomy, join_by(genus)) |>
-    # Join with genus_variants to correct genus names split into variants (e.g., _C, _D)
-    left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
-      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
-    mutate(
-    family = if_else(is.na(family), family_var, family),
-    order = if_else(is.na(order), order_var, order),
-    class = if_else(is.na(class), class_var, class),
-    phylum = if_else(is.na(phylum), phylum_var, phylum)
-    ) |> 
-    select(-family_var, -order_var, -class_var, -phylum_var) |> 
-    distinct()
- 
-  resistant_genera <- resistant_species |>
-    group_by(genus, family, order, class, phylum) |>
-    summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
-    mutate(f_res = n_res/n)
-  
-  resistant_families <- resistant_species |>
-    group_by(family, order, class, phylum) |>
-    summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
-    mutate(f_res = n_res/n)
-  
-  resistant_orders <- resistant_species |>
-    group_by(order, class, phylum) |>
-    summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
-    mutate(f_res = n_res/n)
-  
-  resistant_classes <- resistant_species |>
-    group_by(class, phylum) |>
-    summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
-    mutate(f_res = n_res/n)
-  
-  write_csv(resistant_genera, paste0(file_path, "rrs_resistant_genera.csv"))
-  write_csv(resistant_families, paste0(file_path, "rrs_resistant_families.csv"))
-  write_csv(resistant_orders, paste0(file_path, "rrs_resistant_orders.csv"))
-  write_csv(resistant_classes, paste0(file_path, "rrs_resistant_classes.csv"))
 }
 
 #' Calculate conservation and distance scores along the E. coli gene sequence

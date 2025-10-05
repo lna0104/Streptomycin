@@ -454,47 +454,38 @@ get_theoretical_evolvabilities <- function(output) {
 }
 
 
-get_resistance_taxonomy <- function(output, gtdb_taxonomy, genus_variants, file_path) {
+get_resistance_taxonomy <- function(output, bacterial_taxonomy, file_path, gene_name) {
   resistant_species <- output |>
     group_by(genus, species, accession_numbers) |>
     summarise(resistant = any(mutation_category == "present"), .groups = "drop") |>
-    left_join(gtdb_taxonomy, join_by(genus)) |>
-    # Join with genus_variants to correct genus names split into variants (e.g., _C, _D)
-    left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
-      by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
-    mutate(
-    family = if_else(is.na(family), family_var, family),
-    order = if_else(is.na(order), order_var, order),
-    class = if_else(is.na(class), class_var, class),
-    phylum = if_else(is.na(phylum), phylum_var, phylum)
-    ) |> 
-    select(-family_var, -order_var, -class_var, -phylum_var) |> 
-    distinct()
- 
+    left_join(bacterial_taxonomy, join_by(genus == genus)) |>
+    mutate(gene = gene_name)  
+  
   resistant_genera <- resistant_species |>
-    group_by(genus, family, order, class, phylum) |>
+    group_by(genus, family, order, class, phylum, gene) |>
     summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
     mutate(f_res = n_res/n)
   
   resistant_families <- resistant_species |>
-    group_by(family, order, class, phylum) |>
+    group_by(family, order, class, phylum, gene) |>
     summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
     mutate(f_res = n_res/n)
   
   resistant_orders <- resistant_species |>
-    group_by(order, class, phylum) |>
+    group_by(order, class, phylum, gene) |>
     summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
     mutate(f_res = n_res/n)
   
   resistant_classes <- resistant_species |>
-    group_by(class, phylum) |>
+    group_by(class, phylum, gene) |>
     summarise(n = n(), n_res = sum(resistant), .groups = "drop") |>
     mutate(f_res = n_res/n)
   
-  write_csv(resistant_genera, paste0(file_path, "resistant_genera.csv"))
-  write_csv(resistant_families, paste0(file_path, "resistant_families.csv"))
-  write_csv(resistant_orders, paste0(file_path, "resistant_orders.csv"))
-  write_csv(resistant_classes, paste0(file_path, "resistant_classes.csv"))
+  # ✅ Put gene_name at the start
+  write_csv(resistant_genera, paste0(file_path, gene_name, "_resistant_genera.csv"))
+  write_csv(resistant_families, paste0(file_path, gene_name, "_resistant_families.csv"))
+  write_csv(resistant_orders, paste0(file_path, gene_name, "_resistant_orders.csv"))
+  write_csv(resistant_classes, paste0(file_path, gene_name, "_resistant_classes.csv"))
 }
 
 

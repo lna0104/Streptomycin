@@ -131,25 +131,7 @@ summarise_mutation_screen_nt <- function(filtered_output, target_gene, file_name
     filter(one_but_not_all_resistant) |>
     nrow()
   
-  # quantiles for evolvability:
-  quant_evolvabilityI <- species_output |>
-    pull(evolvabilityI) |>
-    quantile(p = c(0, 0.025, 0.5, 0.975, 1))
-  
-  # quant_evolvabilityII <- species_output |>
-  #   pull(evolvabilityII) |>
-  #   quantile(p = c(0, 0.025, 0.5, 0.975, 1))
-  
-  # theoretical evolvabilities:
-  # theoretical_evolvabilities <- get_theoretical_evolvabilities_nt(filtered_output)
 
-  # associations between intrinsic resistance and evolvabilities:
-  # corr_evolvabilityI_vs_II <- cor(species_output$evolvabilityI, species_output$evolvabilityII)
-  t_test_evolvabilityI <- t.test(species_output |> filter(resistance == "resistant") |> pull(evolvabilityI),
-                                 species_output |> filter(resistance == "susceptible") |> pull(evolvabilityI))
-  # t_test_evolvabilityII <- t.test(species_output |> filter(resistance == "resistant") |> pull(evolvabilityII),
-  #                                 species_output |> filter(resistance == "susceptible") |> pull(evolvabilityII))
-  
   report <- paste0(
     "Summary of the mutation screen ", subtitle, "\n",
     "Date: ", Sys.time(), "\n",
@@ -163,27 +145,7 @@ summarise_mutation_screen_nt <- function(filtered_output, target_gene, file_name
     "    Number of resistant species: ", n_resistant_species, "\n",
     "    Percentage of resistant species: ", format(round(100 * f_resistant_species, 2), nsmall = 2), "%\n",
     "    Number of species with multiple resistance mutations: ", n_multiresistant_species, "\n",
-    "    Number of species where one ", target_gene, " copy confers resistance and one does not: ", n_hetero_resistance, "\n",
-    "Evolvability I (number of nucleotide mutations that a species can mutate to):\n",
-    "    Range: ", quant_evolvabilityI[1], "...", quant_evolvabilityI[5], "\n",
-    "    95% inter-quantile range: ", quant_evolvabilityI[2], "...", quant_evolvabilityI[4], "\n",
-    "    Median: ", quant_evolvabilityI[3], "\n",
-    # "    Theoretical range: ", theoretical_evolvabilities$min_evolvabilityI, "...",
-    #                            theoretical_evolvabilities$max_evolvabilityI, "\n",
-    "    Theoretical range: ", 0, "...",
-                               n_screened_mutations, "\n",                           
-    # "Evolvability II (number of mutations that can produce a resistance mutation):\n",
-    # "    Range: ", quant_evolvabilityII[1], "...", quant_evolvabilityII[5], "\n",
-    # "    95% inter-quantile range: ", quant_evolvabilityII[2], "...", quant_evolvabilityII[4], "\n",
-    # "    Median: ", quant_evolvabilityII[3], "\n",
-    # "    Theoretical range: ", theoretical_evolvabilities$min_evolvabilityII, "...",
-    #                            theoretical_evolvabilities$max_evolvabilityII, "\n",
-    "Associations between evolvabilities (phylogenetically uncontrolled):\n",
-    # "    Evolvability I vs. evolvability II: r=", format(corr_evolvabilityI_vs_II, digits = 3), "\n",
-    "    Intrinsic resistance vs. evolvability I: p=", format(t_test_evolvabilityI$p.value, digits = 3), 
-      " (", t_test_evolvabilityI$method, ", t=", format(t_test_evolvabilityI$statistic, digits = 3), ")\n"
-    # "    Intrinsic resistance vs. evolvability II: p=", format(t_test_evolvabilityII$p.value, digits = 3), 
-    # " (", t_test_evolvabilityII$method, ", t=", format(t_test_evolvabilityII$statistic, digits = 3), ")\n"
+    "    Number of species where one ", target_gene, " copy confers resistance and one does not: ", n_hetero_resistance, "\n"
   )
   write_file(report, file_name)
   cat(report)
@@ -218,16 +180,6 @@ summarise_phylogenetics_nt <- function(subtree, species_output, sample_n = NULL,
     "    Test: permutation test of mean phylogenetic distance of resistant species\n",
     "    Number of permutations: ", length(phylo_signals$permtest_resistance$mean_distance_tips_permutated), "\n",
     "    p-value: ", phylo_signals$permtest_resistance$P, "\n")
-    # "Phylogenetic signal in evolvability I (number of evolvable nucleotide mutations):\n",
-    # "    Pagel's lambda: ", format(phylo_signals$lambda_evolvabilityI$lambda, digits = 3), "\n",
-    # "    p(lambda): ", format(phylo_signals$lambda_evolvabilityI$P, digits = 3), "\n",
-    # "    Blomberg's K: ", format(phylo_signals$K_evolvabilityI$K, digits = 3), "\n",
-    # "    p(K): ", format(phylo_signals$K_evolvabilityI$P, digits = 3), "\n",
-    # "Phylogenetic signal in evolvability II (number of nt mutations producing AA resistance mutations):\n",
-    # "    Pagel's lambda: ", format(phylo_signals$lambda_evolvabilityII$lambda, digits = 3), "\n",
-    # "    p(lambda): ", format(phylo_signals$lambda_evolvabilityII$P, digits = 3), "\n",
-    # "    Blomberg's K: ", format(phylo_signals$K_evolvabilityII$K, digits = 3), "\n",
-    # "    p(K): ", format(phylo_signals$K_evolvabilityII$P, digits = 3), "\n")
   write_file(report, file_name)
   cat(report)
   cat(paste0("\n\nThis summary has been saved in file ", file_name, ".\n"))
