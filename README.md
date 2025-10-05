@@ -11,7 +11,7 @@ This repository implements a computational pipeline to map streptomycin (STR) re
 Two complementary pipelines assess resistance patterns for each gene:
 
 | Gene | Encodes | Mutation type | Analysis level | Script |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | **rpsL** | Ribosomal protein S12 | Amino acid substitutions | Protein-level | `R/master.R` |
 | **rrs** | 16S ribosomal RNA | Nucleotide substitutions | Nucleotide-level | `R/master_nt.R` |
 
@@ -61,8 +61,7 @@ Streptomycin_Resistance_Landscape/
 
 ## Citation
 
-[1]: https://doi.org/10.1073/pnas.2424307122 Bolourchi, N., Brown, C. R. P., Letten, A. D., & Engelst¨adter, J. (2024, November). Evolution and evolvability of rifampicin resistance across the bacterial tree of life.
-
+[1]: <https://doi.org/10.1073/pnas.2424307122> Bolourchi, N., Brown, C. R. P., Letten, A. D., & Engelstaedter, J. (2024, November). Evolution and evolvability of rifampicin resistance across the bacterial tree of life.
 
 ## Author & Contact
 
