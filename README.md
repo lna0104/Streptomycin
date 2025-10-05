@@ -40,7 +40,6 @@ Streptomycin_Resistance_Landscape/
 │   ├── reported_mutations.csv     # Curated list of resistance-associated mutations
 │   ├── *_references.fasta         # Reference sequences
 │   ├── bac120.nwk                 # GTDB bacterial phylogenetic tree
-│   ├── bac120_metadata.tsv        # GTDB metadata with taxonomy information
 │   ├── gtdb_taxonomy              # Processed GTDB taxonomy table
 │   ├── *_NCBI_taxonomy            # NCBI taxonomy for retrieved genomes
 │   └── summary_preamble.qmd       # Report preamble
