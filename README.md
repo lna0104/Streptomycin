@@ -61,7 +61,7 @@ Streptomycin_Resistance_Landscape/
 
 ## Citation
 
-[1] Bolourchi, N., Brown, C. R. P., Letten, A. D., & Engelstädter, J. (2024). Evolution and evolvability of rifampicin resistance across the bacterial tree of life. bioRxiv. [![DOI:10.1101/2024.11.05.622190](https://zenodo.org/badge/DOI/10.1101/2024.11.05.622190.svg)](https://doi.org/10.1101/2024.11.05.622190)
+[1]: https://doi.org/10.1101/2024.11.05.622190 "Bolourchi, N., Brown, C. R. P., Letten, A. D., & Engelstädter, J. (2024). Evolution and evolvability of rifampicin resistance across the bacterial tree of life. bioRxiv."
 
 ## Author & Contact
 
