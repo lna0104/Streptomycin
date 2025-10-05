@@ -4,7 +4,7 @@ This repository contains the data, code, and analysis for a project investigatin
 ## Overview
 This project aims to assess both intrinsic resistance—where streptomycin resistance mutations are already present in bacterial genomes—and the evolutionary potential for bacteria to acquire resistance through single-nucleotide mutations. Using a computational framework adapted from previous work on rifampicin [1], the analysis screens a curated panel of resistance-associated mutations in the rpsL and rrs genes to map resistance patterns across the bacterial tree of life and quantify species-specific evolvability. The workflow for this project is illustrated in Figure 1.
 
-![Figure 1: Overview of the analysis workflow](plots/workflow.pdf)
+![Figure 1: Overview of the analysis workflow](plots/workflow.png)
 
 **Figure 1.** Overview of the computational workflow used in this project to analyze streptomycin resistance across the bacterial tree of life.
 
