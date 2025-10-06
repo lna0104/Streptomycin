@@ -525,9 +525,13 @@ filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types =
 filtered_targets <- filtered_output |> pull(target_name) |> unique()
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")[filtered_targets]
 
-mutations <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE)  |>
+rrs_mutations <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE)  |>
   filter_mutations_nt(min_n_species = globsets$min_n_species, 
                       min_n_studies = globsets$min_n_studies)
+
+rpsL_mutations <- read_csv("./output/rpsL_checked_muts.csv", show_col_types = FALSE) |>
+  filter_mutations(min_n_species = 3, 
+                   min_n_studies = 3)
 
 # calculate conservation/diversity scores along the rpsL sequence:
 set.seed(globsets$random_seed)
@@ -549,6 +553,19 @@ plot_cons(rrs_cons,
 #           n_plots = 1,
 #           dist_type = "grantham",
 #           file_name = "./plots/rrs_AA_conservation_grantham.pdf")
+
+# Load selected PDB file for E. coli:
+# Select L chain (Small ribosomal subunit protein uS12):
+# Select A chain (16S rRNA where streptomycin bind to)
+# Produce html file of protein structure with distance to E. coli indicated:
+# load("./output/cons.RData")
+visualise_structure(file_pdb = "./data/8cgj_chain.pdb",
+                         chain_ids = c("L","A"),
+                         AA_pos = rpsL_mutations |> pull(AA_pos_Ecoli) |> unique(),
+                         Nt_pos = rrs_mutations |> pull(Nt_pos_Ecoli) |> unique(),
+                         file_html = "./plots/rpsL_rrs_structure.html")
+
+quarto_render("plots/rpsL_rrs_structure_embedding.qmd")
 
 ########################################################################
 ### Step 9: Compile final report                                    ###
