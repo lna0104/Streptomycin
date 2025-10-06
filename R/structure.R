@@ -109,7 +109,7 @@ visualise_rpsL_structure <- function(file_pdb,
   return(ngl)
 }
 
-#' Visualising the protein structure 
+#' Visualising the protein structure for both rpsL and rrs
 #'
 #' @param file_pdb pdb file containing the protein structure
 #' @param chain_id Character. Protein chain identifier to display (default = "L").
