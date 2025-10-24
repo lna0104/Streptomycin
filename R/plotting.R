@@ -91,7 +91,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
                               ifelse(all(Origin == "Lab-generated"), "Lab-generated", "Both")),
               .groups = "drop") |>
     group_by(Species) |> 
-    filter(n() > n_frequency) 
+    filter(n() >= n_frequency) 
   
   plot3 <- frequency_per_species |>
     ggplot() +

@@ -497,20 +497,8 @@ original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 # original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
 bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
-# gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
-# outliers <- if (file.exists("./data/outliers.csv")) {
-#   read_csv("./data/outliers.csv", show_col_types = FALSE)
-# } else {
-#   NULL
-# }
-# genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
-
-# 2. get species-level summary of mutation screen data:
-species_output <- get_species_output(filtered_output)
-
-# 2.subset the tree based on species accessions and names:
-subtree <- get_subtree(filtered_output, original_tree, meta_data)
-write.tree(subtree$tree, file = "./output/rspL_subtree.nwk") 
+# gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE)
+# genus_variants <- read_csv("./output/variants_gtdb_taxontest(subtree, species_output, filtered_gtdb_taxonomy, file_name = "./plots/rpsL_phylogenies/whole_genome_tree_test.svg")
 
 # 3. subtree visualization:
 subtree <- read.tree("./output/rspL_subtree.nwk")
