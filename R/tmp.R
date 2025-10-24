@@ -1,59 +1,48 @@
-extract_gtdb_taxonomy <- function(filtered_output, meta_data){
-  # Step 1: Extract unique species and accessions
-  our_species <- filtered_output |>
-    select(species, accession_numbers) |>
-    distinct()
-  
-  meta_data_clean <- meta_data %>% 
-    select(accession, ncbi_genbank_assembly_accession, ncbi_organism_name, gtdb_taxonomy) %>%
-    mutate(ncbi_species_name = gsub("\\[|\\]", "", ncbi_organism_name)) %>% 
-    mutate(ncbi_species_name = gsub("\\'|\\'", "", ncbi_species_name)) %>% 
-    mutate(ncbi_species_name = str_replace_all(ncbi_species_name, "Candidatus", "")) %>%
-    mutate(ncbi_species_name = gsub("^ ", "", ncbi_species_name)) %>% 
-    mutate(ncbi_species_name = sub("^([^ ]+[ ]+[^ ]+).*$", "\\1", #keeps only the first two words of a character element
-                                   ncbi_species_name)) %>%
-    separate(gtdb_taxonomy,
-             into = c("g_domain", "g_phylum", "g_class", "g_order", "g_family", "g_genus", "g_species"),
-             sep = ";",
-             remove = FALSE)  %>%
-    mutate(across(
-      c(g_domain, g_phylum, g_class, g_order, g_family, g_genus, g_species),
-      ~ .x %>%
-        str_replace("^[a-z]__","") %>%  # remove rank prefix
-        na_if("") %>%                   # empty -> NA
-        str_squish()
-    )) %>%
-    mutate(ncbi_genbank_assembly_accession = str_replace(ncbi_genbank_assembly_accession, "^GCA_", "GCF_")) %>%
-    select(accession, ncbi_genbank_assembly_accession, ncbi_species_name, 
-           g_domain, g_phylum, g_class, g_order, g_family, g_genus, g_species)
-  
- 
-  
-  # Step 3: Match species by accession
-  species_by_accession <- our_species |>
-    left_join(meta_data_clean, 
-              by=c("accession_numbers" = "ncbi_genbank_assembly_accession")) 
-  
-  # Step 4: Handle unmatched species by name
-  unmatched_species <- species_by_accession |>
-    filter(is.na(accession))  |>
-    pull(species)
-  
-  species_by_name <- our_species |>
-    filter(species %in% unmatched_species) |>
-    left_join(meta_data_clean, 
-              by=c("species" = "ncbi_species_name")) 
-  
-  # Step 5: Combine matched species
-  matched_species <- bind_rows(
-    species_by_accession |>
-      filter(!is.na(accession)),
-    species_by_name)  
-  
-  final_species <- our_species |>
-    left_join(matched_species, by = c("species", "accession_numbers")) |>
-    distinct()
-}
+#########################################################################
+### Step 7: Phylogenetic distribution of resistance and evolvability  ###
+#########################################################################
+
+# input for this step:  filtered results for reliable sequences("./output/rpsL_filtered_output.csv")
+#                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
+#                       its metadata ("./data/bac120_metadata.tsv")
+#                       NCBI bacterial taxonomic information ("./output/bacterial_taxonomy.csv")
+
+# output for this step: subtree of original tree with tip_labels table ("./output/rpsL_subtree.RData")
+#                       subtree of original tree (nwk file: "./output/rpsL_subtree.nwk")
+#                       plot of subtree
+
+# 1.load required files:
+filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
+original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
+# original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
+bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE)
+
+# 2. get species-level summary of mutation screen data:
+species_output <- get_species_output(filtered_output)
+
+# 3.subset the tree based on species accessions and names:
+subtree <- get_subtree(filtered_output, original_tree, meta_data)
+write.tree(subtree$tree, file = "./output/rpsL_subtree.nwk") 
+
+# 4. subtree visualization:
+subtree <- read.tree("./output/rspL_subtree.nwk")
+# big tree of all species:
+plot_subtree(subtree, species_output, bacterial_taxonomy, file_name = "./plots/rpsL_phylogenies/whole_genome_tree.svg")
+# smaller trees of individual clades:
+plot_subtree_clades(subtree, species_output, bacterial_taxonomy, 
+                    genera = c("Sphingomonas"),
+                    families = c("Devosiaceae", "Mycobacteriaceae"),
+                    orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+                    classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
+                    file_path = "./plots/rpsL_phylogenies/")
+
+summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics.txt")
+
+#empty working environment to keep everything clean:
+rm.all.but("globsets")
+
 
 #' build a tree based on GTDB bacterial life tree using species names and accessions
 #'
@@ -61,148 +50,93 @@ extract_gtdb_taxonomy <- function(filtered_output, meta_data){
 #' @param original_tree a phylo object providing the bacterial tree of life (from GTDB)
 #' @param meta_data a data frame providing the information of species which are included in bacterial tree of life (from GTDB)
 #'
-#' @return 
-#'   - tree: the subset phylogenetic tree
+#' @return a list providing the subset tree and a data frame presenting all tip labels
 #' @export
 #'
-#' @examples extract_gtdb_subtree(filtered_output, original_tree, meta_data)
-extract_gtdb_subtree <- function(original_tree, filtered_gtdb_taxonomy){
-    
+#' @examples get_subtree(filtered_output, original_tree, meta_data)
+get_subtree <- function(output, original_tree, gtdb_taxonomy){
   
-  # Step 6: Identify tip indices in the tree
-  subset_tip_indices_accession <- sapply(filtered_gtdb_taxonomy$accession, function(acc) {
+  our_species <- output |>
+    select(species, accession_numbers) |>
+    distinct()
+  
+  #1. create a column "species_accessions" in metadata
+  meta_data_clean <- meta_data %>% 
+    select(accession, ncbi_genbank_assembly_accession, ncbi_organism_name) %>%
+    mutate(species_name = gsub("\\[|\\]", "", ncbi_organism_name)) %>% 
+    mutate(species_name = gsub("\\'|\\'", "", species_name)) %>% 
+    mutate(species_name = str_replace_all(species_name, "Candidatus", "")) %>%
+    mutate(species_name = gsub("^ ", "", species_name)) %>% 
+    mutate(species_name = sub("^([^ ]+[ ]+[^ ]+).*$", "\\1", #keeps only the first two words of a character element
+                              species_name)) %>%
+    filter(accession %in% original_tree$tip.label) %>%
+    mutate(acc_ID = paste(ncbi_genbank_assembly_accession, 
+                          species_name, sep = "_"))
+  
+  #2. change tip labels from "accessions" to "species_accessions"
+  original_tree$tip.label <- unname(setNames(meta_data$acc_ID, meta_data$accession)[original_tree$tip.label])
+  original_tree$tip.label <- paste0(sub("A", "F", original_tree$tip.label))
+  
+  #3. exploring our species in metadata
+  
+  accession_not_tree <- setdiff(our_species$accession_numbers, substr(original_tree$tip.label, -1, 15))
+  
+  species_accession_not_tree <- our_species %>% 
+    filter(accession_numbers %in% accession_not_tree) %>%
+    pull(species)
+  
+  #4. subset original tree based on tip labels
+  
+  #subset the original tree based on presence of species names or accessions in tips:
+  subset_tip_indices_species_name <- sapply(species_accession_not_tree, function(subset_label) {
+    which(grepl(subset_label, original_tree$tip.label, fixed = TRUE))[1] #checks the presence of each species names in all tip labels, and returns index of first one
+  })
+  
+  #subset based on accessions
+  subset_tip_indices_accession <- sapply(our_species$accession_numbers, function(acc) {
     which(grepl(acc, original_tree$tip.label, fixed = TRUE))[1] #checks the presence of each species names in all tip labels, and returns index of first one
   })
   
-  #remove na 
-  subset_tip_indices <- subset_tip_indices_accession[!is.na(subset_tip_indices_accession)]
+  #subset for missing species
+  # subset_tip_indices_missing_names <- sapply(missing_names$names_original_tree, function(subset_label) {
+  #   which(grepl(subset_label, original_tree$tip.label, fixed = TRUE))[1] #checks the presence of each species names in all tip labels, and returns index of first one
+  # }) 
   
-  # Step 7: Extract subtree
+  #subset for outliers to be removed
+  # subset_tip_indices_outliers <- if (!is.null(outliers)) {
+  #   which(purrr::reduce(
+  #     lapply(outliers$outliers, function(subset_label) {
+  #       grepl(subset_label, original_tree$tip.label, fixed = TRUE)
+  #     }), 
+  #     `|`  # Logical OR to combine all matches
+  #   ))
+  # } 
+  
+  #sum of all subsets to be kept
+  subset_tip_indices <- unique(c(subset_tip_indices_species_name, 
+                                 subset_tip_indices_accession))
+  subset_tip_indices <- subset_tip_indices[!is.na(subset_tip_indices)]
+  
+  #6. get the sub_tree
   subset_tree <- get_subtree_with_tips(original_tree, only_tips = subset_tip_indices, 
                                        omit_tips= NULL, force_keep_root = TRUE)$subtree
   
-
-  return(
-    tree = subset_tree
-  )
+  
+  ### I did some extra coding to find actual name of those tip labels which only have "genus name sp."
+  #make a data frame using subset_tree$tip.label
+  tip_labels <- data.frame(old_tip_label = subset_tree$tip.label) %>%
+    mutate(species_phylo = sub(".*_", "", old_tip_label)) %>%
+    mutate(acc = substr(old_tip_label, 1, 15)) %>% #separate accession numbers as a column
+    left_join(our_species, by = join_by(acc == accession_numbers)) %>%
+    select(acc, species_phylo, species) %>% 
+    distinct() %>%
+    mutate(species = ifelse(is.na(species), species_phylo, species)) %>%
+    mutate(new_tip_label = paste0(acc, "_", species))
+  
+  #replace new names in tip.labels of tree
+  subset_tree$tip.label <- tip_labels$new_tip_label
+  return(list(tree = subset_tree,
+              tips = tip_labels))
 }
 
 
-
-#' plot subtree
-#'
-#' @param subtree a phylo object of the subset tree  
-#' @param filtered_output a data frame providing the results of mutation screening of high quality rpsL sequences across bacterial species
-#' @param bacterial_taxonomy a data frame providing info on bacterial taxonomic phylogeny
-#' @param file_name the path that the plot should be save in
-#'
-#' @return a plot presenting phylo_genetic relationship among bacterial species
-#' @export
-#'
-#' @examples plot_subtree(subtree, filtered_output, meta_data, "./plots/myfilename.pdf")
-plot_subtree_test <- function(subtree, species_output, filtered_gtdb_taxonomy, file_name){
-  
-  # clades to be labeled in the tree:
-  clades_to_label <- c(
-    "Sphingomonadales",
-    "Devosiaceae",
-    "Rickettsiales",
-    "Coriobacteriia",
-    "Planctomycetia",
-    "Micromonosporaceae"
-    # "Burkholderiales"
-  )
-  
-  # change tip labels to make manipulations easier:  
-  # subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
-  
-  species_data <- species_output |>
-    left_join(filtered_gtdb_taxonomy, by=join_by(species)) |>
-    filter(!is.na(accession)) |>
-    mutate(
-      g_family = if_else(g_genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, g_family),
-      g_order  = if_else(g_genus %in% c("Spirochaeta"), NA_character_, g_order)
-    ) |> 
-    distinct() |>
-    mutate(major_clade = NA) |>
-    mutate(major_clade = ifelse(g_phylum %in% clades_to_label, g_phylum, major_clade)) |>
-    mutate(major_clade = ifelse(g_class %in% clades_to_label, g_class, major_clade)) |>
-    mutate(major_clade = ifelse(g_order %in% clades_to_label, g_order, major_clade)) |>
-    mutate(major_clade = ifelse(g_family %in% clades_to_label, g_family, major_clade)) 
-  # mutate(major_clade = ifelse(major_clade %in% c("Mollicutes", "Erysipelotrichales"),
-  #                             "Mollicutes &\nErysipelotrichales", major_clade))
-  
-
-  data_tree <- as_tibble(subtree) |>
-    left_join(species_data, by = join_by(label == accession)) |>
-    filter(!is.na(node), !is.na(parent), !is.na(label)) |>
-    replace_na(list(g_family = 'undefined', 
-                    g_order = 'undefined',
-                    g_class = "undefined",
-                    major_clade = "none"))
-  
-  ##identify common ancestor nodes for species in major bacterial orders
-  clades <- data.frame(major_clade=unique(data_tree$major_clade),
-                       common_ancestor=NA) |>
-    filter(major_clade != "none")
-  for (i in 1:length(clades$major_clade)) {
-    clades$common_ancestor[i] <- getMRCA(original_tree, data_tree$node[data_tree$major_clade == clades$major_clade[i]])
-  }
-  
-  ##add clade nodes to data_tree
-  data_tree <- full_join(data_tree, clades, by=join_by(major_clade))
-  
-  ##make the final tree data as a S4 object for plotting
-  subtree_data <- tidytree::as.treedata(data_tree)
-  
-  
-  ##plotting the tree
-  p_tree <- ggtree(subtree_data, 
-                   layout = "circular", 
-                   branch.length="none", 
-                   color="#eee0cd")
-  
-  # add predicted resistance:  
-  p1 <- gheatmap(p_tree, species_data |> select(accession, resistance) |> column_to_rownames(var="accession"), 
-                 offset = 0, color=NULL, colnames=FALSE, width = 0.05) +
-    scale_fill_manual(values=c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
-                      labels=c("resistant", "susceptible", ""),
-                      na.value = hsv(0,0,0,0),
-                      name = "Predicted\nresistance")
-  
-
-  # add predicted evolvability:
-  p2 <- p + gheatmap(
-                 species_data |> select(accession, evolvabilityI) |> column_to_rownames(var="accession"),
-                 offset = 3.4, color=NULL, colnames=FALSE, width = 0.05) +
-    scale_fill_gradientn(colours = c("#0077b6", "#ffd700"), na.value = "grey20", name = "Predicted\nevolvability") +
-    scale_y_continuous(limits = c(0, round(1.005 * (nrow(data_tree) + 1) / 2)))
-  
-  
-  # add major orders:
-  #cols <- rep(brewer.pal(8, "Set1"), 100)[1:length(clades$major_clade)]
-  cols <- c(brewer.pal(8, "Dark2"), brewer.pal(9, "Pastel1"))[1:length(clades$major_clade)]
-  p3 <- p2 + geom_cladelab(node = clades$common_ancestor,
-                           label = clades$major_clade,
-                           align=TRUE,
-                           geom='text',
-                           #fill=cols,
-                           fontsize = 3.5,
-                           barcolour = cols, #"grey40",
-                           offset.text = 2.5 ,
-                           offset = 9,
-                           barsize= 2, 
-                           horizontal=FALSE,
-                           hjust=0.5) +
-    #angle = "auto") +
-    theme(legend.position="bottom")
-  
-  ggsave(filename = file_name, p3, width = 10, height = 10)
-  
-  # alternative labels using heatmap:
-  # p4 <- gheatmap(p2 + new_scale_fill(),
-  #                species_data |> select(species, major_clade) |> column_to_rownames(var="species"),
-  #                offset = 9, color=NULL, colnames=FALSE, width = 0.05) +
-  #   scale_fill_manual(values = cols, na.value = hsv(0,0,0,0), name = "Order")
-  # ggsave(filename = "./plots/whole_genome_tree_test.pdf", p4, width = 15, height = 20)
-}

@@ -388,6 +388,8 @@ get_species_output <- function(output) {
               .groups = "drop") |>
     # step 4: turn resistance column into categorical:
     mutate(resistance = ifelse(resistance, "resistant", "susceptible"))
+  
+  
   return(species_output)
 }
 
