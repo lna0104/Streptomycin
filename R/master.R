@@ -447,33 +447,25 @@ filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types 
 # bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 # meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 # meta_data_parsed <- meta_data |>
-#   select(accession, ncbi_genbank_assembly_accession, ncbi_organism_name, gtdb_taxonomy) |>
-#   mutate(gtdb_accession = accession) |>
-#   mutate(ncbi_species_name = gsub("\\[|\\]", "", ncbi_organism_name)) %>%
-#   mutate(ncbi_species_name = gsub("\\'|\\'", "", ncbi_species_name)) %>%
-#   mutate(ncbi_species_name = str_replace_all(ncbi_species_name, "Candidatus", "")) %>%
-#   mutate(ncbi_species_name = gsub("^ ", "", ncbi_species_name)) %>%
-#   mutate(ncbi_species_name = sub("^([^ ]+[ ]+[^ ]+).*$", "\\1", #keeps only the first two words of a character element
-#                                  ncbi_species_name)) |>
+#   select(gtdb_taxonomy) |>
 #   separate(gtdb_taxonomy,
 #            into = c("domain", "phylum", "class", "order", "family", "genus", "species"),
 #            sep = ";",
 #            remove = FALSE) %>%
 #   mutate(across(domain:species, ~ sub("^[a-z]__","", .))) |>
-#   select(-c(gtdb_taxonomy, accession, ncbi_organism_name, domain)) |>
+#   select(-c(gtdb_taxonomy, domain, species)) |>
 #   distinct()
 # write_csv(meta_data_parsed, "./data/gtdb_taxonomy.csv")
 # Generate gtdb_taxonomy file from GTDB metadata
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
-# genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
 
 
 #2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/rpsL_mutation_screen.pdf")
-plot_classes_genera(filtered_output, bacterial_taxonomy, file_name= "./plots/rpsL_classes_genera.svg")
-plot_evolvability_by_class(filtered_output, bacterial_taxonomy, file_name = "./plots/rpsL_evolvability_by_class.pdf")
+plot_classes_genera(filtered_output, gtdb_taxonomy, file_name= "./plots/rpsL_classes_genera.svg")
+plot_evolvability_by_class(filtered_output, gtdb_taxonomy, file_name = "./plots/rpsL_evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_rpsL_mutation_screen.txt")
-get_resistance_taxonomy(filtered_output, bacterial_taxonomy,  file_path = "./output/", gene_name = "rpsL")
+get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rpsL")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rpsL_predicted_resistance.csv")
 
 #3. analyse species with multiple gene copies:
@@ -501,24 +493,23 @@ rm.all.but("globsets")
 # 1.load required files:
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
-# original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
-bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+# bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 
 # 2. get species-level summary of mutation screen data:
-species_output <- get_species_output(filtered_output, gtdb_taxonomy)
+species_output <- get_species_output(filtered_output)
 
 # 3.subset the tree based on species accessions and names:
-subtree <- get_subtree(filtered_output, original_tree, gtdb_taxonomy)
+subtree <- get_subtree(filtered_output, original_tree, meta_data)
 write.tree(subtree$tree, file = "./output/rpsL_subtree.nwk") 
 
 # 4. subtree visualization:
 subtree <- read.tree("./output/rspL_subtree.nwk")
 # big tree of all species:
-plot_subtree(subtree, species_output, bacterial_taxonomy, file_name = "./plots/rpsL_phylogenies/whole_genome_tree.svg")
+plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
-plot_subtree_clades(subtree, species_output, bacterial_taxonomy, 
+plot_subtree_clades(subtree, species_output, gtdb_taxonomy, 
                     genera = c("Sphingomonas"),
                     families = c("Devosiaceae", "Mycobacteriaceae"),
                     orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),

@@ -444,16 +444,15 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
 rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
-bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE)  #bacterial taxonomic information from gtdb
 
-# gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
-# genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
 
 #2. analysis of mutant screen:
 plot_mutation_screen_nt(filtered_output, file_name = "./plots/rrs_mutation_screen.pdf")
-plot_classes_genera_nt(filtered_output, bacterial_taxonomy, file_name= "./plots/rrs_classes_genera.pdf")
+plot_classes_genera_nt(filtered_output, gtdb_taxonomy, file_name= "./plots/rrs_classes_genera.pdf")
 summarise_mutation_screen_nt(filtered_output, target_gene = "rrs", file_name = "./results/summary_rrs_mutation_screen.txt")
-get_resistance_taxonomy(filtered_output, bacterial_taxonomy, genus_variants, file_path = "./output/", gene_name = "rrs")
+get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rrs")
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance.csv")
 
 #3. analyse species with multiple gene copies:
@@ -481,9 +480,9 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 # original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
-bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
 meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
-# gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
 # outliers <- if (file.exists("./data/outliers.csv")) {
 #   read_csv("./data/outliers.csv", show_col_types = FALSE)
 # } else {
@@ -501,9 +500,9 @@ write.tree(subtree$tree, file = "./output/rrs_subtree.nwk")
 # 3. subtree visualization:
 subtree <- read.tree("./output/rrs_subtree.nwk")
 # big tree of all species:
-plot_subtree_nt(subtree, species_output, bacterial_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree.svg")
+plot_subtree_nt(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
-plot_subtree_clades_nt(subtree, species_output, bacterial_taxonomy, 
+plot_subtree_clades_nt(subtree, species_output, gtdb_taxonomy, 
                         genera = c("Wolbachia", "Microbacterium"),
                         families = c("Flavobacteriaceae", "Microbacteriaceae"),
                         # orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),

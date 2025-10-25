@@ -228,18 +228,6 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
   
   species_data <- species_output |>
     left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
-    #join with genus_variants to fix genus name
-    # left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
-    #   by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
-    # mutate(
-    #   family = if_else(is.na(family), family_var, family),
-    #   order = if_else(is.na(order), order_var, order),
-    #   class = if_else(is.na(class), class_var, class),
-    #   phylum = if_else(is.na(phylum), phylum_var, phylum)
-    # ) |> 
-    # select(-family_var, -order_var, -class_var, -phylum_var) |> 
-    # There are multiple variants of these genera with different family and order assignments,
-    # but the plot does not support duplicate species entries.    
     mutate(
       family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
       order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
@@ -356,18 +344,6 @@ plot_subtree_clade <- function(subtree,
   
   species_data <- species_output |>
     left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
-    # # Join with genus_variants to correct genus names split into variants 
-    # left_join(genus_variants |> select(genus_origin, family_var = family, order_var = order, class_var = class, phylum_var = phylum),
-    #   by = c("genus" = "genus_origin"), relationship = "many-to-many") |> 
-    # mutate(
-    #   family = if_else(is.na(family), family_var, family),
-    #   order = if_else(is.na(order), order_var, order),
-    #   class = if_else(is.na(class), class_var, class),
-    #   phylum = if_else(is.na(phylum), phylum_var, phylum)
-    # ) |> 
-    # select(-family_var, -order_var, -class_var, -phylum_var) |> 
-    # There are multiple variants of these genera with different family and order assignments,
-    # but the plot does not support duplicate species entries.    
     mutate(
       family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
       order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
@@ -416,7 +392,7 @@ plot_subtree_clade <- function(subtree,
                  offset = max_dist_root/10, 
                  color=NULL, colnames=FALSE, 
                  width = 0.01) +
-    scale_fill_manual(values=c("resistant" = "red", "susceptible" = "grey90"),
+    scale_fill_manual(values=c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
                       labels=c("resistant", "susceptible", ""),
                       na.value = hsv(0,0,0,0),
                       name = "Predicted\nresistance")
@@ -425,7 +401,7 @@ plot_subtree_clade <- function(subtree,
   p2 <- gheatmap(p1 + new_scale_fill(),
                  species_data |> select(species, evolvabilityI) |> column_to_rownames(var="species"),
                  offset = max_dist_root/9, color=NULL, colnames=FALSE, width = 0.01) +
-    scale_fill_viridis_c(na.value = "grey20", name = "Predicted\nevolvability", option = "plasma") +
+    scale_fill_gradientn(colours = c("#0077b6", "#ffd700"), na.value = "grey20", name = "Predicted\nevolvability") +
     scale_y_continuous(limits = c(0, round(1.005 * (nrow(data_tree) + 1) / 2))) +
     theme(legend.position="bottom")
   
