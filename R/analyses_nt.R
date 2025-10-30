@@ -54,8 +54,8 @@ filter_mutations_nt <- function(muts,
 #'
 screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutation_list, target_gene, n_workers) {
   # Ensure required directories exist
-  if (!dir.exists("./output/alignments_nt")) dir.create("./output/alignments_nt", recursive = TRUE)
-  if (!dir.exists("./output/progress_nt")) dir.create("./output/progress_nt", recursive = TRUE)
+  if (!dir.exists("./output/alignments_nt_EU541")) dir.create("./output/alignments_nt_EU541", recursive = TRUE)
+  if (!dir.exists("./output/progress_nt_EU541")) dir.create("./output/progress_nt_EU541", recursive = TRUE)
   
   plan(multisession, workers = n_workers) # to parallelise the function
   final_output <- future_lapply(1:length(target_sequences), function(i) {
@@ -65,7 +65,7 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
                             target_sequences[[i]], 
                             reference_Ecoli,
                             target_gene,
-                            alig_file = paste0("./output/alignments_nt/", names(target_sequences)[[i]], ".RData")),
+                            alig_file = paste0("./output/alignments_nt_EU541/", names(target_sequences)[[i]], ".RData")),
       error = function(cond) {
         message("  It seems there is a problem with this sequence. Here's the original error message:") # gives error but keeps the analysis moves on
         message(conditionMessage(cond)) #show what is the error
@@ -83,7 +83,7 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
       }
     }
     
-    saveRDS(i, file = paste0("./output/progress_nt/sequence_", i, "_out_of_", length(rrs_target_sequences), "_complete.rds"))
+    saveRDS(i, file = paste0("./output/progress_nt_EU541/sequence_", i, "_out_of_", length(rrs_target_sequences), "_complete.rds"))
     return(output)
   })
   return(final_output)

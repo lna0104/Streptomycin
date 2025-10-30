@@ -361,12 +361,12 @@ raw_output <- screen_target_sequences_nt(rrs_target_sequences, rrs_reference_Eco
                                       mutation_list, target_gene="rrs", n_workers=8)
 
 #save error messages:
-saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors_EU5/41.rds")
+saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors_EU541.rds")
 # saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors.rds")
 
 #save results:
 raw_output <- do.call(rbind, raw_output[sapply(raw_output, is.data.frame)])
-write_csv(raw_output, file = "./output/rrs_raw_output_EU5/41.csv")
+write_csv(raw_output, file = "./output/rrs_raw_output_EU541.csv")
 # write_csv(raw_output, file = "./output/rrs_raw_output.csv")
 
 #empty working environment to keep everything clean:
