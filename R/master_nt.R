@@ -297,7 +297,7 @@ rm.all.but("globsets")
 # define the desired database
 db <- "assembly" 
 # define search term for representative genomes: Bacterial genomes at all assembly levels with annotation
-# term_rep <- '("Escherichia coli"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
+# term_rep <- '("Mycobacterium"[Organism]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 
 term_rep <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "representative genome"[filter] AND "refseq has annotation"[Properties])'#representative
 #search the entire database using the defined term
@@ -305,6 +305,7 @@ summaries_rep <- get_summaries(db, term_rep)
 
 # define search term for reference genomes: Bacterial genomes at all assembly levels with annotation 
 # term_ref <- '("(Actinomadura parvosata"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
+# term_ref <- '("(Mycobacterium"[Organism]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 
 term_ref <- '("Bacteria"[Organism] OR bacteria[All Fields]) AND ("latest refseq"[filter] AND "reference genome"[filter] AND "refseq has annotation"[Properties])'
 # search the entire database using the defined term
@@ -366,7 +367,7 @@ saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output
 
 #save results:
 raw_output <- do.call(rbind, raw_output[sapply(raw_output, is.data.frame)])
-write_csv(raw_output, file = "./output/rrs_raw_output_EU541.csv")
+write_csv(raw_output, file = "./output/rrs_raw_output_EU541_test.csv")
 # write_csv(raw_output, file = "./output/rrs_raw_output.csv")
 
 #empty working environment to keep everything clean:

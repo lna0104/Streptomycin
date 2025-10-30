@@ -104,13 +104,28 @@ check_out_mutation_nt <- function(mutations_list,
                                   reference_Ecoli,
                                   target_gene,
                                   alig_file = NULL) {
+  
   if (is.null(target_sequence) || length(target_sequence) == 0) {
     stop(sprintf('Empty "%s" sequence.', target_gene))
   }
-  coords_alig <- getCoordinatesNt(target_sequence, reference_Ecoli, aligOutput = TRUE)
-  if (!is.null(alig_file)) {
-    save(coords_alig, file = alig_file)
-  }
+  
+  if (!is.null(alig_file) && file.exists(alig_file)){
+    message(sprintf("Loading existing alignment: %s", alig_file))
+    e <- new.env(parent = emptyenv())
+    load(alig_file, envir = e)
+    coords_alig <- if ("coords_alig" %in% ls(e)) get("coords_alig", e) else get(ls(e)[1], e)
+  } else {
+    message(sprintf("No alignment found for %s, computing new alignment...", target_gene))
+    coords_alig <- getCoordinatesNt(target_sequence, reference_Ecoli, aligOutput = TRUE)
+    if (!is.null(alig_file)) {
+      save(coords_alig, file = alig_file)
+      }
+    }
+    
+  # if (!is.null(alig_file)) {
+  #   save(coords_alig, file = alig_file)
+  # }
+  
   coords <- coords_alig$coordinates
   # protein_target <- Biostrings::translate(target_sequence)
   # protein_Ecoli <- Biostrings::translate(reference_Ecoli)
