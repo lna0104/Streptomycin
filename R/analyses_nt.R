@@ -54,6 +54,9 @@ filter_mutations_nt <- function(muts,
 #'
 screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutation_list, target_gene, n_workers) {
   # Ensure required directories exist
+  # if (!dir.exists("./output/alignments_nt")) dir.create("./output/alignments_nt", recursive = TRUE)
+  # if (!dir.exists("./output/progress_nt")) dir.create("./output/progress_nt", recursive = TRUE)
+  
   if (!dir.exists("./output/alignments_nt_EU541")) dir.create("./output/alignments_nt_EU541", recursive = TRUE)
   if (!dir.exists("./output/progress_nt_EU541")) dir.create("./output/progress_nt_EU541", recursive = TRUE)
   
