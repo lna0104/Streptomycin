@@ -359,7 +359,7 @@ mutation_list <- mutation_list_reports |>
 
 # 3.screen all rrs sequences for existing and possible mutations:
 raw_output <- screen_target_sequences_nt(rrs_target_sequences, rrs_reference_Ecoli, 
-                                      mutation_list, target_gene="rrs", n_workers=8)
+                                      mutation_list, target_gene="rrs", n_workers=22)
 
 #save error messages:
 saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output_errors_EU541.rds")
