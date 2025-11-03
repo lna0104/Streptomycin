@@ -68,7 +68,7 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
                             target_sequences[[i]], 
                             reference_Ecoli,
                             target_gene,
-                            alig_file = paste0("./output/alignments_nt_EU541/", names(target_sequences)[[i]], ".RData")),
+                            alig_file=paste0("./output/alignments_nt_EU541/", names(target_sequences)[[i]], ".RData")),
                             # alig_file = paste0("./output/alignments_nt/", names(target_sequences)[[i]], ".RData")),
       error = function(cond) {
         message("  It seems there is a problem with this sequence. Here's the original error message:") # gives error but keeps the analysis moves on
@@ -118,23 +118,30 @@ check_out_mutation_nt <- function(mutations_list,
     message(sprintf("Loading existing alignment: %s", alig_file))
     e <- new.env(parent = emptyenv())
     load(alig_file, envir = e)
-    coords_alig <- if ("coords_alig" %in% ls(e)) get("coords_alig", e) else get(ls(e)[1], e)
+    coords_alig <- if ("coords_alig_reduced" %in% ls(e)) get("coords_alig_reduced", e) else get(ls(e)[1], e)
+    # to turn the alignment into a true alignment object: 
+    coords_alig$alignment <- pairwiseAlignment(pattern = coords_alig$alignment$pattern,
+                                                  subject = coords_alig$alignment$subject,
+                                                  scoreOnly = FALSE)
   } else {
     message(sprintf("No alignment found for %s, computing new alignment...", target_gene))
     coords_alig <- getCoordinatesNt(target_sequence, reference_Ecoli, aligOutput = TRUE)
     if (!is.null(alig_file)) {
-      save(coords_alig, file = alig_file)
-      }
+      # doesn't work on Mac because files get really large:
+      # save(coords_alig, file = alig_file)  
+      # instead this should only save whats important:
+      coords_alig_reduced <- list(
+        coordinates = coords_alig$coordinates,
+        alignment = list(
+          pattern = as.character(pattern(coords_alig$alignment)),
+          subject = as.character(subject(coords_alig$alignment)),
+          score = score(coords_alig$alignment)))
+      save(coords_alig_reduced, file = alig_file)
     }
+  }
     
-  # if (!is.null(alig_file)) {
-  #   save(coords_alig, file = alig_file)
-  # }
-  
   coords <- coords_alig$coordinates
-  # protein_target <- Biostrings::translate(target_sequence)
-  # protein_Ecoli <- Biostrings::translate(reference_Ecoli)
-  
+
   result <- mutations_list
   result$Nt_target <- NA # what is the nucleotide at that position in focal species
   result$n_possible <- NA # number of single nt mutations in sequence that would produce the mutation
