@@ -1,0 +1,31 @@
+Summary of screened target rrs sequences 
+Date: 2025-11-11 03:10:19.234141
+--------------------------------------------------------------------
+
+Target sequence statistics before filtering:
+    Number of genomes in search results: 21210
+    Number of genomes with extracted rrs sequence(s): 19915
+    Number of genomes where no rrs sequence could be extracted: 1295
+    Number of species with downloaded genomes: 19912
+    Total number of rrs sequences: 46372
+    Number of genomes with more than one rrs sequence: 7659
+    Maximum number of rrs sequences per genome: 37
+Filtering statistics:
+    Minimum sequence length: 87
+    Median sequence length: 1530.00
+    Mean sequence length: 1509.546
+    Maximum sequence length: 2667
+    Minimum aligning score: -5842.895
+    Maximum aligning score: 2410.391
+    Minimum distance from reference rrs core: 2
+    Maximum distance from reference rrs core: 474
+Filters applied: 
+    Minimum sequence length: 1200
+    Minimum alignment score to E. coli rrs: -2000
+    Maximum core distance to E. coli rrs: 190
+Target sequence statistics after filtering:
+    Number of genomes with extracted rrs sequence(s): 19038
+    Number of species with downloaded genomes: 19035
+    Total number of rrs sequences: 45178
+    Number of genomes with more than one rrs sequence: 7472
+    Maximum number of rrs sequences per genome: 37

@@ -367,7 +367,7 @@ saveRDS(raw_output[!sapply(raw_output, is.data.frame)], "./output/rrs_raw_output
 
 #save results:
 raw_output <- do.call(rbind, raw_output[sapply(raw_output, is.data.frame)])
-write_csv(raw_output, file = "./output/rrs_raw_output_EU541_test.csv")
+write_csv(raw_output, file = "./output/rrs_raw_output_EU541.csv")
 # write_csv(raw_output, file = "./output/rrs_raw_output.csv")
 
 #empty working environment to keep everything clean:
@@ -386,7 +386,8 @@ rm.all.but("globsets")
 
 # load required data:
 muts <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE) 
-raw_output <- read_csv("./output/rrs_raw_output.csv", show_col_types = FALSE)
+# raw_output <- read_csv("./output/rrs_raw_output.csv", show_col_types = FALSE)
+raw_output <- read_csv("./output/rrs_raw_output_EU541.csv", show_col_types = FALSE)
 genome_summaries <- read_rds("./output/rrs_summaries.rds")
 
 # filter for mutations to be included in analyses:
@@ -404,7 +405,7 @@ filtered_output <- raw_output |>
   # retain only data for mutations of interest:
   semi_join(mutation_list_reports, by = join_by(Nt_pos_Ecoli, Nt_mutation))
 
-write_csv(filtered_output,"./output/rrs_filtered_output.csv")
+write_csv(filtered_output,"./output/rrs_filtered_output_EU541.csv")
 
 # 3. analysis of extracted gene sequences and filtering:
 summarise_target_sequences(genome_summaries, 
@@ -414,13 +415,13 @@ summarise_target_sequences(genome_summaries,
                            min_alig_score = globsets$min_alig_score,
                            max_core_dist = globsets$max_core_dist,
                            target_gene = 'rrs',
-                           file_name = "./results/summary_rrs_target_sequences.txt")
+                           file_name = "./results/summary_rrs_target_sequences_EU541.txt")
 plot_target_sequences_stats_nt(raw_output, 
                               filtered_output,
                               min_seq_length = globsets$min_seq_length,
                               min_alig_score = globsets$min_alig_score,
                               max_core_dist = globsets$max_core_dist,
-                              file_names = c("./plots/rrs_target_sequence_stats_hist.pdf", "./plots/rrs_target_sequence_stats_pairs.pdf"))
+                              file_names = c("./plots/rrs_target_sequence_stats_hist_EU541.pdf", "./plots/rrs_target_sequence_stats_pairs_EU541.pdf"))
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
