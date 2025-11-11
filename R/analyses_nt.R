@@ -68,7 +68,7 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
                             target_sequences[[i]], 
                             reference_Ecoli,
                             target_gene,
-                            alig_file=paste0("./output/alignments_nt_EU541/", names(target_sequences)[[i]], ".RData")),
+                            alig_file=paste0("./output/alignments_nt_MG1655_2ndrun/", names(target_sequences)[[i]], ".RData")),
                             # alig_file = paste0("./output/alignments_nt/", names(target_sequences)[[i]], ".RData")),
       error = function(cond) {
         message("  It seems there is a problem with this sequence. Here's the original error message:") # gives error but keeps the analysis moves on
@@ -87,7 +87,7 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
       }
     }
     
-    saveRDS(i, file = paste0("./output/progress_nt_EU541/sequence_", i, "_out_of_", length(rrs_target_sequences), "_complete.rds"))
+    saveRDS(i, file = paste0("./output/progress_nt_MG1655_2ndrun/sequence_", i, "_out_of_", length(rrs_target_sequences), "_complete.rds"))
     # saveRDS(i, file = paste0("./output/progress_nt/sequence_", i, "_out_of_", length(rrs_target_sequences), "_complete.rds"))
     return(output)
   })
