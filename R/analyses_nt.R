@@ -57,8 +57,11 @@ screen_target_sequences_nt <- function(target_sequences, reference_Ecoli, mutati
   # if (!dir.exists("./output/alignments_nt")) dir.create("./output/alignments_nt", recursive = TRUE)
   # if (!dir.exists("./output/progress_nt")) dir.create("./output/progress_nt", recursive = TRUE)
   
-  if (!dir.exists("./output/alignments_nt_EU541")) dir.create("./output/alignments_nt_EU541", recursive = TRUE)
-  if (!dir.exists("./output/progress_nt_EU541")) dir.create("./output/progress_nt_EU541", recursive = TRUE)
+  # if (!dir.exists("./output/alignments_nt_EU541")) dir.create("./output/alignments_nt_EU541", recursive = TRUE)
+  # if (!dir.exists("./output/progress_nt_EU541")) dir.create("./output/progress_nt_EU541", recursive = TRUE)
+  
+  if (!dir.exists("./output/alignments_nt_MG1655_2ndrun")) dir.create("./output/alignments_nt_MG1655_2ndrun", recursive = TRUE)
+  if (!dir.exists("./output/progress_nt_MG1655_2ndrun")) dir.create("./output/progress_nt_MG1655_2ndrun", recursive = TRUE)
   
   plan(multisession, workers = n_workers) # to parallelise the function
   final_output <- future_lapply(1:length(target_sequences), function(i) {

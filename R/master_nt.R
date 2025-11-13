@@ -54,6 +54,7 @@ source("R/plotting_nt.R")
 source("R/reports_nt.R")
 source("R/reports.R")
 source("R/phylogenetics.R")
+source("R/phylogenetics_nt.R")
 source("R/structure.R")
 source("R/process_nt_data.R")
 
@@ -63,8 +64,8 @@ globsets <- list(
   min_n_studies = 2, # minimum number of studies that a mutation needs to be reported in for inclusion
   min_n_species = 2, # minimum number of species that a mutation needs to be reported in for inclusion
   min_seq_length = 1200, # minimum length of included gene target sequences
-  min_alig_score = -2000, # minimum alignment score (with E. coli) of included gene target sequences
-  max_core_dist = 190, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
+  min_alig_score = -1000, # minimum alignment score (with E. coli) of included gene target sequences
+  max_core_dist = 150, # maximum Levenshtein distance between E. coli core gene region to corresponding target region
   phylo_stats_sample_n = 5000, # number of species to sample for phylogenetics statistics
   random_seed = 22)
 options(nwarnings = 10000)
@@ -255,18 +256,18 @@ mutation_list_reports <- read_csv("./data/reported_mutations.csv", show_col_type
             AA_mutation, AA_OtoM, AA_mut_name, AA_mut_name_Ecoli))
 
 # Check whether the above files have been changed and hence the coordinates need to be updated 
-if(file.exists("./data/rrs_fastahash.Rds") && as.character(openssl::sha1(file("./data/rrs_references.fasta"))) == readRDS("./data/fastahash_rrs.Rds")){
+if(file.exists("./data/rrs_fastahash.Rds") && as.character(openssl::sha1(file("./data/rrs_references.fasta"))) == readRDS("./data/rrs_fastahash.Rds")){
   print("Sequences file has not changed, loading original coordinates")
-  load(file = "./output/coordinates_rrs.RData")
+  load(file = "./output/rrs_coordinates.RData")
 } else {
   old_fastahash <- as.character(openssl::sha1(file("./data/rrs_references.fasta")))
   saveRDS(old_fastahash, 
-       file = "./data/fastahash_rrs.Rds")
+       file = "./data/rrs_fastahash.Rds")
   print("Sequences file has changed, regenerating coordinates")
   # get coordinates
   # coordinates <- ALJEbinf::getAllCoordinates(seqs, "rrs_Escherichia_coli_MG1655")
   coordinates <- getAllCoordinatesNt(seqs, "rrs_Escherichia_coli_MG1655")
-  save(coordinates, file = "./output/coordinates_rrs.RData")
+  save(coordinates, file = "./output/coordinates.RData")
 }
 
 #2 load and complete table of reported mutations:
@@ -347,7 +348,9 @@ rm.all.but("globsets")
 muts <- read.csv("./output/rrs_muts.csv") 
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
 rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
-##rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
+#rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
+rrs_reference_Ecoli_1 <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
+rrs_reference_Ecoli_2 <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
 
 # 2.make a list of reliable mutations to be screened:
 mutation_list_reports <- filter_mutations_nt(muts,
@@ -390,7 +393,8 @@ rm.all.but("globsets")
 # load required data:
 muts <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE) 
 # raw_output <- read_csv("./output/rrs_raw_output.csv", show_col_types = FALSE)
-raw_output <- read_csv("./output/rrs_raw_output_EU541.csv", show_col_types = FALSE)
+# raw_output <- read_csv("./output/rrs_raw_output_EU541.csv", show_col_types = FALSE)
+raw_output <- read_csv("./output/rrs_raw_output_MG1655_2ndrun.csv", show_col_types = FALSE)
 genome_summaries <- read_rds("./output/rrs_summaries.rds")
 
 # filter for mutations to be included in analyses:
@@ -408,7 +412,9 @@ filtered_output <- raw_output |>
   # retain only data for mutations of interest:
   semi_join(mutation_list_reports, by = join_by(Nt_pos_Ecoli, Nt_mutation))
 
-write_csv(filtered_output,"./output/rrs_filtered_output_EU541.csv")
+# write_csv(filtered_output,"./output/rrs_filtered_output_EU541.csv")
+write_csv(filtered_output,"./output/rrs_filtered_output_MG1655_2ndrun.csv")
+
 
 # 3. analysis of extracted gene sequences and filtering:
 summarise_target_sequences(genome_summaries, 
@@ -418,13 +424,13 @@ summarise_target_sequences(genome_summaries,
                            min_alig_score = globsets$min_alig_score,
                            max_core_dist = globsets$max_core_dist,
                            target_gene = 'rrs',
-                           file_name = "./results/summary_rrs_target_sequences_EU541.txt")
+                           file_name = "./results/summary_rrs_target_sequences_MG1655_2ndrun.txt")
 plot_target_sequences_stats_nt(raw_output, 
                               filtered_output,
                               min_seq_length = globsets$min_seq_length,
                               min_alig_score = globsets$min_alig_score,
                               max_core_dist = globsets$max_core_dist,
-                              file_names = c("./plots/rrs_target_sequence_stats_hist_EU541.pdf", "./plots/rrs_target_sequence_stats_pairs_EU541.pdf"))
+                              file_names = c("./plots/rrs_target_sequence_stats_hist_MG1655_2ndrun.pdf", "./plots/rrs_target_sequence_stats_pairs_MG1655_2ndrun.pdf"))
 
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
@@ -446,7 +452,8 @@ rm.all.but("globsets")
 #                       plot showing the statistics for species with multiple gene copies ("./plots/rrs_multicopy_stats.pdf")
 
 # 1. load required data:
-filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+#filtered_output <- read_csv("./output/rrs_filtered_output_EU541.csv", show_col_types = FALSE)
+filtered_output <- read_csv("./output/rrs_filtered_output_MG1655_2ndrun.csv", show_col_types = FALSE)
 rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
 # bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
@@ -454,11 +461,11 @@ gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE)  #
 
 
 #2. analysis of mutant screen:
-plot_mutation_screen_nt(filtered_output, file_name = "./plots/rrs_mutation_screen.pdf")
-plot_classes_genera_nt(filtered_output, gtdb_taxonomy, file_name= "./plots/rrs_classes_genera.pdf")
-summarise_mutation_screen_nt(filtered_output, target_gene = "rrs", file_name = "./results/summary_rrs_mutation_screen.txt")
-get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rrs")
-make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance.csv")
+plot_mutation_screen_nt(filtered_output, file_name = "./plots/rrs_mutation_screen_MG1655_2ndrun.pdf")
+plot_classes_genera_nt(filtered_output, gtdb_taxonomy, file_name= "./plots/rrs_classes_genera_MG1655_2ndrun.pdf")
+summarise_mutation_screen_nt(filtered_output, target_gene = "rrs", file_name = "./results/summary_rrs_mutation_screen_MG1655_2ndrun.txt")
+get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rrs_MG1655_2ndrun")
+make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance_MG1655_2ndrun.csv")
 
 #3. analyse species with multiple gene copies:
 multiseq_stats <- compare_rrs_copies(filtered_output, rrs_target_sequences, rrs_reference_Ecoli)
@@ -482,7 +489,8 @@ rm.all.but("globsets")
 #                       plot of subtree
 
 # 1.load required files:
-filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+# filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+filtered_output <- read_csv("./output/rrs_filtered_output_MG1655_2ndrun.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
 # original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
@@ -505,7 +513,7 @@ write.tree(subtree$tree, file = "./output/rrs_subtree.nwk")
 # 3. subtree visualization:
 subtree <- read.tree("./output/rrs_subtree.nwk")
 # big tree of all species:
-plot_subtree_nt(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree.svg")
+plot_subtree_nt(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree_MG1655_2ndrun.svg")
 # smaller trees of individual clades:
 plot_subtree_clades_nt(subtree, species_output, gtdb_taxonomy, 
                         genera = c("Wolbachia", "Microbacterium"),
