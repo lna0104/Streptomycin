@@ -349,8 +349,7 @@ muts <- read.csv("./output/rrs_muts.csv")
 rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")
 rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
 #rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
-rrs_reference_Ecoli_1 <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
-rrs_reference_Ecoli_2 <- readDNAStringSet("./data/rrs_reference_rrnDB.fasta")[["rrs_Escherichia_coli_U_5/41"]]
+
 
 # 2.make a list of reliable mutations to be screened:
 mutation_list_reports <- filter_mutations_nt(muts,

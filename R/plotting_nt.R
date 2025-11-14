@@ -270,7 +270,7 @@ plot_classes_genera_nt <- function(filtered_output,
                                 bacterial_taxonomy,
                                 file_name,
                                 n_classes_to_plot = 20,
-                                min_frac_resistant = 0.1, 
+                                #min_frac_resistant = 0.1, 
                                 min_genus_size = 12, 
                                 n_genera_to_plot = 30,
                                 n_muts_to_plot = 6) {
@@ -315,16 +315,26 @@ plot_classes_genera_nt <- function(filtered_output,
     mutate(category = fct_relevel(category, "Multiple", after = Inf)) |>
     mutate(category = fct_recode(category, " " = "None"))
   
+  # restrict to species that actually have a mutation 
+  species_with_any_mut <- species_with_muts |>
+    dplyr::filter(category != " ")
   
   cols <- c(" " = rgb(0,0,0,0),
-            "523C" = wes_palette("FantasticFox1")[1],
-            "885A" = wes_palette("FantasticFox1")[2],
-            "912G" = wes_palette("FantasticFox1")[3],
+            "523C" = wes_palette("FantasticFox1")[3],
+            "885A" = wes_palette("FantasticFox1")[1],
+            "912G" = wes_palette("FantasticFox1")[2],
             "913G" = wes_palette("AsteroidCity2")[3],
             "Other" = "grey", 
             "Multiple" = wes_palette("FantasticFox1")[5])
   
-  classes_for_plotting <- species_with_muts |>
+  # classes_for_plotting <- species_with_muts |>
+  #   group_by(class) |>
+  #   summarise(n = n(), .groups = "drop") |>
+  #   filter(!is.na(class)) |>
+  #   slice_max(n, n = n_classes_to_plot) |>
+  #   pull(class)
+  
+  classes_for_plotting <- species_with_any_mut |>
     group_by(class) |>
     summarise(n = n(), .groups = "drop") |>
     filter(!is.na(class)) |>
@@ -349,7 +359,7 @@ plot_classes_genera_nt <- function(filtered_output,
       plot.margin = margin(0.2, 0.4, 0.2, 0.2, "cm")
     )
 
-  ggsave(filename = file_name, bar_plot, width = 6, height = 8)
+  ggsave(filename = file_name, bar_plot, width = 16, height = 6)
 }
 
 
