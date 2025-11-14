@@ -467,8 +467,9 @@ get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/",
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance_MG1655_2ndrun.csv")
 
 #3. analyse species with multiple gene copies:
+plot_mutation_nt_count(filtered_output, "./plots/rrs_multiseq_nt_count_MG1655_2ndrun.pdf")
 multiseq_stats <- compare_rrs_copies(filtered_output, rrs_target_sequences, rrs_reference_Ecoli)
-write_csv(multiseq_stats, "./output/rrs_multiseq_stats.csv")
+write_csv(multiseq_stats, "./output/rrs_multiseq_stats_MG1655_2ndrun.csv")
 # multiseq_stats <- read_csv("./output/rrs_multiseq_stats.csv", show_col_types = FALSE)
 plot_multiseq_stats_nt(multiseq_stats, "./plots/rrs_multiseq.pdf")
 #empty working environment to keep everything clean:

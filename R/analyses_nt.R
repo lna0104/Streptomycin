@@ -245,19 +245,19 @@ filter_output_nt <- function(output, min_seq_length, min_alig_score, max_core_di
 #' 
 
 compare_rrs_copies <- function(filtered_output, rrs_target_sequences, rrs_reference_Ecoli) {
-  
-  # Create file with header if it doesn't exist
-  if (!file.exists(outfile)) {
-    write_csv(tibble(
-      accession_number = character(),
-      species_name = character(),
-      genus = character(),
-      resistance_status = integer(),
-      mean_alig_score = double(),
-      mean_core_dist = double(),
-      n_pairs = integer()
-    ), outfile)
-  }
+   
+  # # Create file with header if it doesn't exist
+  # if (!file.exists(outfile)) {
+  #   write_csv(tibble(
+  #     accession_number = character(),
+  #     species_name = character(),
+  #     genus = character(),
+  #     resistance_status = integer(),
+  #     mean_alig_score = double(),
+  #     mean_core_dist = double(),
+  #     n_pairs = integer()
+  #   ), outfile)
+  # }
   
   # Identify species with more than one rrs copy
   multicopy_species <- filtered_output |>
@@ -269,7 +269,7 @@ compare_rrs_copies <- function(filtered_output, rrs_target_sequences, rrs_refere
   # Define E. coli core region coordinates (510–920 nt)
   core_Ecoli <- rrs_reference_Ecoli[510:920]
   
-  plan(multisession, workers = 5)  # parallel execution
+  plan(multisession, workers = 8)  # parallel execution
   
   multiseq_stats <- future_lapply(seq_along(multicopy_species), function(i) {
     acc <- multicopy_species[i]

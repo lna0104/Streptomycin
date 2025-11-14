@@ -432,6 +432,36 @@ plot_target_sequences_stats_nt <- function(final_output,
   ggsave(filename = file_names[2], pairs_plot, width = 12, height = 12)
 }
 
+plot_mutation_nt_count <- function(filtered_output, file_name, ncol=2){
+  # Identify species with more than one rrs copy
+  multicopy_species <- filtered_output |>
+    distinct(accession_numbers, gene_copy) |>
+    count(accession_numbers, name = "n") |>
+    filter(n > 1L) |>
+    pull(accession_numbers)
+  
+  plotting_data <- filtered_output |> 
+    filter(accession_numbers %in% multicopy_species) |>
+    count(mutation_name, Nt_target, name = "n")
+  
+  p <- ggplot(plotting_data, ggplot2::aes(
+    x = Nt_target,
+    y = n,
+    fill = Nt_target
+  )) +
+    geom_col() +
+    facet_wrap(~ mutation_name, ncol = ncol, scales = "free_y") +
+    theme_bw() +
+    labs(
+      x = "Nt target",
+      y = "Count",
+      fill = "Nt target"
+    )
+  
+  ggsave(filename = file_name, p, width = 8, height = 6)
+  
+}
+
 plot_multiseq_stats_nt <- function(multiseq_stats, file_name) {
   p <- ggplot(multiseq_stats) +
     geom_point(aes(x = mean_alig_score, 
