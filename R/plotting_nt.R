@@ -391,7 +391,8 @@ plot_target_sequences_stats_nt <- function(final_output,
   dat <- rbind(dat_raw, dat_filtered)
   
   plot1 <- ggplot(dat) +
-    geom_histogram(aes(target_length, fill = filter), position = "identity") +
+    geom_histogram(aes(target_length, fill = filter), position = "identity",
+                   binwidth = 100) +
     geom_vline(aes(xintercept = min_seq_length), col = "red") +
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
