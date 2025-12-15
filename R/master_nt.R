@@ -467,117 +467,117 @@ get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/",
 make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_predicted_resistance_MG1655_2ndrun.csv")
 
 #3. analyse species with multiple gene copies:
-plot_mutation_nt_count(filtered_output, "./plots/rrs_multiseq_nt_count_MG1655_2ndrun.pdf")
-multiseq_stats <- compare_rrs_copies(filtered_output, rrs_target_sequences, rrs_reference_Ecoli)
-write_csv(multiseq_stats, "./output/rrs_multiseq_stats_MG1655_2ndrun.csv")
+plot_multiseq_dist(filtered_output, "./plots/rrs_multiseq_dist_MG1655_2ndrun.pdf")
+multiseq_stats <- compare_rrs_copies(filtered_output, rrs_target_sequences, rrs_reference_Ecoli,
+                                     "./output/rrs_multiseq_stats_MG1655_2ndrun.csv")
 # multiseq_stats <- read_csv("./output/rrs_multiseq_stats.csv", show_col_types = FALSE)
 plot_multiseq_stats_nt(multiseq_stats, "./plots/rrs_multiseq.pdf")
 #empty working environment to keep everything clean:
 rm.all.but("globsets")
 
-#########################################################################
-### Step 7: Phylogenetic distribution of resistance and evolvability  ###
-#########################################################################
-
-# input for this step:  filtered results for reliable sequences("./output/rrs_filtered_output.csv")
-#                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
-#                       its metadata ("./data/bac120_metadata.tsv")
-#                       NCBI bacterial taxonomic information ("./output/rrs_NCBI_taxonomy.csv")
-
-# output for this step: subtree of original tree with tip_labels table ("./output/rrs_subtree.RData")
-#                       subtree of original tree (nwk file: "./output/rrs_subtree.nwk")
-#                       plot of subtree
-
-# 1.load required files:
+# #########################################################################
+# ### Step 7: Phylogenetic distribution of resistance and evolvability  ###
+# #########################################################################
+# 
+# # input for this step:  filtered results for reliable sequences("./output/rrs_filtered_output.csv")
+# #                       original bacterial phylogenetic tree of life ("./data/bac120.nwk") and 
+# #                       its metadata ("./data/bac120_metadata.tsv")
+# #                       NCBI bacterial taxonomic information ("./output/rrs_NCBI_taxonomy.csv")
+# 
+# # output for this step: subtree of original tree with tip_labels table ("./output/rrs_subtree.RData")
+# #                       subtree of original tree (nwk file: "./output/rrs_subtree.nwk")
+# #                       plot of subtree
+# 
+# # 1.load required files:
+# # filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
+# filtered_output <- read_csv("./output/rrs_filtered_output_MG1655_2ndrun.csv", show_col_types = FALSE)
+# original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
+# # original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
+# # bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
+# meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
+# gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
+# # outliers <- if (file.exists("./data/outliers.csv")) {
+# #   read_csv("./data/outliers.csv", show_col_types = FALSE)
+# # } else {
+# #   NULL
+# # }
+# # genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
+# 
+# # 2. get species-level summary of mutation screen data:
+# species_output <- get_species_output_nt(filtered_output)
+# 
+# # 2.subset the tree based on species accessions and names:
+# subtree <- get_subtree(filtered_output, original_tree, meta_data)
+# write.tree(subtree$tree, file = "./output/rrs_subtree.nwk") 
+# 
+# # 3. subtree visualization:
+# subtree <- read.tree("./output/rrs_subtree.nwk")
+# # big tree of all species:
+# plot_subtree_nt(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree_MG1655_2ndrun.svg")
+# # smaller trees of individual clades:
+# plot_subtree_clades_nt(subtree, species_output, gtdb_taxonomy, 
+#                         genera = c("Wolbachia", "Microbacterium"),
+#                         families = c("Flavobacteriaceae", "Microbacteriaceae"),
+#                         # orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+#                         classes = c("Actinomycetes", "Gammaproteobacteria","Bacilli", "Bacteroidia", "Clostridia"),
+#                         file_path = "./plots/rrs_phylogenies/")
+# 
+# summarise_phylogenetics_nt(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rrs_phylogenetics.txt")
+# 
+# #empty working environment to keep everything clean:
+# rm.all.but("globsets")
+# 
+# ########################################################################
+# ### Step 8: Plotting rrs structure and sequence conservation       ###
+# ########################################################################
+# 
+# # load required data:
+# rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
 # filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
-filtered_output <- read_csv("./output/rrs_filtered_output_MG1655_2ndrun.csv", show_col_types = FALSE)
-original_tree <- read.tree("./data/bac120.nwk") #GTDB bacterial tree of life
-# original_tree <- read.tree("./data/bac120.tree") #GTDB bacterial tree of life
-# bacterial_taxonomy <- read_csv("./data/rrs_NCBI_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) #GTDB information on included species
-gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #bacterial taxonomic information from gtdb
-# outliers <- if (file.exists("./data/outliers.csv")) {
-#   read_csv("./data/outliers.csv", show_col_types = FALSE)
-# } else {
-#   NULL
-# }
-# genus_variants <- read_csv("./output/variants_gtdb_taxonomy.csv", show_col_types = FALSE)
-
-# 2. get species-level summary of mutation screen data:
-species_output <- get_species_output_nt(filtered_output)
-
-# 2.subset the tree based on species accessions and names:
-subtree <- get_subtree(filtered_output, original_tree, meta_data)
-write.tree(subtree$tree, file = "./output/rrs_subtree.nwk") 
-
-# 3. subtree visualization:
-subtree <- read.tree("./output/rrs_subtree.nwk")
-# big tree of all species:
-plot_subtree_nt(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rrs_phylogenies/whole_genome_tree_MG1655_2ndrun.svg")
-# smaller trees of individual clades:
-plot_subtree_clades_nt(subtree, species_output, gtdb_taxonomy, 
-                        genera = c("Wolbachia", "Microbacterium"),
-                        families = c("Flavobacteriaceae", "Microbacteriaceae"),
-                        # orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
-                        classes = c("Actinomycetes", "Gammaproteobacteria","Bacilli", "Bacteroidia", "Clostridia"),
-                        file_path = "./plots/rrs_phylogenies/")
-
-summarise_phylogenetics_nt(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rrs_phylogenetics.txt")
-
-#empty working environment to keep everything clean:
-rm.all.but("globsets")
-
-########################################################################
-### Step 8: Plotting rrs structure and sequence conservation       ###
-########################################################################
-
-# load required data:
-rrs_reference_Ecoli <- readDNAStringSet("./data/rrs_references.fasta")[["rrs_Escherichia_coli_MG1655"]]
-filtered_output <- read_csv("./output/rrs_filtered_output.csv", show_col_types = FALSE)
-filtered_targets <- filtered_output |> pull(target_name) |> unique()
-rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")[filtered_targets]
-
-rrs_mutations <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE)  |>
-  filter_mutations_nt(min_n_species = globsets$min_n_species, 
-                      min_n_studies = globsets$min_n_studies)
-
-rpsL_mutations <- read_csv("./output/rpsL_checked_muts.csv", show_col_types = FALSE) |>
-  filter_mutations(min_n_species = 3, 
-                   min_n_studies = 3)
-
-# calculate conservation/diversity scores along the rpsL sequence:
-set.seed(globsets$random_seed)
-cons <- get_conservation_nt(rrs_target_sequences, rrs_reference_Ecoli, n_rnd = 1e5, n_workers=10, 
-                            alig_path = "./output/rrs_alignments_nt")
-save(cons, file = "./output/rrs_cons.RData")
-summarise_conservation_nt(rrs_cons, 
-                           target_gene = "rrs",
-                           file_name = "./results/summary_rrs_conservation.txt")
-plot_cons(rrs_cons, 
-          pos = mutations |> pull(Nt_pos_Ecoli) |> unique(),
-          pos_range = c(500,950),
-          n_plots = 1,
-          dist_type = "hamming",
-          file_name = "./plots/rrs_nt_conservation_hamming.pdf")
-# plot_cons(cons, 
-#           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
-#           pos_range = c(40,100),
+# filtered_targets <- filtered_output |> pull(target_name) |> unique()
+# rrs_target_sequences <- readDNAStringSet("./output/rrs_target_sequences.fa")[filtered_targets]
+# 
+# rrs_mutations <- read_csv("./output/rrs_muts.csv", show_col_types = FALSE)  |>
+#   filter_mutations_nt(min_n_species = globsets$min_n_species, 
+#                       min_n_studies = globsets$min_n_studies)
+# 
+# rpsL_mutations <- read_csv("./output/rpsL_checked_muts.csv", show_col_types = FALSE) |>
+#   filter_mutations(min_n_species = 3, 
+#                    min_n_studies = 3)
+# 
+# # calculate conservation/diversity scores along the rpsL sequence:
+# set.seed(globsets$random_seed)
+# cons <- get_conservation_nt(rrs_target_sequences, rrs_reference_Ecoli, n_rnd = 1e5, n_workers=10, 
+#                             alig_path = "./output/rrs_alignments_nt")
+# save(cons, file = "./output/rrs_cons.RData")
+# summarise_conservation_nt(rrs_cons, 
+#                            target_gene = "rrs",
+#                            file_name = "./results/summary_rrs_conservation.txt")
+# plot_cons(rrs_cons, 
+#           pos = mutations |> pull(Nt_pos_Ecoli) |> unique(),
+#           pos_range = c(500,950),
 #           n_plots = 1,
-#           dist_type = "grantham",
-#           file_name = "./plots/rrs_AA_conservation_grantham.pdf")
-
-# Load selected PDB file for E. coli:
-# Select L chain (Small ribosomal subunit protein uS12):
-# Select A chain (16S rRNA where streptomycin bind to)
-# Produce html file of protein structure with distance to E. coli indicated:
-# load("./output/cons.RData")
-visualise_structure(file_pdb = "./data/8cgj_chain.pdb",
-                         chain_ids = c("L","A"),
-                         AA_pos = rpsL_mutations |> pull(AA_pos_Ecoli) |> unique(),
-                         Nt_pos = rrs_mutations |> pull(Nt_pos_Ecoli) |> unique(),
-                         file_html = "./plots/rpsL_rrs_structure.html")
-
-quarto_render("plots/rpsL_rrs_structure_embedding.qmd")
+#           dist_type = "hamming",
+#           file_name = "./plots/rrs_nt_conservation_hamming.pdf")
+# # plot_cons(cons, 
+# #           pos = mutations |> pull(AA_pos_Ecoli) |> unique(),
+# #           pos_range = c(40,100),
+# #           n_plots = 1,
+# #           dist_type = "grantham",
+# #           file_name = "./plots/rrs_AA_conservation_grantham.pdf")
+# 
+# # Load selected PDB file for E. coli:
+# # Select L chain (Small ribosomal subunit protein uS12):
+# # Select A chain (16S rRNA where streptomycin bind to)
+# # Produce html file of protein structure with distance to E. coli indicated:
+# # load("./output/cons.RData")
+# visualise_structure(file_pdb = "./data/8cgj_chain.pdb",
+#                          chain_ids = c("L","A"),
+#                          AA_pos = rpsL_mutations |> pull(AA_pos_Ecoli) |> unique(),
+#                          Nt_pos = rrs_mutations |> pull(Nt_pos_Ecoli) |> unique(),
+#                          file_html = "./plots/rpsL_rrs_structure.html")
+# 
+# quarto_render("plots/rpsL_rrs_structure_embedding.qmd")
 
 ########################################################################
 ### Step 9: Compile final report                                    ###

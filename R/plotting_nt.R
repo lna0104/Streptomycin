@@ -433,35 +433,6 @@ plot_target_sequences_stats_nt <- function(final_output,
   ggsave(filename = file_names[2], pairs_plot, width = 12, height = 12)
 }
 
-plot_mutation_nt_count <- function(filtered_output, file_name, ncol=2){
-  # Identify species with more than one rrs copy
-  multicopy_species <- filtered_output |>
-    distinct(accession_numbers, gene_copy) |>
-    count(accession_numbers, name = "n") |>
-    filter(n > 1L) |>
-    pull(accession_numbers)
-  
-  plotting_data <- filtered_output |> 
-    filter(accession_numbers %in% multicopy_species) |>
-    count(mutation_name, Nt_target, name = "n")
-  
-  p <- ggplot(plotting_data, ggplot2::aes(
-    x = Nt_target,
-    y = n,
-    fill = Nt_target
-  )) +
-    geom_col() +
-    facet_wrap(~ mutation_name, ncol = ncol, scales = "free_y") +
-    theme_bw() +
-    labs(
-      x = "Nt target",
-      y = "Count",
-      fill = "Nt target"
-    )
-  
-  ggsave(filename = file_name, p, width = 8, height = 6)
-  
-}
 
 plot_multiseq_stats_nt <- function(multiseq_stats, file_name) {
   p <- ggplot(multiseq_stats) +
@@ -474,54 +445,35 @@ plot_multiseq_stats_nt <- function(multiseq_stats, file_name) {
 }
 
 
-plot_class_counts_and_percents <- function(processed_data, file_name){
+
+plot_multiseq_dist <- function(filtered_output, file_name){
   
-  processed_data <- processed_data |>
-    mutate(category = factor(category, levels = c("none","both", "rpsL", "rrs")))
-  # Make a combined dataset: raw counts + proportions
-  plot_data_counts <- processed_data |>
-    mutate(plot_type = "Count")
+  plotting_data <- filtered_output |>
+    distinct(accession_numbers, target_name, gene_copy) |>
+    count(accession_numbers, name = "n")
   
-  plot_data_props <- processed_data |>
-    group_by(class, phylum) |>
-    mutate(prop = n / sum(n)) |>
-    ungroup() |>
-    mutate(plot_type = "Proportion")
-  
-  # Stack them together
-  plot_data <- bind_rows(
-    plot_data_counts |> mutate(value = n),
-    plot_data_props |> mutate(value = prop)
-  )
-  
-  ggplot(plot_data, aes(
-    x = interaction(class, phylum, sep = "!"),
-    y = value,
-    fill = category
-  )) +
-    geom_col() +
-    scale_x_discrete(guide = guide_axis_nested(key = "!"), name = "Phylum and class") +
-    scale_fill_manual(values = c(
-      "rrs" =  "#2a9d8f",
-      "rpsL" = "#e76f51",
-      "both" = "#fcbf49",
-      "none" = "#e1d9ce"
-    )) +
-    facet_grid(rows = vars(plot_type), scales = "free_y") +
-    labs(
-      x = "Class",
-      fill = "Category"
+  dist_plot <- ggplot(plotting_data, 
+                      aes(x=n)) + 
+    geom_histogram(
+      binwidth = 1,
+      boundary = 0,
+      colour = "grey50", 
+      fill = "grey80",
+    ) +
+    scale_x_continuous(
+      breaks = seq(
+        from = min(filtered_output$gene_copy, na.rm = TRUE),
+        to   = max(filtered_output$gene_copy, na.rm = TRUE),
+        by   = 1
+      )
     ) +
     theme_bw() +
-    theme(
-      legend.position = "top",
-      ggh4x.axis.nestline.x = element_line(linetype = 2),
-      axis.title.y = element_blank(),
-      axis.text.x = element_text(angle = 90, vjust = -0.01, hjust = 1, size = 8),
-      axis.title.x = element_text(size = 10)
-    ) +
-    scale_y_continuous(expand = c(0.01, 0))
-  ggsave(filename = file_name, width = 15, height = 8)
+    labs(
+      x = "Gene copies",
+      y = "Number of species"
+    )
+    
+  ggsave(filename = file_name, width = 10, height = 8)
 }
 
 
