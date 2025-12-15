@@ -1,14 +1,14 @@
 Summary of the mutation screen 
-Date: 2025-11-13 13:24:11.626308
+Date: 2025-12-15 13:22:27.441321
 --------------------------------------------------------------------
 
 Screened mutations:
     Number of distinct mutations screened: 4
     Number of nucleotide sites: 4
 Predicted intrinsic resistance:
-    Total number of resistance mutations present across species: 13
+    Total number of resistance mutations present across species: 14
     Number of unique mutations present across species: 2
-    Number of resistant species: 7
+    Number of resistant species: 8
     Percentage of resistant species: 0.04%
     Number of species with multiple resistance mutations: 3
-    Number of species where one rrs copy confers resistance and one does not: 6
+    Number of species where one rrs copy confers resistance and one does not: 7
