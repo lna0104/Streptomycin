@@ -380,6 +380,13 @@ plot_target_sequences_stats_nt <- function(final_output,
                                         min_alig_score,
                                         max_core_dist,
                                         file_names) {
+  big_txt <- theme(
+    axis.title = element_text(size = 14, face="bold"),
+    axis.text  = element_text(size = 12),
+    legend.title = element_text(size = 13),
+    legend.text  = element_text(size = 13)
+  )
+  
   cols <- c("raw" = "grey20", "filtered" = "grey80")
   
   dat_raw <- select(final_output, species, accession_numbers, gene_copy, target_length, alig_score, core_dist) |>
@@ -397,6 +404,7 @@ plot_target_sequences_stats_nt <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Length", y = "Number of sequences", fill = "") +
     scale_fill_manual(values = cols)
   
@@ -406,6 +414,7 @@ plot_target_sequences_stats_nt <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Alignment score", y = NULL, fill = "") +
     scale_fill_manual(values = cols)
   
@@ -415,6 +424,7 @@ plot_target_sequences_stats_nt <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Levenshtein distance", y = NULL, fill = "") +
     scale_fill_manual(values = cols)
   
@@ -468,6 +478,12 @@ plot_multiseq_dist <- function(filtered_output, file_name){
       )
     ) +
     theme_bw() +
+    theme(
+      axis.title = element_text(size = 14, face="bold"),
+      axis.text  = element_text(size = 12),
+      legend.title = element_text(size = 13),
+      legend.text  = element_text(size = 13)    
+      ) +
     labs(
       x = "Gene copies",
       y = "Number of species"

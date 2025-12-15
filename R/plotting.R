@@ -31,8 +31,10 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
                                      vjust=0.1, 
                                      size = 10),
           axis.text.y = element_text(size = 10), 
-          axis.title=element_text(size=10, face="bold"),
+          axis.title=element_text(size=11, face="bold"),
           plot.title=element_text(hjust=0),
+          legend.title = element_text(size = 10),
+          legend.text  = element_text(size = 10),
           legend.position = "top")+
     labs(x = "Amino acid position",
          y = "Number of species", 
@@ -62,12 +64,12 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
     theme(axis.text.x = element_text(angle=0, 
                                     #  vjust=0.1, 
                                     #  hjust=0.95, 
-                                     size=6), 
-          axis.text.y = element_text(size=6), 
-          axis.title=element_text(size=6, face="bold"),
+                                     size=10), 
+          axis.text.y = element_text(size=10), 
+          axis.title=element_text(size=11, face="bold"),
           plot.title=element_text(hjust=0),
-          legend.title = element_text(size=6),
-          legend.text = element_text(size=6),
+          legend.title = element_text(size=10),
+          legend.text = element_text(size=10),
           legend.position = "top") +
     labs(x = "Amino acid substitution",
          y = "Number of species", 
@@ -100,11 +102,13 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
     theme(axis.text.x = element_text(angle=0, 
                                     #  hjust=0.95,
                                     #  vjust=0.2, 
-                                     size=6), 
-          axis.title=element_text(size=6, 
+                                     size=10), 
+          axis.title=element_text(size=11, 
                                   face="bold"),
-          axis.text.y=element_text(size=6), 
+          axis.text.y=element_text(size=10), 
           plot.title=element_text(hjust=0), 
+          legend.title = element_text(size=10),
+          legend.text = element_text(size=10),
           legend.position = "top") +
     labs(x = "Species",
          y = "Number of reported mutations", 
@@ -126,7 +130,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
                                   legend = "bottom",
                                   hjust = -0.2, vjust = 1.5)
   
-  ggsave(filename = file_name, reported_mutations, width = 8, height = 4)
+  ggsave(filename = file_name, reported_mutations, width = 10, height = 4)
 }
   
 
@@ -170,12 +174,12 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     theme(axis.text.x = element_text(angle=0, 
                                      vjust=0.5, 
                                      hjust=0.95,
-                                     size=10), 
-          axis.text.y = element_text(size=10),
-          axis.title.x=element_text(size=10, face = "bold"),
-          axis.title.y=element_text(size=10, face = "bold"),
-          legend.title = element_text(size=10),
-          legend.text = element_text(size=10),
+                                     size=12), 
+          axis.text.y = element_text(size=12),
+          axis.title.x=element_text(size=14, face = "bold"),
+          axis.title.y=element_text(size=14, face = "bold"),
+          legend.title = element_text(size=13),
+          legend.text = element_text(size=13),
           legend.position = "bottom") +
     labs(x = "Amino acid substitution",
          y = "Number of species") +
@@ -184,7 +188,7 @@ plot_mutation_screen <- function(filtered_output, file_name) {
     labs(fill = "") + 
     coord_flip()
   
-  ggsave(filename = file_name, p_mutation_screen, width = 8, height = 4)
+  ggsave(filename = file_name, p_mutation_screen, width = 10, height = 4)
 }
 
 
@@ -385,6 +389,12 @@ plot_classes_genera <- function(filtered_output,
     ) + 
     # scale_fill_manual(values = cols_class, guide = "none") + 
     scale_y_continuous(expand = c(0.01, 0)) +
+    theme(
+      axis.title = element_text(size = 12, face = "bold"),
+      axis.text  = element_text(size = 10),
+      legend.title = element_text(size = 10),
+      legend.text  = element_text(size = 10)    
+      ) +
     labs(x = "Class", y = "Evolvability") +
     coord_flip()
 
@@ -401,7 +411,11 @@ plot_classes_genera <- function(filtered_output,
     coord_flip() +
     theme(
       axis.title.y = element_blank(),
-      axis.text.y = element_blank()) + 
+      axis.text.y = element_blank(),
+      axis.title.x = element_text(size = 12, face = "bold"),
+      axis.text.x  = element_text(size = 10),
+      legend.title = element_text(size = 10),
+      legend.text  = element_text(size = 10) ) + 
     scale_fill_manual(values = cols, name = " ") +
     guides(fill=guide_legend(nrow=1, byrow=TRUE)) 
 
@@ -490,7 +504,11 @@ plot_classes_genera <- function(filtered_output,
       plot.margin = margin(0.5, 0.5, 0.2, 0, "cm"), 
       legend.position = "none",
       axis.text.y = element_blank(),
-      axis.title.y = element_blank()
+      axis.title.y = element_blank(),
+      axis.title.x = element_text(size = 12, face = "bold"),
+      axis.text.x  = element_text(size = 10),
+      legend.title = element_text(size = 10),
+      legend.text  = element_text(size = 10) 
       )
   
   # Combine A1 and A2 
@@ -535,6 +553,13 @@ plot_target_sequences_stats <- function(final_output,
                                         min_alig_score,
                                         max_core_dist,
                                         file_names) {
+  big_txt <- theme(
+    axis.title = element_text(size = 14, face="bold"),
+    axis.text  = element_text(size = 12),
+    legend.title = element_text(size = 13),
+    legend.text  = element_text(size = 13)
+  )
+  
   cols <- c("raw" = "grey20", "filtered" = "grey80")
   
   dat_raw <- select(final_output, species, accession_numbers, gene_copy, target_length, alig_score, core_dist) |>
@@ -551,6 +576,7 @@ plot_target_sequences_stats <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Length", y = "Number of sequences", fill = "") +
     scale_fill_manual(values = cols)
   
@@ -560,6 +586,7 @@ plot_target_sequences_stats <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Alignment score", y = NULL, fill = "") +
     scale_fill_manual(values = cols)
   
@@ -569,6 +596,7 @@ plot_target_sequences_stats <- function(final_output,
     theme_classic() +  # Apply a minimal theme
     theme(panel.grid.major = element_blank(),  # Remove major grid lines
           panel.grid.minor = element_blank()) +
+    big_txt +
     labs(x = "Levenshtein distance", y = NULL, fill = "") +
     scale_fill_manual(values = cols)
     
