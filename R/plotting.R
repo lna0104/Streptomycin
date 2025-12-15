@@ -389,6 +389,7 @@ plot_classes_genera <- function(filtered_output,
     ) + 
     # scale_fill_manual(values = cols_class, guide = "none") + 
     scale_y_continuous(expand = c(0.01, 0)) +
+    theme_bw() + 
     theme(
       axis.title = element_text(size = 12, face = "bold"),
       axis.text  = element_text(size = 10),
