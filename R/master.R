@@ -462,7 +462,7 @@ gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) #b
 
 #2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/rpsL_mutation_screen.pdf")
-plot_classes_genera(filtered_output, gtdb_taxonomy, file_name= "./plots/test_rpsL_classes_genera.svg")
+plot_classes_genera(filtered_output, gtdb_taxonomy, file_name= "./plots/rpsL_classes_genera.svg")
 plot_evolvability_by_class(filtered_output, gtdb_taxonomy, file_name = "./plots/rpsL_evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_rpsL_mutation_screen.txt")
 get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rpsL")
