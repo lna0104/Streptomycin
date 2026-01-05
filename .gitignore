@@ -8,3 +8,4 @@ output/*
 !output/*.csv
 !output/raw_output_errors.rds
 !output/cons.RData
+tmp/*
