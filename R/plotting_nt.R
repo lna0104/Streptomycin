@@ -100,7 +100,7 @@ plot_reported_mutations_nt <- function(muts, file_name, n_frequency) {
     theme(axis.text.x = element_text(angle=90, 
                                      hjust=0.9,
                                      vjust=0.2, 
-                                     size=8), 
+                                     size=8, face = "italic"), 
           axis.title.y=element_text(size=10, face="bold", hjust=1.2),
           axis.title.x=element_text(size=10, face="bold"),
           axis.text.y=element_text(size=10), 
@@ -471,11 +471,10 @@ plot_multiseq_dist <- function(filtered_output, file_name){
       fill = "grey80",
     ) +
     scale_x_continuous(
-      breaks = seq(
-        from = min(filtered_output$gene_copy, na.rm = TRUE),
-        to   = max(filtered_output$gene_copy, na.rm = TRUE),
-        by   = 1
-      )
+      limits = c(1, NA),  
+      expand = c(0, 1), 
+      breaks = function(lims) seq(floor(lims[1]), ceiling(lims[2]), by = 1) + 0.5,
+      labels = function(x) as.character(floor(x))
     ) +
     theme_bw() +
     theme(

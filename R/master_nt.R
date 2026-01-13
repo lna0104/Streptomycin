@@ -275,7 +275,8 @@ muts <- mutation_list_reports |>
   fillMutationsTableNt(refs, seqs, coordinates) |>
   filter(!is.na(Nt_mut_name_Ecoli))
 
-write_csv(muts, "./output/muts_rrs.csv")
+write_csv(muts, "./output/rrs_muts.csv")
+muts<-read.csv("./output/rrs_muts.csv")
 
 #3 summary and plot of reported mutations
 plot_reported_article_before_process(muts, file_name = "./plots/rrs_reported_articles.pdf")
@@ -470,6 +471,7 @@ make_table_intrinsic_resistance(filtered_output, file_name = "./results/rrs_pred
 plot_multiseq_dist(filtered_output, "./plots/rrs_multiseq_dist_MG1655_2ndrun.pdf")
 multiseq_stats <- compare_rrs_copies(filtered_output, rrs_target_sequences, rrs_reference_Ecoli,
                                      "./output/rrs_multiseq_stats_MG1655_2ndrun.csv")
+
 # multiseq_stats <- read_csv("./output/rrs_multiseq_stats.csv", show_col_types = FALSE)
 plot_multiseq_stats_nt(multiseq_stats, "./plots/rrs_multiseq.pdf")
 #empty working environment to keep everything clean:

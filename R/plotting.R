@@ -105,7 +105,7 @@ plot_reported_mutations <- function(muts, file_name, n_frequency) {
                                      size=10), 
           axis.title=element_text(size=11, 
                                   face="bold"),
-          axis.text.y=element_text(size=10), 
+          axis.text.y=element_text(size=10, face = "italic"), 
           plot.title=element_text(hjust=0), 
           legend.title = element_text(size=10),
           legend.text = element_text(size=10),
