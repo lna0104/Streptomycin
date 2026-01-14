@@ -473,7 +473,7 @@ plot_subtree_clade <- function(subtree,
     layout = "rectangular",
     size = tree_line_size
   ) +
-    ggtree::geom_tiplab(size = tip_text_size) +
+    ggtree::geom_tiplab(size = tip_text_size, fontface = "italic") +
     ggplot2::ggtitle(genus) +
     ggplot2::theme_classic(base_size = base_text_size) +
     ggplot2::theme(
