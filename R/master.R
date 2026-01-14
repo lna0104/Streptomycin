@@ -2,6 +2,11 @@
 ### Step 0: Loading all libraries and scripts and define global settings ###
 ##############################################################################
 
+# if (!require("BiocManager", quietly = TRUE))
+#   install.packages("BiocManager")
+# BiocManager::install(c("DECIPHER", "pwalign", "ggtree"))
+# install.packages("devtools")
+# devtools::install_github("JanEngelstaedter/ALJEbinf", build_vignettes = TRUE)
 library(ALJEbinf)
 library(tidyverse)
 library(openssl)
@@ -510,10 +515,11 @@ subtree <- read.tree("./output/rspL_subtree.nwk")
 plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogenies/whole_genome_tree.svg")
 # smaller trees of individual clades:
 plot_subtree_clades(subtree, species_output, gtdb_taxonomy, 
-                    genera = c("Sphingomonas"),
-                    families = c("Devosiaceae", "Mycobacteriaceae"),
-                    orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
-                    classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
+                    # genera = c("Sphingomonas"),
+                    # families = c("Devosiaceae", "Mycobacteriaceae"),
+                    # orders = c("Pirellulales", "Sphingomonadales", "Rickettsiales"),
+                    # classes = c("Planctomycetia", "Alphaproteobacteria","Coriobacteriia"),
+                    orders = c("Rickettsiales"),
                     file_path = "./plots/rpsL_phylogenies/")
 
 summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics.txt")

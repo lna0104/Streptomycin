@@ -330,87 +330,214 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
 #' @export
 #'
 #' @examples plot_subtree(subtree, filtered_output, bacterial_taxonomy, "./plots/myfilename.pdf")
+# plot_subtree_clade <- function(subtree, 
+#                                species_output, 
+#                                bacterial_taxonomy, 
+#                                genus = NULL, family = NULL, order = NULL, class = NULL,
+#                                file_name){
+#   
+#   if (sum(!is.null(c(genus, family, order, class))) != 1L)
+#     stop("One and only one of genus, family, order or class must be specified, the others need to be NULL.")
+#   
+#   ##change tip labels:  
+#   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
+#   
+#   species_data <- species_output |>
+#     left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
+#     mutate(
+#       family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
+#       order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
+#     ) |> 
+#     distinct() 
+#   
+#   if (!is.null(genus)) {
+#     species_to_include <- dplyr::filter(species_data, genus == .env$genus)
+#   }
+#   if (!is.null(family)) {
+#     species_to_include <- dplyr::filter(species_data, family == .env$family)
+#   }
+#   if (!is.null(order)) {
+#     species_to_include <- dplyr::filter(species_data, order == .env$order)
+#   }
+#   if (!is.null(class)) {
+#     species_to_include <- dplyr::filter(species_data, class == .env$class)
+#   }
+#   species_to_include <- species_to_include |>
+#     pull(species) |>
+#     unique()
+#   
+#   subtree <- castor::get_subtree_with_tips(subtree, only_tips = species_to_include)[[1]]
+#   
+#   data_tree <- as_tibble(subtree) |>
+#     left_join(species_data, by = join_by(label == species)) |>
+#     filter(!is.na(node), !is.na(parent), !is.na(label)) |>
+#     replace_na(list(family = 'undefined', 
+#                     order = 'undefined',
+#                     class = "undefined",
+#                     major_clade = "none"))
+#   
+#   ##make the final tree data as a S4 object for plotting
+#   subtree_data <- tidytree::as.treedata(data_tree)
+#   
+#   max_dist_root <- max(get_all_distances_to_root(subtree))
+#   print(max_dist_root)
+#   ##plotting the tree
+#   p_tree <- ggtree(subtree_data, 
+#                    layout = "rectangular") +
+#     geom_tiplab(size = 2) +
+#     ggtitle(genus)
+#   
+#   # add predicted resistance:  
+#   p1 <- gheatmap(p_tree, species_data |> select(species, resistance) |> column_to_rownames(var="species"), 
+#                  offset = max_dist_root/10, 
+#                  color=NULL, colnames=FALSE, 
+#                  width = 0.01) +
+#     scale_fill_manual(values=c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
+#                       labels=c("resistant", "susceptible", ""),
+#                       na.value = hsv(0,0,0,0),
+#                       name = "Predicted\nresistance")
+#   
+#   # add predicted evolvability:
+#   p2 <- gheatmap(p1 + new_scale_fill(),
+#                  species_data |> select(species, evolvabilityI) |> column_to_rownames(var="species"),
+#                  offset = max_dist_root/9, color=NULL, colnames=FALSE, width = 0.01) +
+#     scale_fill_gradientn(colours = c("#0077b6", "#ffd700"), na.value = "grey20", name = "Predicted\nevolvability") +
+#     scale_y_continuous(limits = c(0, round(1.005 * (nrow(data_tree) + 1) / 2))) +
+#     theme(legend.position="bottom")
+#   
+#   ggsave(filename = file_name, p2, 
+#          width = 15, 
+#          height = length(subtree$tip.label)/10,
+#          limitsize = FALSE)
+#   return(p2)
+# }
+
 plot_subtree_clade <- function(subtree, 
                                species_output, 
                                bacterial_taxonomy, 
                                genus = NULL, family = NULL, order = NULL, class = NULL,
-                               file_name){
+                               file_name,
+                               tip_text_size = 4,         # BIGGER tips
+                               title_text_size = 18,      # BIGGER title
+                               base_text_size = 14,       # overall bigger text
+                               legend_text_size = 12,
+                               tree_line_size = 0.4,
+                               heatmap_width = 0.03,      # was 0.01 (too thin when plot is big)
+                               fig_width = 16,            # output width (inch)
+                               tip_height = 0.25) {       # height per tip label (inch)
   
   if (sum(!is.null(c(genus, family, order, class))) != 1L)
     stop("One and only one of genus, family, order or class must be specified, the others need to be NULL.")
   
-  ##change tip labels:  
-  subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
+  ## change tip labels:
+  subtree$tip.label <- gsub("_", " ", (stringr::str_sub(subtree$tip.label, 17, -1)))
   
   species_data <- species_output |>
-    left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> #join bacterial families to tree information by column species
-    mutate(
-      family = if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
-      order  = if_else(genus %in% c("Spirochaeta"), NA_character_, order)
-    ) |> 
-    distinct() 
+    dplyr::left_join(bacterial_taxonomy, by = dplyr::join_by(genus), relationship = "many-to-many") |>
+    dplyr::mutate(
+      family = dplyr::if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
+      order  = dplyr::if_else(genus %in% c("Spirochaeta"), NA_character_, order)
+    ) |>
+    dplyr::distinct()
   
-  if (!is.null(genus)) {
-    species_to_include <- dplyr::filter(species_data, genus == .env$genus)
-  }
-  if (!is.null(family)) {
-    species_to_include <- dplyr::filter(species_data, family == .env$family)
-  }
-  if (!is.null(order)) {
-    species_to_include <- dplyr::filter(species_data, order == .env$order)
-  }
-  if (!is.null(class)) {
-    species_to_include <- dplyr::filter(species_data, class == .env$class)
-  }
+  if (!is.null(genus))  species_to_include <- dplyr::filter(species_data, genus == .env$genus)
+  if (!is.null(family)) species_to_include <- dplyr::filter(species_data, family == .env$family)
+  if (!is.null(order))  species_to_include <- dplyr::filter(species_data, order == .env$order)
+  if (!is.null(class))  species_to_include <- dplyr::filter(species_data, class == .env$class)
+  
   species_to_include <- species_to_include |>
-    pull(species) |>
+    dplyr::pull(species) |>
     unique()
   
   subtree <- castor::get_subtree_with_tips(subtree, only_tips = species_to_include)[[1]]
   
-  data_tree <- as_tibble(subtree) |>
-    left_join(species_data, by = join_by(label == species)) |>
-    filter(!is.na(node), !is.na(parent), !is.na(label)) |>
-    replace_na(list(family = 'undefined', 
-                    order = 'undefined',
-                    class = "undefined",
-                    major_clade = "none"))
+  data_tree <- tibble::as_tibble(subtree) |>
+    dplyr::left_join(species_data, by = dplyr::join_by(label == species)) |>
+    dplyr::filter(!is.na(node), !is.na(parent), !is.na(label)) |>
+    tidyr::replace_na(list(
+      family = 'undefined',
+      order  = 'undefined',
+      class  = "undefined",
+      major_clade = "none"
+    ))
   
-  ##make the final tree data as a S4 object for plotting
+  ## make the final tree data as a S4 object for plotting
   subtree_data <- tidytree::as.treedata(data_tree)
   
   max_dist_root <- max(get_all_distances_to_root(subtree))
-  print(max_dist_root)
-  ##plotting the tree
-  p_tree <- ggtree(subtree_data, 
-                   layout = "rectangular") +
-    geom_tiplab(size = 2) +
-    ggtitle(genus)
+  message("max_dist_root = ", max_dist_root)
   
-  # add predicted resistance:  
-  p1 <- gheatmap(p_tree, species_data |> select(species, resistance) |> column_to_rownames(var="species"), 
-                 offset = max_dist_root/10, 
-                 color=NULL, colnames=FALSE, 
-                 width = 0.01) +
-    scale_fill_manual(values=c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
-                      labels=c("resistant", "susceptible", ""),
-                      na.value = hsv(0,0,0,0),
-                      name = "Predicted\nresistance")
+  ## --- Plot tree (make text bigger) ---
+  p_tree <- ggtree::ggtree(
+    subtree_data,
+    layout = "rectangular",
+    size = tree_line_size
+  ) +
+    ggtree::geom_tiplab(size = tip_text_size) +
+    ggplot2::ggtitle(genus) +
+    ggplot2::theme_classic(base_size = base_text_size) +
+    ggplot2::theme(
+      axis.line   = element_blank(),
+      axis.ticks = element_blank(),
+      plot.title = ggplot2::element_text(size = title_text_size, face = "bold"),
+      axis.text  = ggplot2::element_blank(),
+      axis.title = ggplot2::element_text(size = base_text_size),
+      legend.text  = ggplot2::element_text(size = legend_text_size),
+      legend.title = ggplot2::element_text(size = legend_text_size),
+      plot.margin = ggplot2::margin(10, 10, 10, 10)
+    )
   
-  # add predicted evolvability:
-  p2 <- gheatmap(p1 + new_scale_fill(),
-                 species_data |> select(species, evolvabilityI) |> column_to_rownames(var="species"),
-                 offset = max_dist_root/9, color=NULL, colnames=FALSE, width = 0.01) +
-    scale_fill_gradientn(colours = c("#0077b6", "#ffd700"), na.value = "grey20", name = "Predicted\nevolvability") +
-    scale_y_continuous(limits = c(0, round(1.005 * (nrow(data_tree) + 1) / 2))) +
-    theme(legend.position="bottom")
+  ## --- heatmap 1: resistance ---
+  p1 <- ggtree::gheatmap(
+    p_tree,
+    species_data |> dplyr::select(species, resistance) |> tibble::column_to_rownames(var = "species"),
+    offset = max_dist_root / 4,
+    width  = heatmap_width,
+    color  = NA,
+    colnames = FALSE
+  ) +
+    ggplot2::scale_fill_manual(
+      values = c("resistant" = "#ba181b", "susceptible" = "#d3d3d3"),
+      labels = c("resistant", "susceptible", ""),
+      na.value = hsv(0,0,0,0),
+      name = "Predicted\nresistance"
+    )
   
-  ggsave(filename = file_name, p2, 
-         width = 15, 
-         height = length(subtree$tip.label)/10,
-         limitsize = FALSE)
+  ## --- heatmap 2: evolvability ---
+  p2 <- ggtree::gheatmap(
+    p1 + ggnewscale::new_scale_fill(),
+    species_data |> dplyr::select(species, evolvabilityI) |> tibble::column_to_rownames(var = "species"),
+    offset = max_dist_root / 3,
+    width  = heatmap_width,
+    color  = NA,
+    colnames = FALSE
+  ) +
+    ggplot2::scale_fill_gradientn(
+      colours = c("#0077b6", "#ffd700"),
+      na.value = "grey20",
+      name = "Predicted\nevolvability"
+    ) +
+    ggplot2::theme(
+      legend.position = "bottom",
+      legend.text  = ggplot2::element_text(size = legend_text_size),
+      legend.title = ggplot2::element_text(size = legend_text_size)
+    )
+  
+  ## Save larger
+  fig_height <- max(6, length(subtree$tip.label) * tip_height)
+  
+  ggplot2::ggsave(
+    filename = file_name,
+    plot = p2,
+    width = fig_width,
+    height = fig_height,
+    units = "in",
+    limitsize = FALSE
+  )
+  
   return(p2)
 }
+
 
 
 #' plot subtree for a group of genera
