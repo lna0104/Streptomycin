@@ -215,6 +215,7 @@ plot_codon_network <- function(type = "type28",
                                node_radius = 2.2,
                                lines_occupied_codons = TRUE,
                                freq_threshold = 0.001,
+                               #freq_threshold = 0,
                                file_path = NULL)
 {
   par(mar=c(0,0,0,0) + 0.1)
@@ -263,10 +264,26 @@ plot_codon_network <- function(type = "type28",
   for(i in 1:nrow(nodes)) {
     if (!is.na(nodes$coord_x[i])) {
       for(j in 1:nrow(nodes)) {
-        if ((hamming(nodes[i, 1:3], nodes[j, 1:3]) == 1L) &&
-            ((nodes$freq[i] > freq_threshold) || (!lines_occupied_codons)))
-          lines(x = c(nodes$coord_x[i], nodes$coord_x[j]),
-                y = c(nodes$coord_y[i], nodes$coord_y[j]))
+        # if ((hamming(nodes[i, 1:3], nodes[j, 1:3]) == 1L) &&
+        #     ((nodes$freq[i] > freq_threshold) || (!lines_occupied_codons))){
+        #   lines(x = c(nodes$coord_x[i], nodes$coord_x[j]),
+        #         y = c(nodes$coord_y[i], nodes$coord_y[j]))
+        # }
+        if (hamming(nodes[i, 1:3], nodes[j, 1:3]) == 1L) {
+          # decide edge colour by occupancy
+          edge_col <- ifelse(
+            (!lines_occupied_codons) ||
+              (max(nodes$freq[i], nodes$freq[j]) > freq_threshold),
+            "black",
+            "grey80"
+          )
+
+          lines(
+            x = c(nodes$coord_x[i], nodes$coord_x[j]),
+            y = c(nodes$coord_y[i], nodes$coord_y[j]),
+            col = edge_col
+          )
+        }
       }
     }
   }

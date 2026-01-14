@@ -568,7 +568,7 @@ for(i in 1:nrow(networks)) {
                      mutations_list = mutation_list_reports,
                      output = filtered_output,
                      lines_occupied_codons = TRUE,
-                     file_path = "./plots/codon_networks/")
+                     file_path = "./plots/codon_networks_v2/")
 }
 
 #empty working environment to keep everything clean:
