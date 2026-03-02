@@ -196,26 +196,7 @@ plot_evolvability_by_class <-function(filtered_output,
                                       bacterial_taxonomy,
                                        n_classes_to_plot = 50,
                                        file_name) {
-  # # phylum abbreviations:
-  # phylum_abbreviations = c(Actinomycetota = "At",
-  #                          Bacillota = "Ba",
-  #                          Bacteroidota = "Bc",
-  #                          Campylobacterota = "Ca",
-  #                          Cyanobacteriota = "Cy",
-  #                          Fusobacteriota = "F",
-  #                          Myxococcota = "M",
-  #                          Planctomycetota = "Pl",
-  #                          Pseudomonadota = "Ps",
-  #                          Spirochaetota = "Sp",
-  #                          Thermodesulfobacteriota = "T",
-  #                          Desulfobacterota = "D",
-  #                          Desulfobacterota_I = "D_I",
-  #                          Deinococcota = "Di",
-  #                          Bacteroidota_A = "Bc_A",
-  #                          Synergistota = "Sy",
-  #                          Acidobacteriota = "Ac",
-  #                          Verrucomicrobiota = "V",
-  #                          Misc = "Misc")
+
   #merge data to class taxonomy
   processed_data <- filtered_output |>
     # rename(genus = genus) |>
@@ -319,7 +300,6 @@ plot_classes_genera <- function(filtered_output,
                                 n_muts_to_plot = 6) {
   
   # preparing the data:
- 
   # merging species with multiple gene copies:
   merged_filtered_output <- filtered_output |>
     group_by(species, genus, accession_numbers, mutation_name) |>
@@ -357,7 +337,7 @@ plot_classes_genera <- function(filtered_output,
     mutate(category = fct_relevel(category, "None")) |>
     mutate(category = fct_relevel(category, "Multiple", after = Inf)) |>
     mutate(category = fct_recode(category, " " = "None"))
-  
+
   
   cols <- c(" " = rgb(0,0,0,0),
             "43N" =  wes_palette("Zissou1")[5],
@@ -377,18 +357,39 @@ plot_classes_genera <- function(filtered_output,
     filter(class != "Unidentified") |>
     slice_max(n, n = n_classes_to_plot) |>
     pull(class)
+  
+  bubble_df <- species_with_muts |>
+    filter(class %in% classes_for_plotting) |>
+    group_by(class, n_possible) |>
+    summarise(
+      n_species = n(),   
+      .groups = "drop"
+    )
 
-
-  plot_A1 <- ggplot(filter(species_with_muts, class %in% classes_for_plotting)) +
-    # geom_jitter(
-    # aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-    # width = 0.2, size = 2.5, alpha = 0.1
-    # ) +
-    geom_violin(aes(x = reorder(class, dplyr::desc(class)), y = n_possible),
-      width=1.2, size=0.3
-    ) + 
+  plot_A1 <- ggplot(bubble_df) +
+    geom_point(
+      aes(x = reorder(class, dplyr::desc(class)),
+          y = n_possible,
+          size = n_species,
+          fill = n_species),
+      shape  = 21,
+      colour = "black",
+      stroke = 0.2
+    ) +
+    scale_size_continuous(range = c(2, 7), guide = "none" ) +
+    scale_fill_gradientn(
+      colours = c("#FBE3DC", "#E54E21", "#B63A19"),
+      limits  = c(0, max(bubble_df$n_species, na.rm = TRUE)),
+      breaks  = scales::pretty_breaks(n = 4),
+      name = "Number of species"
+    ) +
     # scale_fill_manual(values = cols_class, guide = "none") + 
-    scale_y_continuous(expand = c(0.01, 0)) +
+    scale_y_continuous(expand = c(0.01, 0.6)) +
+    guides(fill = guide_colourbar(
+      direction = "horizontal",
+      barwidth  = unit(50, "mm")
+      )
+    ) +
     theme_bw() + 
     theme(
       axis.title = element_text(size = 12, face = "bold"),
@@ -417,11 +418,14 @@ plot_classes_genera <- function(filtered_output,
       axis.text.x  = element_text(size = 10),
       legend.title = element_text(size = 10),
       legend.text  = element_text(size = 10) ) + 
-    scale_fill_manual(values = cols, name = " ") +
+    scale_fill_manual(values = cols, name = "Mutations") +
     guides(fill=guide_legend(nrow=1, byrow=TRUE)) 
 
   plot_A2_no_legend <- plot_A2 + theme(legend.position = "none")
   legend_a2 <- get_legend(plot_A2)
+  
+  plot_A1_no_legend <- plot_A1 + theme(legend.position = "none")
+  legend_a1 <- get_legend(plot_A1)
   
   # Plot B: predicted resistance mutations by genus
 
@@ -513,7 +517,7 @@ plot_classes_genera <- function(filtered_output,
       )
   
   # Combine A1 and A2 
-  plot_A <- plot_grid(plot_A1, plot_A2_no_legend, 
+  plot_A <- plot_grid(plot_A1_no_legend, plot_A2_no_legend, 
                     nrow = 1, rel_widths = c(1.2, 1))
 
   #Combine B1 and  B2 vertical
@@ -533,7 +537,13 @@ plot_classes_genera <- function(filtered_output,
                        labels = c("A", "B"))
         
   # Add the legend 
-  add_legend_plot <- plot_grid(main_plot, legend_a2, ncol = 1, rel_heights = c(1, 0.07)) 
+  legend_row <- plot_grid(
+    legend_a1, legend_a2,
+    nrow = 1,
+    rel_widths = c(1, 1),   
+    align = "h"
+  )
+  add_legend_plot <- plot_grid(main_plot, legend_row, ncol = 1, rel_heights = c(1, 0.07)) 
   ggsave(filename = file_name, add_legend_plot, width = 14, height = 8)
 }
 

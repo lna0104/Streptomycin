@@ -248,7 +248,8 @@ download_taxonomy <- function(summaries,
                     taxonomizr::getTaxonomy(our_taxa$tax_id, 
                                             sqlFile = database_file, 
                                             desiredTaxa = c("phylum", "class", "order", "family", "genus"))) |>
-    select(-tax_id, -species) |>
+    #select(-tax_id, -species) |>
+    select(-tax_id) |>
     distinct() |>
     # add class to two genera where class is missing:
     mutate(class = ifelse(genus == "Mycoplasmopsis", "Mollicutes", class)) |>
