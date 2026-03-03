@@ -465,9 +465,8 @@ rm.all.but("globsets")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
-bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE)
-meta_data_mod <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) |>
+#bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
+meta_data <- read_tsv("./data/bac120_metadata_r226.tsv", show_col_types = FALSE) |>
   transmute(
     accession,
     ncbi_genbank_assembly_accession,
@@ -501,10 +500,10 @@ meta_data_mod <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) 
     ncbi_species
   ) |>
   distinct()
-write_csv(meta_data_mod, "./data/meta_data_mod.csv")
+write_csv(meta_data, "./data/meta_data.csv")
 
 # Generate gtdb_taxonomy from metadata
-gtdb_taxonomy <- meta_data_mod |>
+gtdb_taxonomy <- meta_data |>
   select(gtdb_phylum, gtdb_class, gtdb_order, gtdb_family, gtdb_genus, gtdb_species, ncbi_species) |>
   distinct()
 write_csv(gtdb_taxonomy, "./data/gtdb_taxonomy.csv")
@@ -543,7 +542,7 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") # GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
-meta_data <- read_csv("./data/meta_data_mod.csv", show_col_types = FALSE) # GTDB information on included species
+meta_data <- read_csv("./data/meta_data.csv", show_col_types = FALSE) # GTDB information on included species
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
 outliers <- read_csv("./data/outliers.csv", show_col_types = FALSE) # misplaced species need to be removed later
 filtered_output_gtdb <- process_output_gtdb(filtered_output, gtdb_taxonomy)

@@ -243,9 +243,11 @@ get_phylosignals <- function(subtree,
 #' @param subtree a phylo object of the subset tree
 #' @param filtered_output a data frame providing the results of mutation screening of high quality rpoB sequences across bacterial species
 #' @param bacterial_taxonomy a data frame providing info on bacterial taxonomic phylogeny
+#' @param outliers a data frame providing species which are misplaced inside the original tree
 #' @param file_name the path that the plot should be save in
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
+#' 
 #' @export
 #'
 #' @examples plot_subtree(subtree, filtered_output, bacterial_taxonomy, "./plots/myfilename.pdf")
@@ -315,18 +317,6 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
 
   major_df <- clades_all |> filter(tier == "major")
   minor_df <- clades_all |> filter(tier == "minor")
-
-  # clades <- data.frame(
-  #   major_clade = unique(data_tree$major_clade),
-  #   common_ancestor = NA
-  # ) |>
-  #   filter(major_clade != "none")
-  # for (i in 1:length(clades$major_clade)) {
-  #   clades$common_ancestor[i] <- getMRCA(subtree, data_tree$node[data_tree$major_clade == clades$major_clade[i]])
-  # }
-
-  ## add clade nodes to data_tree
-  # data_tree <- full_join(data_tree, clades, by = join_by(major_clade))
 
   ## make the final tree data as a S4 object for plotting
   subtree_data <- tidytree::as.treedata(data_tree)
