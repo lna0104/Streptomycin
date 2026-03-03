@@ -22,12 +22,10 @@ write.csv(
   row.names = FALSE
 )
 
-t <- data_tree %>% filter(is.na(genus))
+tmp <- ncbi_gtdb_species_map |>
+  group_by(ncbi_species) |>
+  summarise(n = n(), .groups = "drop")
 
-
-t_letters <- t %>%
-  filter(str_detect(label, "^[A-Za-z]"))
-
-t_letters %>%
-  select(label) %>%
-  write_csv("./data/outliers.csv")
+tmp3 <- ncbi_gtdb_species_map |>
+  group_by(species) |>
+  summarise(n = n(), .groups = "drop")

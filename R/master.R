@@ -511,11 +511,17 @@ gtdb_taxonomy <- meta_data |>
   distinct()
 write_csv(gtdb_taxonomy, "./data/gtdb_taxonomy.csv")
 
-# Generate NCBI–GTDB species mapping table
+# Generate NCBI–GTDB species mapping table strict 1-1 map
 ncbi_gtdb_species_map <- meta_data |>
-  select(ncbi_species, species) |>
+  distinct(ncbi_species, species) |>
   filter(!is.na(ncbi_species), !is.na(species)) |>
-  distinct()
+  group_by(ncbi_species) |>
+  filter(n_distinct(species) == 1) |> #remove one NCBI to multiple GTDB matching
+  ungroup() |>
+  group_by(species) |>
+  filter(n_distinct(ncbi_species) == 1) |> #remove one GTDB to multiple NCBI matching
+  ungroup()
+
 write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
 
 
@@ -579,7 +585,7 @@ plot_subtree_clades(subtree, species_output, gtdb_taxonomy,
   file_path = "./plots/rpsL_phylogeny_relabelled/"
 )
 
-summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics.txt")
+summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics_relabelled.txt")
 
 # empty working environment to keep everything clean:
 rm.all.but("globsets")
