@@ -257,13 +257,17 @@ process_output <- function(output) {
     )
 }
 
-process_output_gtdb <- function(output, bacterial_taxonomy) {
+#' Map NCBI species names to GTDB taxonomy 
+#' 
+process_output_gtdb <- function(output, species_taxonomy_map) {
   processed_output <- output |>
     rename(
       ncbi_species = species,
       ncbi_genus = genus
     ) |>
-    left_join(bacterial_taxonomy, by = "ncbi_species", relationship = "many-to-many") |>
+    left_join(species_taxonomy_map |>
+                rename(gtdb_species = species), 
+              by = "ncbi_species", relationship = "many-to-many") |>
     mutate(
       species = coalesce(gtdb_species, ncbi_species),
       genus = sub(" .*", "", species),

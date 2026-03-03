@@ -476,8 +476,8 @@ meta_data <- read_tsv("./data/bac120_metadata_r226.tsv", show_col_types = FALSE)
   separate(
     gtdb_taxonomy,
     into = c(
-      "gtdb_domain", "gtdb_phylum", "gtdb_class", "gtdb_order",
-      "gtdb_family", "gtdb_genus", "gtdb_species"
+      "domain", "phylum", "class", "order",
+      "family", "genus", "species"
     ),
     sep = ";\\s*",
     remove = TRUE,
@@ -485,7 +485,10 @@ meta_data <- read_tsv("./data/bac120_metadata_r226.tsv", show_col_types = FALSE)
     extra = "drop"
   ) |>
   mutate(
-    across(starts_with("gtdb_"), ~ str_remove(.x, "^[a-z]__")),
+    across(
+      c(domain, phylum, class, order, family, genus, species),
+      ~ str_remove(.x, "^[a-z]__")
+    ),
     ncbi_species = ncbi_organism_name |>
       str_remove_all("\\[|\\]") |>
       str_remove_all("'") |>
@@ -496,17 +499,25 @@ meta_data <- read_tsv("./data/bac120_metadata_r226.tsv", show_col_types = FALSE)
   select(
     accession,
     ncbi_genbank_assembly_accession,
-    gtdb_phylum, gtdb_class, gtdb_order, gtdb_family, gtdb_genus, gtdb_species,
+    phylum, class, order, family, genus, species,
     ncbi_species
   ) |>
   distinct()
-write_csv(meta_data, "./data/meta_data.csv")
+write_csv(meta_data, "./data/gtdb_meta_data.csv")
 
 # Generate gtdb_taxonomy from metadata
 gtdb_taxonomy <- meta_data |>
-  select(gtdb_phylum, gtdb_class, gtdb_order, gtdb_family, gtdb_genus, gtdb_species, ncbi_species) |>
+  select(phylum, class, order, family, genus) |>
   distinct()
 write_csv(gtdb_taxonomy, "./data/gtdb_taxonomy.csv")
+
+# Generate NCBI–GTDB species mapping table
+ncbi_gtdb_species_map <- meta_data |>
+  select(ncbi_species, species) |>
+  filter(!is.na(ncbi_species), !is.na(species)) |>
+  distinct()
+write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
+
 
 # 2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/rpsL_mutation_screen.pdf")
@@ -542,10 +553,10 @@ rm.all.but("globsets")
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
 original_tree <- read.tree("./data/bac120.nwk") # GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
-meta_data <- read_csv("./data/meta_data.csv", show_col_types = FALSE) # GTDB information on included species
+meta_data <- read_csv("./data/gtdb_meta_data.csv", show_col_types = FALSE) # GTDB information on included species
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
 outliers <- read_csv("./data/outliers.csv", show_col_types = FALSE) # misplaced species need to be removed later
-filtered_output_gtdb <- process_output_gtdb(filtered_output, gtdb_taxonomy)
+filtered_output_gtdb <- process_output_gtdb(filtered_output, ncbi_gtdb_species_map)
 # 2. get species-level summary of mutation screen data:
 species_output <- get_species_output(filtered_output_gtdb)
 

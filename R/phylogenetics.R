@@ -77,10 +77,10 @@ get_subtree <- function(output, original_tree, meta_data, outliers) {
 
   # 1. create a column "species_accessions" in metadata
   meta_data_tree <- meta_data %>%
-    select(accession, ncbi_genbank_assembly_accession, gtdb_species) %>%
+    select(accession, ncbi_genbank_assembly_accession, species) %>%
     filter(accession %in% original_tree$tip.label) %>%
     mutate(acc_ID = paste(ncbi_genbank_assembly_accession,
-      gtdb_species,
+      species,
       sep = "_"
     ))
 
@@ -269,18 +269,16 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
 
   species_data <- species_output |>
     left_join(
-      bacterial_taxonomy |>
-        select(-gtdb_species, -ncbi_species) |>
-        distinct(),
-      by = join_by(genus == gtdb_genus),
+      bacterial_taxonomy,
+      by = join_by(genus),
       relationship = "many-to-many"
     ) |>
     mutate(
       major_clade = case_when(
-        gtdb_family %in% clade_labels$clade[clade_labels$tier == "major"] ~ gtdb_family,
-        gtdb_order %in% clade_labels$clade[clade_labels$tier == "major"] ~ gtdb_order,
-        gtdb_class %in% clade_labels$clade[clade_labels$tier == "major"] ~ gtdb_class,
-        gtdb_phylum %in% clade_labels$clade[clade_labels$tier == "major"] ~ gtdb_phylum,
+        family %in% clade_labels$clade[clade_labels$tier == "major"] ~ family,
+        order %in% clade_labels$clade[clade_labels$tier == "major"] ~ order,
+        class %in% clade_labels$clade[clade_labels$tier == "major"] ~ class,
+        phylum %in% clade_labels$clade[clade_labels$tier == "major"] ~ phylum,
         TRUE ~ "none"
       )
     )
@@ -298,10 +296,10 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
   ## identify common ancestor nodes for species in major bacterial orders
   get_nodes_for_clade <- function(dt, clade) {
     nodes <- c(
-      dt$node[dt$gtdb_phylum == clade],
-      dt$node[dt$gtdb_class == clade],
-      dt$node[dt$gtdb_order == clade],
-      dt$node[dt$gtdb_family == clade]
+      dt$node[dt$phylum == clade],
+      dt$node[dt$class == clade],
+      dt$node[dt$order == clade],
+      dt$node[dt$family == clade]
     )
     unique(na.omit(nodes))
   }
@@ -433,7 +431,11 @@ plot_subtree_clade <- function(subtree,
   subtree$tip.label <- gsub("_", " ", (stringr::str_sub(subtree$tip.label, 17, -1)))
 
   species_data <- species_output |>
-    dplyr::left_join(bacterial_taxonomy, by = dplyr::join_by(genus), relationship = "many-to-many") |>
+    dplyr::left_join(
+      bacterial_taxonomy,
+      by = join_by(genus),
+      relationship = "many-to-many"
+    ) |>
     dplyr::mutate(
       family = dplyr::if_else(genus %in% c("Nitrospira", "Spirochaeta"), NA_character_, family),
       order  = dplyr::if_else(genus %in% c("Spirochaeta"), NA_character_, order)
