@@ -465,8 +465,8 @@ rm.all.but("globsets")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
-#bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata_r226.tsv", show_col_types = FALSE) |>
+# bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
+meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) |>
   transmute(
     accession,
     ncbi_genbank_assembly_accession,
@@ -516,10 +516,10 @@ ncbi_gtdb_species_map <- meta_data |>
   distinct(ncbi_species, species) |>
   filter(!is.na(ncbi_species), !is.na(species)) |>
   group_by(ncbi_species) |>
-  filter(n_distinct(species) == 1) |> #remove one NCBI to multiple GTDB matching
+  filter(n_distinct(species) == 1) |> # remove one NCBI to multiple GTDB matching
   ungroup() |>
   group_by(species) |>
-  filter(n_distinct(ncbi_species) == 1) |> #remove one GTDB to multiple NCBI matching
+  filter(n_distinct(ncbi_species) == 1) |> # remove one GTDB to multiple NCBI matching
   ungroup()
 
 write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
@@ -561,20 +561,21 @@ original_tree <- read.tree("./data/bac120.nwk") # GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
 meta_data <- read_csv("./data/gtdb_meta_data.csv", show_col_types = FALSE) # GTDB information on included species
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
-outliers <- read_csv("./data/outliers.csv", show_col_types = FALSE) # misplaced species need to be removed later
+# outliers <- read_csv("./data/outliers.csv", show_col_types = FALSE) # misplaced species need to be removed later
 ncbi_gtdb_species_map <- read_csv("./data/ncbi_gtdb_species_map.csv", show_col_types = FALSE)
 filtered_output_gtdb <- process_output_gtdb(filtered_output, ncbi_gtdb_species_map)
 # 2. get species-level summary of mutation screen data:
 species_output <- get_species_output(filtered_output_gtdb)
 
 # 3.subset the tree based on species accessions and names:
-subtree <- get_subtree(filtered_output_gtdb, original_tree, meta_data, outliers)
-write.tree(subtree, file = "./output/rpsL_subtree_relabelled.nwk")
+subtree <- get_subtree(filtered_output_gtdb, original_tree, meta_data)
+write.tree(subtree$tree, file = "./output/rpsL_subtree_relabelled.nwk")
 
 # 4. subtree visualization:
 subtree <- read.tree("./output/rpsL_subtree_relabelled.nwk")
+# subtree <- read.tree("./output/rpsL_subtree.nwk")
 # big tree of all species:
-plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogeny_relabelled/whole_genome_tree.svg")
+plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogeny_relabelled/whole_genome_tree.pdf")
 
 # smaller trees of individual clades:
 plot_subtree_clades(subtree, species_output, gtdb_taxonomy,
@@ -585,7 +586,7 @@ plot_subtree_clades(subtree, species_output, gtdb_taxonomy,
   file_path = "./plots/rpsL_phylogeny_relabelled/"
 )
 
-summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics_relabelled.txt")
+summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics.txt")
 
 # empty working environment to keep everything clean:
 rm.all.but("globsets")

@@ -15,15 +15,16 @@ get_subtree <- function(output, original_tree, meta_data, outliers) {
   #    distinct()
   #  #1. create a column "species_accessions" in metadata
   #  meta_data_mod <- meta_data %>%
-  #    select(accession, ncbi_genbank_assembly_accession, ncbi_organism_name) %>%
-  #    mutate(species_name = gsub("\[|\]", "", ncbi_organism_name)) %>%
-  #    mutate(species_name = gsub("\'|\'", "", species_name)) %>%
-  #    mutate(species_name = str_replace_all(species_name, "Candidatus", "")) %>%
-  #    mutate(species_name = gsub("^ ", "", species_name)) %>%
-  #    mutate(species_name = sub("^([^ ]+[ ]+[^ ]+).*$", "\1", #keeps only the first two words of a character element
-  #                              species_name)) %>%
-  #    filter(accession %in% original_tree$tip.label) %>%#    mutate(acc_ID = paste(ncbi_genbank_assembly_accession,
-  #                          species_name, sep = "_"))
+  #   select(accession, ncbi_genbank_assembly_accession, ncbi_organism_name) %>%
+  #   mutate(species_name = gsub("\\[|\\]", "", ncbi_organism_name)) %>%
+  #   mutate(species_name = gsub("\\'|\\'", "", species_name)) %>%
+  #   mutate(species_name = str_replace_all(species_name, "Candidatus", "")) %>%
+  #   mutate(species_name = gsub("^ ", "", species_name)) %>%
+  #   mutate(species_name = sub("^([^ ]+[ ]+[^ ]+).*$", "\\1", #keeps only the first two words of a character element
+  #                             species_name)) %>%
+  #   filter(accession %in% original_tree$tip.label) %>%
+  #   mutate(acc_ID = paste(ncbi_genbank_assembly_accession,
+  #                         species_name, sep = "_"))
   #  #2. change tip labels from "accessions" to "species_accessions"
   #  original_tree$tip.label <- unname(setNames(meta_data_mod$acc_ID, meta_data_mod$accession)[original_tree$tip.label])
   #  original_tree$tip.label <- paste0(sub("A", "F", original_tree$tip.label))
@@ -109,9 +110,9 @@ get_subtree <- function(output, original_tree, meta_data, outliers) {
   })
 
   # subset for outliers to be removed
-  subset_tip_indices_outliers <- which(purrr::reduce(lapply(outliers$outliers, function(subset_label) {
-    grepl(subset_label, original_tree$tip.label, fixed = TRUE) # checks the presence of each species names in all tip labels
-  }), `|`))
+  # subset_tip_indices_outliers <- which(purrr::reduce(lapply(outliers$outliers, function(subset_label) {
+  #   grepl(subset_label, original_tree$tip.label, fixed = TRUE) # checks the presence of each species names in all tip labels
+  # }), `|`))
 
   # sum of all subsets to be kept
   subset_tip_indices <- unique(c(
@@ -122,11 +123,27 @@ get_subtree <- function(output, original_tree, meta_data, outliers) {
 
   # 6. get the sub_tree
   subset_tree <- get_subtree_with_tips(original_tree,
-    only_tips = subset_tip_indices, omit_tips = subset_tip_indices_outliers,
+    only_tips = subset_tip_indices,
     force_keep_root = TRUE
   )$subtree
 
-  return(subset_tree)
+  tip_labels <- data.frame(old_tip_label = subset_tree$tip.label) %>%
+    mutate(
+      acc = str_extract(old_tip_label, "^[^_]+_[^_]+"),
+      species_phylo = str_remove(old_tip_label, "^[^_]+_[^_]+_")
+    ) %>%
+    left_join(our_species, by = join_by(acc == accession_numbers)) %>%
+    select(acc, species_phylo, species) %>%
+    distinct() %>%
+    mutate(species = ifelse(is.na(species), species_phylo, species)) %>%
+    mutate(new_tip_label = paste0(acc, "_", species))
+  # replace new names in tip.labels of tree
+  subset_tree$tip.label <- tip_labels$new_tip_label
+
+  return(list(
+    tree = subset_tree,
+    tips = tip_labels
+  ))
 }
 
 
@@ -247,7 +264,7 @@ get_phylosignals <- function(subtree,
 #' @param file_name the path that the plot should be save in
 #'
 #' @return a plot presenting phylo_genetic relationship among bacterial species
-#' 
+#'
 #' @export
 #'
 #' @examples plot_subtree(subtree, filtered_output, bacterial_taxonomy, "./plots/myfilename.pdf")
@@ -264,8 +281,34 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
     "Coriobacteriia", "minor"
   )
 
+  clades_to_label <- c(
+    "Sphingomonadales",
+    "Devosiaceae",
+    "Rickettsiales",
+    "Coriobacteriia"
+  )
+
   # change tip labels to make manipulations easier:
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
+
+  # species_data <- species_output |>
+  #   left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> # join bacterial families to tree information by column genus
+  #   mutate(major_clade = NA) |>
+  #   mutate(major_clade = ifelse(phylum %in% clades_to_label, phylum, major_clade)) |>
+  #   mutate(major_clade = ifelse(class %in% clades_to_label, class, major_clade)) |>
+  #   mutate(major_clade = ifelse(order %in% clades_to_label, order, major_clade)) |>
+  #   mutate(major_clade = ifelse(family %in% clades_to_label, family, major_clade))
+
+  # data_tree <- as_tibble(subtree) |>
+  #   left_join(species_data, by = join_by(label == species)) |>
+  #   filter(!is.na(node), !is.na(parent), !is.na(label)) |>
+  #   replace_na(list(
+  #     family = "undefined",
+  #     order = "undefined",
+  #     class = "undefined",
+  #     major_clade = "none"
+  #   ))
+
 
   species_data <- species_output |>
     left_join(

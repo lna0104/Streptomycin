@@ -257,24 +257,29 @@ process_output <- function(output) {
     )
 }
 
-#' Map NCBI species names to GTDB taxonomy 
-#' 
+#' Map NCBI species names to GTDB taxonomy
+#'
 process_output_gtdb <- function(output, species_taxonomy_map) {
-  processed_output <- output |>
+  tax_map <- species_taxonomy_map %>%
+    transmute(
+      ncbi_species,
+      gtdb_species = species
+    ) %>%
+    distinct()
+
+  output %>%
     rename(
       ncbi_species = species,
-      ncbi_genus = genus
-    ) |>
-    left_join(species_taxonomy_map |>
-                rename(gtdb_species = species), 
-              by = "ncbi_species", relationship = "many-to-many") |>
+      ncbi_genus   = genus
+    ) %>%
+    left_join(tax_map, by = "ncbi_species", relationship = "many-to-many") %>%
     mutate(
       species = coalesce(gtdb_species, ncbi_species),
-      genus = sub(" .*", "", species),
-      species = species |>
-        str_replace_all("_", " ") |>
+      genus = if_else(!is.na(species) & species != "", word(species, 1), NA_character_),
+      species = species %>%
+        str_replace_all("_", " ") %>%
         str_squish()
-    ) |>
+    ) %>%
     distinct()
 }
 
