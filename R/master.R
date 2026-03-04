@@ -465,69 +465,19 @@ rm.all.but("globsets")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
-# bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
-meta_data <- read_tsv("./data/bac120_metadata.tsv", show_col_types = FALSE) |>
-  transmute(
-    accession,
-    ncbi_genbank_assembly_accession,
-    gtdb_taxonomy = str_squish(gtdb_taxonomy),
-    ncbi_organism_name = str_squish(ncbi_organism_name)
-  ) |>
-  separate(
-    gtdb_taxonomy,
-    into = c(
-      "domain", "phylum", "class", "order",
-      "family", "genus", "species"
-    ),
-    sep = ";\\s*",
-    remove = TRUE,
-    fill = "right",
-    extra = "drop"
-  ) |>
-  mutate(
-    across(
-      c(domain, phylum, class, order, family, genus, species),
-      ~ str_remove(.x, "^[a-z]__")
-    ),
-    ncbi_species = ncbi_organism_name |>
-      str_remove_all("\\[|\\]") |>
-      str_remove_all("'") |>
-      str_replace_all("\\bCandidatus\\b", "") |>
-      str_squish() |>
-      str_replace("^([^ ]+\\s+[^ ]+).*$", "\\1")
-  ) |>
-  select(
-    accession,
-    ncbi_genbank_assembly_accession,
-    phylum, class, order, family, genus, species,
-    ncbi_species
-  ) |>
-  distinct()
+bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
+meta_data <- build_gtdb_metadata("./data/bac120_metadata.tsv")
 write_csv(meta_data, "./data/gtdb_meta_data.csv")
 
-# Generate gtdb_taxonomy from metadata
+# bacterial taxonomic information from GTDB
 gtdb_taxonomy <- meta_data |>
   select(phylum, class, order, family, genus) |>
   distinct()
 write_csv(gtdb_taxonomy, "./data/gtdb_taxonomy.csv")
 
-# Generate NCBI–GTDB species mapping table strict 1-1 map
-ncbi_gtdb_species_map <- meta_data |>
-  distinct(ncbi_species, species) |>
-  filter(!is.na(ncbi_species), !is.na(species)) |>
-  group_by(ncbi_species) |>
-  filter(n_distinct(species) == 1) |> # remove one NCBI to multiple GTDB matching
-  ungroup() |>
-  group_by(species) |>
-  filter(n_distinct(ncbi_species) == 1) |> # remove one GTDB to multiple NCBI matching
-  ungroup()
-
-write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
-
-
 # 2. analysis of mutant screen:
 plot_mutation_screen(filtered_output, file_name = "./plots/rpsL_mutation_screen.pdf")
-plot_classes_genera(filtered_output, gtdb_taxonomy, file_name = "./plots/rpsL_classes_genera_v2.svg")
+plot_classes_genera(filtered_output, gtdb_taxonomy, file_name = "./plots/rpsL_classes_genera.svg")
 plot_evolvability_by_class(filtered_output, gtdb_taxonomy, file_name = "./plots/rpsL_evolvability_by_class.pdf")
 summarise_mutation_screen(filtered_output, target_gene = "rpsL", file_name = "./results/summary_rpsL_mutation_screen.txt")
 get_resistance_taxonomy(filtered_output, gtdb_taxonomy, file_path = "./output/", gene_name = "rpsL")
@@ -560,10 +510,20 @@ filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types 
 original_tree <- read.tree("./data/bac120.nwk") # GTDB bacterial tree of life
 # bacterial_taxonomy <- read_csv("./data/NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
 meta_data <- read_csv("./data/gtdb_meta_data.csv", show_col_types = FALSE) # GTDB information on included species
-gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
-# outliers <- read_csv("./data/outliers.csv", show_col_types = FALSE) # misplaced species need to be removed later
-ncbi_gtdb_species_map <- read_csv("./data/ncbi_gtdb_species_map.csv", show_col_types = FALSE)
+# Generate NCBI–GTDB species mapping table strict 1-1 map
+ncbi_gtdb_species_map <- meta_data |>
+  distinct(ncbi_species, species) |>
+  filter(!is.na(ncbi_species), !is.na(species)) |>
+  group_by(ncbi_species) |>
+  filter(n_distinct(species) == 1) |> # remove one NCBI to multiple GTDB matching
+  ungroup() |>
+  group_by(species) |>
+  filter(n_distinct(ncbi_species) == 1) |> # remove one GTDB to multiple NCBI matching
+  ungroup()
+write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
 filtered_output_gtdb <- process_output_gtdb(filtered_output, ncbi_gtdb_species_map)
+
+gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
 # 2. get species-level summary of mutation screen data:
 species_output <- get_species_output(filtered_output_gtdb)
 
@@ -575,7 +535,7 @@ write.tree(subtree$tree, file = "./output/rpsL_subtree_relabelled.nwk")
 subtree <- read.tree("./output/rpsL_subtree_relabelled.nwk")
 # subtree <- read.tree("./output/rpsL_subtree.nwk")
 # big tree of all species:
-plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogeny_relabelled/whole_genome_tree.pdf")
+plot_subtree(subtree, species_output, gtdb_taxonomy, file_name = "./plots/rpsL_phylogeny_relabelled/whole_genome_tree.svg")
 
 # smaller trees of individual clades:
 plot_subtree_clades(subtree, species_output, gtdb_taxonomy,

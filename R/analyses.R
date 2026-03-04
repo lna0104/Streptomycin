@@ -257,8 +257,47 @@ process_output <- function(output) {
     )
 }
 
+#' Build GTDB metadata from raw metadata
+build_gtdb_metadata <- function(input_path) {
+  meta_data <- read_tsv(input_path, show_col_types = FALSE) %>%
+    transmute(
+      accession,
+      ncbi_genbank_assembly_accession,
+      gtdb_taxonomy       = str_squish(gtdb_taxonomy),
+      ncbi_organism_name  = str_squish(ncbi_organism_name)
+    ) %>%
+    separate(
+      gtdb_taxonomy,
+      into = c("domain", "phylum", "class", "order", "family", "genus", "species"),
+      sep = ";\\s*",
+      remove = TRUE,
+      fill = "right",
+      extra = "drop"
+    ) %>%
+    mutate(
+      across(
+        c(domain, phylum, class, order, family, genus, species),
+        ~ str_remove(.x, "^[a-z]__")
+      ),
+      ncbi_species = ncbi_organism_name %>%
+        str_remove_all("\\[|\\]") %>%
+        str_remove_all("'") %>%
+        str_replace_all("\\bCandidatus\\b", "") %>%
+        str_squish() %>%
+        str_replace("^([^ ]+\\s+[^ ]+).*$", "\\1")
+    ) %>%
+    select(
+      accession,
+      ncbi_genbank_assembly_accession,
+      phylum, class, order, family, genus, species,
+      ncbi_species
+    ) %>%
+    distinct()
+
+  return(meta_data)
+}
+
 #' Map NCBI species names to GTDB taxonomy
-#'
 process_output_gtdb <- function(output, species_taxonomy_map) {
   tax_map <- species_taxonomy_map %>%
     transmute(
