@@ -384,7 +384,11 @@ plot_classes_genera <- function(filtered_output,
       name = "Number of species"
     ) +
     # scale_fill_manual(values = cols_class, guide = "none") + 
-    scale_y_continuous(expand = c(0.01, 0.6)) +
+    scale_y_continuous(
+      breaks = 2:8,
+      limits = c(2, 8),
+      expand = c(0.01, 0.6)
+    ) +
     guides(fill = guide_colourbar(
       direction = "horizontal",
       barwidth  = unit(50, "mm")

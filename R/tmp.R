@@ -64,3 +64,47 @@ ncbi_gtdb_species_map <- meta_data |>
 tmp <- filtered_output |>
   left_join(bacterial_taxonomy, by = join_by(genus == genus)) |>
   distinct()
+
+t <- read_csv("./results/rpsL_predicted_resistance.csv")
+t1 <- t %>%  filter(mutations=="88R") %>% pull(species)
+t2 <- t %>%  filter(mutations=="43R") %>% pull(species)
+t3 <- t %>%  filter(mutations !="43R" & mutations != "88R")
+
+
+t <- species_output |> filter(resistance == "resistant")
+t1 <- filtered_output_gtdb |> filter(mutation_category == "present") |>
+  pull(species) |>
+  unique()
+
+t2 <- output |>
+  # step 1: merge multiple gene copies into one:
+  group_by(species, genus, accession_numbers, mutation_name) |>
+  summarise(
+    mutation_category = ifelse(any(mutation_category == "present"),
+                               "present",
+                               ifelse(any(mutation_category == "possible"), "possible", "impossible")
+    ),
+    n_possible = sum(n_possible),
+    .groups = "drop"
+  ) |>
+  # step 2: summarise across all screened mutations:
+  group_by(species, genus, accession_numbers) |>
+  summarise(
+    resistance = any(mutation_category == "present"),
+    evolvabilityI = sum(mutation_category == "possible"),
+    evolvabilityII = sum(n_possible),
+    .groups = "drop"
+  ) 
+
+length(t2 %>% filter(resistance == TRUE) %>% pull(species) %>% unique())
+length(species_output %>% filter(resistance == "resistant") %>% pull(species) %>% unique())
+length(species_data %>% filter(resistance == "resistant") %>% pull(species) %>% unique())
+length(data_tree %>% filter(resistance == "resistant") %>% pull(label) %>% unique())
+tmp <- species_output |>
+  filter(resistance == "resistant") |>
+  pull(species) |>
+  setdiff(subtree$tip.label) %>% 
+  as_tibble()
+
+dtree <- as_tibble(subtree$tip.label)
+

@@ -272,42 +272,17 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
   # clades to be labeled in the tree:
   clade_labels <- tibble::tribble(
     ~clade, ~tier,
-    "Planctomycetota", "major",
-    "Actinomycetota", "major",
+    "Planctomycetia", "major",
+    "Actinomycetes", "major",
     "Alphaproteobacteria", "major",
     "Sphingomonadales", "minor",
     "Devosiaceae", "minor",
     "Rickettsiales", "minor",
-    "Coriobacteriia", "minor"
-  )
-
-  clades_to_label <- c(
-    "Sphingomonadales",
-    "Devosiaceae",
-    "Rickettsiales",
-    "Coriobacteriia"
+    "Coriobacteriia", "major"
   )
 
   # change tip labels to make manipulations easier:
   subtree$tip.label <- gsub("_", " ", (str_sub(subtree$tip.label, 17, -1)))
-
-  # species_data <- species_output |>
-  #   left_join(bacterial_taxonomy, by = join_by(genus), relationship = "many-to-many") |> # join bacterial families to tree information by column genus
-  #   mutate(major_clade = NA) |>
-  #   mutate(major_clade = ifelse(phylum %in% clades_to_label, phylum, major_clade)) |>
-  #   mutate(major_clade = ifelse(class %in% clades_to_label, class, major_clade)) |>
-  #   mutate(major_clade = ifelse(order %in% clades_to_label, order, major_clade)) |>
-  #   mutate(major_clade = ifelse(family %in% clades_to_label, family, major_clade))
-
-  # data_tree <- as_tibble(subtree) |>
-  #   left_join(species_data, by = join_by(label == species)) |>
-  #   filter(!is.na(node), !is.na(parent), !is.na(label)) |>
-  #   replace_na(list(
-  #     family = "undefined",
-  #     order = "undefined",
-  #     class = "undefined",
-  #     major_clade = "none"
-  #   ))
 
 
   species_data <- species_output |>

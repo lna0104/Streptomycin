@@ -465,7 +465,7 @@ rm.all.but("globsets")
 rpsL_target_sequences <- readDNAStringSet("./output/rpsL_target_sequences.fa")
 rpsL_reference_Ecoli <- readDNAStringSet("./data/rpsL_references.fasta")[["rpsL_Escherichia_coli_MG1655"]]
 filtered_output <- read_csv("./output/rpsL_filtered_output.csv", show_col_types = FALSE)
-bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
+#bacterial_taxonomy <- read_csv("./data/rpsL_NCBI_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from NCBI
 meta_data <- build_gtdb_metadata("./data/bac120_metadata.tsv")
 write_csv(meta_data, "./data/gtdb_meta_data.csv")
 
@@ -520,7 +520,7 @@ ncbi_gtdb_species_map <- meta_data |>
   group_by(species) |>
   filter(n_distinct(ncbi_species) == 1) |> # remove one GTDB to multiple NCBI matching
   ungroup()
-write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
+#write_csv(ncbi_gtdb_species_map, "./data/ncbi_gtdb_species_map.csv")
 filtered_output_gtdb <- process_output_gtdb(filtered_output, ncbi_gtdb_species_map)
 
 gtdb_taxonomy <- read_csv("./data/gtdb_taxonomy.csv", show_col_types = FALSE) # bacterial taxonomic information from gtdb
@@ -546,7 +546,7 @@ plot_subtree_clades(subtree, species_output, gtdb_taxonomy,
   file_path = "./plots/rpsL_phylogeny_relabelled/"
 )
 
-summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics.txt")
+summarise_phylogenetics(subtree, species_output, sample_n = globsets$phylo_stats_sample_n, "./results/summary_rpsL_phylogenetics_relabelled.txt")
 
 # empty working environment to keep everything clean:
 rm.all.but("globsets")
