@@ -110,17 +110,9 @@ check_out_mutation <- function(mutations_list,
 
   # calculate Levenshtein distance between E. coli and target gene core region:
   # determine whether to use the core region or the original sequence
-  if (length(protein_Ecoli) > 300) {
-    # Use core region if gene length > 300
-    from_target <- ALJEbinf::translateCoordinate(501, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-    to_target <- ALJEbinf::translateCoordinate(600, coords, direction = "RefToFocal", AAinput = TRUE, AAoutput = TRUE)
-    core_target <- protein_target[from_target:to_target]
-    core_Ecoli <- protein_Ecoli[501:600]
-  } else {
-    # Use full original sequence if gene length ≤ 300
-    core_target <- protein_target
-    core_Ecoli <- protein_Ecoli
-  }
+  core_target <- protein_target
+  core_Ecoli <- protein_Ecoli
+
   result$core_dist <- pwalign::stringDist(c(Biostrings::AAStringSet(core_target), Biostrings::AAStringSet(core_Ecoli)),
     method = "levenshtein"
   )
@@ -167,7 +159,7 @@ screen_target_sequences <- function(target_sequences, reference_Ecoli, mutation_
       }
     }
 
-    saveRDS(i, file = paste0("./output/progress/sequence_", i, "_out_of_", length(rpsL_target_sequences), "_complete.rds"))
+    saveRDS(i, file = paste0("./output/progress/sequence_", i, "_out_of_", length(target_sequences), "_complete.rds"))
     return(output)
   })
   return(final_output)

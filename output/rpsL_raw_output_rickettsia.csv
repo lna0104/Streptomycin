@@ -1,0 +1,353 @@
+accession_numbers,species,target_name,gene_copy,target_length,alig_score,core_dist,AA_pos_Ecoli,AA_mutation,AA_target,Codon_target,n_possible
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_965196655.1,Rickettsia endosymbiont of Nabis limbatus,rpsL_1_Rickettsia endosymbiont of Nabis limbatus_GCF_965196655.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964291875.1,Rickettsia endosymbiont of Pantilius tunicatus,rpsL_1_Rickettsia endosymbiont of Pantilius tunicatus_GCF_964291875.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_963970025.1,Rickettsia helvetica,rpsL_1_Rickettsia helvetica_GCF_963970025.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964030815.1,Rickettsia endosymbiont of Seladonia tumulorum,rpsL_1_Rickettsia endosymbiont of Seladonia tumulorum_GCF_964030815.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,86,C,Q,CAG,0
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,91,L,P,CCG,1
+GCF_964030775.1,Rickettsia endosymbiont of Aspidapion aeneum,rpsL_1_Rickettsia endosymbiont of Aspidapion aeneum_GCF_964030775.1,1,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964026455.1,Rickettsia endosymbiont of Lasioglossum villosulum,rpsL_1_Rickettsia endosymbiont of Lasioglossum villosulum_GCF_964026455.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,86,C,Q,CAG,0
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,91,L,P,CCG,1
+GCF_964026565.1,Rickettsia endosymbiont of Ceutorhynchus obstrictus,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus obstrictus_GCF_964026565.1,1,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964026465.1,Rickettsia endosymbiont of Rhinocyllus conicus,rpsL_1_Rickettsia endosymbiont of Rhinocyllus conicus_GCF_964026465.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964026435.1,Rickettsia endosymbiont of Gonocerus acuteangulatus,rpsL_1_Rickettsia endosymbiont of Gonocerus acuteangulatus_GCF_964026435.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,86,C,Q,CAA,0
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,91,L,P,CCA,1
+GCF_964026445.1,Rickettsia endosymbiont of Cantharis rufa,rpsL_1_Rickettsia endosymbiont of Cantharis rufa_GCF_964026445.1,1,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,86,C,Q,CAG,0
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,91,L,P,CCG,1
+GCF_964026385.1,Rickettsia endosymbiont of Polydrusus tereticollis,rpsL_1_Rickettsia endosymbiont of Polydrusus tereticollis_GCF_964026385.1,1,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_045865205.1,Candidatus Rickettsia kedanie,rpsL_1_Candidatus Rickettsia kedanie_GCF_045865205.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,86,C,Q,CAG,0
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,91,L,P,CCG,1
+GCF_964030945.1,Rickettsia endosymbiont of Orchestes rusci,rpsL_1_Rickettsia endosymbiont of Orchestes rusci_GCF_964030945.1,1,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,86,C,Q,CAG,0
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_964030725.1,Rickettsia endosymbiont of Urophora cardui,rpsL_1_Rickettsia endosymbiont of Urophora cardui_GCF_964030725.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_016743795.2,Rickettsia tillamookensis,rpsL_1_Rickettsia tillamookensis_GCF_016743795.2,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,43,N,R,AGG,0
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,43,R,R,AGG,2
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,43,T,R,AGG,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,86,C,R,CGG,0
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,88,E,K,AAA,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,88,R,K,AAA,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,91,L,P,CCA,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_1_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,1,375,126.11709594726562,13,92,D,G,GGT,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,43,N,K,AAA,2
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,43,R,K,AAA,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,43,T,K,AAA,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,86,C,Q,CAG,0
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,88,E,P,CCT,0
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,88,R,P,CCT,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,91,L,P,CCT,1
+GCF_918308855.1,Rickettsia endosymbiont of Ceutorhynchus assimilis,rpsL_2_Rickettsia endosymbiont of Ceutorhynchus assimilis_GCF_918308855.1,2,390,-29.719566345214844,24,92,D,G,GGG,0
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,43,N,K,AAG,2
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,43,R,K,AAG,1
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,43,T,K,AAG,1
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,86,C,R,AGG,0
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,88,E,P,CCT,0
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,88,R,P,CCT,1
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,91,L,P,CCG,1
+GCF_936269705.1,Rickettsia endosymbiont of Oedothorax gibbosus,rpsL_1_Rickettsia endosymbiont of Oedothorax gibbosus_GCF_936269705.1,1,387,27.53665542602539,15,92,D,G,GGT,1
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,43,N,K,AAG,2
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,43,R,K,AAG,1
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,43,T,K,AAG,1
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,86,C,R,AGA,0
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,88,E,P,CCT,0
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,88,R,P,CCT,1
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,91,L,P,CCT,1
+GCF_015476335.1,Rickettsia endosymbiont of Cardiosporidium cionae,rpsL_1_Rickettsia endosymbiont of Cardiosporidium cionae_GCF_015476335.1,1,378,38.99396896362305,17,92,D,G,GGA,0
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,43,N,R,AGA,0
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,43,R,R,AGA,2
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,43,T,R,AGA,1
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,86,C,R,AGA,0
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,88,E,K,AAG,1
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,88,R,K,AAG,1
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,91,L,P,CCA,1
+GCF_009690945.1,Rickettsiales endosymbiont of Trichoplax sp. H2,rpsL_1_Rickettsiales endosymbiont of Trichoplax sp. H2_GCF_009690945.1,1,375,242.76246643066406,6,92,D,G,GGA,0
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_007989425.1,Rickettsia asiatica,rpsL_1_Rickettsia asiatica_GCF_007989425.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,43,N,K,AAG,2
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,43,R,K,AAG,1
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,43,T,K,AAG,1
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,86,C,R,CGG,0
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,88,E,P,CCT,0
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,88,R,P,CCT,1
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,91,L,P,CCT,1
+GCF_004210275.1,Rickettsiales endosymbiont of Peranema trichophorum,rpsL_1_Rickettsiales endosymbiont of Peranema trichophorum_GCF_004210275.1,1,372,256.087158203125,8,92,D,S,AGT,0
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,43,N,K,AAG,2
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,43,R,K,AAG,1
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,43,T,K,AAG,1
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,86,C,R,AGG,0
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,88,E,K,AAG,1
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,88,R,K,AAG,1
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,91,L,P,CCT,1
+GCF_003932735.1,Rickettsiales endosymbiont of Stachyamoeba lipophora,rpsL_1_Rickettsiales endosymbiont of Stachyamoeba lipophora_GCF_003932735.1,1,372,182.2879180908203,11,92,D,G,GGT,1
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_003664375.1,Candidatus Rickettsia colombianensi,rpsL_1_Candidatus Rickettsia colombianensi_GCF_003664375.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_900243065.1,Rickettsia fournieri,rpsL_1_Rickettsia fournieri_GCF_900243065.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,43,N,K,AAG,2
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,43,R,K,AAG,1
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,43,T,K,AAG,1
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,86,C,R,AGG,0
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,88,E,P,CCT,0
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,88,R,P,CCT,1
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,91,L,P,CCG,1
+GCF_002259525.1,Rickettsia endosymbiont of Culicoides newsteadi,rpsL_1_Rickettsia endosymbiont of Culicoides newsteadi_GCF_002259525.1,1,387,38.079368591308594,15,92,D,G,GGT,1
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000828125.2,Rickettsia asembonensis,rpsL_1_Rickettsia asembonensis_GCF_000828125.2,1,390,-40.262271881103516,24,92,D,G,GGT,1
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000263055.1,Rickettsia honei,rpsL_1_Rickettsia honei_GCF_000263055.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000284155.1,Rickettsia australis,rpsL_1_Rickettsia australis_GCF_000284155.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,86,C,Q,CAA,0
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000284075.1,Rickettsia rhipicephali,rpsL_1_Rickettsia rhipicephali_GCF_000284075.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,43,N,K,AAA,2
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,43,R,K,AAA,1
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,43,T,K,AAA,1
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,86,C,Q,CAG,0
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,88,E,P,CCT,0
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,88,R,P,CCT,1
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,91,L,P,CCA,1
+GCF_000283915.1,Rickettsia canadensis,rpsL_1_Rickettsia canadensis_GCF_000283915.1,1,390,-40.26227569580078,24,92,D,G,GGG,0
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,91,L,P,CCT,1
+GCF_000277165.1,Rickettsia prowazekii,rpsL_1_Rickettsia prowazekii_GCF_000277165.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000237845.1,Rickettsia slovaca,rpsL_1_Rickettsia slovaca_GCF_000237845.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000499665.2,Rickettsia monacensis,rpsL_1_Rickettsia monacensis_GCF_000499665.2,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000825685.1,Rickettsia hoogstraalii,rpsL_1_Rickettsia hoogstraalii_GCF_000825685.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000804505.1,Rickettsia felis,rpsL_1_Rickettsia felis_GCF_000804505.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000166935.1,Rickettsia sibirica,rpsL_1_Rickettsia sibirica_GCF_000166935.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000751075.1,Rickettsia tamurae,rpsL_1_Rickettsia tamurae_GCF_000751075.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000485845.1,Rickettsia gravesii,rpsL_1_Rickettsia gravesii_GCF_000485845.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,91,L,P,CCA,1
+GCF_000018225.1,Rickettsia rickettsii,rpsL_1_Rickettsia rickettsii_GCF_000018225.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,43,N,K,AAA,2
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,43,R,K,AAA,1
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,43,T,K,AAA,1
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,86,C,Q,CAG,0
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,88,E,P,CCT,0
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,88,R,P,CCT,1
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,91,L,P,CCG,1
+GCF_000018205.1,Rickettsia akari,rpsL_1_Rickettsia akari_GCF_000018205.1,1,390,-29.176860809326172,24,92,D,G,GGT,1
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,43,N,K,AAA,2
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,43,R,K,AAA,1
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,43,T,K,AAA,1
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,86,C,Q,CAA,0
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,88,E,P,CCT,0
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,88,R,P,CCT,1
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,91,L,P,CCA,1
+GCF_000012385.1,Rickettsia bellii,rpsL_1_Rickettsia bellii_GCF_000012385.1,1,390,-8.634167671203613,23,92,D,G,GGG,0
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,91,L,P,CCT,1
+GCF_000008045.1,Rickettsia typhi,rpsL_1_Rickettsia typhi_GCF_000008045.1,1,390,-40.262271881103516,24,92,D,G,GGT,1
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,43,N,K,AAA,2
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,43,R,K,AAA,1
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,43,T,K,AAA,1
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,86,C,Q,CAG,0
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,88,E,P,CCT,0
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,88,R,P,CCT,1
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,91,L,P,CCG,1
+GCF_000007025.1,Rickettsia conorii,rpsL_1_Rickettsia conorii_GCF_000007025.1,1,390,-40.262271881103516,24,92,D,G,GGG,0
