@@ -88,10 +88,10 @@ Mycobacterium tuberculosis,,,rpsL,,,,,,,,,,,88,,K,R,K -> R,,,Isolate,,,,8 isolat
 Mycobacterium tuberculosis,,,rpsL,128,,A,G,,,,,,,43,,K,R,K -> R,,,Isolate,,,12,,Cuevas-Cordoba2013,SummerStudents2021,,
 Mycobacterium tuberculosis,,,rpsL,263,,A,G,,,,,,,88,,K,R,K -> R,,,Isolate,,,4,,Cuevas-Cordoba2013,SummerStudents2021,,
 Mycobacterium tuberculosis,,,rpsL,262,,A,C,,,,,,,88,,K,Q,K -> Q,,,Isolate,,,2,,Cuevas-Cordoba2013,SummerStudents2021,,
-Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,statistical association
-Mycobacterium tuberculosis,,,rrs,517,,C,T,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,statistical association
-Mycobacterium tuberculosis,,,rrs,908,,A,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,statistical association
-Mycobacterium tuberculosis,,,rrs,950,,T,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,statistical association
+Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,strong association
+Mycobacterium tuberculosis,,,rrs,517,,C,T,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,strong association
+Mycobacterium tuberculosis,,,rrs,908,,A,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,strong association
+Mycobacterium tuberculosis,,,rrs,950,,T,C,,,,,,,,,,,,,,Isolate,,,,,Anwaierjiang2021,Le Na Ngo,,strong association
 Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,,Ballif2012,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,513,,A,C,,,,,,,,,,,,,,Isolate,100,,,This mutation is present only in M. tuberculosis isolates of LAM9 family.,Bauskenieks2015,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,1400,,A,G,,,,,,,,,,,,,,Isolate,100,,,,Bauskenieks2015,Le Na Ngo,,confers resistance
@@ -116,15 +116,15 @@ Mycobacterium tuberculosis,,,gidB,330,,G,T,,,,,,,,,,,,,,Isolate,,,,,Hlaing2017,L
 Mycobacterium tuberculosis,,,gidB,134,,G,A,,,,,,,45,,W,Stop,,,,Isolate,,,,,Hlaing2017,SummerStudents2021,,
 Mycobacterium tuberculosis,9106,,rpsL,,,,,,,,AAG,AGG,,43,,K,R,,,,Lab mutant?,"1,280",,,,Honore1994,SummerStudents2021,,
 Mycobacterium tuberculosis,9181,,rpsL,,,,,,,,AAG,AGG,,43,,K,R,,,,Lab mutant?,,,,MIC not determined for strain 9181,Honore1994,SummerStudents2021,,
-Mycobacterium tuberculosis,,,rrs,514,,A,C,A -> C,,,,,,-,-,-,-,,,,Isolate,,,3,,Bwalya2021,SummerStudents2021,,statistical association
-Mycobacterium tuberculosis,,,rrs,517,,C,T,C -> T,,,,,,-,-,-,-,,,,Isolate,10<x<100,,2,There was also one other mutant that had this mutation as well as mutations in gidB.,Bwalya2021,SummerStudents2021,,statistical association
+Mycobacterium tuberculosis,,,rrs,514,,A,C,A -> C,,,,,,-,-,-,-,,,,Isolate,,,3,,Bwalya2021,SummerStudents2021,,strong association
+Mycobacterium tuberculosis,,,rrs,517,,C,T,C -> T,,,,,,-,-,-,-,,,,Isolate,10<x<100,,2,There was also one other mutant that had this mutation as well as mutations in gidB.,Bwalya2021,SummerStudents2021,,strong association
 Mycobacterium tuberculosis,,,rpsL,,,A,G,A -> G,,,AAG,AGG,,43,,K,R,,,,Isolate,,,,63 strains had this mutation,Huy2023,Sudeepta,,
 Mycobacterium tuberculosis,,,rpsL,,,G,T,G -> T,,,AAG,AAT,,43,,K,N,,,,Isolate,,,,1 strain had this mutation,Huy2023,Sudeepta,,
 Mycobacterium tuberculosis,,,rpsL,,,A,G,A -> G,,,AAG,AGG,,88,,K,R,,,,Isolate,,,,32 strains had this mutation,Huy2023,Sudeepta,,
 Mycobacterium tuberculosis,,,rpsL,,,A,T,A -> T,,,AAG,ATG,,88,,K,M,,,,Isolate,,,,4 strains had this mutation,Huy2023,Sudeepta,,
 Mycobacterium tuberculosis,,,rpsL,,,A,C,A -> C,,,AAG,ACG,,88,,K,T,,,,Isolate,,,,1 strain had this mutation,Huy2023,Sudeepta,,
-Mycobacterium tuberculosis,,,rrs,906,,A,G,A -> G,,,,,,-,-,-,-,,,,Isolate,,,2,,Bwalya2021,SummerStudents2021,,statistical association
-Mycobacterium tuberculosis,,,rrs,907,,A,C,A -> C,,,,,,-,-,-,-,,,,Isolate,,,3,,Bwalya2021,SummerStudents2021,,statistical association
+Mycobacterium tuberculosis,,,rrs,906,,A,G,A -> G,,,,,,-,-,-,-,,,,Isolate,,,2,,Bwalya2021,SummerStudents2021,,strong association
+Mycobacterium tuberculosis,,,rrs,907,,A,C,A -> C,,,,,,-,-,-,-,,,,Isolate,,,3,,Bwalya2021,SummerStudents2021,,strong association
 Mycobacterium tuberculosis,,,rrs,513,,A,C,,,,,,,,,,,,,,Isolate,,,,,Chen2015,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,865,912,C,G,,,,,,,,,,,,,,Isolate,,,,One isolate with low-level SM resistance had undergone a cytosine-to-guanine sub-stitution at nucleotide 865 of the 16S rRNA sequence. This position corresponds to position 912 of theE. coli16S rRNAsequence,Cooksey1996,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,483,,A,T,A -> T,,,,,,,,,,,,,Isolate,,,2,,Cuevas-Cordoba2013,SummerStudents2021,,confers resistance
@@ -265,8 +265,8 @@ Mycobacterium tuberculosis,,,rpsL,,,,,,,,AAG,CAG,,88,,K,Q,,,,Isolate,,,,Two of e
 Mycobacterium tuberculosis,,,rpsL,,,,,,,,AAG,AGG,,88,,K,R,,,,Isolate,,,,One isolate from Vietnam had this mutation. Origin: IN VIVO -> Isolate,Sreevatsan1996,SummerStudents2021,Le Na Ngo,
 Mycobacterium tuberculosis,,,rpsL,,,,,,,,GTG,ATG,,93,,V,M,,,,Isolate,,,,One isolate from Vietnam had this mutation as well as the mutation above. Unknown significance in terms of resistance since this was paired with a mutation in codon 88 (which is known to confer Streptomycin resistance). Origin: IN VIVO -> Isolate,Sreevatsan1996,SummerStudents2021,Le Na Ngo,
 Mycobacterium tuberculosis,,,rpsL,,,,,,,,CGC,CAC,,9,,R,H,,,,Isolate,,,,One isolate from Hong Kong had this mutation as well as the mutation in codon 43 above. Unknown significance of this mutation in terms of resistance since it has been paired with a mutation in codon 43 (which is known to confer Streptomycin resistance). Origin: IN VIVO -> Isolate ,Sreevatsan1996,SummerStudents2021,Le Na Ngo,
-Mycobacterium tuberculosis,9247,,rrs,904,,C,G,C -> G,,,,,,,,,,,,,Isolate,"1,280",,,,Honore1994,SummerStudents2021,,strong association
-Mycobacterium tuberculosis,9428,,rrs,904,,C,A,C -> A,,,,,,,,,,,,,Isolate,160,,,,Honore1994,SummerStudents2021,,strong association
+Mycobacterium tuberculosis,9247,,rrs,904,,C,G,C -> G,,,,,,,,,,,,,Isolate,"1,280",,,,Honore1994,SummerStudents2021,,confers resistance
+Mycobacterium tuberculosis,9428,,rrs,904,,C,A,C -> A,,,,,,,,,,,,,Isolate,160,,,,Honore1994,SummerStudents2021,,confers resistance
 Mycobacterium tuberculosis,,,rrs,151,,C,G,C -> G,,,,,,,,,,,,,Isolate,,,,,Huy2023,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,239,,C,T,C -> T,,,,,,,,,,,,,Isolate,,,,,Huy2023,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,513,,C,T,C -> T,,,,,,,,,,,,,Isolate,,,,,Huy2023,Le Na Ngo,,confers resistance
@@ -307,10 +307,10 @@ Mycobacterium tuberculosis,,,rpsL,128,,A,T,,,,,,,43,,K,M,,,,Isolate,,,,"I STR-S,
 Mycobacterium tuberculosis,,,rpsL,129,,G,T,,,,,,,43,,K,N,,,,Isolate,,,,1 STR-R isolate found. ,Wang2019a,SummerStudents2021,,
 Mycobacterium tuberculosis,,,rpsL,262,,A,C,,,,,,,88,,K,Q,,,,Isolate,,,,"1 STR-S, 1 STR-R, and 1 MDR-TB isolate was found. ",Wang2019a,SummerStudents2021,,
 Mycobacterium tuberculosis,,,rpsL,263,,A,G,,,,,,,88,,K,R,,,,Isolate,,,,"2 STR-S, 17 STR-R, and 7 MDR-TB isolates were found. ",Wang2019a,SummerStudents2021,,
-Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,statistical association
+Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,strong association
 Mycobacterium tuberculosis,,,rrs,908,,A,C,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,rrs,1274,,C,T,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,confers resistance
-Mycobacterium tuberculosis,,,rrs,1401,,A,G,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,statistical association
+Mycobacterium tuberculosis,,,rrs,1401,,A,G,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,strong association
 Mycobacterium tuberculosis,,,rrs,1465,,T,C,,,,,,,,,,,,,,Isolate,,,,,Islam2020,Le Na Ngo,,confers resistance
 Mycobacterium tuberculosis,,,gidB,,,G,A,,,,,,,7,,,,,,,Isolate,,,,7 was given as the codon at which the mutation occurred. There was 1 STR-R isolate. Novel to this paper. Note: was not given whether there were co-mutations between gidB and rpsL and rrs mutations.,Wang2019a,SummerStudents2021,,
 Mycobacterium tuberculosis,,,gidB,,,T,C,,,,,,,74,,L,S,,,,Isolate,,,,74 was given as the codon at which the mutation occurred. 1 STR-R isolate found. Novel to this paper. ,Wang2019a,SummerStudents2021,,
@@ -721,8 +721,7 @@ Salmonella enterica subsp. enterica serovar Typhimurium,S360,,rrs,1932,,C,G,,,,,
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,,rrs,2196,,C,A,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,,rrs,2424,,A,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,,rrs,2424,,C,A,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-"
-Salmonella enterica subsp. enterica serovar Give",,,rrs,54,,A,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+Salmonella enterica subsp. enterica serovar Give,,,rrs,54,,A,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
 "
 Salmonella enterica subsp. enterica serovar Give",,,rrs,248,,C,A,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
 "
@@ -773,22 +772,41 @@ Salmonella enterica subsp. enterica serovar Give",,,rrs,2352,,C,T,,,,,,,,,,,,,,I
 Salmonella enterica subsp. enterica serovar Give",,,rrs,2355,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
 "
 Salmonella enterica subsp. enterica serovar Give",,,rrs,2367,,A,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,702,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,756,,G,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1047,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1095,,T,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1128,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1164,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1293,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1462,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1665,,G,A,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1752,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1819,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1860,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1817,,A,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,,rrs,1920,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
-Mycobacterium tuberculosis,,,rrs,514,,A,T,,,,,,,,,,,,,,Isolate,,,,"2 STR-S, 1 STR-R, and 1 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
-Mycobacterium tuberculosis,,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,"3 STR-S, 26 STR-R, and 12 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
-Mycobacterium tuberculosis,,,rrs,517,,C,T,,,,,,,,,,,,,,Isolate,,,,"2 STR-S, 5 STR-R, and 2 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
-Mycobacterium tuberculosis,,,rrs,848,,G,T,,,,,,,,,,,,,,Isolate,,,,1 STR-R and I MDR-TB isolates found. ,Wang2019a,SummerStudents2021,,confers resistance
-Mycobacterium tuberculosis,,,rrs,906,,A,G,,,,,,,,,,,,,,Isolate,,,,1 STR-R isolate found. ,Wang2019a,SummerStudents2021,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,702,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,756,,G,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1047,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1095,,T,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1128,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1164,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1293,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1462,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1665,,G,A,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1752,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1819,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1860,,T,C,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1817,,A,G,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,,rrs,1920,,C,T,,,,,,,,,,,,,,Isolate,10,,,,Viet2018,Le Na Ngo,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",,,rrs,514,,A,T,,,,,,,,,,,,,,Isolate,,,,"2 STR-S, 1 STR-R, and 1 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",,,rrs,514,,A,C,,,,,,,,,,,,,,Isolate,,,,"3 STR-S, 26 STR-R, and 12 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",,,rrs,517,,C,T,,,,,,,,,,,,,,Isolate,,,,"2 STR-S, 5 STR-R, and 2 MDR-TB isolates found. ",Wang2019a,SummerStudents2021,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",,,rrs,848,,G,T,,,,,,,,,,,,,,Isolate,,,,1 STR-R and I MDR-TB isolates found. ,Wang2019a,SummerStudents2021,,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",,,rrs,906,,A,G,,,,,,,,,,,,,,Isolate,,,,1 STR-R isolate found. ,Wang2019a,SummerStudents2021,,confers resistance

@@ -1,7 +1,5 @@
 Species,Strain,Genotype,Gene,Nt_pos,Nt_pos_Ecoli,Nt_original,Nt_mutation,Nt_OtoM,Nt_mut_name,Nt_mut_name_Ecoli,Codon_original,Codon_mutation,Codon_OtoM,AA_pos,AA_pos_Ecoli,AA_original,AA_mutation,AA_OtoM,AA_mut_name,AA_mut_name_Ecoli,Origin,MIC_mgPerL,Rel_fitness,n_clones,Comments,Ref_code,Evidence_category
 "
-Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-"
 Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,248,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 "
 Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,642,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
@@ -51,6 +49,44 @@ Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,2352,NA,C,T,NA,NA,NA
 Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,2355,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 "
 Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,2367,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,702,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,756,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1128,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1462,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1665,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1752,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1819,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1817,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",S384,NA,rrs,1920,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,514,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 1 STR-R, and 1 MDR-TB isolates found.",Wang2019a,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"3 STR-S, 26 STR-R, and 12 MDR-TB isolates found.",Wang2019a,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 5 STR-R, and 2 MDR-TB isolates found.",Wang2019a,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,848,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R and I MDR-TB isolates found.,Wang2019a,confers resistance
+"
+Salmonella enterica subsp. enterica serovar Give",NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found.,Wang2019a,confers resistance
 Bacillus pumilus,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,56,NA,K,N,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Danilova2017,NA
 Bacillus subtilis,NA,NA,rpsL,64,NA,C,T,NA,NA,NA,NA,NA,NA,22,NA,P,S,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
 Bacillus subtilis,NA,NA,rpsL,167,NA,A,G,NA,NA,NA,NA,NA,NA,56,43,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Hosoya1998,NA
@@ -246,10 +282,10 @@ Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Ali2015,confers resistance
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,NA
-Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,950,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,statistical association
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,950,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Anwaierjiang2021,strong association
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Ballif2012,NA
@@ -275,10 +311,10 @@ Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,CTC,CAC,CTC -> CAC,90
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,GGA,GCA,GGA -> GCA,92,NA,G,A,G -> A,NA,NA,Isolate,NA,NA,NA,4 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,TAC,CAC,TAC -> CAC,95,NA,Y,H,Y -> H,NA,NA,Isolate,128,NA,NA,9 strains had this mutation. Moderate level of resistance. IN VIVO -> Isolate,Brammacharry2014,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,ATA,ACA,ATA -> ACA,98,NA,I,T,I -> T,NA,NA,Isolate,NA,NA,NA,5 strains had this mutation. IN VIVO -> Isolate,Brammacharry2014,NA
-Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,C -> T,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,10<x<100,NA,2,There was also one other mutant that had this mutation as well as mutations in gidB.,Bwalya2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,A -> G,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,2,NA,Bwalya2021,statistical association
-Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,statistical association
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,C -> T,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,10<x<100,NA,2,There was also one other mutant that had this mutation as well as mutations in gidB.,Bwalya2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,A -> G,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,2,NA,Bwalya2021,strong association
+Mycobacterium tuberculosis,NA,NA,rrs,907,NA,A,C,A -> C,NA,NA,NA,NA,NA,-,-,-,-,NA,NA,NA,Isolate,NA,NA,3,NA,Bwalya2021,strong association
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,A -> G,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,21,NA,Bwalya2021,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,A -> G,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,8,NA,Bwalya2021,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,A -> C,NA,NA,NA,NA,NA,88,NA,K,Q,K -> Q,NA,NA,Isolate,NA,NA,1,NA,Bwalya2021,NA
@@ -334,8 +370,8 @@ Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,G,NA,NA,NA,NA,NA,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,NA,Hlaing2017,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,K -> T,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,These mutations were found in SM resistance MDR (multidrug-resistant).,Hlaing2017,NA
-Mycobacterium tuberculosis,9247,NA,rrs,904,NA,C,G,C -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,"1,280",NA,NA,NA,Honore1994,strong association
-Mycobacterium tuberculosis,9428,NA,rrs,904,NA,C,A,C -> A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,160,NA,NA,NA,Honore1994,strong association
+Mycobacterium tuberculosis,9247,NA,rrs,904,NA,C,G,C -> G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,"1,280",NA,NA,NA,Honore1994,confers resistance
+Mycobacterium tuberculosis,9428,NA,rrs,904,NA,C,A,C -> A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,160,NA,NA,NA,Honore1994,confers resistance
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,63 strains had this mutation,Huy2023,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,G,T,G -> T,NA,NA,AAG,AAT,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,1 strain had this mutation,Huy2023,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,A,G,A -> G,NA,NA,AAG,AGG,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,32 strains had this mutation,Huy2023,NA
@@ -355,10 +391,10 @@ Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,T,NA,
 Mycobacterium tuberculosis,NA,NA,rrs,12,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
 Mycobacterium tuberculosis,NA,NA,rrs,181,NA,C,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
 Mycobacterium tuberculosis,NA,NA,rrs,310,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,statistical association
+Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,strong association
 Mycobacterium tuberculosis,NA,NA,rrs,908,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
 Mycobacterium tuberculosis,NA,NA,rrs,1274,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,1401,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,statistical association
+Mycobacterium tuberculosis,NA,NA,rrs,1401,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,strong association
 Mycobacterium tuberculosis,NA,NA,rrs,1465,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
 Mycobacterium tuberculosis,NA,NA,rrs,1491,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,NA,Islam2020,confers resistance
 Mycobacterium tuberculosis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,NA,Jabbar2019,NA
@@ -450,11 +486,6 @@ Mycobacterium tuberculosis,NA,NA,rpsL,128,NA,A,T,NA,NA,NA,NA,NA,NA,43,NA,K,M,NA,
 Mycobacterium tuberculosis,NA,NA,rpsL,129,NA,G,T,NA,NA,NA,NA,NA,NA,43,NA,K,N,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found.,Wang2019a,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,262,NA,A,C,NA,NA,NA,NA,NA,NA,88,NA,K,Q,NA,NA,NA,Isolate,NA,NA,NA,"1 STR-S, 1 STR-R, and 1 MDR-TB isolate was found.",Wang2019a,NA
 Mycobacterium tuberculosis,NA,NA,rpsL,263,NA,A,G,NA,NA,NA,NA,NA,NA,88,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 17 STR-R, and 7 MDR-TB isolates were found.",Wang2019a,NA
-Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 1 STR-R, and 1 MDR-TB isolates found.",Wang2019a,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,514,NA,A,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"3 STR-S, 26 STR-R, and 12 MDR-TB isolates found.",Wang2019a,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,517,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,"2 STR-S, 5 STR-R, and 2 MDR-TB isolates found.",Wang2019a,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,848,NA,G,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R and I MDR-TB isolates found.,Wang2019a,confers resistance
-Mycobacterium tuberculosis,NA,NA,rrs,906,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,NA,NA,NA,1 STR-R isolate found.,Wang2019a,confers resistance
 Mycobacterium tuberculosis,NA,NA,rpsL,128,-,A,G,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Isolate,>256 ug/mL,NA,NA,"Study found both resistant and clinical isolates with mutations in gidB, MIC was tested on two different media with the highest recorded MIC being 128 ug/mL.",Wong2011,NA
 Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Lab-generated,NA,NA,NA,NA,Danchuk2020,NA
 Mycobacterium tuberculosis variant bovis,NA,NA,rpsL,NA,NA,A,G,NA,NA,NA,AAG,AGG,NA,43,NA,K,R,K -> R,NA,NA,Isolate,NA,NA,NA,NA,Djemal2018,NA
@@ -520,6 +551,7 @@ Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2103,NA,T,C,NA,NA,NA
 Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2424,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Derby,NA,NA,rrs,2424,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Enteritidis,NA,NA,rpsL,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,43,NA,K,R,NA,NA,NA,Isolate,NA,NA,NA,heterotypic synonym Salmonella enteritidis,Tang2019,NA
+Salmonella enterica subsp. enterica serovar Give,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,45,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,54,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,Using rrsD,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Indiana,NA,NA,rrs,248,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
@@ -571,20 +603,6 @@ Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,1932,NA,C,G,
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2196,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2424,NA,A,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Typhimurium,S360,NA,rrs,2424,NA,C,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,702,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,756,NA,G,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1047,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1095,NA,T,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1128,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1164,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1293,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1462,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1665,NA,G,A,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1752,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1819,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1860,NA,T,C,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1817,NA,A,G,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
-Salmonella enterica subsp. enterica serovar Typhimurium,S384,NA,rrs,1920,NA,C,T,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Isolate,10,NA,NA,NA,Viet2018,confers resistance
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,R,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,N,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
 Salmonella enterica subsp. enterica serovar Typhimurium,LT2,NA,rpsL,-,-,-,-,NA,NA,NA,NA,NA,NA,42,-,K,T,NA,NA,NA,Lab-generated,200,NA,NA,"Wistrand-Yuen2018, like others found that when selection above the MIC occurs the major mutants are rpsL mutants.",Wistrand-Yuen2018,NA
