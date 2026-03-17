@@ -225,7 +225,7 @@ p <- ggplot(ref_muts, aes(x = Evidence_category)) +
   )
 
 ggsave(
-  "./plots/rrs_evidence_category_literature.pdf",
+  "./plots/rrs_evidence_category_literature.png",
   plot = p,
   width = 8,
   height = 6,
