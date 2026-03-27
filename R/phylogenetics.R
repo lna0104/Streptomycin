@@ -278,7 +278,9 @@ plot_subtree <- function(subtree, species_output, bacterial_taxonomy, file_name)
     "Sphingomonadales", "minor",
     "Devosiaceae", "minor",
     "Rickettsiales", "minor",
-    "Coriobacteriia", "major"
+    "Coriobacteriia", "major",
+    "Gammaproteobacteria", "major",
+    "Bacteroidia", "major"
   )
 
   # change tip labels to make manipulations easier:

@@ -4,21 +4,21 @@
    height="720.00pt"
    viewBox="0 0 720.00 720.00"
    version="1.1"
-   id="svg73023"
+   id="svg73027"
    sodipodi:docname="whole_genome_tree.svg"
    inkscape:export-filename="whole_genome_tree.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
-   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs73023" />
+     id="defs73027" />
   <sodipodi:namedview
-     id="namedview73023"
+     id="namedview73027"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -27,18 +27,18 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
-     inkscape:zoom="1.69375"
-     inkscape:cx="698.74539"
-     inkscape:cy="738.30258"
+     inkscape:zoom="0.90576847"
+     inkscape:cx="481.91123"
+     inkscape:cy="434.43773"
      inkscape:window-width="1920"
-     inkscape:window-height="1094"
-     inkscape:window-x="-11"
-     inkscape:window-y="1609"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g73022" />
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g73026" />
   <g
      class="svglite"
-     id="g73023">
+     id="g73027">
     <defs
        id="defs1">
       <style
@@ -105,7 +105,7 @@
     </g>
     <g
        clip-path="url(#cpMC4wMHw3MjAuMDB8MC4wMHw3MjAuMDA=)"
-       id="g73022">
+       id="g73026">
       <rect
          x="31.89"
          y="5.48"
@@ -292058,7 +292058,7 @@
          textLength="55.5"
          lengthAdjust="spacingAndGlyphs"
          id="text72986"
-         transform="translate(0,-4.5)">Actinomycetes</text>
+         transform="translate(1.5,-3)">Actinomycetes</text>
       <text
          x="148.45"
          y="477.82001"
@@ -292067,7 +292067,7 @@
          textLength="76.419998"
          lengthAdjust="spacingAndGlyphs"
          id="text72987"
-         transform="translate(-34.5)">Alphaproteobacteria</text>
+         transform="translate(-36)">Alphaproteobacteria</text>
       <text
          x="583.34003"
          y="214.98"
@@ -292076,23 +292076,49 @@
          textLength="52.66"
          lengthAdjust="spacingAndGlyphs"
          id="text72988"
-         transform="translate(22.5,1.5)">Coriobacteriia</text>
+         transform="translate(25.5)">Coriobacteriia</text>
+      <text
+         x="501.10001"
+         y="548.23999"
+         text-anchor="middle"
+         style="font-size:8.54px;font-family:Arial;fill:#66a61e"
+         textLength="84.949997"
+         lengthAdjust="spacingAndGlyphs"
+         id="text72989"
+         transform="translate(37.5)">Gammaproteobacteria</text>
+      <text
+         x="148.67"
+         y="195.14"
+         text-anchor="middle"
+         style="font-size:8.54px;font-family:Arial;fill:#e6ab02"
+         textLength="42.700001"
+         lengthAdjust="spacingAndGlyphs"
+         id="text72990"
+         transform="translate(-18)">Bacteroidia</text>
       <polyline
          points="604.49,309.38 603.49,300.85 "
          style="stroke-width: 4.27; stroke: #1B9E77; stroke-linecap: butt;"
-         id="polyline72988" />
+         id="polyline72990" />
       <polyline
          points="571.48,208.54 566.88,201.06 562.01,193.76 556.89,186.63 551.51,179.69 545.89,172.95 540.04,166.41 533.95,160.09 527.64,153.99 521.12,148.11 514.39,142.48 507.47,137.09 500.36,131.94 493.06,127.06 485.60,122.44 477.98,118.09 470.21,114.01 462.30,110.21 454.25,106.70 446.09,103.48 437.81,100.55 429.44,97.92 420.98,95.59 412.44,93.57 403.83,91.85 395.17,90.43 386.46,89.33 377.72,88.54 368.96,88.07 360.18,87.90 351.41,88.05 342.64,88.52 333.90,89.29 325.19,90.38 316.53,91.78 307.92,93.49 299.37,95.50 290.91,97.82 282.53,100.44 274.25,103.35 266.08,106.56 258.04,110.06 250.12,113.85 242.34,117.91 234.71,122.25 227.24,126.86 219.94,131.74 212.82,136.87 "
          style="stroke-width: 4.27; stroke: #D95F02; stroke-linecap: butt;"
-         id="polyline72989" />
+         id="polyline72991" />
       <polyline
          points="114.40,327.34 114.33,336.21 114.59,345.08 115.16,353.93 116.06,362.76 117.27,371.55 118.80,380.28 120.64,388.96 122.80,397.57 125.26,406.09 128.03,414.52 131.10,422.84 134.48,431.05 138.14,439.13 142.10,447.07 146.34,454.86 150.86,462.50 155.65,469.97 160.70,477.25 166.02,484.36 171.59,491.26 177.41,497.96 183.46,504.45 189.74,510.71 196.25,516.74 202.97,522.53 209.89,528.08 217.01,533.37 224.32,538.41 231.81,543.17 239.46,547.66 247.26,551.88 255.22,555.80 263.31,559.44 271.53,562.79 "
          style="stroke-width: 4.27; stroke: #7570B3; stroke-linecap: butt;"
-         id="polyline72990" />
+         id="polyline72992" />
       <polyline
          points="577.91,220.13 573.51,212.03 "
          style="stroke-width: 4.27; stroke: #E7298A; stroke-linecap: butt;"
-         id="polyline72991" />
+         id="polyline72993" />
+      <polyline
+         points="272.71,563.24 281.01,566.22 289.41,568.91 297.90,571.29 306.47,573.37 315.11,575.13 323.81,576.59 332.55,577.73 341.34,578.56 350.14,579.07 358.96,579.27 367.78,579.15 376.58,578.71 385.37,577.95 394.13,576.89 402.84,575.51 411.49,573.81 420.08,571.81 428.59,569.50 437.02,566.89 445.34,563.97 453.55,560.76 461.65,557.25 469.61,553.46 477.43,549.39 485.10,545.03 492.61,540.41 499.95,535.51 507.10,530.36 514.07,524.95 520.84,519.30 527.40,513.41 533.75,507.28 539.87,500.94 545.76,494.37 551.41,487.60 556.82,480.63 561.97,473.47 566.86,466.13 571.48,458.62 575.84,450.95 579.91,443.13 583.70,435.17 587.20,427.07 590.41,418.86 593.32,410.53 595.93,402.11 598.24,393.60 600.24,385.01 601.93,376.35 603.31,367.64 604.38,358.88 605.13,350.10 605.56,341.29 "
+         style="stroke-width: 4.27; stroke: #66A61E; stroke-linecap: butt;"
+         id="polyline72994" />
+      <polyline
+         points="207.12,141.26 200.23,146.95 193.55,152.88 187.09,159.05 180.86,165.46 174.86,172.08 169.11,178.92 163.61,185.96 158.38,193.20 153.40,200.63 148.71,208.23 144.29,215.99 140.15,223.91 136.31,231.98 132.77,240.18 129.52,248.51 126.58,256.94 123.95,265.48 "
+         style="stroke-width: 4.27; stroke: #E6AB02; stroke-linecap: butt;"
+         id="polyline72995" />
       <text
          x="108.91"
          y="413.14999"
@@ -292100,12 +292126,12 @@
          style="font-size:8.54px;font-family:Arial;fill:#66c2a5"
          textLength="73.089996"
          lengthAdjust="spacingAndGlyphs"
-         id="text72991"
+         id="text72995"
          transform="translate(-34.5)">Sphingomonadales</text>
       <polyline
          points="110.29,379.20 112.23,388.74 114.52,398.21 117.18,407.58 120.20,416.84 123.57,425.98 127.29,434.98 "
          style="stroke-width: 4.27; stroke: #66C2A5; stroke-linecap: butt;"
-         id="polyline72992" />
+         id="polyline72996" />
       <text
          x="179.02"
          y="526.76001"
@@ -292113,12 +292139,12 @@
          style="font-size:8.54px;font-family:Arial;fill:#fc8d62"
          textLength="49.34"
          lengthAdjust="spacingAndGlyphs"
-         id="text72992"
-         transform="translate(-22.5,-3)">Devosiaceae</text>
+         id="text72996"
+         transform="translate(-25.5,-4.5)">Devosiaceae</text>
       <polyline
          points="182.77,515.31 187.21,519.54 "
          style="stroke-width: 4.27; stroke: #FC8D62; stroke-linecap: butt;"
-         id="polyline72993" />
+         id="polyline72997" />
       <text
          x="97.529999"
          y="333.67001"
@@ -292126,110 +292152,110 @@
          style="font-size:8.54px;font-family:Arial;fill:#8da0cb"
          textLength="47.889999"
          lengthAdjust="spacingAndGlyphs"
-         id="text72993"
+         id="text72997"
          transform="translate(-21)">Rickettsiales</text>
       <polyline
          points="106.23,327.78 106.16,333.65 "
          style="stroke-width: 4.27; stroke: #8DA0CB; stroke-linecap: butt;"
-         id="polyline72994" />
+         id="polyline72998" />
       <rect
          x="164.65"
          y="672.65"
          width="223.08"
          height="33.03"
          style="stroke-width: 1.07; stroke: none; fill: #FFFFFF;"
-         id="rect72994" />
+         id="rect72998" />
       <text
          x="170.13"
          y="687.17"
          style="font-size: 11.00px; font-family: &quot;Arial&quot;;"
          textLength="46.50px"
          lengthAdjust="spacingAndGlyphs"
-         id="text72994">Predicted</text>
+         id="text72998">Predicted</text>
       <text
          x="170.13"
          y="699.05"
          style="font-size: 11.00px; font-family: &quot;Arial&quot;;"
          textLength="50.16px"
          lengthAdjust="spacingAndGlyphs"
-         id="text72995">resistance</text>
+         id="text72999">resistance</text>
       <rect
          x="225.77"
          y="680.53"
          width="17.28"
          height="17.28"
          style="stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;"
-         id="rect72995" />
+         id="rect72999" />
       <rect
          x="226.05"
          y="680.81"
          width="16.71"
          height="16.71"
          style="stroke-width: 0.43; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #BA181B;"
-         id="rect72996" />
+         id="rect73000" />
       <rect
          x="287.24"
          y="680.53"
          width="17.28"
          height="17.28"
          style="stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;"
-         id="rect72997" />
+         id="rect73001" />
       <rect
          x="287.53"
          y="680.81"
          width="16.71"
          height="16.71"
          style="stroke-width: 0.43; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #D3D3D3;"
-         id="rect72998" />
+         id="rect73002" />
       <rect
          x="359.50"
          y="680.53"
          width="17.28"
          height="17.28"
          style="stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;"
-         id="rect72999" />
+         id="rect73003" />
       <rect
          x="359.78"
          y="680.81"
          width="16.71"
          height="16.71"
          style="stroke-width: 0.43; stroke: none; stroke-linecap: butt; stroke-linejoin: miter;"
-         id="rect73000" />
+         id="rect73004" />
       <text
          x="248.53"
          y="692.32"
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="33.23px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73000">resistant</text>
+         id="text73004">resistant</text>
       <text
          x="310.00"
          y="692.32"
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="44.02px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73001">susceptible</text>
+         id="text73005">susceptible</text>
       <rect
          x="398.69"
          y="672.65"
          width="156.65"
          height="41.87"
          style="stroke-width: 1.07; stroke: none; fill: #FFFFFF;"
-         id="rect73001" />
+         id="rect73005" />
       <text
          x="404.17"
          y="691.58"
          style="font-size: 11.00px; font-family: &quot;Arial&quot;;"
          textLength="46.50px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73002">Predicted</text>
+         id="text73006">Predicted</text>
       <text
          x="404.17"
          y="703.46"
          style="font-size: 11.00px; font-family: &quot;Arial&quot;;"
          textLength="53.81px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73003">evolvability</text>
+         id="text73007">evolvability</text>
       <image
          width="86.40"
          height="17.28"
@@ -292237,63 +292263,63 @@
          y="678.13"
          preserveAspectRatio="none"
          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAABCAYAAABkOJMpAAAAwklEQVQ4jY2QQRbDIAhE/5i8tjfuzXq6RruQJIro6wpk4DMo3p/yAp4qPIAd2Cnsgo1CAjZgU80TkK7cou5cpsl0CXsXkmqUcaQxv/SmV11+9llt1ueZimdY9DHhRTM4NsPMgi3TO16gqecS7V9o7U6af6S5hcBje2/kK5rH/8Xg6ZwdPa1mV/5i/r/M4M4p579dtR7/u+fcHiJmn9/+XT1klIX3Mnikq7c7fb+LM53s6tnVMyJbfzb9MP0ADsQXVOMP3dGi1+AXQkkAAAAASUVORK5CYII="
-         id="image73003" />
+         id="image73007" />
       <polyline
          points="463.61,691.96 463.61,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73003" />
+         id="polyline73007" />
       <polyline
          points="477.96,691.96 477.96,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73004" />
+         id="polyline73008" />
       <polyline
          points="492.31,691.96 492.31,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73005" />
+         id="polyline73009" />
       <polyline
          points="506.67,691.96 506.67,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73006" />
+         id="polyline73010" />
       <polyline
          points="521.02,691.96 521.02,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73007" />
+         id="polyline73011" />
       <polyline
          points="535.37,691.96 535.37,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73008" />
+         id="polyline73012" />
       <polyline
          points="549.72,691.96 549.72,695.41 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73009" />
+         id="polyline73013" />
       <polyline
          points="463.61,681.59 463.61,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73010" />
+         id="polyline73014" />
       <polyline
          points="477.96,681.59 477.96,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73011" />
+         id="polyline73015" />
       <polyline
          points="492.31,681.59 492.31,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73012" />
+         id="polyline73016" />
       <polyline
          points="506.67,681.59 506.67,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73013" />
+         id="polyline73017" />
       <polyline
          points="521.02,681.59 521.02,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73014" />
+         id="polyline73018" />
       <polyline
          points="535.37,681.59 535.37,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73015" />
+         id="polyline73019" />
       <polyline
          points="549.72,681.59 549.72,678.13 "
          style="stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;"
-         id="polyline73016" />
+         id="polyline73020" />
       <text
          x="463.61"
          y="707.19"
@@ -292301,7 +292327,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73016">2</text>
+         id="text73020">2</text>
       <text
          x="477.96"
          y="707.19"
@@ -292309,7 +292335,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73017">3</text>
+         id="text73021">3</text>
       <text
          x="492.31"
          y="707.19"
@@ -292317,7 +292343,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73018">4</text>
+         id="text73022">4</text>
       <text
          x="506.67"
          y="707.19"
@@ -292325,7 +292351,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73019">5</text>
+         id="text73023">5</text>
       <text
          x="521.02"
          y="707.19"
@@ -292333,7 +292359,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73020">6</text>
+         id="text73024">6</text>
       <text
          x="535.37"
          y="707.19"
@@ -292341,7 +292367,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73021">7</text>
+         id="text73025">7</text>
       <text
          x="549.72"
          y="707.19"
@@ -292349,7 +292375,7 @@
          style="font-size: 8.80px; font-family: &quot;Arial&quot;;"
          textLength="4.89px"
          lengthAdjust="spacingAndGlyphs"
-         id="text73022">8</text>
+         id="text73026">8</text>
     </g>
   </g>
 </svg>
