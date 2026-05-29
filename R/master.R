@@ -258,7 +258,7 @@ if (file.exists("./data/rpsL_fastahash.Rds") && as.character(openssl::sha1(file(
   print("Sequences file has changed, regenerating coordinates")
   # get coordinates
   coordinates <- ALJEbinf::getAllCoordinates(seqs, "rpsL_Escherichia_coli_MG1655")
-  save(coordinates, file = "./output/rpL_coordinates.RData")
+  save(coordinates, file = "./output/rpsL_coordinates.RData")
 }
 
 # 2 load and complete table of reported mutations:
