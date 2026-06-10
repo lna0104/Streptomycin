@@ -52,7 +52,7 @@ Streptomycin_Resistance_Landscape/
 
 ## Prerequisites
 
--   R version: 4.4.3
+-   R version: 4.5.1
 
 -   Recommended environment: Unix/MacOS or Linux server (due to parallelization and large downloads).
 
