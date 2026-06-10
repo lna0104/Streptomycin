@@ -24,6 +24,7 @@ Streptomycin_Resistance_Landscape/
 ├── R/                        # Core R scripts for all analyses
 │   ├── master.R              # Main pipeline for rpsL analysis (amino acid level)
 │   ├── master_nt.R           # Main pipeline for rrs analysis (nucleotide level)
+│   ├── rickettsia_master.R   # Main pipeline for rickettsia analysis (amino acid level)
 │   ├── util.R                # Utility functions (e.g., extract species names)
 │   ├── process_nt_data.R     # Functions adapted from ALJEbinf for nucleotide data
 │   ├── analyses*.R           # Functions for mutation screening, alignment comparison, evolvability assessment, and resistance summarization
@@ -34,7 +35,6 @@ Streptomycin_Resistance_Landscape/
 │   ├── plotting*.R           # Plot generation functions
 │   ├── reports*.R            # Report rendering and summary functions
 │   ├── google_sheet_to_csv.R # Convert literature review Google Sheet to CSV format
-│   └── comparing.R           # Compare and integrate results from rpsL and rrs analyses
 │
 ├── data/                  # Input data and metadata
 │   ├── reported_mutations.csv     # Curated list of resistance-associated mutations
@@ -44,7 +44,6 @@ Streptomycin_Resistance_Landscape/
 │   ├── *_NCBI_taxonomy            # NCBI taxonomy for retrieved genomes
 │   └── summary_preamble.qmd       # Report preamble
 │
-├── output/                # Intermediate outputs (genomes, alignments, filtered results)
 ├── results/               # Summaries and final reports (.txt, .csv, .qmd)
 ├── plots/                 # Figures and visualizations (.pdf, .svg, .html)
 └── README.md              # Project overview and reproducibility guide
