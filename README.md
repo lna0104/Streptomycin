@@ -1,4 +1,4 @@
-# Streptomycin Resistance Landscape
+# Streptomycin Resistance Evolvability
 
 ## Project Overview
 
